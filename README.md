@@ -12,7 +12,8 @@ Created by Celine Aaby Møller, Daniel Bruhn Jensen, Emma Lerche Teglbrænder an
 
 ## Project Description
 
-This project is simple Lorem ipsum dolor generator.
+**Planning articles in a newspaper editorial office**
+_The software house BIT develops IT products for companies that publish newspapers and other periodicals. BIT is now developing an IT product that can help newspaper editors plan the contents of the daily newspaper and manage the work of the journalists. The tentative name of the product is NewsPlan. Imagine that your job is to participate in product development._
 
 ## Technologies
 
@@ -26,12 +27,12 @@ Project is created with:
 To run this project, install it locally using npm:
 
 ```
-//API
+RESTful API
 $ cd ../api
 $ npm install
 $ npm start
 
-//WEBSERVER
+React Webserver
 $ cd ../newsplan
 $ npm install
 $ npm start
