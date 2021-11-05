@@ -1,1 +1,0 @@
-import * as ideaModel from "..models/idea.model.js"
