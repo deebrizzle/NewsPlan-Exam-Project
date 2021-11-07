@@ -12,7 +12,7 @@ export const LoginWrapper = styled.aside`
   .logo {
   width: 90%;
   margin: 0%, 0%;
-}
+  }
 `;
 
 export const MyTextField = styled(TextField)`

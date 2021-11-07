@@ -6,6 +6,7 @@ export const MyToolbar = styled(Toolbar)`
   && {
     background-color: white;
     padding: 1em 0 1em 0 ;
+
     @media screen and (max-width: 800px) {
           flex-direction: column;
           border-bottom: 3px solid #f2f2f2;
@@ -13,7 +14,8 @@ export const MyToolbar = styled(Toolbar)`
           text-align:left;
           padding: 2em 0 2em 0 ;
     }
-
+  }
+  
   & .MuiButton-root {
     color: #415b68;
     font-family: Arial;
@@ -37,11 +39,7 @@ export const MyToolbar = styled(Toolbar)`
     width:40px;
     vertical-align:middle;
     margin:0px 0px 0px 20px;
-
-    .box-shadow{
-        display:none
-    }
-}
+  }
 `;
 
 export const NavButton = styled(Button)`
