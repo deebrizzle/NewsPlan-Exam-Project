@@ -1,10 +1,30 @@
 import styled from "styled-components";
+import Button from "@mui/material/Button";
+import Toolbar from "@mui/material/Toolbar";
 
-export const NavBarStyle = styled.aside`
-  .header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+export const MyToolbar = styled(Toolbar)`
+  && {
+    background-color: white;
+    padding: 1em 0 1em 0 ;
+    @media screen and (max-width: 800px) {
+          flex-direction: column;
+          border-bottom: 3px solid #f2f2f2;
+          padding: 0 0 15em 0;
+          text-align:left;
+          padding: 2em 0 2em 0 ;
+    }
+
+  & .MuiButton-root {
+    color: #415b68;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 3em 0 0;
+
+    @media screen and (max-width: 800px) {
+        margin: 0 0 0 0;  
+    }
   }
 
   .logo {
@@ -13,40 +33,20 @@ export const NavBarStyle = styled.aside`
     width: 200px;
   }
 
-  nav {
-    align-self: center;
-  }
-
   .picture{
-      width:40px;
-      vertical-align:middle;
-      margin:0px 0px 0px 20px;
-  }
+    width:40px;
+    vertical-align:middle;
+    margin:0px 0px 0px 20px;
 
-  header ul li {
-    display: inline-block;
-    padding: 0 5em 0 0;
-  }
-  
-  header ul li a {
-    text-decoration: none;
-    color: #415b68;
-  }
-
-  li a.active {
-    color: #19191D;
-  }
-
-  li a:hover {
-    color: #19191D;
-  }
-
-  @media screen and (max-width: 1140px) {
-    .header-container {
-      flex-direction: column;
-      border-bottom: 3px solid #f2f2f2;
-      padding: 2.3em 0;
+    .box-shadow{
+        display:none
     }
-  }
+}
+`;
+
+export const NavButton = styled(Button)`
+  &&:hover {
+    background-color: white;
+    color: #5a7e90;
   }
 `;

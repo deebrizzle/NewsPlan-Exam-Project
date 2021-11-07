@@ -3,11 +3,10 @@ import { HomeWrapper } from "./Home.styles";
 import NavBar from "../components/NavBar";
 import users from "./Users";
 
-
 function Home() {
   return (
     <>
-      <NavBar />
+    <NavBar/>
       <HomeWrapper>
             <img className="logo" src={logo} alt="Newsplan logo" />
             <p>
