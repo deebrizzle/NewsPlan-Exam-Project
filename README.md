@@ -27,13 +27,8 @@ Project is created with:
 To run this project, install it locally using npm:
 
 ```
-RESTful API
-$ cd ../api
-$ npm install
-$ npm start
-
 React Webserver
-$ cd ../newsplan
+$ cd ../webserver
 $ npm install
 $ npm start
 ```

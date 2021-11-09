@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< Updated upstream
-=======
     "@date-io/date-fns": "^2.11.0",
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
@@ -12,7 +10,11 @@
     "@mui/lab": "^5.0.0-alpha.54",
     "@mui/material": "^5.1.0",
     "@mui/styled-engine-sc": "^5.0.4",
->>>>>>> Stashed changes
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.0.5",
+    "@mui/material": "^5.0.6",
+    "@mui/styled-engine-sc": "^5.0.4",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -20,12 +22,12 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
     "react-dom": "^17.0.2",
-<<<<<<< Updated upstream
-=======
     "react-hook-form": "^7.19.1",
     "react-router-dom": "^6.0.1",
->>>>>>> Stashed changes
+
+    "react-router-dom": "^6.0.1",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
