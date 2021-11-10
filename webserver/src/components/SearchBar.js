@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { StandardButton } from './StandardButton.styles';
 import { SpacingWrapper } from './Spacing.styles';
+import MaterialButton from './MaterialButton';
 
 export default function SearchInput() {
   return (

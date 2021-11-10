@@ -7,27 +7,26 @@ import Select from '@mui/material/Select';
 import {SpacingWrapper} from "./Spacing.styles"
 
 //this component could be made more genereric with props for type of input
-const options = ["Financial", "Sports", "Foreign affairs", "Motor"]
 
-function BasicSelect() {
-  const [section, setSection] = React.useState('');
+function BasicSelect(arrayOfOptions, label) {
+  const [state, setState] = React.useState('');
 
   const handleChange = (event) => {
-    setSection(event.target.value);
+    setState(event.target.value);
   };
 
   return (
     <SpacingWrapper>
     <Box sx={{ minWidth: 250 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Section</InputLabel>
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={section}
+          value={state}
           label="Section"
           onChange={handleChange}>
-          {options.map((option) =>(
+          {arrayOfOptions.map((option) =>(
             <MenuItem value={option}>{option}</MenuItem>
           ))}
         </Select>

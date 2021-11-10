@@ -6,6 +6,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import Table from "../components/IdeaTable"
 import { IdeaWrapper } from "./IdeaBank.styles";
 import SearchInput from "../components/SearchBar";
+import SelectSection from "../components/SelectSection";
 
 function IdeaBank() {
     return (
@@ -16,7 +17,7 @@ function IdeaBank() {
             <h1>Idea Bank</h1>
             <ChooseDate />
             <div style={{display: 'flex'}}>
-              <BasicSelect />
+              <SelectSection />
               <SearchInput/>
             </div>
             <Table></Table>
