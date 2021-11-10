@@ -14,8 +14,6 @@ function BasicSelect(arrayOfOptions, label) {
   };
 
   return (
-    <SpacingWrapper>
-    <Box sx={{ minWidth: 250 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
@@ -29,8 +27,6 @@ function BasicSelect(arrayOfOptions, label) {
           ))}
         </Select>
       </FormControl>
-    </Box>
-    </SpacingWrapper>
   );
 }
 

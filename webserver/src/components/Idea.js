@@ -49,7 +49,6 @@ const articles = [
     'How to vote as a foreigner in Denmark'
 ]
 
-
 export default function IdeaModal(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -72,7 +71,7 @@ export default function IdeaModal(props) {
 
     return (
       <div>
-        <LoginButton onClick={handleOpen}>Open Idea</LoginButton>
+        <LoginButton onClick={handleOpen}>Add Idea</LoginButton>
         <Modal
           open={open}
           onClose={handleClose}
@@ -81,7 +80,7 @@ export default function IdeaModal(props) {
         >
           <Box sx={IdeaBoxStyle} >
             <Typography id="modal-modal-title" variant="h6" component="h2" align="center" m={2}> Create Idea {props.idea} </Typography>
-                <Grid container spacing={2}>
+                <Grid container spacing={3}>
                     
                     <Grid item xs={6}>
                         <TextField id="idea-box" label="Idea" placeholder="Name of the idea" defaultValue={props.idea} fullWidth/>
@@ -167,7 +166,7 @@ export default function IdeaModal(props) {
                         <CancelButton onClick={handleClose}>Cancel</CancelButton>
                     </Grid>
                     <Grid item xs={4}>
-                        <Stack spacing={2} direction ="row" justifyContent ="flex-end">
+                        <Stack spacing={3} direction ="row" justifyContent ="flex-end">
                             <CancelButton disabled>Convert to article</CancelButton>
                             <SaveButton onClick={handleSave}>Save</SaveButton>
                         </Stack>
