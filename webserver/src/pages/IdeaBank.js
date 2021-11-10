@@ -3,7 +3,7 @@ import {Grid, Stack } from '@mui/material';
 import IdeaModal from "../components/Idea";
 import React, { useState } from "react";
 import Table from "../components/IdeaTable"
-import { IdeaWrapper } from "./IdeaBank.styles";
+import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
 import {SelectSection} from "../components/SelectFields";
 import CalendarPopup from "../components/CalendarPopup"
@@ -17,7 +17,7 @@ function IdeaBank() {
     return (
         <>
         <NavBar/>
-        <IdeaWrapper>
+        <PageWrapper>
             <h1>Idea Bank</h1>
             <Grid container spacing={3}>
               {/* FIRST ROW - CALENDAR, SECTION*/}
@@ -39,7 +39,7 @@ function IdeaBank() {
               <Grid item xs={12}> <Table/> </Grid>
 
             </Grid>
-        </IdeaWrapper>
+        </PageWrapper>
         </>
           );
   }
