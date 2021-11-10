@@ -6,8 +6,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {SpacingWrapper} from "./Spacing.styles"
 
-//this component could be made more genereric with props for type of input
-
 function BasicSelect(arrayOfOptions, label) {
   const [state, setState] = React.useState('');
 
