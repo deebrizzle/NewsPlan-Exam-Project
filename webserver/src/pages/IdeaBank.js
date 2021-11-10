@@ -4,8 +4,8 @@ import IdeaModal from "../components/Idea";
 import React, { useState } from "react";
 import Table from "../components/IdeaTable"
 import { IdeaWrapper } from "./IdeaBank.styles";
-import SearchInput from "../components/SearchBar";
-import SelectSection from "../components/SelectSection";
+import SearchInput from "../components/InputFields";
+import {SelectSection} from "../components/SelectFields";
 import CalendarPopup from "../components/CalendarPopup"
 import {SaveButton} from "../components/Button.styles"
 

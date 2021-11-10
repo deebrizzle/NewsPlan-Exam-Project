@@ -3,9 +3,6 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
-import Box from '@mui/material/Box';
-import { SpacingWrapper } from './Spacing.styles';
-import DatePicker from '@mui/lab/DatePicker';
 
 export default function CalendarPopup() {
   const current = new Date();
