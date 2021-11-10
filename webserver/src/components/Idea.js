@@ -53,7 +53,12 @@ const articles = [
 export default function IdeaModal(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false);
+        setSource('');
+        setVisibility('');
+        setSection('');
+    }
     const handleSave = () => console.log("Save the idea into the database. Reset all states to empty")
 
     const [source, setSource] = React.useState('');
@@ -144,7 +149,7 @@ export default function IdeaModal(props) {
                                 <Select
                                 labelId="article-select"
                                 id="article-select"
-                                value= "article"
+                                value= {articles}
                                 label="article"
                                 onChange={handleArticle}
                                 >
