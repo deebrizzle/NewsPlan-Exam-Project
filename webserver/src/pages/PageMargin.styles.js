@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const IdeaWrapper = styled.aside`
+export const PageWrapper = styled.aside`
 margin-left: 5%;
 margin-right: 5%;
 
