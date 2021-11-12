@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+h1{
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 118px;
+  color: #19191D;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+h2{
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 80px;
+  color: #19191D;
   }
-  to {
-    transform: rotate(360deg);
+    
+h3{
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+  color: #19191D;
   }
+   
+h4{
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 34px;
+  line-height: 44px;
+  color: #19191D;
+  }   
+
+h5{
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+  color: #19191D;
+  }
+  
+h6{
+font-family: Arial;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 32px;
+color: #19191D;
+}
+
+p{
+font-family: Helvetica;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 32px;
+color:#19191D;
 }
