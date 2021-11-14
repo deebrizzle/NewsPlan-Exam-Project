@@ -5,7 +5,7 @@ import { MyToolbar, NavButton } from "./NavBar.styles";
 import Box from "@mui/material/Box";
 import logo from "../Logo.png";
 import rahul from "../rahul.png";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -16,16 +16,16 @@ function NavBar() {
             <img className="logo" src={logo} alt="NewsPlan logo" />
           </Link>
           <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
-          <NavButton component={Link} to="/ideabank">
+          <NavButton  disableRipple component={NavLink} to="/ideabank">
             IDEA BANK
           </NavButton>
-          <NavButton component={Link} to="/contentschedule">
+          <NavButton disableRipple component={NavLink} to="/contentschedule">
             CONTENT SCHEDULE
           </NavButton>
-          <NavButton component={Link} to="/calendar">
+          <NavButton disableRipple component={NavLink} to="/calendar">
             CALENDAR
           </NavButton>
-          <NavButton component={Link} to="/">
+          <NavButton disableRipple component={NavLink} to="/">
             KSM
             <img className="picture" src={rahul} alt="" />
           </NavButton>
