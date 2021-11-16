@@ -3,8 +3,8 @@ import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import { MyToolbar, NavButton } from "./NavBar.styles";
 import Box from "@mui/material/Box";
-import logo from "../Logo.png";
-import rahul from "../rahul.png";
+import logo from "../assets/Logo.png";
+import rahul from "../assets/rahul.png";
 import { Link } from "react-router-dom";
 
 function NavBar() {
