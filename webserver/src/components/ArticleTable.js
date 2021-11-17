@@ -31,10 +31,10 @@ export default function ArticleTable() {
 
     function Notification(status) {
         if (status === 'P')
-        return <ErrorIcon htmlColor="#415B68"/>;
+        return <ErrorIcon htmlColor="#415B68" style={{float: 'right'}}/>;
     }
     return (
-        <TableContainer style={{borderRadius: '5px', height: 300, width: '100%', overflow: 'auto',}}>
+        <TableContainer style={{borderRadius: '5px', height: 400, width: '100%', overflow: 'auto',}}>
         <Table stickyHeader sx={{ minWidth: 200 }} aria-label="article table" >
           <TableHead>
             <TableRow>
@@ -54,8 +54,8 @@ export default function ArticleTable() {
                 <TableCell >{row.writer}</TableCell>
                 <TableCell >
                     {row.status} 
+                    <EditIcon htmlColor="#415B68" fontSize="small" style={{width: '20%', float: 'right'}}/>
                     {Notification(row.status)} 
-                    <EditIcon htmlColor="#415B68" fontSize="small" style={{width: '20%'}}/>
                 </TableCell>
               </TableRow>
             ))}
