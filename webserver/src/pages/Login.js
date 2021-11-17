@@ -13,59 +13,63 @@ import {
   MyLink,
   LoginWrapper,
 } from "./Login.styles";
-import Parse from "parse"
+import Parse from "parse";
 
-function Login() {
+export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const user = new Parse.User();
-    user.setPassword(password);
-    user.setUsername(username);
-    user.logIn().then((loggedIn) => {
+  async function validateUser() {
+    try {
+      const userAuth = await Parse.User.logIn(username, password);
+      setUsername("");
+      setPassword("");
+      setLoginError(false);
       navigate("/home");
-    }, error => {alert("Wrong username or password")});
-  };
-  
-  console.log(username);
+      return true;
+    } catch (error) {
+      setLoginError(true);
+      return false;
+    }
+  }
 
   return (
     <LoginWrapper>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <img className="logo" src={logo} alt="Newsplan logo" />
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+        <Box component="form" sx={{ mt: 1 }}>
           <MyTextField
             margin="normal"
             fullWidth
             id="username"
             label="Username"
-            name="username"
             variant="outlined"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            error={loginError}
           />
           <MyTextField
             id="password"
             fullWidth
+            type="password"
             label="Password"
             variant="outlined"
-            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            error={loginError}
+            helperText={loginError ? `Wrong username or password` : ""}
           />
           <MyFormControlLabel
             control={<Checkbox value="remember" />}
             label="Remember me"
           />
-
           <LoginButton
-            type="submit"
+            onClick={() => validateUser()}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
@@ -84,4 +88,3 @@ function Login() {
     </LoginWrapper>
   );
 }
-export default Login;

@@ -7,9 +7,11 @@ import logo from "../Logo.png";
 import rahul from "../rahul.png";
 import { NavLink, Link } from "react-router-dom";
 import Parse from "parse";
+import { LogOut } from "./LogOut";
 
-function NavBar() {
+export default function NavBar() {
   const currentUser = Parse.User.current();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" elevation={0}>
@@ -27,7 +29,12 @@ function NavBar() {
           <NavButton disableRipple component={NavLink} to="/calendar">
             CALENDAR
           </NavButton>
-          <NavButton disableRipple component={NavLink} to="/">
+          <NavButton
+            disableRipple
+            component={NavLink}
+            onClick={() => LogOut()}
+            to="/"
+          >
             {currentUser.get("username")}
             <img className="picture" src={rahul} alt="" />
           </NavButton>
@@ -36,5 +43,3 @@ function NavBar() {
     </Box>
   );
 }
-
-export default NavBar;
