@@ -13,16 +13,24 @@ import {
   MyLink,
   LoginWrapper,
 } from "./Login.styles";
+import Parse from "parse"
 
 function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/home");
+    const user = new Parse.User();
+    user.setPassword(password);
+    user.setUsername(username);
+    user.logIn().then((loggedIn) => {
+      navigate("/home");
+    }, error => {alert("Wrong username or password")});
   };
+  
+  console.log(username);
 
   return (
     <LoginWrapper>
