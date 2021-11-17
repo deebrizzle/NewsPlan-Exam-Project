@@ -1,4 +1,5 @@
 import { DataGrid } from '@mui/x-data-grid';
+import { Fragment } from 'react';
 
 const rows= [
     { id: 1, col1: '01-04-21', col2: 'KSM', col3: 'Mette F.: Deleted message' , col4: 'The Mink Comission waited for text messages..'},
@@ -18,16 +19,16 @@ const rows= [
 
 export default function Table() {
     return (
-      <div style={{ height: 500, width: '100%' }}>
-          <div style={{ display: 'flex', height: '100%' }}>
-              <div style={{ flexGrow: 2 }}>
+      <Fragment style={{ height: 500, width: '100%' }}>
+          <Fragment style={{ display: 'flex', height: '100%' }}>
+              <Fragment style={{ flexGrow: 2 }}>
               <DataGrid 
                 rows={rows} 
                 columns={columns}
                 pageSize={7}
                 />
-              </div>
-          </div>
-      </div>
+              </Fragment>
+          </Fragment>
+      </Fragment>
     );
   }
