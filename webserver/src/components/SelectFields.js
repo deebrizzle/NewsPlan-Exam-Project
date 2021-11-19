@@ -1,7 +1,6 @@
 import BasicSelect from './BasicSelect';
 
-
-const options = ["Financial", "Sports", "Foreign affairs", "Motor"];
+const options = ["Financial", "Foreign affairs"];
 
 export function SelectSection() {
     return BasicSelect(options, "Section")
@@ -18,6 +17,7 @@ const employees = [
 ]
 
 export function SelectSource() {
+
     return BasicSelect(employees, "Source")
 };
 
