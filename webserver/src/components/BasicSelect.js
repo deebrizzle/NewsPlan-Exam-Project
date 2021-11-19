@@ -12,8 +12,6 @@ function BasicSelect(arrayOfOptions, label) {
     setState(event.target.value);
   };
 
-
-
   return (
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
