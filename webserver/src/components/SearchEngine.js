@@ -1,8 +1,7 @@
 import MiniSearch from 'minisearch'
 import * as React from 'react'
 
-// The MiniSearch fulltext search engine library is used here https://github.com/lucaong/minisearch
-
+// The MiniSearch full-text search engine library is used here https://github.com/lucaong/minisearch
 
 export default function SearchEngine() {
   const [ideas, setIdeas] = React.useState();
@@ -14,7 +13,7 @@ export default function SearchEngine() {
   })
 
   async function setIdeas() {
-    var ideas = new Parse.Query(Ideas);
+    // var ideas = new Parse.Query(Ideas);
   
     ideas.find().then((results) => {
       populateIdeaBank(results)
