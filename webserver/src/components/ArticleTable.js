@@ -7,8 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import ErrorIcon from "@mui/icons-material/Error";
 import EditIcon from "@mui/icons-material/Edit";
-import Parse from "parse";
-import { useEffect } from "react";
+
 
 function Notification(status) {
   if (status === "D") {
@@ -22,36 +21,13 @@ function convertDate(date) {
   const dateArray = date.split(" ");
   const dateString = dateArray[2] + " " + dateArray[1];
   return dateString;
-
+  
 }
 
-async function getArticles() {
-  const Articles = Parse.Object.extend("Articles");
-  const query = new Parse.Query(Articles);
-  query.include("responsible")
-  query.equalTo("status", "F");
-  return await query.find();
-}
-
-export default function ArticleTable() {
+const ArticleTable = ({articles}) => {
   //TODO: make event handler open the article
   //TODO: make button for accepting/denying
   //TODO: place the icons correctly and make them clickable
-
-  const [articles, setArticles] = React.useState();
-
-  useEffect(() => {
-    getArticles().then((article) => {
-      setArticles(article);
-    });
-  }, []);
-
-  if (!articles) {
-    return <p>Loading...</p>;
-  }
-
-  //4 parse objects are returned. how to map thought them?
-
   return (
     <TableContainer
       style={{
@@ -71,7 +47,7 @@ export default function ArticleTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {articles.map((row) => (
+          {articles?.map((row) => (
             <TableRow key={row.objectId}> 
               <TableCell>{convertDate(String(row.get("publishDate")))}</TableCell>
               <TableCell onClick={() => alert("headline is clicked")}>
@@ -94,3 +70,4 @@ export default function ArticleTable() {
     </TableContainer>
   );
 }
+export default ArticleTable;
