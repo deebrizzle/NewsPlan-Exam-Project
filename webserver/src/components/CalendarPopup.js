@@ -5,13 +5,13 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
 export default function CalendarPopup() {
-  const current = new Date();
-  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  const today = new Date();
+  const currentDate = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
   
-  const [value, setValue] = React.useState(date);
+  const [date, setDate] = React.useState(currentDate);
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
+  const handleChange = (newDate) => {
+    setDate(newDate);
   };
 
   return (
@@ -19,7 +19,7 @@ export default function CalendarPopup() {
         <DesktopDatePicker
           label="Lifetime"
           inputFormat="MM/dd/yyyy"
-          value={value}
+          value={date}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} fullWidth/>}
         />

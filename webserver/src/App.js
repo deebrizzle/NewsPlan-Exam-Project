@@ -5,6 +5,13 @@ import Home from "./pages/Home.js"
 import IdeaBank from "./pages/IdeaBank.js"
 import ContentSchedule from "./pages/ContentSchedule.js"
 import Calendar from "./pages/Calendar.js"
+import Parse from "parse";
+
+Parse.initialize(
+  process.env.REACT_APP_APPLICATION_KEY,
+  process.env.REACT_APP_JS_KEY
+);
+Parse.serverURL = "https://parseapi.back4app.com/";
 
 function App() {
   return (

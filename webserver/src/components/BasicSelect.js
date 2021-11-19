@@ -6,10 +6,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 function BasicSelect(arrayOfOptions, label) {
-  const [state, setState] = React.useState('');
+  const [option, setOption] = React.useState('');
 
   const handleChange = (event) => {
-    setState(event.target.value);
+    setOption(event.target.value);
   };
 
   return (
@@ -18,7 +18,7 @@ function BasicSelect(arrayOfOptions, label) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={state}
+          value={option}
           label="Section"
           onChange={handleChange}>
           {arrayOfOptions.map((option) =>(
