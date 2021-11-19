@@ -52,6 +52,12 @@ export const NavButton = styled(Button)`
     color: #5a7e90;
   }
 
+  &&:hover :active{
+     text-decoration: underline;
+     text-decoration-color: #3296bd;
+     text-underline-position: under;
+  }
+
   &.active {
     text-decoration: underline;
     text-decoration-color: #3296bd;
