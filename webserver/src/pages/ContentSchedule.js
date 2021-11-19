@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import { PageWrapper } from "./PageMargin.styles";
-import ContentScheduleListView from "./ContentScheduleListView";
+import ContentScheduleListView from "../components/ContentScheduleListView";
 
 function ContentSchedule() {
     return (
