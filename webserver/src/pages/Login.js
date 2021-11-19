@@ -15,6 +15,7 @@ import {
 } from "./Login.styles";
 import Parse from "parse";
 
+//TODO This function should be refactored to remove fecthing from the database from this function
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
