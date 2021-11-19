@@ -1,34 +1,29 @@
 import { DataGrid } from '@mui/x-data-grid';
-import Parse from "parse";
 import {useEffect, useState} from "react"
-
-  const columns = [
-  { field: 'createdAt', headerName: 'Lifetime', width: 150 },
-  { field: 'source', headerName: 'Source', width: 150 },
-  { field: 'ideaName', headerName: 'Idea', width: 250 },
-  { field: 'description', headerName: 'Description', width: 350 },
-];
-
-async function getIdeas(){
-  const Ideas = Parse.Object.extend("Ideas")
-  const query = new Parse.Query(Ideas)
-  query.include("username")
-  return await query.find()
-}
+import {getIdeas} from '../database/Ideas.js'
+import {getUsers} from '../database/Users.js'
 
 export default function Table() {
+
 const [ideas, setIdeas] = useState();
 
   useEffect(() => {
     getIdeas().then((ideas) => {
         setIdeas(ideas)
     })
-    
+    getUsers()
   }, [])
 
 if (!ideas ) {
-  return <p>loading</p>
+  return <p>Loading</p>
 }
+
+const columns = [
+  { field: 'createdAt', headerName: 'Lifetime', width: 150 },
+  { field: 'source', headerName: 'Source', width: 150 },
+  { field: 'ideaName', headerName: 'Idea', width: 250 },
+  { field: 'description', headerName: 'Description', width: 350 },
+];
 
 let rows = [];
 rows = ideas.map((row, index) => {
@@ -36,7 +31,7 @@ rows = ideas.map((row, index) => {
   return ({
     id: index,
     createdAt: row.createdAt,
-    source: row.get("ideaSource").get("first_name"), //usernames,//row.attributes.ideaSource.id,//row.get("ideaSource").get("username"), //obj.attributes.ideasource.username,
+    source: row.get("ideaSource").get("username"),
     ideaName: row.attributes.ideaName,
     description: row.attributes.description,
   });
