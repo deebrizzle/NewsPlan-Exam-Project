@@ -4,7 +4,7 @@ import { LoginButton, SaveButton, CancelButton } from "../components/Button.styl
 import { IdeaBoxStyle } from './Idea.styles';
 import CalendarPopup from "../components/CalendarPopup";
 import { SelectArticles, SelectSection, SelectVisibilities, SelectSource } from "./SelectFields";
-import {DescriptionInput, IdeaInput} from './InputFields';
+import { DescriptionInput, IdeaInput } from './InputFields';
 
 export default function IdeaModal(props) {
     const [open, setOpen] = React.useState(false);
