@@ -1,22 +1,42 @@
 import * as React from 'react';
 import {Stack, Box, Typography, Modal, Grid,} from '@mui/material';
-import { LoginButton, SaveButton, CancelButton } from "../components/Button.styles";
+import { StandardButton, SaveButton, CancelButton } from "../components/Button.styles";
 import { IdeaBoxStyle } from './Idea.styles';
 import CalendarPopup from "../components/CalendarPopup";
 import { SelectArticles, SelectSection, SelectVisibilities, SelectSource } from "./SelectFields";
 import { DescriptionInput, IdeaInput } from './InputFields';
+import { uploadIdea } from '../database/Ideas'
 
-export default function IdeaModal(props) {
+//TODO Figure out how to handle states from select and inputfields. Redux maybe?
+//TODO Create similar component for handling opening already created ideas from idea bank.
+
+export default function IdeaModal() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         setOpen(false);
     }
-    const handleSave = () => console.log("Save the idea into the database. Reset all states to empty")
+
+    const [newIdea, setIdea] = React.useState(
+      { ideaName: '', description: '', visibility: '', expirationDate: '', section: '', ideaSource: ''}
+    )
+
+    async function handleSave() {
+    
+      if (Object.values(newIdea).every(x => x === null || x === '')) {
+        alert("Please fill out every field to save your idea.");
+      }
+
+      else {
+        await uploadIdea(newIdea);
+        handleClose();
+      }
+    }
+
 
     return (
       <div>
-        <LoginButton onClick={handleOpen}>Add Idea</LoginButton>
+        <StandardButton onClick={handleOpen}>Add Idea</StandardButton>
         <Modal
           open={open}
           onClose={handleClose}
@@ -24,10 +44,10 @@ export default function IdeaModal(props) {
           aria-describedby="modal-modal-description"
         >
           <Box sx={IdeaBoxStyle}>
-            <Typography id="modal-modal-title" variant="h6" component="h2" align="center" m={2}> Create Idea {props.idea} </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="h2" align="center" m={2}> Create Idea </Typography>
                 <Grid container spacing={3}>
                     {/* INPUT FIELDS */}
-                    <Grid item xs={6}><IdeaInput/></Grid>
+                    <Grid item xs={6}><IdeaInput /></Grid>
                     <Grid item xs={6}><CalendarPopup /></Grid>
                     <Grid item xs={6}><SelectSection/></Grid>
                     <Grid item xs={6}><SelectVisibilities/></Grid>

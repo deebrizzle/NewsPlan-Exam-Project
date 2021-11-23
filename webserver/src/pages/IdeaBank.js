@@ -7,11 +7,12 @@ import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
 import {SelectSection} from "../components/SelectFields";
 import CalendarPopup from "../components/CalendarPopup"
-import {SaveButton} from "../components/Button.styles"
+import {SaveButton, StandardButton} from "../components/Button.styles"
 
 function IdeaBank() {
 
   const [modalShow, setModalShow] = useState(false);
+  
   const handleSearch = () => console.log("Save the idea into the database. Reset all states to empty")
 
     return (
@@ -26,8 +27,8 @@ function IdeaBank() {
               <Grid item xs={6}/>
 
               {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
-              <Grid item xs={6}> <SearchInput/> </Grid>
-              <Grid item xs={4}> <SaveButton>Search</SaveButton> </Grid>
+              <Grid item xs={6}> <SearchInput /> </Grid>
+              <Grid item xs={4}> <StandardButton >Search</StandardButton> </Grid>
 
               <Grid item xs={2} justifyContent="flex-end"> 
                 <Stack direction ="row" justifyContent ="flex-end">

@@ -1,8 +1,9 @@
 import Parse from "parse";
 
 export async function getUsers(){
-    const Users = Parse.Object.extend("User")
-    const query = new Parse.Query(Users)
+    const Users = Parse.Object.extend("User");
+    const query = new Parse.Query(Users);
+    query.ascending("username");
     return await query.find()
 }
 
@@ -24,15 +25,11 @@ export async function getPhotographers() {
 
 export async function getUsersFromSection(section) {
 
-  if (section != "Foreign Affairs" || section != "Financial") {
-      console.log("Error: Section does not exist")
-      return new Error("Error: Section does not exist");
-  }
+    //TODO Convert sections column in database into pointer Sections objectId?
 
-  else {
-      const Users = Parse.Object.extend("Users");
-      const query = new Parse.Query(Users);
-      query.equalTo("section", section)
-      return await query.find();
-  }
+    const Users = Parse.Object.extend("Users");
+    const query = new Parse.Query(Users);
+    query.descending("username");
+    query.exclude("section", section)
+    return await query.find();
 }

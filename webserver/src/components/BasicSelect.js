@@ -6,11 +6,15 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 function BasicSelect(arrayOfOptions, label) {
-  const [option, setOption] = React.useState('');
+  const [option, setOption] = React.useState();
 
   const handleChange = (event) => {
-    setOption(event.target.value);
+    setOption(event.target.name);
   };
+
+  const options = arrayOfOptions.map((option) => (
+    <MenuItem key ={option.objectId} name ={option.name} value={option}>{option.name}</MenuItem>
+  ))
 
   return (
       <FormControl fullWidth>
@@ -21,9 +25,7 @@ function BasicSelect(arrayOfOptions, label) {
           value={option}
           label="Section"
           onChange={handleChange}>
-          {arrayOfOptions.map((option) =>(
-            <MenuItem value={option}>{option}</MenuItem>
-          ))}
+          {options.length ? options : <MenuItem> No available entries. </MenuItem>}
         </Select>
       </FormControl>
   );

@@ -7,7 +7,7 @@ export async function getIdeas(){
     return await query.find()
 }
 
-export async function addNewIdea(ideaName, section, source, visibility, expirationDate, description, keywords) {
+export async function uploadIdea(ideaName, section, source, visibility, expirationDate, description) {
   const Idea = Parse.Object.Extend("Ideas");
   const newIdea = new Idea();
 
@@ -17,7 +17,6 @@ export async function addNewIdea(ideaName, section, source, visibility, expirati
   newIdea.set("visibility", visibility);
   newIdea.set("description", description);
   newIdea.set("expirationDate", expirationDate);
-  newIdea.set("keywords", keywords)
 
   try {
       return newIdea.save();
