@@ -25,21 +25,14 @@ export default function ContentScheduleListView() {
 
     //TODO: add error handling
     useEffect(() => {
-
       setDate(date)
-
-      console.log(date);
-
       getIdeas()
-      
+
       getFinishedArticles(date).then((article) => {
         setFinishedArticles(article);
 
       getUnfinishedArticles(date).then((article) => {
         setUnfinishedArticles(article)
-
-          console.log("it loads")
-          console.log(date)
         })
       });
     }, [date, section]);
