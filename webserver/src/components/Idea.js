@@ -37,7 +37,6 @@ export default function IdeaModal() {
     }
     
 
-
     return (
       <div>
         <StandardButton onClick={handleOpen}>Add Idea</StandardButton>

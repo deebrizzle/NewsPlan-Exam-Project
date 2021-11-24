@@ -21,7 +21,6 @@ function convertDate(date) {
   const dateArray = date.split(" ");
   const dateString = dateArray[2] + " " + dateArray[1];
   return dateString;
-  
 }
 
 const ArticleTable = ({articles}) => {
@@ -53,7 +52,7 @@ const ArticleTable = ({articles}) => {
               <TableCell onClick={() => alert("headline is clicked")}>
                 {row.get("headline")}
               </TableCell>
-              <TableCell>{row.get("responsible").get("name")}</TableCell>
+              <TableCell>{row.get("responsible").get("username")}</TableCell>
               <TableCell>
                 {row.get("status")}
                 <EditIcon

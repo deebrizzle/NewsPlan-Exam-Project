@@ -7,14 +7,25 @@ export function SelectSection({ handleCallBackSelection }) {
 
     //TODO Query sections from the database for scaleability?
 
-    const sections = [
-        {objectId: 's1', name: 'Foreign Affairs'},
-        {objectId: 's2', name: 'Financial'}
-    ]
+    const [sections, setSections] = useState([])
+
+    useEffect(() => {
+      getSections().then((section) => {
+        setSections(section)
+      }); 
+    }, [])
+
+    const sectionObjects = [] = sections.map((section) => {
+      return {
+          objectId: section.id,
+          name: section.get("name"),
+          editor: section.get("Editor")
+      }
+  })
 
     return (
       <BasicSelect
-        arrayOfOptions={sections} label="Section" handleCallBackSelection={handleCallBackSelection} />
+        arrayOfOptions={sectionObjects} label="Section" handleCallBackSelection={handleCallBackSelection} />
     );
 };
 

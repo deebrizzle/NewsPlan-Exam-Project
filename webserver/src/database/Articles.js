@@ -1,25 +1,24 @@
 import Parse from "parse";
 
-//TODO: Article functions are not getting article objects yet - query.include section + user + idea?
-//TODO: figure out how to query by only date without the timestamp
-export async function getFinishedArticles(date, section) {
+//TODO: Figure out function to fetch articles within next 24 hours? 7 days?
+export async function getFinishedArticles(date) {
     const Articles = Parse.Object.extend("Articles");
     const query = new Parse.Query(Articles);
     query.include("responsible")
     query.equalTo("status", "F");
-    query.include("idea")
-    query.equalTo("section", section)
-    query.equalTo("publishDate", date)
+    query.include("Idea")
+    query.include("Section")
+    query.lessThanOrEqualTo("publishDate", date)
     return await query.find();
   }
 
-export async function getUnfinishedArticles(date, section) {
+export async function getUnfinishedArticles(date) {
     const Articles = Parse.Object.extend("Articles");
     const query = new Parse.Query(Articles);
     query.include("responsible")
     query.notEqualTo("status", "F");
-    query.include("idea")
-    query.equalTo("section", section)
-    query.equalTo("publishDate", date)
+    query.include("Idea")
+    query.include("Section")
+    query.lessThanOrEqualTo("publishDate", date)
     return await query.find();
   }

@@ -5,12 +5,13 @@ import CalendarPopup from "./CalendarPopup"
 import React, {useEffect} from "react";
 import {getFinishedArticles, getUnfinishedArticles} from "../database/Articles"
 import {getIdeas} from "../database/Ideas"
+import { getSections } from "../database/Sections";
 
 export default function ContentScheduleListView() {
     const [finishedArticles, setFinishedArticles] = React.useState();
     const [unfinishedArticles, setUnfinishedArticles] = React.useState();
-    const [date, setDate] = React.useState(new Date(2021, 11, 17, 0, 0, 0, 0));
-    const [section, setSection] = React.useState("Foreign affairs");
+    const [date, setDate] = React.useState(new Date(2021, 10, 17, 0, 0, 0, 0));
+    const [section, setSection] = React.useState();
 
     const handleCallbackDate = (Date) =>{
       setDate(Date)
@@ -27,14 +28,14 @@ export default function ContentScheduleListView() {
 
       setDate(date)
 
-      setSection(section)
+      console.log(date);
 
-      getIdeas(section)
+      getIdeas()
       
-      getFinishedArticles(date, section).then((article) => {
+      getFinishedArticles(date).then((article) => {
         setFinishedArticles(article);
 
-      getUnfinishedArticles(date, section).then((article) => {
+      getUnfinishedArticles(date).then((article) => {
         setUnfinishedArticles(article)
 
           console.log("it loads")
