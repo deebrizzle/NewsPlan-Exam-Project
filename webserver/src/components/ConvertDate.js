@@ -5,8 +5,8 @@ export function ConvertDate(date) {
     return dateString;
   }
 
-  export function ConvertDateWithYear(date) {
-    const dateArray = date.split(" ");
-    const dateString = dateArray[2] + " " + dateArray[1] + " " + dateArray[3];
-    return dateString;
-  }
+export function ConvertDateWithYear(date) {
+  const dateArray = date.split(" ");
+  const dateString = dateArray[2] + " " + dateArray[1] + " " + dateArray[3];
+  return dateString;
+}

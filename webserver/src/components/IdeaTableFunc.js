@@ -14,7 +14,7 @@ export default function IdeaTableFunc() {
   }, []);
 
   const columns = [
-    { field: "expirationDate", headerName: "Lifetime", minWidth: 150, flex: 1 },
+    { field: "expirationDate", headerName: "Expiry Date", minWidth: 150, flex: 1 },
     { field: "source", headerName: "Source", minWidth: 150, flex: 1 },
     { field: "ideaName", headerName: "Idea", minWidth: 250, flex: 2 },
     { field: "description", headerName: "Description", minWidth: 350, flex: 3 },
