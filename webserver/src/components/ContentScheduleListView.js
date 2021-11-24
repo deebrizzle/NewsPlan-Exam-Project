@@ -14,7 +14,7 @@ async function getFinishedArticles(date, section) {
     query.equalTo("status", "F");
     query.include("idea")
     query.equalTo("section", section)
-    //query.equalTo("publishDate", date)
+    query.equalTo("publishDate", date)
     return await query.find();
   }
 
@@ -25,7 +25,14 @@ async function getFinishedArticles(date, section) {
     query.notEqualTo("status", "F");
     query.include("idea")
     query.equalTo("section", section)
-    //query.equalTo("publishDate", date)
+    query.equalTo("publishDate", date)
+    return await query.find();
+  }
+
+  async function getIdeas(section) {
+    const Ideas = Parse.Object.extend("Ideas");
+    const query = new Parse.Query(Ideas);
+    query.equalTo("section", section)
     return await query.find();
   }
 
@@ -45,18 +52,19 @@ export default function ContentScheduleListView() {
       console.log(selectedSection)
     }
 
-
     //TODO: add error handling
     useEffect(() => {
 
       setDate(date)
 
       setSection(section)
+
+      getIdeas(section)
       
-      getFinishedArticles(date).then((article) => {
+      getFinishedArticles(date, section).then((article) => {
         setFinishedArticles(article);
 
-      getUnfinishedArticles(date).then((article) => {
+      getUnfinishedArticles(date, section).then((article) => {
         setUnfinishedArticles(article)
 
           console.log("it loads")
@@ -84,8 +92,6 @@ export default function ContentScheduleListView() {
             {/* Third line: tables */}
             <Grid item xs={6}> <ArticleTable articles={finishedArticles}/> </Grid>
             <Grid item xs={6}> <ArticleTable articles={unfinishedArticles}/> </Grid>
-
-            {/* Testing - 4th line*/}
             <Grid></Grid>
         </Grid>
         </>
