@@ -3,37 +3,8 @@ import { SelectSection, SelectSource } from "./SelectFields"
 import ArticleTable from "./ArticleTable"
 import CalendarPopup from "./CalendarPopup"
 import React, {useEffect} from "react";
-import Parse from "parse";
-
-//TODO: figure out how to query by only date without the timestamp
-async function getFinishedArticles(date, section) {
-    const Articles = Parse.Object.extend("Articles");
-    const query = new Parse.Query(Articles);
-    query.include("responsible")
-    query.equalTo("status", "F");
-    query.include("idea")
-    query.equalTo("section", section)
-    query.equalTo("publishDate", date)
-    return await query.find();
-  }
-
-  async function getUnfinishedArticles(date, section) {
-    const Articles = Parse.Object.extend("Articles");
-    const query = new Parse.Query(Articles);
-    query.include("responsible")
-    query.notEqualTo("status", "F");
-    query.include("idea")
-    query.equalTo("section", section)
-    query.equalTo("publishDate", date)
-    return await query.find();
-  }
-
-  async function getIdeas(section) {
-    const Ideas = Parse.Object.extend("Ideas");
-    const query = new Parse.Query(Ideas);
-    query.equalTo("section", section)
-    return await query.find();
-  }
+import {getFinishedArticles, getUnfinishedArticles} from "../database/Articles"
+import {getIdeas} from "../database/Ideas"
 
 export default function ContentScheduleListView() {
     const [finishedArticles, setFinishedArticles] = React.useState();
