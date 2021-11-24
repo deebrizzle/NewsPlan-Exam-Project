@@ -5,11 +5,13 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-function BasicSelect(arrayOfOptions, label) {
-  const [option, setOption] = React.useState();
+
+export default function BasicSelect({arrayOfOptions, label, handleCallBackSelection}) {
+  const [option, setOption] = React.useState('');
 
   const handleChange = (event) => {
-    setOption(event.target.name);
+    setOption(event.target.value);
+    handleCallBackSelection(state);
   };
 
   const options = arrayOfOptions.map((option) => (
@@ -18,7 +20,7 @@ function BasicSelect(arrayOfOptions, label) {
 
   return (
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+        <InputLabel id={label}>{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -31,4 +33,3 @@ function BasicSelect(arrayOfOptions, label) {
   );
 }
 
-export default BasicSelect

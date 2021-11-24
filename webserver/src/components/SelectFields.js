@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getSections } from '../database/Sections';
 import { getUsers, getUsersFromSection } from '../database/Users';
 
-export function SelectSection() {
+export function SelectSection({ handleCallBackSelection }) {
 
     //TODO Query sections from the database for scaleability?
 
@@ -12,19 +12,25 @@ export function SelectSection() {
         {objectId: 's2', name: 'Financial'}
     ]
 
-    return BasicSelect(sections, "Section")
+    return (
+      <BasicSelect
+        arrayOfOptions={sections}
+        label="Section"
+        handleCallBackSelection={handleCallBackSelection}
+      />
+    );
 };
 
-export function SelectSource() {
-    const [employees, setEmployees] = useState([]);
+export function SelectSource({ props }) {
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
       getUsers().then((users) => {
-        setEmployees(users);
+        setUsers(users);
       });
     }, []);
     
-    let sources = [] = employees.map((employee) => {
+    let sources = [] = users.map((employee) => {
         return {
             objectId: employee.id,
             name: employee.get("username"),
@@ -32,24 +38,25 @@ export function SelectSource() {
         }
     })
 
-    return BasicSelect(sources, "Source")
+    return (
+      <BasicSelect arrayOfOptions={sources} label="Source" props={props} />
+    );
 };
 
-
-export function SelectVisibilities() {
-
-    const visibilities = [
-        {objectId: 'v1', name: 'Only myself'},
-        {objectId: 'v2', name: 'Chief Editor'},
-        {objectId: 'v3', name: 'Section Staff'},
-        {objectId: 'v4', name: 'Everyone'}
-    ]
-    
-    return BasicSelect(visibilities, "Visibility")
-};
-
-export function SelectArticles() {
+export function SelectArticles({ handleCallBackSelection }) {
 
     const articles = [];
-    return BasicSelect(articles, "Articles")
+    return BasicSelect(articles, "Articles", handleCallBackSelection)
 };
+
+export function SelectVisibilities({ handleCallBackSelection }) {
+
+  const visibilities = [
+    {objectId: 'v1', name: 'Only myself'},
+    {objectId: 'v2', name: 'Chief Editor'},
+    {objectId: 'v3', name: 'Section Staff'},
+    {objectId: 'v4', name: 'Everyone'}
+  ]
+
+  return BasicSelect(visibilities, "Visibility", handleCallBackSelection);
+}
