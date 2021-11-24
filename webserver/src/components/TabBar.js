@@ -1,25 +1,46 @@
 import React, { useState } from "react";
-import CalendarView from "./ContentScheduleCalendar";
+import ContentScheduleCalendarView from "./ContentScheduleCalendarView";
+import ContentScheduleListView from "./ContentScheduleListView";
+import Box from "@mui/material/Box";
+import { MyTabs, MyTab } from "./TabBar.styles";
+import Typography from "@mui/material/Typography";
 
-
-
-const TabBar = () => {
-const [activeTab, setActiveTab] = useState("tab1");
-
-    return (
-        <div className="TabBar">
-            <ul className="nav">
-                <li className={activeTab === "tab1" ? "active" : ""} >Calendar View</li>
-                <li className={activeTab === "tab2" ? "active" : ""}>List View</li>
-            </ul>
-            <div className="content">
-            </div>
-        </div>
-    );
+function TabPanel(props) {
+  const { children, value, index } = props;
+  return (
+    <div>
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
 }
 
-const handleTab1 = () => {
+function TabBar() {
+  const [value, setValue] = React.useState(0);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <Box>
+        <MyTabs value={value} onChange={handleChange} centered textColor="primary">
+          <MyTab label="Calendar View" />
+          <MyTab label="List View" />
+        </MyTabs>
+      </Box>
+      <TabPanel value={value} index={0}>
+          <ContentScheduleCalendarView />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+          <ContentScheduleListView />
+      </TabPanel>
+    </Box>
+  );
 }
 
 export default TabBar;

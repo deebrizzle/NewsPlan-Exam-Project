@@ -1,17 +1,17 @@
 import NavBar from "../components/NavBar";
-import TabBar from "../components/TabBar";
 import { PageWrapper } from "./PageMargin.styles";
-import ContentScheduleListView from "./ContentScheduleListView";
+import TabBar from "../components/TabBar";
 
 function ContentSchedule() {
-    return (
-        <>
-        <NavBar/>
-        <PageWrapper>
+  return (
+    <>
+      <NavBar />
+      <PageWrapper>
         <h1>Content Schedule</h1>
-        <ContentScheduleListView />
-        </PageWrapper>
-        </>
-          );
-  }
-  export default ContentSchedule
+        <TabBar />
+      </PageWrapper>
+    </>
+  );
+}
+
+export default ContentSchedule;
