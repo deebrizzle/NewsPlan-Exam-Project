@@ -1,5 +1,6 @@
 import { DataGrid } from "@mui/x-data-grid";
 import IdeaTableFunc from "./IdeaTableFunc";
+import { Fragment } from 'react';
 
 export default function Table() {
   const table = IdeaTableFunc();
@@ -19,3 +20,20 @@ export default function Table() {
     </div>
   );
 }
+
+
+// export default function Table() {
+//     return (
+//       <Fragment style={{ height: 500, width: '100%' }}>
+//           <Fragment style={{ display: 'flex', height: '100%' }}>
+//               <Fragment style={{ flexGrow: 2 }}>
+//               <DataGrid 
+//                 rows={rows} 
+//                 columns={columns}
+//                 pageSize={7}
+//                 />
+//               </Fragment>
+//           </Fragment>
+//       </Fragment>
+//     );
+//   }

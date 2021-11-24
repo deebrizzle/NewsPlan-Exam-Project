@@ -50,6 +50,8 @@ font-weight: bold;
 font-size: 20px;
 line-height: 32px;
 color: #19191D;
+margin-block-start: 1em;
+margin-block-end: 0em;
 }
 
 p{

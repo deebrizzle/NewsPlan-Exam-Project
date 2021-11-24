@@ -1,4 +1,4 @@
-import logo from "../Logo.png";
+import logo from "../assets/Logo.png";
 import { HomeWrapper } from "./Home.styles";
 import NavBar from "../components/NavBar";
 import Parse from "parse";

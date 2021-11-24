@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import logo from "../Logo.png";
+import logo from "../assets/Logo.png";
 import { LoginButton } from "../components/Button.styles";
 import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
