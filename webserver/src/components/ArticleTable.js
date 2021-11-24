@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import ErrorIcon from "@mui/icons-material/Error";
 import EditIcon from "@mui/icons-material/Edit";
+import {ConvertDate} from "./ConvertDate"
 
 
 function Notification(status) {
@@ -14,13 +15,6 @@ function Notification(status) {
     return <ErrorIcon htmlColor="#415B68" style={{ float: "right" }} />;
   }
   return <></>;
-}
-
-//Mon Nov 01 2021 16:27:00 GMT+0100 (Centraleuropæisk normaltid)
-function convertDate(date) {
-  const dateArray = date.split(" ");
-  const dateString = dateArray[2] + " " + dateArray[1];
-  return dateString;
 }
 
 const ArticleTable = ({articles}) => {
@@ -48,7 +42,7 @@ const ArticleTable = ({articles}) => {
         <TableBody>
           {articles?.map((row) => (
             <TableRow key={row.objectId}> 
-              <TableCell>{convertDate(String(row.get("publishDate")))}</TableCell>
+              <TableCell>{ConvertDate(String(row.get("publishDate")))}</TableCell>
               <TableCell onClick={() => alert("headline is clicked")}>
                 {row.get("headline")}
               </TableCell>
