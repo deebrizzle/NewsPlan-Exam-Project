@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material"
-import { SelectSection, SelectSource } from "../components/SelectFields"
-import ArticleTable from "../components/ArticleTable"
-import CalendarPopup from "../components/CalendarPopup"
+import { SelectSection, SelectSource } from "./SelectFields"
+import ArticleTable from "./ArticleTable"
+import CalendarPopup from "./CalendarPopup"
 
 //get data from database here and filter if by Finished and unfinished, 
 //then pass it on to the article table component. 
