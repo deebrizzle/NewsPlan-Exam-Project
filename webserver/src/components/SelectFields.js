@@ -14,14 +14,11 @@ export function SelectSection({ handleCallBackSelection }) {
 
     return (
       <BasicSelect
-        arrayOfOptions={sections}
-        label="Section"
-        handleCallBackSelection={handleCallBackSelection}
-      />
+        arrayOfOptions={sections} label="Section" handleCallBackSelection={handleCallBackSelection} />
     );
 };
 
-export function SelectSource({ props }) {
+export function SelectSource({ handleCallBackSelection }) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -30,7 +27,7 @@ export function SelectSource({ props }) {
       });
     }, []);
     
-    let sources = [] = users.map((employee) => {
+    const sources = [] = users.map((employee) => {
         return {
             objectId: employee.id,
             name: employee.get("username"),
@@ -39,14 +36,17 @@ export function SelectSource({ props }) {
     })
 
     return (
-      <BasicSelect arrayOfOptions={sources} label="Source" props={props} />
+      <BasicSelect arrayOfOptions={sources} label="Source" handleCallBackSelection={handleCallBackSelection} />
     );
 };
 
 export function SelectArticles({ handleCallBackSelection }) {
 
     const articles = [];
-    return BasicSelect(articles, "Articles", handleCallBackSelection)
+    return (
+      <BasicSelect arrayOfOptions={articles} label="Articles" handleCallBackSelection={handleCallBackSelection} />
+    );
+
 };
 
 export function SelectVisibilities({ handleCallBackSelection }) {
@@ -58,5 +58,7 @@ export function SelectVisibilities({ handleCallBackSelection }) {
     {objectId: 'v4', name: 'Everyone'}
   ]
 
-  return BasicSelect(visibilities, "Visibility", handleCallBackSelection);
+  return (
+    <BasicSelect arrayOfOptions={visibilities} label="Articles" handleCallBackSelection={handleCallBackSelection} />
+  );
 }

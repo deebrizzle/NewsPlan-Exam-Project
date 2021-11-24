@@ -11,7 +11,7 @@ export default function BasicSelect({arrayOfOptions, label, handleCallBackSelect
 
   const handleChange = (event) => {
     setOption(event.target.value);
-    handleCallBackSelection(state);
+    handleCallBackSelection(option);
   };
 
   const options = arrayOfOptions.map((option) => (
