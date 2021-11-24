@@ -27,7 +27,7 @@ function TabBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Box>
+      <Box sx={{p:0.8, width:250, border:"1px solid #94AFBC", borderRadius: 2, marginLeft: "40%",}} centered>
         <MyTabs value={value} onChange={handleChange} centered textColor="primary">
           <MyTab label="Calendar View" />
           <MyTab label="List View" />
