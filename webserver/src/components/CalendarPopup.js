@@ -4,15 +4,24 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
-export default function CalendarPopup() {
+export default function CalendarPopup({handleCallbackDate}) {
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
   
   const [value, setValue] = React.useState(date);
 
+  function formatDate(day) {
+    const formattedDay = new Date(day.setHours(0,0,0,0));
+    return formattedDay
+  }
+
   const handleChange = (newValue) => {
-    setValue(newValue);
+    setValue(formatDate(newValue));
+    console.log(formatDate(newValue))
+    console.log(value)
+    handleCallbackDate(formatDate(newValue))
   };
+
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
