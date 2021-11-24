@@ -3,12 +3,28 @@ import { Tab, Tabs } from "@mui/material";
 
 export const MyTabs = styled(Tabs)`
 &. MuiTabs-root {
+    background-color: #415b68;
     color: #415b68;
-    textColor: #415b68;
+    border: 1px solid #94AFBC;
+    box-sizing: border-box;
+    border-radius: 8px;
 }
 
 & .MuiTabs-indicator {
-    background-color: #415b68;
+    display: none;
+}
+
+& .MuiTab-root {
+    color: #415b68;
+    
+}
+
+& .MuiTab-root.Mui-selected{
+    color: #415b68;
+    border: 1px solid #94AFBC;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #DCE5E9;
 }
 `;
 
@@ -19,6 +35,8 @@ export const MyTab = styled(Tab)`
     font-weight: normal;
     font-size: 20px;
     line-height: 32px;
+    color: red;
+    background-color: red;
 }
 
 & .MuiTab-textColorPrimary {
