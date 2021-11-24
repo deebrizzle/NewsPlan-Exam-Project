@@ -9,6 +9,7 @@ export async function getFinishedArticles(date) {
     query.include("Idea")
     query.include("Section")
     query.lessThanOrEqualTo("publishDate", date)
+    query.ascending("publishDate");
     return await query.find();
   }
 
@@ -20,5 +21,6 @@ export async function getUnfinishedArticles(date) {
     query.include("Idea")
     query.include("Section")
     query.lessThanOrEqualTo("publishDate", date)
+    query.ascending("publishDate");
     return await query.find();
   }
