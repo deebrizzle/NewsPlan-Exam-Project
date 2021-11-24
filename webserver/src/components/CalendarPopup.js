@@ -15,11 +15,11 @@ export default function CalendarPopup({handleCallbackDate}) {
     return formattedDay
   }
 
-  const handleChange = (newValue) => {
-    setValue(formatDate(newValue));
-    console.log(formatDate(newValue))
-    console.log(value)
-    handleCallbackDate(formatDate(newValue))
+  const handleChange = (newDate) => {
+    setDate(formatDate(newDate));
+    console.log(formatDate(newDate))
+    console.log(newDate)
+    handleCallbackDate(formatDate(newDate))
   };
 
 

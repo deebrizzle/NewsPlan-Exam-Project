@@ -21,6 +21,9 @@ export default function IdeaModal() {
       { ideaName: '', description: '', visibility: '', expirationDate: '', section: '', ideaSource: ''}
     )
 
+    // TODO All handle callback functions in IdeaModal, Idea and IdeaBank - can we refactor into one place?
+    const handleCallBack = () => {}
+
     async function handleSave() {
     
       if (Object.values(newIdea).every(x => x === null || x === '')) {
@@ -32,6 +35,7 @@ export default function IdeaModal() {
         handleClose();
       }
     }
+    
 
 
     return (
@@ -48,11 +52,11 @@ export default function IdeaModal() {
                 <Grid container spacing={3}>
                     {/* INPUT FIELDS */}
                     <Grid item xs={6}><IdeaInput /></Grid>
-                    <Grid item xs={6}><CalendarPopup /></Grid>
-                    <Grid item xs={6}><SelectSection/></Grid>
-                    <Grid item xs={6}><SelectVisibilities/></Grid>
-                    <Grid item xs={6}><SelectSource/></Grid>
-                    <Grid item xs={6}><SelectArticles/></Grid>
+                    <Grid item xs={6}><CalendarPopup handleCallbackDate={handleCallBack} /></Grid>
+                    <Grid item xs={6}><SelectSection handleCallBackSelection={handleCallBack}/></Grid>
+                    <Grid item xs={6}><SelectVisibilities handleCallBackSelection={handleCallBack}/></Grid>
+                    <Grid item xs={6}><SelectSource handleCallBackSelection={handleCallBack}/></Grid>
+                    <Grid item xs={6}><SelectArticles handleCallBackSelection={handleCallBack}/></Grid>
                     <Grid item xs={12}><DescriptionInput/></Grid>
                     {/* BUTTONS */}
                     <Grid item xs={8}><CancelButton onClick={handleClose}>Cancel</CancelButton></Grid>

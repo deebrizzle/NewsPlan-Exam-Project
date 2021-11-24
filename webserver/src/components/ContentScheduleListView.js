@@ -2,6 +2,8 @@ import { Grid } from "@mui/material"
 import { SelectSection, SelectSource } from "./SelectFields"
 import ArticleTable from "./ArticleTable"
 import CalendarPopup from "./CalendarPopup"
+import React, {useEffect} from "react";
+import Parse from "parse";
 
 //TODO: figure out how to query by only date without the timestamp
 async function getFinishedArticles(date, section) {
@@ -79,22 +81,17 @@ export default function ContentScheduleListView() {
         <>
         <Grid container spacing={2}>
         {/* First Line */}
-            <Grid item xs={2}> <SelectSource/> </Grid>
-            <Grid item xs={2}> <SelectSection/> </Grid>
+            <Grid item xs={2}> <SelectSource handleCallBackSelection={handleCallBackSelection}/> </Grid>
+            <Grid item xs={2}> <SelectSection handleCallBackSelection={handleCallBackSelection}/> </Grid>
             <Grid item xs={6}></Grid>
-            <Grid item xs={2} justifyContent="left"> <CalendarPopup/> </Grid>
+            <Grid item xs={2} justifyContent="left"> <CalendarPopup handleCallbackDate={handleCallbackDate}/> </Grid>
             {/* Second line: headers */}
             <Grid item xs={6}><h6>Finished Articles</h6></Grid>
             <Grid item xs={6}> <h6>Unfinished Articles</h6></Grid>
             {/* Third line: tables */}
-<<<<<<< HEAD
-            <Grid item xs={6}> <ArticleTable/> </Grid>
-            <Grid item xs={6}> <ArticleTable/> </Grid>
-=======
             <Grid item xs={6}> <ArticleTable articles={finishedArticles}/> </Grid>
             <Grid item xs={6}> <ArticleTable articles={unfinishedArticles}/> </Grid>
             <Grid></Grid>
->>>>>>> 5cebbf64a196a4fef3aecaec095069aa190a3b1c
         </Grid>
         </>
     )

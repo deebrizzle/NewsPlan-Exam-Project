@@ -12,6 +12,7 @@ import {SaveButton, StandardButton} from "../components/Button.styles"
 function IdeaBank() {
 
   const [modalShow, setModalShow] = useState(false);
+  const handleCallBack = () => {}
   
   const handleSearch = () => console.log("Save the idea into the database. Reset all states to empty")
 
@@ -22,8 +23,8 @@ function IdeaBank() {
             <h1>Idea Bank</h1>
             <Grid container spacing={3}>
               {/* FIRST ROW - CALENDAR, SECTION*/}
-              <Grid item xs={3}> <CalendarPopup/> </Grid>
-              <Grid item xs={3}> <SelectSection/> </Grid>
+              <Grid item xs={3}> <CalendarPopup handleCallbackDate={handleCallBack} /> </Grid>
+              <Grid item xs={3}> <SelectSection handleCallBackSelection={handleCallBack}/> </Grid>
               <Grid item xs={6}/>
 
               {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
