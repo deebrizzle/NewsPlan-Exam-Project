@@ -6,7 +6,7 @@ import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
 export default function CalendarPopup({handleCallbackDate}) {
   const dateObj = new Date();
-  const currDate = `${dateObj.getDate()}/${dateObj.getMonth()+1}/${dateObj.getFullYear()}`;
+  const currDate = `${dateObj.getMonth()+1} ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
   
   const [date, setDate] = React.useState(currDate);
 
