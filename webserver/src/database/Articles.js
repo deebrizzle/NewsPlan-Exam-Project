@@ -24,3 +24,13 @@ export async function getUnfinishedArticles(date) {
     query.ascending("publishDate");
     return await query.find();
   }
+
+export async function getAllArticles(date) {
+  const Articles = Parse.Object.extend("Articles");
+  const query = new Parse.Query(Articles);
+  query.include("responsible")
+  query.include("Idea")
+  query.include("Section")
+  query.lessThanOrEqualTo("publishDate", date)
+  return await query.find()
+}
