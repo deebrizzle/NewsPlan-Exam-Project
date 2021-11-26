@@ -5,20 +5,20 @@ import UserContentArticle from "./UserContentArticle";
 export default function ContentScheduleCalendarView() {
   return (
     <Box>
-      <Grid container spacing={1}>
-        <Grid container item spacing={3}>
+      <Grid container direction="row" justifyContent="space-evenly" alignItems="center">
+        <Grid >
           <UserContentArticle />
         </Grid>
-        <Grid container item spacing={3}>
+        <Grid>
           <UserContentArticle />
         </Grid>
-        <Grid container item spacing={3}>
+        <Grid>
           <UserContentArticle />
         </Grid>
-        <Grid container item spacing={3}>
+        <Grid>
           <UserContentArticle />
         </Grid>
-        <Grid container item spacing={3}>
+        <Grid>
           <UserContentArticle />
         </Grid>
       </Grid>

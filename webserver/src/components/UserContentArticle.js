@@ -31,7 +31,7 @@ function UserContentArticle() {
       <Typography variant="h6" component="h2" align="center">
         {" "}Initials{" "}
       </Typography>
-      <Grid container spacing={5}>
+      <Grid container spacing={1}>
         <Grid item xs={4}>
           <FormRow />
         </Grid>
