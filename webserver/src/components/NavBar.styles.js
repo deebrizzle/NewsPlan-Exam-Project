@@ -40,11 +40,28 @@ export const MyToolbar = styled(Toolbar)`
     vertical-align:middle;
     margin:0px 0px 0px 20px;
   }
+
+
 `;
+
+
 
 export const NavButton = styled(Button)`
   &&:hover {
     background-color: white;
     color: #5a7e90;
   }
+
+  &&:hover :active{
+     text-decoration: underline;
+     text-decoration-color: #3296bd;
+     text-underline-position: under;
+  }
+
+  &.active {
+    text-decoration: underline;
+    text-decoration-color: #3296bd;
+    text-underline-position: under;
+  }
+}
 `;

@@ -1,43 +1,75 @@
 import BasicSelect from './BasicSelect';
+import { useEffect, useState } from "react";
+import { getSections } from '../database/Sections';
+import { getUsers, getUsersFromSection } from '../database/Users';
 
+export function SelectSection({ handleCallBackSelection }) {
 
-const options = ["Financial", "Sports", "Foreign affairs", "Motor"];
+    //TODO Query sections from the database for scaleability?
 
-export function SelectSection() {
-    return BasicSelect(options, "Section")
+    const [sections, setSections] = useState([])
+
+    useEffect(() => {
+      getSections().then((section) => {
+        setSections(section)
+      }); 
+    }, [])
+
+    const sectionObjects = [] = sections.map((section) => {
+      return {
+          objectId: section.id,
+          name: section.get("name"),
+          editor: section.get("Editor")
+      }
+  })
+
+    return (
+      <BasicSelect
+        arrayOfOptions={sectionObjects} label="Section" handleCallBackSelection={handleCallBackSelection} />
+    );
 };
 
-const employees = [
-    'ACL',
-    'EGL',
-    'KSM',
-    'MLI',
-    'NGP',
-    'PO',
-    'YRL'
-]
+export function SelectSource({ handleCallBackSelection }) {
+    const [users, setUsers] = useState([]);
 
-export function SelectSource() {
-    return BasicSelect(employees, "Source")
+    useEffect(() => {
+      getUsers().then((users) => {
+        setUsers(users);
+      });
+    }, []);
+    
+    const sources = [] = users.map((employee) => {
+        return {
+            objectId: employee.id,
+            name: employee.get("username"),
+            section: employee.get("section")
+        }
+    })
+
+    return (
+      <BasicSelect arrayOfOptions={sources} label="Source" handleCallBackSelection={handleCallBackSelection} />
+    );
 };
 
+export function SelectArticles({ handleCallBackSelection }) {
 
-const visibilities = [
-    'Only myself',
-    'Chief Editor',
-    'Section Staff',
-    'Everyone'
-]
+    const articles = [];
+    return (
+      <BasicSelect arrayOfOptions={articles} label="Articles" handleCallBackSelection={handleCallBackSelection} />
+    );
 
-export function SelectVisibilities() {
-    return BasicSelect(visibilities, "Visibility")
 };
 
-const articles = [
-    'Amount of votes from low income counties set new records',
-    'How to vote as a foreigner in Denmark'
-]
+export function SelectVisibilities({ handleCallBackSelection }) {
 
-export function SelectArticles() {
-    return BasicSelect(articles, "Articles")
-};
+  const visibilities = [
+    {objectId: 'v1', name: 'Only myself'},
+    {objectId: 'v2', name: 'Chief Editor'},
+    {objectId: 'v3', name: 'Section Staff'},
+    {objectId: 'v4', name: 'Everyone'}
+  ]
+
+  return (
+    <BasicSelect arrayOfOptions={visibilities} label="Articles" handleCallBackSelection={handleCallBackSelection} />
+  );
+}

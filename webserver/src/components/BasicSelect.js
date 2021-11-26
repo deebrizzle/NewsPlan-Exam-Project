@@ -5,28 +5,31 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-function BasicSelect(arrayOfOptions, label) {
-  const [state, setState] = React.useState('');
+
+export default function BasicSelect({arrayOfOptions, label, handleCallBackSelection}) {
+  const [option, setOption] = React.useState('');
 
   const handleChange = (event) => {
-    setState(event.target.value);
+    setOption(event.target.value);
+    handleCallBackSelection(option);
   };
+
+  const options = arrayOfOptions.map((option) => (
+    <MenuItem key ={option.objectId} name ={option.name} value={option}>{option.name}</MenuItem>
+  ))
 
   return (
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+        <InputLabel id={label}>{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={state}
+          value={option}
           label="Section"
           onChange={handleChange}>
-          {arrayOfOptions.map((option) =>(
-            <MenuItem value={option}>{option}</MenuItem>
-          ))}
+          {options.length ? options : <MenuItem> No available entries. </MenuItem>}
         </Select>
       </FormControl>
   );
 }
 
-export default BasicSelect
