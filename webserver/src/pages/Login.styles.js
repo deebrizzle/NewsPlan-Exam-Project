@@ -10,8 +10,8 @@ export const LoginWrapper = styled.aside`
   height: 100vh;
 
   .logo {
-  width: 90%;
-  margin: 0%, 0%;
+    width: 90%;
+    margin: 0%, 0%;
   }
 `;
 
@@ -34,7 +34,8 @@ export const MyFormControlLabel = styled(FormControlLabel)`
     color: #415b68;
   }
 
-  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
     color: #415b68;
   }
 `;

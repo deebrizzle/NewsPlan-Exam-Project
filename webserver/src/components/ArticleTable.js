@@ -7,8 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import ErrorIcon from "@mui/icons-material/Error";
 import EditIcon from "@mui/icons-material/Edit";
-import {ConvertDate} from "./ConvertDate"
-
+import { ConvertDate } from "./ConvertDate";
 
 function Notification(status) {
   if (status === "D") {
@@ -17,7 +16,7 @@ function Notification(status) {
   return <></>;
 }
 
-const ArticleTable = ({articles}) => {
+const ArticleTable = ({ articles }) => {
   //TODO: make event handler open the article
   //TODO: make button for accepting/denying
   //TODO: place the icons correctly and make them clickable
@@ -40,9 +39,12 @@ const ArticleTable = ({articles}) => {
           </TableRow>
         </TableHead>
         <TableBody>
+          {console.log(articles)}
           {articles?.map((row) => (
-            <TableRow key={row.objectId}> 
-              <TableCell>{ConvertDate(String(row.get("publishDate")))}</TableCell>
+            <TableRow key={row.objectId}>
+              <TableCell>
+                {ConvertDate(String(row.get("publishDate")))}
+              </TableCell>
               <TableCell onClick={() => alert("headline is clicked")}>
                 {row.get("headline")}
               </TableCell>
@@ -62,5 +64,5 @@ const ArticleTable = ({articles}) => {
       </Table>
     </TableContainer>
   );
-}
+};
 export default ArticleTable;

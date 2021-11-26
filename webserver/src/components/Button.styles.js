@@ -18,15 +18,14 @@ export const CancelButton = styled(Button)`
   && {
     color: #415b68;
     background-color: #00000;
-    border: 1px solid #6F93A5;
+    border: 1px solid #6f93a5;
     text-transform: none;
     height: 45px;
   }
   &&:hover {
-    background-color: #DCE5E9;
+    background-color: #dce5e9;
   }
 `;
-
 
 export const SaveButton = styled(Button)`
   && {
@@ -47,16 +46,11 @@ export const StandardButton = styled(Button)`
     text-transform: none;
     font-weight: bold;
     display: inline;
-   
+
     height: 55px;
     width: 100px;
-    
   }
   &&:hover {
     background-color: #5a7e90;
   }
-
 `;
-
-
-

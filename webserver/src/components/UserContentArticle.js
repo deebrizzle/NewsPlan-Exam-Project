@@ -1,39 +1,30 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Box, Typography, Grid } from "@mui/material";
-import { MyBox, Item } from "./UserContentArticle.styles";
+import { Item } from "./UserContentArticle.styles";
 
+//TODO Use map somewhere to create each box for every article. Currently only grabbing the first article of each user's articles.
 
-function FormRow() {
+function ArticleBox({ articles }) {
   return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        <Item>Article</Item>
+    <Fragment>
+      <Grid item xs={24}>
+        <Item> {articles[0].headline} </Item>
       </Grid>
-      <Grid item xs={4}>
-        <Item>Article</Item>
-      </Grid>
-      <Grid item xs={4}>
-        <Item>Article</Item>
-      </Grid>
-      <Grid item xs={4}>
-        <Item>Article</Item>
-      </Grid>
-      <Grid item xs={4}>
-        <Item>Article</Item>
-      </Grid>
-    </React.Fragment>
+    </Fragment>
   );
 }
 
-function UserContentArticle() {
+// Index 0 in the array refers to user. Index 1 is the array containing all the articles related to the user.
+function UserContentArticle({ userNameAndArticles }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Typography variant="h6" component="h2" align="center">
-        {" "}Initials{" "}
+        {" "}
+        {userNameAndArticles[0]}{" "}
       </Typography>
       <Grid container spacing={1}>
         <Grid item xs={4}>
-          <FormRow />
+          <ArticleBox articles={userNameAndArticles[1]} />
         </Grid>
       </Grid>
     </Box>

@@ -2,34 +2,33 @@ import styled from "styled-components";
 import { Tab, Tabs } from "@mui/material";
 
 export const MyTabs = styled(Tabs)`
-&. MuiTabs-root {
+  &. MuiTabs-root {
     background-color: #415b68;
     color: #415b68;
-    border: 1px solid #94AFBC;
+    border: 1px solid #94afbc;
     box-sizing: border-box;
     border-radius: 8px;
-}
+  }
 
-& .MuiTabs-indicator {
+  & .MuiTabs-indicator {
     display: none;
-}
+  }
 
-& .MuiTab-root {
+  & .MuiTab-root {
     color: #415b68;
-    
-}
+  }
 
-& .MuiTab-root.Mui-selected{
+  & .MuiTab-root.Mui-selected {
     color: #415b68;
-    border: 1px solid #94AFBC;
+    border: 1px solid #94afbc;
     box-sizing: border-box;
     border-radius: 8px;
-    background-color: #DCE5E9;
-}
+    background-color: #dce5e9;
+  }
 `;
 
 export const MyTab = styled(Tab)`
-& .MuiTab-root {
+  & .MuiTab-root {
     font-family: Helvetica;
     font-style: normal;
     font-weight: normal;
@@ -37,10 +36,9 @@ export const MyTab = styled(Tab)`
     line-height: 32px;
     color: red;
     background-color: red;
-}
+  }
 
-& .MuiTab-textColorPrimary {
+  & .MuiTab-textColorPrimary {
     color: #415b68;
-}
-
+  }
 `;

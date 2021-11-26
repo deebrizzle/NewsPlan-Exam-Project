@@ -3,8 +3,7 @@ import { Box, Paper, Grid } from "@mui/material";
 
 export const MyBox = styled(Box)``;
 
-export const MyGrid = styled(Grid)`
-`;
+export const MyGrid = styled(Grid)``;
 
 export const Item = styled(Paper)`
   & .MuiPaper-root {
