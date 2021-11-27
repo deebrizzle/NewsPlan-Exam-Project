@@ -29,6 +29,7 @@ export default function IdeaTableFunc() {
       source: row.get("ideaSource").get("username"),
       ideaName: row.attributes.ideaName,
       description: row.attributes.description,
+      ideaId: row.attributes.ideaID,
     };
   });
 
