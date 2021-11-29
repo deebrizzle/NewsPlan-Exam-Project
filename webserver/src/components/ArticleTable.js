@@ -39,7 +39,6 @@ const ArticleTable = ({ articles }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {console.log(articles)}
           {articles?.map((row) => (
             <TableRow key={row.objectId}>
               <TableCell>

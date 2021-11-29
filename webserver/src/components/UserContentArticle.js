@@ -7,9 +7,14 @@ import { Item } from "./UserContentArticle.styles";
 function ArticleBox({ articles }) {
   return (
     <Fragment>
-      <Grid item xs={24}>
-        <Item> {articles[0].headline} </Item>
-      </Grid>
+      {articles.map((article) => {
+        return (
+          <Grid item xs={24}>
+            <Item> {article.headline}</Item>
+            <br></br>
+          </Grid>
+        );
+      })}
     </Fragment>
   );
 }
