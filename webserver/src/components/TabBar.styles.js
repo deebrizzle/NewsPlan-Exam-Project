@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { Tab, Tabs } from "@mui/material";
+import colors from "./colors";
 
 export const MyTabs = styled(Tabs)`
   &. MuiTabs-root {
-    background-color: #415b68;
-    color: #415b68;
-    border: 1px solid #94afbc;
+    background-color: ${colors.P1DarkPetroleum};
+    color: ${colors.P1DarkPetroleum};
+    border: 1px solid ${colors.P1LightPetroleum};
     box-sizing: border-box;
     border-radius: 8px;
   }
@@ -15,15 +16,15 @@ export const MyTabs = styled(Tabs)`
   }
 
   & .MuiTab-root {
-    color: #415b68;
+    color:${colors.P1DarkPetroleum};
   }
 
   & .MuiTab-root.Mui-selected {
-    color: #415b68;
-    border: 1px solid #94afbc;
+    color: ${colors.P1DarkPetroleum};
+    border: 1px solid ${colors.P1LightPetroleum};
     box-sizing: border-box;
     border-radius: 8px;
-    background-color: #dce5e9;
+    background-color: ${colors.P1GreyLightBlue};
   }
 `;
 
@@ -34,9 +35,5 @@ export const MyTab = styled(Tab)`
     font-weight: normal;
     font-size: 20px;
     line-height: 32px;
-  }
-
-  & .MuiTab-textColorPrimary {
-    color: #415b68;
   }
 `;
