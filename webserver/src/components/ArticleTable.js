@@ -6,8 +6,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import ErrorIcon from "@mui/icons-material/Error";
-import EditIcon from "@mui/icons-material/Edit";
-import {ConvertDate} from "./ConvertDate"
+import { ConvertDate } from "./ConvertDate";
+import { MyTableContainer,  MyTableLink} from "./Table.styles";
+import { StyledEditIcon } from "./Table.styles";
 
 
 function Notification(status) {
@@ -17,20 +18,16 @@ function Notification(status) {
   return <></>;
 }
 
-const ArticleTable = ({articles}) => {
+const ArticleTable = ({ articles }) => {
   //TODO: make event handler open the article
   //TODO: make button for accepting/denying
   //TODO: place the icons correctly and make them clickable
+
   return (
-    <TableContainer
-      style={{
-        borderRadius: "5px",
-        height: 400,
-        width: "100%",
-        overflow: "auto",
-      }}
-    >
-      <Table stickyHeader sx={{ minWidth: 200 }} aria-label="article table">
+ 
+    <TableContainer>
+         <MyTableContainer>
+      <Table stickyHeader={true} sx={{ minWidth: 200 }} aria-label="article table">
         <TableHead>
           <TableRow>
             <TableCell style={{ background: "#EBF5FA" }}>Date</TableCell>
@@ -41,26 +38,30 @@ const ArticleTable = ({articles}) => {
         </TableHead>
         <TableBody>
           {articles?.map((row) => (
-            <TableRow key={row.objectId}> 
-              <TableCell>{ConvertDate(String(row.get("publishDate")))}</TableCell>
-              <TableCell onClick={() => alert("headline is clicked")}>
-                {row.get("headline")}
+            <TableRow key={row.objectId}>
+              <TableCell>
+                {ConvertDate(String(row.get("publishDate")))}
+              </TableCell>
+              <TableCell>
+                <MyTableLink to={`/contentschedule/${row.id}`}>
+                  {row.get("headline")}{console.log(row.id)}
+                </MyTableLink>
               </TableCell>
               <TableCell>{row.get("responsible").get("username")}</TableCell>
               <TableCell>
                 {row.get("status")}
-                <EditIcon
-                  htmlColor="#415B68"
-                  fontSize="small"
-                  style={{ width: "20%", float: "right" }}
-                />
+                <StyledEditIcon htmlColor="#415B68"
+                  fontSize="small">
+                </StyledEditIcon>
                 <Notification status={row.get("status")}></Notification>
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      </MyTableContainer>
     </TableContainer>
+  
   );
-}
+};
 export default ArticleTable;

@@ -5,6 +5,7 @@ import Home from "./pages/Home.js";
 import IdeaBank from "./pages/IdeaBank.js";
 import ContentSchedule from "./pages/ContentSchedule.js";
 import Calendar from "./pages/Calendar.js";
+import Article from "./components/Article";
 import Parse from "parse";
 
 Parse.initialize(
@@ -55,6 +56,11 @@ function App() {
             </LoginRequired>
           }
         />
+        <Route path="/contentschedule/:id" element={
+            <LoginRequired>
+              <Article url={window.location.pathname}/>
+            </LoginRequired>
+        }/>
       </Routes>
     </BrowserRouter>
   );

@@ -42,6 +42,15 @@ export async function updateIdea(objectId, ideaName, section, source, visibility
 };
 
 
+export async function getIdeasSection(section){
+    const Ideas = Parse.Object.extend("Ideas")
+    const query = new Parse.Query(Ideas)
+    query.include("section")
+    query.equalTo("section", section)
+    return await query.find()
+}
+
+
 
 
   

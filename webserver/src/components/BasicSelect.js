@@ -11,7 +11,7 @@ export default function BasicSelect({arrayOfOptions, label, handleCallBackSelect
 
   const handleChange = (event) => {
     setOption(event.target.value);
-    handleCallBackSelection(option);
+    handleCallBackSelection(event.target.value);
   };
 
   const options = arrayOfOptions.map((option) => (
@@ -25,7 +25,7 @@ export default function BasicSelect({arrayOfOptions, label, handleCallBackSelect
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={option}
-          label="Section"
+          label={label}
           onChange={handleChange}>
           {options.length ? options : <MenuItem> No available entries. </MenuItem>}
         </Select>
