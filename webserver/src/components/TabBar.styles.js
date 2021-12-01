@@ -1,46 +1,39 @@
 import styled from "styled-components";
 import { Tab, Tabs } from "@mui/material";
+import colors from "./colors";
 
 export const MyTabs = styled(Tabs)`
-&. MuiTabs-root {
-    background-color: #415b68;
-    color: #415b68;
-    border: 1px solid #94AFBC;
+  &. MuiTabs-root {
+    background-color: ${colors.P1DarkPetroleum};
+    color: ${colors.P1DarkPetroleum};
+    border: 1px solid ${colors.P1LightPetroleum};
     box-sizing: border-box;
     border-radius: 8px;
-}
+  }
 
-& .MuiTabs-indicator {
+  & .MuiTabs-indicator {
     display: none;
-}
+  }
 
-& .MuiTab-root {
-    color: #415b68;
-    
-}
+  & .MuiTab-root {
+    color:${colors.P1DarkPetroleum};
+  }
 
-& .MuiTab-root.Mui-selected{
-    color: #415b68;
-    border: 1px solid #94AFBC;
+  & .MuiTab-root.Mui-selected {
+    color: ${colors.P1DarkPetroleum};
+    border: 1px solid ${colors.P1LightPetroleum};
     box-sizing: border-box;
     border-radius: 8px;
-    background-color: #DCE5E9;
-}
+    background-color: ${colors.P1GreyLightBlue};
+  }
 `;
 
 export const MyTab = styled(Tab)`
-& .MuiTab-root {
+  & .MuiTab-root {
     font-family: Helvetica;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
     line-height: 32px;
-    color: red;
-    background-color: red;
-}
-
-& .MuiTab-textColorPrimary {
-    color: #415b68;
-}
-
+  }
 `;

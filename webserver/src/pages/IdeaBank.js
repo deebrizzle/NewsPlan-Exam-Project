@@ -1,48 +1,62 @@
 import NavBar from "../components/NavBar";
-import {Grid, Stack } from '@mui/material';
+import { Grid, Stack } from "@mui/material";
 import IdeaModal from "../components/Idea";
 import React, { useState } from "react";
-import Table from "../components/IdeaTable"
+import Table from "../components/IdeaTable";
 import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
-import {SelectSection} from "../components/SelectFields";
-import CalendarPopup from "../components/CalendarPopup"
-import {SaveButton, StandardButton} from "../components/Button.styles"
+import { SelectSection } from "../components/SelectFields";
+import CalendarPopup from "../components/CalendarPopup";
+import { StandardButton } from "../components/Button.styles";
 
 function IdeaBank() {
-
   const [modalShow, setModalShow] = useState(false);
-  const handleCallBack = () => {}
-  
-  const handleSearch = () => console.log("Save the idea into the database. Reset all states to empty")
+  const handleCallBack = () => {};
 
-    return (
-        <>
-        <NavBar/>
-        <PageWrapper>
-            <h1>Idea Bank</h1>
-            <Grid container spacing={3}>
-              {/* FIRST ROW - CALENDAR, SECTION*/}
-              <Grid item xs={3}> <CalendarPopup handleCallbackDate={handleCallBack} /> </Grid>
-              <Grid item xs={3}> <SelectSection handleCallBackSelection={handleCallBack}/> </Grid>
-              <Grid item xs={6}/>
+  const handleSearch = () =>
+    console.log("Save the idea into the database. Reset all states to empty");
 
-              {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
-              <Grid item xs={6}> <SearchInput /> </Grid>
-              <Grid item xs={4}> <StandardButton >Search</StandardButton> </Grid>
+  return (
+    <>
+      <NavBar />
+      <PageWrapper>
+        <h1>Idea Bank</h1>
+        <Grid container spacing={3}>
+          {/* FIRST ROW - CALENDAR, SECTION*/}
+          <Grid item xs={3}>
+            {" "}
+            <CalendarPopup handleCallbackDate={handleCallBack} />{" "}
+          </Grid>
+          <Grid item xs={3}>
+            {" "}
+            <SelectSection handleCallBackSelection={handleCallBack} />{" "}
+          </Grid>
+          <Grid item xs={6} />
 
-              <Grid item xs={2} justifyContent="flex-end"> 
-                <Stack direction ="row" justifyContent ="flex-end">
-                  <IdeaModal show ={modalShow} onHide={() => setModalShow(false)}/> 
-                </Stack>
-              </Grid>
+          {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
+          <Grid item xs={6}>
+            {" "}
+            <SearchInput />{" "}
+          </Grid>
+          <Grid item xs={4}>
+            {" "}
+            <StandardButton>Search</StandardButton>{" "}
+          </Grid>
 
-              {/* THIRD ROW - TABLE */}
-              <Grid item xs={12}> <Table/> </Grid>
+          <Grid item xs={2} justifyContent="flex-end">
+            <Stack direction="row" justifyContent="flex-end">
+              <IdeaModal show={modalShow} onHide={() => setModalShow(false)} />
+            </Stack>
+          </Grid>
 
-            </Grid>
-        </PageWrapper>
-        </>
-          );
-  }
-  export default IdeaBank
+          {/* THIRD ROW - TABLE */}
+          <Grid item xs={12}>
+            {" "}
+            <Table />{" "}
+          </Grid>
+        </Grid>
+      </PageWrapper>
+    </>
+  );
+}
+export default IdeaBank;
