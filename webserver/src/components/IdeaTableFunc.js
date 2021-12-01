@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { getIdeas } from "../database/Ideas.js";
 import { getUsers } from "../database/Users.js";
+import { getSections } from "../database/Sections.js";
 import { ConvertDateWithYear } from "./ConvertDate.js";
 
 export default function IdeaTableFunc() {
   const [ideas, setIdeas] = useState([]);
 
   useEffect(() => {
+    getUsers();
+    getSections();
     getIdeas().then((ideas) => {
       setIdeas(ideas);
     });
-    getUsers();
   }, []);
 
   const columns = [
@@ -23,6 +25,7 @@ export default function IdeaTableFunc() {
 
   let rows = [];
   rows = ideas.map((row, index) => {
+    if (!row.get("section").get("name")) return 'Waiting for rows';
     return {
       id: index,
       expirationDate: ConvertDateWithYear(String(row.attributes.expirationDate)),
@@ -30,8 +33,10 @@ export default function IdeaTableFunc() {
       ideaName: row.attributes.ideaName,
       description: row.attributes.description,
       ideaId: row.attributes.ideaID,
+      section: row.get("section").get("name"),
+      visibility: row.attributes.visibility,
     };
   });
-
+  
   return [rows, columns];
 }

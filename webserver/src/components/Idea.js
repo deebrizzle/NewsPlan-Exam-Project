@@ -1,45 +1,18 @@
 import * as React from 'react';
 import {Stack, Box, Typography, Modal, Grid,} from '@mui/material';
-import { StandardButton, SaveButton, CancelButton } from "../components/Button.styles";
+import {SaveButton, CancelButton } from "../components/Button.styles";
 import { IdeaBoxStyle } from './Idea.styles';
 import CalendarPopup from "../components/CalendarPopup";
 import { SelectArticles, SelectSection, SelectVisibilities, SelectSource } from "./SelectFields";
 import { DescriptionInput, IdeaInput } from './InputFields';
-import { uploadIdea } from '../database/Ideas'
-
+import {ModalContext} from "./ModalContext"
 //TODO Figure out how to handle states from select and inputfields. Redux maybe?
 //TODO Create similar component for handling opening already created ideas from idea bank.
 
 export default function IdeaModal() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => {
-        setOpen(false);
-    }
-
-    const [newIdea, setIdea] = React.useState(
-      { ideaName: '', description: '', visibility: '', expirationDate: '', section: '', ideaSource: ''}
-    )
-
-    // TODO All handle callback functions in IdeaModal, Idea and IdeaBank - can we refactor into one place?
-    const handleCallBack = () => {}
-
-    async function handleSave() {
-    
-      if (Object.values(newIdea).every(x => x === null || x === '')) {
-        alert("Please fill out every field to save your idea.");
-      }
-
-      else {
-        await uploadIdea(newIdea);
-        handleClose();
-      }
-    }
-    
-
+  const { open, handleSave, handleClose, handleCallBack } = React.useContext(ModalContext);
     return (
       <div>
-        <StandardButton onClick={handleOpen}>Add Idea</StandardButton>
         <Modal
           open={open}
           onClose={handleClose}

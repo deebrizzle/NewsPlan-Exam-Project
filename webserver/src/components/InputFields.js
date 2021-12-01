@@ -1,8 +1,8 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
+import {ModalContext} from "./ModalContext"
 
 export default function SearchInput() {
-
   const [search, setSearch] = React.useState('');
 
   return (
@@ -17,8 +17,7 @@ export default function SearchInput() {
 }
 
 export function IdeaInput() {
-
-  const [idea, setIdea] = React.useState('');
+const {idea, setIdea} = React.useContext(ModalContext)
 
   return(
   <TextField 
@@ -32,8 +31,7 @@ export function IdeaInput() {
 }
 
 export function DescriptionInput() {
-
-  const [description, setDescription] = React.useState('');
+  const { description, setDescription} = React.useContext(ModalContext);
 
   return(
     <TextField 

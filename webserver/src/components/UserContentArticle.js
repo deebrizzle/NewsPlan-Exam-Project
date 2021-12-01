@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Grid } from "@mui/material";
-import { MyBox, Item } from "./UserContentArticle.styles";
+import { Item } from "./UserContentArticle.styles";
 
 
 function FormRow() {

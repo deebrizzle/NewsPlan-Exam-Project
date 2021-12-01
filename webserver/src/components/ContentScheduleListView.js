@@ -5,7 +5,6 @@ import CalendarPopup from "./CalendarPopup"
 import React, {useEffect} from "react";
 import {getFinishedArticles, getUnfinishedArticles} from "../database/Articles"
 import {getIdeas} from "../database/Ideas"
-import { getSections } from "../database/Sections";
 
 export default function ContentScheduleListView() {
     const [finishedArticles, setFinishedArticles] = React.useState();

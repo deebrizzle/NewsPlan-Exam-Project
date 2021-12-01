@@ -3,15 +3,14 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import {ModalContext} from "./ModalContext";
 
 export default function CalendarPopup({handleCallbackDate}) {
-  const dateObj = new Date();
-  const currDate = `${dateObj.getMonth()+1} ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
-  
-  const [date, setDate] = React.useState(currDate);
-
+  const { date, setDate} = React.useContext(ModalContext);
+  //Wed Dec 15 2021 00:00:00 GMT+0100 (Centraleuropæisk normaltid) this is day
   function formatDate(day) {
     const formattedDay = new Date(day.setHours(0,0,0,0));
+    console.log(day + " this is day")
     return formattedDay
   }
 

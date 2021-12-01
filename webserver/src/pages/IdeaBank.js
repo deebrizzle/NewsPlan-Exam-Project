@@ -1,18 +1,19 @@
 import NavBar from "../components/NavBar";
 import {Grid, Stack } from '@mui/material';
 import IdeaModal from "../components/Idea";
-import React, { useState } from "react";
+import React from "react";
 import Table from "../components/IdeaTable"
 import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
 import {SelectSection} from "../components/SelectFields";
 import CalendarPopup from "../components/CalendarPopup"
-import {SaveButton, StandardButton} from "../components/Button.styles"
+import {StandardButton} from "../components/Button.styles"
+import {ModalContext} from "../components/ModalContext"
+
 
 function IdeaBank() {
-
-  const [modalShow, setModalShow] = useState(false);
-  const handleCallBack = () => {}
+  const {handleOpen, handleCallBack, modalShow, setModalShow } = React.useContext(ModalContext);
+ 
   
   const handleSearch = () => console.log("Save the idea into the database. Reset all states to empty")
 
@@ -30,7 +31,7 @@ function IdeaBank() {
               {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
               <Grid item xs={6}> <SearchInput /> </Grid>
               <Grid item xs={4}> <StandardButton >Search</StandardButton> </Grid>
-
+              <StandardButton onClick={handleOpen}>Add Idea</StandardButton>
               <Grid item xs={2} justifyContent="flex-end"> 
                 <Stack direction ="row" justifyContent ="flex-end">
                   <IdeaModal show ={modalShow} onHide={() => setModalShow(false)}/> 
@@ -44,5 +45,6 @@ function IdeaBank() {
         </PageWrapper>
         </>
           );
+          
   }
   export default IdeaBank
