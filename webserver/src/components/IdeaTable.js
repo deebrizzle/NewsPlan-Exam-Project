@@ -1,5 +1,6 @@
 import { DataGrid } from "@mui/x-data-grid";
 import IdeaTableFunc from "./IdeaTableFunc";
+import { TableStyle } from "./IdeaTable.styles";
 
 export default function Table() {
   const table = IdeaTableFunc();
