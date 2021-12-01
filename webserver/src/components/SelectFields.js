@@ -1,7 +1,8 @@
 import BasicSelect from "./BasicSelect";
 import { useEffect, useState } from "react";
 import { getSections } from "../database/Sections";
-import { getUsers, getUsersFromSection } from "../database/Users";
+import { getUsers } from "../database/Users";
+import { visibilities } from "../database/Visibilities";
 
 export function SelectSection({ handleCallBackSelection }) {
   //TODO Query sections from the database for scaleability?
@@ -14,13 +15,13 @@ export function SelectSection({ handleCallBackSelection }) {
     });
   }, []);
 
-  const sectionObjects = ([] = sections.map((section) => {
+  const sectionObjects = sections.map((section) => {
     return {
       objectId: section.id,
       name: section.get("name"),
       editor: section.get("Editor"),
     };
-  }));
+  });
 
   return (
     <BasicSelect
@@ -40,13 +41,13 @@ export function SelectSource({ handleCallBackSelection }) {
     });
   }, []);
 
-  const sources = ([] = users.map((employee) => {
+  const sources = users.map((employee) => {
     return {
       objectId: employee.id,
       name: employee.get("username"),
       section: employee.get("section"),
     };
-  }));
+  });
 
   return (
     <BasicSelect
@@ -69,13 +70,6 @@ export function SelectArticles({ handleCallBackSelection }) {
 }
 
 export function SelectVisibilities({ handleCallBackSelection }) {
-  const visibilities = [
-    { objectId: "v1", name: "Only myself" },
-    { objectId: "v2", name: "Chief Editor" },
-    { objectId: "v3", name: "Section Staff" },
-    { objectId: "v4", name: "Everyone" },
-  ];
-
   return (
     <BasicSelect
       arrayOfOptions={visibilities}

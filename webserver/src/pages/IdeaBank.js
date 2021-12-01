@@ -7,7 +7,7 @@ import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
 import { SelectSection } from "../components/SelectFields";
 import CalendarPopup from "../components/CalendarPopup";
-import { SaveButton, StandardButton } from "../components/Button.styles";
+import { StandardButton } from "../components/Button.styles";
 
 function IdeaBank() {
   const [modalShow, setModalShow] = useState(false);

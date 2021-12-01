@@ -17,7 +17,6 @@ export const LoginButton = styled(Button)`
 export const CancelButton = styled(Button)`
   && {
     color: #415b68;
-    background-color: #00000;
     border: 1px solid #6f93a5;
     text-transform: none;
     height: 45px;
