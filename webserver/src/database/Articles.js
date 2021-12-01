@@ -51,3 +51,12 @@ export function mapArticles(articles) {
 
   return articlesInfo;
 }
+
+export async function getArticleById(id) {
+    const Articles = Parse.Object.extend("Articles");
+    const query = new Parse.Query(Articles);
+    query.get(id).then((article) => {
+        return article
+    }
+    )
+  }

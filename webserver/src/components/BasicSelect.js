@@ -13,7 +13,7 @@ export default function BasicSelect({
 
   const handleChange = (event) => {
     setOption(event.target.value);
-    handleCallBackSelection(option);
+    handleCallBackSelection(event.target.value);
   };
 
   const options = arrayOfOptions.map((option) => (
@@ -23,21 +23,16 @@ export default function BasicSelect({
   ));
 
   return (
-    <FormControl fullWidth>
-      <InputLabel id={label}>{label}</InputLabel>
-      <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={option}
-        label="Section"
-        onChange={handleChange}
-      >
-        {options.length ? (
-          options
-        ) : (
-          <MenuItem> No available entries. </MenuItem>
-        )}
-      </Select>
-    </FormControl>
+      <FormControl fullWidth>
+        <InputLabel id={label}>{label}</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={option}
+          label={label}
+          onChange={handleChange}>
+          {options.length ? options : <MenuItem> No available entries. </MenuItem>}
+        </Select>
+      </FormControl>
   );
 }
