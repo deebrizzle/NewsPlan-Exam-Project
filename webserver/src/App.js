@@ -5,7 +5,7 @@ import Home from "./pages/Home.js";
 import IdeaBank from "./pages/IdeaBank.js";
 import ContentSchedule from "./pages/ContentSchedule.js";
 import Calendar from "./pages/Calendar.js";
-import Article from "./components/Article";
+import Article from "./components/ArticlePage";
 import Parse from "parse";
 
 Parse.initialize(
