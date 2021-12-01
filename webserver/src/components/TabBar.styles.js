@@ -34,8 +34,6 @@ export const MyTab = styled(Tab)`
     font-weight: normal;
     font-size: 20px;
     line-height: 32px;
-    color: red;
-    background-color: red;
   }
 
   & .MuiTab-textColorPrimary {

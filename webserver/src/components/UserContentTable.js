@@ -5,14 +5,14 @@ import React from "react";
 export const UserContentTable = ({ articles }) => {
   return (
     <Grid
-      container
-      direction="row"
-      justifyContent="space-evenly"
-      alignItems="center"
+    container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 70 }}
     >
       {Object.entries(articles).map((userNameAndArticles) => {
         return (
-          <Grid>
+          <Grid
+          flexDirection="row"
+          item xs={2} sm={4} md={4}
+          >
             <UserContentArticle userNameAndArticles={userNameAndArticles} />
           </Grid>
         );
