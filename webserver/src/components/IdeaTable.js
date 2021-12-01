@@ -1,6 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid";
 import IdeaTableFunc from "./IdeaTableFunc";
-import { Fragment } from "react";
 
 export default function Table() {
   const table = IdeaTableFunc();
