@@ -1,22 +1,24 @@
-import { Grid } from "@mui/material"
-import { SelectSection, SelectSource } from "./SelectFields"
-import ArticleTable from "./ArticleTable"
-import CalendarPopup from "./CalendarPopup"
-import React, {useEffect} from "react";
-import {getFinishedArticles, getUnfinishedArticles} from "../database/Articles"
-import {getIdeas} from "../database/Ideas"
-import { StandardButton } from "./Button.styles";
+import { Grid } from "@mui/material";
+import { SelectSection, SelectSource } from "./SelectFields";
+import ArticleTable from "./ArticleTable";
+import CalendarPopup from "./CalendarPopup";
+import React, { useEffect } from "react";
+import {
+  getFinishedArticles,
+  getUnfinishedArticles,
+} from "../database/Articles";
+import { getIdeas } from "../database/Ideas";
+import {StandardButton} from "./Button.styles";
 
 export default function ContentScheduleListView() {
-    const [finishedArticles, setFinishedArticles] = React.useState();
-    const [unfinishedArticles, setUnfinishedArticles] = React.useState();
-    const [date, setDate] = React.useState(new Date(2021, 10, 17, 0, 0, 0, 0));
-    const [section, setSection] = React.useState();
+  const [finishedArticles, setFinishedArticles] = React.useState();
+  const [unfinishedArticles, setUnfinishedArticles] = React.useState();
+  const [date, setDate] = React.useState(new Date(2021, 10, 17, 0, 0, 0, 0));
+  const [section, setSection] = React.useState();
 
-    const handleCallbackDate = (Date) =>{
-      setDate(Date)
-      console.log(Date)
-    }
+  const handleCallbackDate = (Date) => {
+    setDate(Date);
+  };
 
     //TODO handle callback is causing the input field not to update. If set to handleCallBack = () => {} then it works. 
     function handleCallBackSelection(selectedSection) {
@@ -39,13 +41,11 @@ export default function ContentScheduleListView() {
       console.log(section)
     }, [date, section]);
 
-  
-    if (finishedArticles === undefined) {
-      return <p>Loading...</p>;
-    } else 
-
-    return(
-        <>
+  if (finishedArticles === undefined) {
+    return <p>Loading...</p>;
+  } else
+    return (
+      <>
         <Grid container spacing={2}>
         {/* First Line */}
             <Grid item xs={2}> <SelectSource handleCallBackSelection={handleCallBackSelection}/> </Grid>
@@ -60,6 +60,6 @@ export default function ContentScheduleListView() {
             <Grid item xs={6}> <ArticleTable articles={unfinishedArticles}/> </Grid>
             <Grid></Grid>
         </Grid>
-        </>
-    )
+      </>
+    );
 }

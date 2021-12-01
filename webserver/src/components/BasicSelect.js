@@ -1,13 +1,15 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import React from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-
-export default function BasicSelect({arrayOfOptions, label, handleCallBackSelection}) {
-  const [option, setOption] = React.useState('');
+export default function BasicSelect({
+  arrayOfOptions,
+  label,
+  handleCallBackSelection,
+}) {
+  const [option, setOption] = React.useState("");
 
   const handleChange = (event) => {
     setOption(event.target.value);
@@ -15,8 +17,10 @@ export default function BasicSelect({arrayOfOptions, label, handleCallBackSelect
   };
 
   const options = arrayOfOptions.map((option) => (
-    <MenuItem key ={option.objectId} name ={option.name} value={option}>{option.name}</MenuItem>
-  ))
+    <MenuItem key={option.objectId} name={option.name} value={option}>
+      {option.name}
+    </MenuItem>
+  ));
 
   return (
       <FormControl fullWidth>
@@ -32,4 +36,3 @@ export default function BasicSelect({arrayOfOptions, label, handleCallBackSelect
       </FormControl>
   );
 }
-

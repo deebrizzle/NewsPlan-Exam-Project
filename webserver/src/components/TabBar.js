@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ContentScheduleCalendarView from "./ContentScheduleCalendarView";
 import ContentScheduleListView from "./ContentScheduleListView";
 import Box from "@mui/material/Box";
@@ -27,17 +27,31 @@ function TabBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Box sx={{p:0.8, width:250, border:"1px solid #94AFBC", borderRadius: 2, marginLeft: "40%",}} centered>
-        <MyTabs value={value} onChange={handleChange} centered textColor="primary">
+      <Box
+        sx={{
+          p: 0.8,
+          width: 250,
+          border: "1px solid #94AFBC",
+          borderRadius: 2,
+          marginLeft: "40%",
+        }}
+        centered
+      >
+        <MyTabs
+          value={value}
+          onChange={handleChange}
+          centered
+          textColor="primary"
+        >
           <MyTab label="Calendar View" />
           <MyTab label="List View" />
         </MyTabs>
       </Box>
       <TabPanel value={value} index={0}>
-          <ContentScheduleCalendarView />
+        <ContentScheduleCalendarView />
       </TabPanel>
       <TabPanel value={value} index={1}>
-          <ContentScheduleListView />
+        <ContentScheduleListView />
       </TabPanel>
     </Box>
   );

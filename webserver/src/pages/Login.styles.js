@@ -10,12 +10,12 @@ export const LoginWrapper = styled.aside`
   height: 100vh;
 
   .logo {
-  width: 90%;
-  margin: 0%, 0%;
+    width: 90%;
+    margin: 0%, 0%;
   }
 `;
 
-export const MyTextField = styled(TextField)`
+export const StyledLabelledInput = styled(TextField)`
   width: 100%;
   & .MuiOutlinedInput-notchedOutline {
     border-color: #415b68;
@@ -29,17 +29,17 @@ export const MyTextField = styled(TextField)`
   }
 `;
 
-export const MyFormControlLabel = styled(FormControlLabel)`
+export const StyledFormControlLabel = styled(FormControlLabel)`
   .MuiFormControlLabel-label {
     color: #415b68;
   }
-
-  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
     color: #415b68;
   }
 `;
 
-export const MyLink = styled(Link)`
+export const StyledLink = styled(Link)`
   &.MuiLink-underlineNone {
     color: #415b68;
   }
