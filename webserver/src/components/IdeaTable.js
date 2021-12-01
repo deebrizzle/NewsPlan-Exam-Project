@@ -10,12 +10,8 @@ export default function Table() {
   //See https://mui.com/components/data-grid/filtering/ for above TODO
 
   return (
-    <div style={{ height: 500, width: "100%" }}>
-      <div style={{ display: "flex", height: "100%" }}>
-        <div style={{ flexGrow: 2 }}>
-          <DataGrid rows={rows} columns={columns} pageSize={20} />
-        </div>
-      </div>
+    <div style={{ height: 500, width: "100%", flexGrow: 2, display: "flex" }}>
+      <DataGrid rows={rows} columns={columns} pageSize={20} />
     </div>
   );
 }
