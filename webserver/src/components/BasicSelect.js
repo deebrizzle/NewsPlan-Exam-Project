@@ -13,8 +13,8 @@ export default function BasicSelect(props) {
       <FormControl fullWidth>
         <InputLabel id={props.label}>{props.label}</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          labelId={props.label}
+          id={props.label}
           value={props.value}
           label={props.label}
           onChange={props.handleChange}

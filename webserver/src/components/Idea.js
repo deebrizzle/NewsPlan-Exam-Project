@@ -8,9 +8,21 @@ import { DescriptionInput, IdeaInput } from './InputFields';
 import {ModalContext} from "./ModalContext"
 //TODO Figure out how to handle states from select and inputfields. Redux maybe?
 //TODO Create similar component for handling opening already created ideas from idea bank.
+import { uploadIdea } from "../database/Ideas";
 
 export default function IdeaModal() {
-  const { open, handleSave, handleClose, handleCallBack } = React.useContext(ModalContext);
+  const { ideaSourceObject, sectionObject, open, handleClose, handleCallBack, isLoading, idea, description, visibility, date, section, ideaSource } = React.useContext(ModalContext);
+
+  async function handleSave() {
+    var IdeaInputFields = [idea, description, visibility, date, section, ideaSource];
+    if (IdeaInputFields.every((ideaInput) => ideaInput === null || ideaInput === "")) {
+      alert("Please fill out every field to save your idea.");
+    } else {
+      await uploadIdea(idea, description, visibility, date, ideaSourceObject, sectionObject);
+      handleClose();
+    }
+  }
+
     return (
       <div>
         <Modal

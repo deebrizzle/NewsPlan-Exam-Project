@@ -14,13 +14,11 @@ export default function ContentScheduleListView() {
 
     const handleCallbackDate = (Date) =>{
       setDate(Date)
-      console.log(Date)
     }
 
     //TODO handle callback is causing the input field not to update. If set to handleCallBack = () => {} then it works. 
     const handleCallBackSelection = (selectedSection) => {
       setSection(selectedSection)
-      console.log(selectedSection)
     }
 
     //TODO: add error handling

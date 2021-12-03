@@ -7,6 +7,14 @@ export async function getUsers(){
     return await query.find()
 }
 
+
+export async function getUser(username){
+  const Users = Parse.Object.extend("User");
+  const query = new Parse.Query(Users);
+  query.equalTo('username', username);
+  return await query.find()
+}
+
 export async function getEditors() {
   const Users = Parse.Object.extend("Users");
   const query = new Parse.Query(Users);
