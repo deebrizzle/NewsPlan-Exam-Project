@@ -18,12 +18,10 @@ export default function Article({ url }) {
 
   if (article === undefined) {
     return <p>Loading...</p>;
-  } else if (article) {
+  } 
     return (
       <>
         <h1>Article page</h1>
-        <p>{article.get("headline")}</p>
       </>
     );
-  }
 }
