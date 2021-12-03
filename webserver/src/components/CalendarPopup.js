@@ -11,15 +11,13 @@ export default function CalendarPopup({ handleCallbackDate }) {
   //you might consider putting it all inside the initial value. No shame in that.
 
   const dateObj = new Date();
-  const currDate = `${
-    dateObj.getMonth() + 1
-  } ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
+  const currDate = new Date(2021, 10, 17, 0, 0, 0, 0);
 
   const [date, setDate] = useState(currDate);
 
   const handleChange = (newDate) => {
-    setDate((newDate));
-    handleCallbackDate((newDate));
+    setDate(newDate);
+    handleCallbackDate(newDate);
   };
 
   return (

@@ -9,6 +9,7 @@ import {
 } from "../database/Articles";
 import { getIdeas } from "../database/Ideas";
 import {StandardButton} from "./Button.styles";
+import { getSections } from "../database/Sections";
 
 export default function ContentScheduleListView() {
   const [finishedArticles, setFinishedArticles] = React.useState();
@@ -30,6 +31,7 @@ export default function ContentScheduleListView() {
     useEffect(() => {
 
       getIdeas()
+      getSections()
 
       getFinishedArticles(date, section).then((article) => {
         setFinishedArticles(article);
