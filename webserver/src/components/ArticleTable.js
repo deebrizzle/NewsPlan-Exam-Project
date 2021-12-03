@@ -5,24 +5,22 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import ErrorIcon from "@mui/icons-material/Error";
 import { ConvertDate } from "./ConvertDate";
-import { StyledTableContainer, StyledTableLink, StyledTableCell } from "./Table.styles";
-import { StyledEditIcon } from "./Table.styles";
+import {
+  StyledTableContainer,
+  StyledTableLink,
+  StyledTableCell,
+  StyledAlertIcon,
+} from "./Table.styles";
 
-//TODO: make styled component
-function Notification(status) {
+function Notification({ status }) {
   if (status === "D") {
-    return <ErrorIcon htmlColor="#415B68" style={{ float: "right" }} />;
+    return <StyledAlertIcon />;
   }
   return <></>;
 }
 
 const ArticleTable = ({ articles }) => {
-  //TODO: make button for accepting/denying
-  //TODO: place the icons correctly and make them clickable
-  //TODO: add color to colorfile
-
   return (
     <TableContainer>
       <StyledTableContainer>
@@ -33,10 +31,10 @@ const ArticleTable = ({ articles }) => {
         >
           <TableHead>
             <TableRow>
-              <StyledTableCell >Date</StyledTableCell>
-              <StyledTableCell >Headline</StyledTableCell>
-              <StyledTableCell >Writer</StyledTableCell>
-              <StyledTableCell >Status</StyledTableCell>
+              <StyledTableCell>Date</StyledTableCell>
+              <StyledTableCell>Headline</StyledTableCell>
+              <StyledTableCell>Writer</StyledTableCell>
+              <StyledTableCell>Status</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -54,10 +52,6 @@ const ArticleTable = ({ articles }) => {
                 <TableCell>{row.get("responsible").get("username")}</TableCell>
                 <TableCell>
                   {row.get("status")}
-                  <StyledEditIcon
-                    htmlColor="#415B68"
-                    fontSize="small"
-                  ></StyledEditIcon>
                   <Notification status={row.get("status")}></Notification>
                 </TableCell>
               </TableRow>

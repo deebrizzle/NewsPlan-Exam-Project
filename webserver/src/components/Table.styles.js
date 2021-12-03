@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { TableContainer, TableCell} from "@mui/material";
 import { Link } from "react-router-dom";
-import EditIcon from "@mui/icons-material/Edit";
 import colors from "./colors";
+import ErrorIcon from "@mui/icons-material/Error";
 
 export const StyledTableContainer = styled(TableContainer)`
     border-radius: 5px;
@@ -12,19 +12,18 @@ export const StyledTableContainer = styled(TableContainer)`
 `
 
 export const StyledTableLink = styled(Link)`
-
     text-decoration: none;
     color: inherit;
-
 `
 
-export const StyledEditIcon = styled(EditIcon)`
-    width: 20%; 
+export const StyledAlertIcon = styled(ErrorIcon)`
+    width: 40%; 
     float: right;
-    html-color: #415B68;
-    font-size: small;
+    color: ${colors.P1DarkPetroleum};
+    
+
 `
 
 export const StyledTableCell = styled(TableCell)`
-    background: ${colors.P2BabyBlueLight}
+    background-color: ${colors.P2BabyBlueLight};
 `

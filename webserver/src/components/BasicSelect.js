@@ -1,15 +1,15 @@
-import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { useState } from "react";
 
 export default function BasicSelect({
   arrayOfOptions,
   label,
   handleCallBackSelection,
 }) {
-  const [option, setOption] = React.useState("");
+  const [option, setOption] = useState("");
 
   const handleChange = (event) => {
     setOption(event.target.value);

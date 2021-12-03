@@ -2,15 +2,15 @@ import { Box, Grid } from "@mui/material";
 import { UserContentTable } from "./UserContentTable";
 import { SelectSection, SelectSource } from "./SelectFields";
 import CalendarPopup from "./CalendarPopup";
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllArticles, mapArticles } from "../database/Articles";
 import { getIdeas } from "../database/Ideas";
 import { groupBy } from "../database/groupBy";
 
 export default function ContentScheduleCalendarView() {
-  const [articles, setArticles] = React.useState([]);
-  const [date, setDate] = React.useState(new Date(2021, 10, 17, 0, 0, 0, 0));
-  const [section, setSection] = React.useState();
+  const [articles, setArticles] = useState([]);
+  const [date, setDate] = useState(new Date(2021, 10, 17, 0, 0, 0, 0));
+  const [section, setSection] = useState();
 
   const handleCallbackDate = (Date) => {
     setDate(Date);

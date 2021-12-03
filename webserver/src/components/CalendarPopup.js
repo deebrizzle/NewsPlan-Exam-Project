@@ -1,8 +1,8 @@
-import * as React from "react";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import { useState } from "react";
 
 export default function CalendarPopup({ handleCallbackDate }) {
   //TODO Ask Bjørn what he means by comment:
@@ -15,16 +15,11 @@ export default function CalendarPopup({ handleCallbackDate }) {
     dateObj.getMonth() + 1
   } ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
 
-  const [date, setDate] = React.useState(currDate);
-
-  function formatDate(day) {
-    const formattedDay = new Date(day.setHours(0, 0, 0, 0));
-    return formattedDay;
-  }
+  const [date, setDate] = useState(currDate);
 
   const handleChange = (newDate) => {
-    setDate(formatDate(newDate));
-    handleCallbackDate(formatDate(newDate));
+    setDate((newDate));
+    handleCallbackDate((newDate));
   };
 
   return (

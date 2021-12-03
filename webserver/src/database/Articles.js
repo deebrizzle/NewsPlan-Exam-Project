@@ -7,9 +7,10 @@ export async function getFinishedArticles(date) {
   query.include("responsible");
   query.equalTo("status", "F");
   query.include("Idea");
-  query.include("Section");
-  query.lessThanOrEqualTo("publishDate", date);
-  query.ascending("publishDate");
+  const dateStart = new Date(date.setHours(0, 0, 0, 0))
+  const dateEnd = new Date(date.setHours(23, 59, 59, 59))
+  query.greaterThanOrEqualTo("publishDate", dateStart);
+  query.lessThanOrEqualTo("publishDate", dateEnd);
   return await query.find();
 }
 
@@ -19,9 +20,10 @@ export async function getUnfinishedArticles(date) {
   query.include("responsible");
   query.notEqualTo("status", "F");
   query.include("Idea");
-  query.include("Section");
-  query.lessThanOrEqualTo("publishDate", date);
-  query.ascending("publishDate");
+  const dateStart = new Date(date.setHours(0, 0, 0, 0))
+  const dateEnd = new Date(date.setHours(23, 59, 59, 59))
+  query.greaterThanOrEqualTo("publishDate", dateStart);
+  query.lessThanOrEqualTo("publishDate", dateEnd);
   return await query.find();
 }
 
