@@ -1,4 +1,5 @@
 import Parse from "parse";
+import { ConvertIfCurrentDay } from "../components/ConvertDate";
 
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
@@ -12,30 +13,30 @@ export async function uploadIdea(
   visibility,
   date,
   ideaSourceObject,
-  sectionObject
+  sectionObject,
+  ideaId
 ) {
-  function ConvertIfCurrentDay(date) {
-    if (typeof date === "string" || date instanceof String) {
-      date.split(",");
-      const dateArray = date.split(/[ ,]+/);
-      let dateString = dateArray[1] + " " + dateArray[0] + " " + dateArray[2];
-      const formattedDay = new Date(dateString);
-      return formattedDay;
-    }
-    return date;
-  }
-
   let formattedDate = ConvertIfCurrentDay(date);
+
   var Idea = Parse.Object.extend("Ideas");
   var newIdea = new Idea();
 
-  newIdea.set("ideaName", ideaName);
-  newIdea.set("description", description);
-  newIdea.set("visibility", visibility);
-  newIdea.set("expirationDate", formattedDate);
-  newIdea.set("ideaSource", ideaSourceObject);
-  newIdea.set("section", sectionObject);
-
+  if (ideaId === "") {
+    newIdea.set("ideaName", ideaName);
+    newIdea.set("description", description);
+    newIdea.set("visibility", visibility);
+    newIdea.set("expirationDate", formattedDate);
+    newIdea.set("ideaSource", ideaSourceObject);
+    newIdea.set("section", sectionObject);
+  } else {
+    newIdea.set("objectId", ideaId);
+    newIdea.set("ideaName", ideaName);
+    newIdea.set("description", description);
+    newIdea.set("visibility", visibility);
+    newIdea.set("expirationDate", formattedDate);
+    newIdea.set("ideaSource", ideaSourceObject);
+    newIdea.set("section", sectionObject);
+  }
   try {
     await newIdea.save();
     alert("success");
@@ -46,30 +47,18 @@ export async function uploadIdea(
   }
 }
 
-export async function updateIdea(
-  objectId,
-  ideaName,
-  section,
-  ideaSource,
-  visibility,
-  expirationDate,
-  description,
-  keywords
-) {
-  const Ideas = Parse.Object.extend("Ideas");
-  const query = new Parse.Query(Ideas);
-  query
-    .get(objectId)
-    .then((object) => {
-      object.set("ideaName", ideaName);
-      object.set("ideaSource", ideaSource);
-      object.set("section", section);
-      object.set("visibility", visibility);
-      object.set("description", description);
-      object.set("expirationDate", expirationDate);
-      object.set("keywords", keywords);
-    })
-    .catch((error) => {
-      alert(error);
-    });
-}
+
+export async function deleteIdea(ideaId) {
+    // Create a new Todo parse object instance and set todo id
+    const Idea = new Parse.Object('Ideas');
+    Idea.set('objectId', ideaId);
+    // .destroy should be called to delete a parse object
+    try {
+      await Idea.destroy();
+      alert('Success! deleted!');
+      return true;
+    } catch (error) {
+      alert(`Error ${error.message}`);
+      return false;
+    };
+  };

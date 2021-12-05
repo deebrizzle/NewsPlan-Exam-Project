@@ -13,9 +13,6 @@ import {ModalContext} from "../components/ModalContext"
 
 function IdeaBank() {
   const {handleOpen, handleCallBack, modalShow, setModalShow } = React.useContext(ModalContext);
- 
-  
-  const handleSearch = () => console.log("Save the idea into the database. Reset all states to empty")
 
     return (
         <>

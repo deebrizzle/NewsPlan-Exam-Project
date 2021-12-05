@@ -17,3 +17,14 @@ export function ConvertDateModal(date) {
   const formattedDay = new Date(dateString);
   return formattedDay
 }
+
+export function ConvertIfCurrentDay(date) {
+  if (typeof date === "string" || date instanceof String) {
+    date.split(",");
+    const dateArray = date.split(/[ ,]+/);
+    let dateString = dateArray[1] + " " + dateArray[0] + " " + dateArray[2];
+    const formattedDay = new Date(dateString);
+    return formattedDay;
+  }
+  return date;
+}

@@ -1,12 +1,14 @@
 import IdeaTableFunc from "./IdeaTableFunc";
 import {MyDataGrid} from "./IdeaTable.styles"
-import React from "react";
 import {ModalContext} from "./ModalContext"
 import { ConvertDateModal } from "./ConvertDate";
+import { getSection } from "../database/Sections";
+import { getUser } from "../database/Users";
+import React from "react";
 
 export default function Table() {
-  const { open, setOpen, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection} = React.useContext(ModalContext);
-  
+  const { setSectionObject, setIdeaSourceObject, setIdeaId, open, setOpen, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection} = React.useContext(ModalContext);
+
   const table = IdeaTableFunc();
   let rows = table[0];
   const columns = table[1];
@@ -19,14 +21,30 @@ export default function Table() {
     setDate(date)
     setSection(params.row.section)
     setIdeaSource(params.row.source)
+    setIdeaId(params.row.ideaId)
+
+    getSection(params.row.section)
+    .then((results) => {
+      results.forEach((sectionObject) => {
+        setSectionObject(sectionObject);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+    getUser(params.row.source)
+    .then((results) => {
+      results.forEach((userObject) => {
+        setIdeaSourceObject(userObject);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
     setOpen(true)
     return open
-
-  // Tried this to only open when the above data is read. But its the loading into the window which is dealyed - not fecthing from database
-  // setTimeout(() => {
-  //   setOpen(true)
-  //   return open
-  // }, 5000);
   };
 
   //TODO Filtering already added in table automatically - remove search panel and add from MaterialUI Quick Filtering demo?

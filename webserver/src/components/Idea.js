@@ -8,21 +8,25 @@ import { DescriptionInput, IdeaInput } from './InputFields';
 import {ModalContext} from "./ModalContext"
 //TODO Figure out how to handle states from select and inputfields. Redux maybe?
 //TODO Create similar component for handling opening already created ideas from idea bank.
-import { uploadIdea } from "../database/Ideas";
+import { uploadIdea, deleteIdea } from "../database/Ideas";
 
 export default function IdeaModal() {
-  const { ideaSourceObject, sectionObject, open, handleClose, handleCallBack, isLoading, idea, description, visibility, date, section, ideaSource } = React.useContext(ModalContext);
+  const { ideaSourceObject, sectionObject, ideaId, open, handleClose, handleCallBack, idea, description, visibility, date, section, ideaSource } = React.useContext(ModalContext);
+
+  async function handleDelete(){
+    await deleteIdea(ideaId)
+    handleClose();
+  }
 
   async function handleSave() {
     var IdeaInputFields = [idea, description, visibility, date, section, ideaSource];
     if (IdeaInputFields.every((ideaInput) => ideaInput === null || ideaInput === "")) {
       alert("Please fill out every field to save your idea.");
     } else {
-      await uploadIdea(idea, description, visibility, date, ideaSourceObject, sectionObject);
+      await uploadIdea(idea, description, visibility, date, ideaSourceObject, sectionObject, ideaId);
       handleClose();
     }
   }
-
     return (
       <div>
         <Modal
@@ -43,7 +47,8 @@ export default function IdeaModal() {
                     <Grid item xs={6}><SelectArticles handleCallBackSelection={handleCallBack}/></Grid>
                     <Grid item xs={12}><DescriptionInput/></Grid>
                     {/* BUTTONS */}
-                    <Grid item xs={8}><CancelButton onClick={handleClose}>Cancel</CancelButton></Grid>
+                    <Grid item xs={4}><CancelButton onClick={handleClose}>Cancel</CancelButton></Grid>
+                    <Grid item xs={4}><CancelButton onClick={handleDelete}>Delete</CancelButton></Grid>
                     <Grid item xs={4}>
                         <Stack spacing={3} direction ="row" justifyContent ="flex-end">
                             <CancelButton disabled>Convert to article</CancelButton>

@@ -30,14 +30,15 @@ export function SelectSection({ handleCallBackSelection }) {
       });
   };
 
-  const sectionObjects = ([] = sections.map((section) => {
+  const sectionObjects = sections.map((section) => {
     return {
       objectId: section.id,
       name: section.get("name"),
       editor: section.get("Editor"),
     };
-  }));
+  });
 
+  
   return (
     <BasicSelect
       handleChange={handleChange}
@@ -74,13 +75,13 @@ export function SelectSource({ handleCallBackSelection }) {
       });
   };
 
-  const sources = ([] = users.map((employee) => {
+  const sources = users.map((employee) => {
     return {
       objectId: employee.id,
       name: employee.get("username"),
       section: employee.get("section"),
     };
-  }));
+  });
 
   return (
     <BasicSelect
