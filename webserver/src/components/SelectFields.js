@@ -30,13 +30,13 @@ export function SelectSection({ handleCallBackSelection }) {
       });
   };
 
-  const sectionObjects = ([] = sections.map((section) => {
+  const sectionObjects = sections.map((section) => {
     return {
       objectId: section.id,
       name: section.get("name"),
       editor: section.get("Editor"),
     };
-  }));
+  });
 
   return (
     <BasicSelect

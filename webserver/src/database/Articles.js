@@ -1,26 +1,22 @@
 import Parse from "parse";
 
 //TODO: Figure out function to fetch articles within next 24 hours? 7 days?
-export async function getFinishedArticles(date, section) {
-
-
-  const Ideas = Parse.Object.extend("Ideas");
-  const ideasQuery = new Parse.Query(Ideas);
-  ideasQuery.include("section");
-  ideasQuery.equalTo("section.name", section);
-  const ideass = await ideasQuery.first()
-
+export async function getFinishedArticles(date) {
   const Articles = Parse.Object.extend("Articles");
-  const articlesQuery = new Parse.Query(Articles);
-  articlesQuery.equalTo("status", "F");
-  articlesQuery.include("responsible");
-  articlesQuery.equalTo("idea", ideass)
+  const query = new Parse.Query(Articles);
+  query.equalTo("status", "F");
+  query.include("responsible");
+  
+  query.include(["idea.section"]);
+  //query.equalTo(section);
+  //console.log(bob)
+ 
   const dateStart = new Date(date.setHours(0, 0, 0, 0))
   const dateEnd = new Date(date.setHours(23, 59, 59, 59))
-  articlesQuery.greaterThanOrEqualTo("publishDate", dateStart);
-  articlesQuery.lessThanOrEqualTo("publishDate", dateEnd);
-
-  return await articlesQuery.find()
+  query.greaterThanOrEqualTo("publishDate", dateStart);
+  query.lessThanOrEqualTo("publishDate", dateEnd);
+  const pro = await query.find();
+  return pro;
 
 }
 
