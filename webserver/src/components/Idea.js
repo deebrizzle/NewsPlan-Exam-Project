@@ -6,27 +6,31 @@ import CalendarPopup from "../components/CalendarPopup";
 import { SelectArticles, SelectSection, SelectVisibilities, SelectSource } from "./SelectFields";
 import { DescriptionInput, IdeaInput } from './InputFields';
 import {ModalContext} from "./ModalContext"
-//TODO Figure out how to handle states from select and inputfields. Redux maybe?
-//TODO Create similar component for handling opening already created ideas from idea bank.
-import { uploadIdea, deleteIdea } from "../database/Ideas";
+import { uploadIdeaToDatabase, deleteIdeaFromDatabase } from "../database/Ideas";
+import { v4 as uuidv4 } from 'uuid';
+import {uploadIdeaToState, deleteIdeaFromState} from "./UpdateStates"
 
 export default function IdeaModal() {
-  const { ideaSourceObject, sectionObject, ideaId, open, handleClose, handleCallBack, idea, description, visibility, date, section, ideaSource } = React.useContext(ModalContext);
+  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, open, handleClose, handleCallBack, idea, description, visibility, date, section, ideaSource } = React.useContext(ModalContext);
 
   async function handleDelete(){
-    await deleteIdea(ideaId)
+    await deleteIdeaFromDatabase(ideaId)
+    deleteIdeaFromState(ideaId, listOfIdeas, setListOfIdeas)
     handleClose();
   }
 
   async function handleSave() {
-    var IdeaInputFields = [idea, description, visibility, date, section, ideaSource];
+    var IdeaInputFields = [{idea, description, visibility, date, section, ideaSource, ideaId}];
     if (IdeaInputFields.every((ideaInput) => ideaInput === null || ideaInput === "")) {
       alert("Please fill out every field to save your idea.");
     } else {
-      await uploadIdea(idea, description, visibility, date, ideaSourceObject, sectionObject, ideaId);
+      let id = uuidv4();
+      await uploadIdeaToDatabase(idea, description, visibility, date, ideaSourceObject, sectionObject, ideaId);
+      uploadIdeaToState(listOfIdeas, IdeaInputFields, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas)
       handleClose();
     }
   }
+  
     return (
       <div>
         <Modal

@@ -29,15 +29,15 @@ export const ModalProvider = ({ children }) => {
   const [date, setDate] = useState(currDate);
   const [ideaSourceObject, setIdeaSourceObject] = useState([]);
   const [sectionObject, setSectionObject] = useState([]);
+  const [listOfIdeas, setListOfIdeas] = useState([]);
 
   const handleCallBack = () => {};
-
-  console.log(ideaId)
-console.log(sectionObject)
 
   return (
     <ModalContext.Provider
       value={{
+        listOfIdeas,
+        setListOfIdeas,
         open,
         setOpen,
         modalShow,

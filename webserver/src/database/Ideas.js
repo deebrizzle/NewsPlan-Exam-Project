@@ -1,13 +1,26 @@
 import Parse from "parse";
-import { ConvertIfCurrentDay } from "../components/ConvertDate";
+import { ConvertIfString, ConvertDateWithYear  } from "../components/ConvertDate";
 
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
   const query = new Parse.Query(Ideas);
-  return await query.find();
+  const results = await query.find();
+  let ideas = results.map((row, index) => {
+  return {
+    id: index,
+    expirationDate: ConvertDateWithYear(String(row.attributes.expirationDate)),
+    source: row.get("ideaSource").get("username"),
+    ideaName: row.attributes.ideaName,
+    description: row.attributes.description,
+    ideaId: row.id,
+    section: row.get("section").get("name"),
+    visibility: row.attributes.visibility,
+  };
+});
+  return ideas
 }
 
-export async function uploadIdea(
+export async function uploadIdeaToDatabase(
   ideaName,
   description,
   visibility,
@@ -16,8 +29,7 @@ export async function uploadIdea(
   sectionObject,
   ideaId
 ) {
-  let formattedDate = ConvertIfCurrentDay(date);
-
+  let formattedDate = ConvertIfString(date);
   var Idea = Parse.Object.extend("Ideas");
   var newIdea = new Idea();
 
@@ -48,11 +60,9 @@ export async function uploadIdea(
 }
 
 
-export async function deleteIdea(ideaId) {
-    // Create a new Todo parse object instance and set todo id
+export async function deleteIdeaFromDatabase(ideaId) {
     const Idea = new Parse.Object('Ideas');
     Idea.set('objectId', ideaId);
-    // .destroy should be called to delete a parse object
     try {
       await Idea.destroy();
       alert('Success! deleted!');
