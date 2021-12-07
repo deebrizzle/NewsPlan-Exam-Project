@@ -3,22 +3,23 @@ import {ModalContext} from "./ModalContext"
 import { ConvertDateModal } from "./ConvertDate";
 import { getSection } from "../database/Sections";
 import { getUser } from "../database/Users";
-import React, { useEffect} from "react";
+import React, { useEffect, useState} from "react";
 import { getIdeas } from "../database/Ideas.js";
-import { getUsers } from "../database/Users.js";
+import { getUsers} from "../database/Users.js";
 import { getSections } from "../database/Sections.js";
 
 export default function Table() {
   const { setSectionObject, setIdeaSourceObject, setIdeaId, open, setOpen, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection} = React.useContext(ModalContext)
   const {listOfIdeas, setListOfIdeas} = React.useContext(ModalContext);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
-    getUsers();
+    getUsers()
     getSections();
     getIdeas().then((ideas) => {
       setListOfIdeas(ideas);
     });
-  }, []);
+  }, [])
 
   const columns = [
     { field: "expirationDate", headerName: "Expiry Date", minWidth: 150, flex: 1 },

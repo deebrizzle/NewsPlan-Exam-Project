@@ -1,6 +1,6 @@
 import BasicSelect from "./BasicSelect";
 import React, { useEffect, useState } from "react";
-import { getSections, getSection } from "../database/Sections";
+import { getSections, getSection} from "../database/Sections";
 import { getUsers, getUser } from "../database/Users";
 import { ModalContext } from "./ModalContext";
 
@@ -16,18 +16,29 @@ export function SelectSection({ handleCallBackSelection }) {
     });
   }, []);
 
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     setSection(event.target.value);
     handleCallBackSelection(section);
+
     getSection(event.target.value)
-      .then((results) => {
-        results.forEach((sectionObject) => {
-          setSectionObject(sectionObject);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+    .then((results) => {
+      results.forEach((sectionObject) => {
+        setSectionObject(sectionObject);
+        console.log(sectionObject)
       });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    //getSection(event.target.value)
+    //  .then((results) => {
+    //    results.forEach((sectionObject) => {
+    //      setSectionObject(sectionObject);
+    //    });
+    //  })
+    //  .catch((error) => {
+    //    console.log(error);
+    //  });
   };
 
   const sectionObjects = sections.map((section) => {

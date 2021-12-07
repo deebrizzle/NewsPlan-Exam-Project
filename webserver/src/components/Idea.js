@@ -6,7 +6,7 @@ import CalendarPopup from "../components/CalendarPopup";
 import { SelectArticles, SelectSection, SelectVisibilities, SelectSource } from "./SelectFields";
 import { DescriptionInput, IdeaInput } from './InputFields';
 import {ModalContext} from "./ModalContext"
-import { uploadIdeaToDatabase, deleteIdeaFromDatabase } from "../database/Ideas";
+import { uploadIdeaToDatabase, deleteIdeaFromDatabaseREST } from "../database/Ideas";
 import { v4 as uuidv4 } from 'uuid';
 import {uploadIdeaToState, deleteIdeaFromState} from "./UpdateStates"
 
@@ -14,7 +14,7 @@ export default function IdeaModal() {
   const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, open, handleClose, handleCallBack, idea, description, visibility, date, section, ideaSource } = React.useContext(ModalContext);
 
   async function handleDelete(){
-    await deleteIdeaFromDatabase(ideaId)
+    await deleteIdeaFromDatabaseREST(ideaId)
     deleteIdeaFromState(ideaId, listOfIdeas, setListOfIdeas)
     handleClose();
   }
