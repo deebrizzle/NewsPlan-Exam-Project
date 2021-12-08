@@ -1,43 +1,134 @@
-import BasicSelect from './BasicSelect';
+import BasicSelect from "./BasicSelect";
+import React, { useEffect, useState } from "react";
+import { getSections, getSection} from "../database/Sections";
+import { getUsers, getUser } from "../database/Users";
+import { ModalContext } from "./ModalContext";
 
+export function SelectSection({ handleCallBackSelection }) {
+  const {setSectionObject, setSection, section} =
+    React.useContext(ModalContext);
+  //TODO Query sections from the database for scaleability?
+  const [sections, setSections] = useState([]);
 
-const options = ["Financial", "Sports", "Foreign affairs", "Motor"];
+  useEffect(() => {
+    getSections().then((sections) => {
+      setSections(sections);
+    });
+  }, []);
 
-export function SelectSection() {
-    return BasicSelect(options, "Section")
-};
+  const handleChange = async (event) => {
+    setSection(event.target.value);
+    handleCallBackSelection(event.target.value);
+    getSection(event.target.value)
+    .then((results) => {
+      results.forEach((sectionObject) => {
+        setSectionObject(sectionObject);
+        console.log(sectionObject)
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
 
-const employees = [
-    'ACL',
-    'EGL',
-    'KSM',
-    'MLI',
-    'NGP',
-    'PO',
-    'YRL'
-]
+  const sectionObjects = sections.map((section) => {
+    return {
+      objectId: section.id,
+      name: section.get("name"),
+      editor: section.get("Editor"),
+    };
+  });
 
-export function SelectSource() {
-    return BasicSelect(employees, "Source")
-};
+  
+  return (
+    <BasicSelect
+      handleChange={handleChange}
+      value={section}
+      arrayOfOptions={sectionObjects}
+      label="Section"
+      handleCallBackSelection={handleCallBackSelection}
+    />
+  );
+}
 
+export function SelectSource({ handleCallBackSelection }) {
+  const { setIdeaSource, ideaSource, setIdeaSourceObject } =
+    React.useContext(ModalContext);
+  const [users, setUsers] = useState([]);
 
-const visibilities = [
-    'Only myself',
-    'Chief Editor',
-    'Section Staff',
-    'Everyone'
-]
+  useEffect(() => {
+    getUsers().then((users) => {
+      setUsers(users);
+    });
+  }, []);
 
-export function SelectVisibilities() {
-    return BasicSelect(visibilities, "Visibility")
-};
+  const handleChange = (event) => {
+    setIdeaSource(event.target.value);
+    handleCallBackSelection(ideaSource);
+    getUser(event.target.value)
+      .then((results) => {
+        results.forEach((userObject) => {
+          setIdeaSourceObject(userObject);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-const articles = [
-    'Amount of votes from low income counties set new records',
-    'How to vote as a foreigner in Denmark'
-]
+  const sources = users.map((employee) => {
+    return {
+      objectId: employee.id,
+      name: employee.get("username"),
+      section: employee.get("section"),
+    };
+  });
 
-export function SelectArticles() {
-    return BasicSelect(articles, "Articles")
-};
+  return (
+    <BasicSelect
+      handleChange={handleChange}
+      value={ideaSource}
+      arrayOfOptions={sources}
+      label="Source"
+      handleCallBackSelection={handleCallBackSelection}
+    />
+  );
+}
+
+export function SelectArticles({ handleCallBackSelection }) {
+  const articles = [];
+  return (
+    <BasicSelect
+      label="Articles"
+      value={articles}
+      arrayOfOptions={articles}
+      handleCallBackSelection={handleCallBackSelection}
+    />
+  );
+}
+
+export function SelectVisibilities({ handleCallBackSelection }) {
+  const { visibility, setVisibility } = React.useContext(ModalContext);
+
+  const handleChange = (event) => {
+    setVisibility(event.target.value);
+    handleCallBackSelection(visibility);
+  };
+
+  const visibilities = [
+    { objectId: "v1", name: "Only myself" },
+    { objectId: "v2", name: "Chief Editor" },
+    { objectId: "v3", name: "Section Staff" },
+    { objectId: "v4", name: "Everyone" },
+  ];
+
+  return (
+    <BasicSelect
+      label="Visibility"
+      handleChange={handleChange}
+      value={visibility}
+      arrayOfOptions={visibilities}
+      handleCallBackSelection={handleCallBackSelection}
+    />
+  );
+}

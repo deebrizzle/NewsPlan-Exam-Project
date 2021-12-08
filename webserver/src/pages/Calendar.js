@@ -1,14 +1,15 @@
 import NavBar from "../components/NavBar";
 import { PageWrapper } from "./PageMargin.styles";
+import { Headline } from "./ContentSchedule.styles";
 
 function Calendar() {
-    return (
-        <>
-        <NavBar/>
-        <PageWrapper>
-        <h1>Calendar</h1>
-        </PageWrapper>
-        </>
-      );
-  }
-  export default Calendar
+  return (
+    <>
+      <NavBar />
+      <PageWrapper>
+        <Headline>Calendar</Headline>
+      </PageWrapper>
+    </>
+  );
+}
+export default Calendar;

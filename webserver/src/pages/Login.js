@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import logo from "../Logo.png";
+import logo from "../assets/Logo.png";
 import { LoginButton } from "../components/Button.styles";
 import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
@@ -8,56 +8,60 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import {
-  MyTextField,
-  MyFormControlLabel,
-  MyLink,
+  StyledFormControlLabel,
+  StyledLink,
   LoginWrapper,
 } from "./Login.styles";
+import Parse from "parse";
+import LabelledInput from "../components/LabelledInput";
 
-function Login() {
-  const navigate = useNavigate();
+//TODO This function should be refactored to remove fecthing from the database from this function
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/home");
-  };
+  async function validateUser() {
+    try {
+      const userAuth = await Parse.User.logIn(username, password);
+      setUsername("");
+      setPassword("");
+      setLoginError(false);
+      navigate("/home");
+      return true;
+    } catch (error) {
+      setLoginError(true);
+      return false;
+    }
+  }
 
   return (
     <LoginWrapper>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <img className="logo" src={logo} alt="Newsplan logo" />
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-          <MyTextField
-            margin="normal"
-            fullWidth
-            id="username"
+        <Box component="form" sx={{ mt: 1 }}>
+          <LabelledInput
             label="Username"
-            name="username"
-            variant="outlined"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
+            onChange={setUsername}
+            error={loginError}
           />
-          <MyTextField
-            id="password"
-            fullWidth
+          <LabelledInput
+            type="password"
             label="Password"
-            variant="outlined"
-            name="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            onChange={setPassword}
+            error={loginError}
+            helperText={loginError ? `Wrong username or password` : ""}
           />
-          <MyFormControlLabel
+          <StyledFormControlLabel
             control={<Checkbox value="remember" />}
             label="Remember me"
           />
-
           <LoginButton
-            type="submit"
+            onClick={() => validateUser()}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
@@ -66,9 +70,9 @@ function Login() {
           </LoginButton>
           <Grid container>
             <Grid item xs>
-              <MyLink href="#" variant="body2" underline="none">
+              <StyledLink href="#" variant="body2" underline="none">
                 Forgot password?
-              </MyLink>
+              </StyledLink>
             </Grid>
           </Grid>
         </Box>
@@ -76,4 +80,3 @@ function Login() {
     </LoginWrapper>
   );
 }
-export default Login;
