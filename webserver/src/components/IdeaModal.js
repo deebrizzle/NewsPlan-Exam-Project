@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Stack, Box, Typography, Modal, Grid,} from '@mui/material';
-import {SaveButton, CancelButton } from "../components/Button.styles";
+import {SaveButton, CancelButton } from "./Button.styles";
 import { IdeaBoxStyle } from './Idea.styles';
-import CalendarPopup from "../components/CalendarPopup";
+import CalendarPopup from "./CalendarPopup";
 import { SelectArticles, SelectSection, SelectVisibilities, SelectSource } from "./SelectFields";
 import { DescriptionInput, IdeaInput } from './InputFields';
 import {ModalContext} from "./ModalContext"

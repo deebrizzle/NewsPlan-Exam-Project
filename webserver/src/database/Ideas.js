@@ -4,6 +4,8 @@ import { ConvertIfString, ConvertDateWithYear  } from "../components/ConvertDate
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
   const query = new Parse.Query(Ideas);
+  query.include("Section")
+  query.include("User")
   const results = await query.find();
   let ideas = results.map((row, index) => {
   return {

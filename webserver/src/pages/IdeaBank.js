@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import {Grid, Stack } from '@mui/material';
-import IdeaModal from "../components/Idea";
+import IdeaModal from "../components/IdeaModal";
 import React from "react";
 import Table from "../components/IdeaTable"
 import { PageWrapper } from "./PageMargin.styles";

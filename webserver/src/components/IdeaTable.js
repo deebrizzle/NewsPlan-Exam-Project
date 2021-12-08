@@ -11,7 +11,6 @@ import { getSections } from "../database/Sections.js";
 export default function Table() {
   const { setSectionObject, setIdeaSourceObject, setIdeaId, open, setOpen, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection} = React.useContext(ModalContext)
   const {listOfIdeas, setListOfIdeas} = React.useContext(ModalContext);
-  const [user, setUser] = useState("");
 
   useEffect(() => {
     getUsers()
