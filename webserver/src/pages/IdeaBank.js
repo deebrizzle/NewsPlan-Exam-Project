@@ -31,16 +31,6 @@ function IdeaBank() {
             <SelectSection handleCallBackSelection={handleCallBack} />{" "}
           </Grid>
           <Grid item xs={6} />
-
-          {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
-          <Grid item xs={6}>
-            {" "}
-            <SearchInput />{" "}
-          </Grid>
-          <Grid item xs={4}>
-            {" "}
-            <StandardButton>Search</StandardButton>{" "}
-          </Grid>
               {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
               <Grid item xs={6}> <SearchInput /> </Grid>
               <Grid item xs={4}> <StandardButton >Search</StandardButton> </Grid>

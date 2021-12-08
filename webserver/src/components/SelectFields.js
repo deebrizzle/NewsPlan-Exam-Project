@@ -29,15 +29,6 @@ export function SelectSection({ handleCallBackSelection }) {
     .catch((error) => {
       console.log(error);
     });
-    //getSection(event.target.value)
-    //  .then((results) => {
-    //    results.forEach((sectionObject) => {
-    //      setSectionObject(sectionObject);
-    //    });
-    //  })
-    //  .catch((error) => {
-    //    console.log(error);
-    //  });
   };
 
   const sectionObjects = sections.map((section) => {
