@@ -9,7 +9,7 @@ import {SelectSection} from "../components/SelectFields";
 import CalendarPopup from "../components/CalendarPopup"
 import {StandardButton} from "../components/Button.styles"
 import {ModalContext} from "../components/ModalContext"
-
+import { Headline } from "./ContentSchedule.styles";
 
 function IdeaBank() {
   const {handleOpen, handleCallBack, modalShow, setModalShow } = React.useContext(ModalContext);
@@ -19,7 +19,7 @@ function IdeaBank() {
     <>
       <NavBar />
       <PageWrapper>
-        <h1>Idea Bank</h1>
+        <Headline> Idea Bank </Headline>
         <Grid container spacing={3}>
           {/* FIRST ROW - CALENDAR, SECTION*/}
           <Grid item xs={3}>

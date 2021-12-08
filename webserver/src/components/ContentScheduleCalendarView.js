@@ -57,7 +57,7 @@ export default function ContentScheduleCalendarView() {
             <CalendarPopup handleCallbackDate={handleCallbackDate} />{" "}
           </Grid>
         </Grid>
-        <UserContentTable articles={articles}></UserContentTable>
+        <UserContentTable articles={articles} itemsPerPage={6}></UserContentTable>
       </Box>
     );
 }

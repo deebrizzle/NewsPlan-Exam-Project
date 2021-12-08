@@ -4,11 +4,11 @@ import colors from "./colors";
 
 export const MyTabs = styled(Tabs)`
   &. MuiTabs-root {
-    background-color: ${colors.P1DarkPetroleum};
     color: ${colors.P1DarkPetroleum};
     border: 1px solid ${colors.P1LightPetroleum};
     box-sizing: border-box;
     border-radius: 8px;
+    margin-bottom: 50px;
   }
 
   & .MuiTabs-indicator {
@@ -16,7 +16,7 @@ export const MyTabs = styled(Tabs)`
   }
 
   & .MuiTab-root {
-    color:${colors.P1DarkPetroleum};
+    color: ${colors.P1DarkPetroleum};
   }
 
   & .MuiTab-root.Mui-selected {
