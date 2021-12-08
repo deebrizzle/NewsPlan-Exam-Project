@@ -58,7 +58,6 @@ export function mapArticles(articles) {
 }
 
 export async function getArticleById(id) {
-<<<<<<< HEAD
     const Articles = Parse.Object.extend("Articles");
     const query = new Parse.Query(Articles);
     query.get(id).then((article) => {
@@ -66,13 +65,6 @@ export async function getArticleById(id) {
     }
     )
   }
-=======
-  const Articles = Parse.Object.extend("Articles");
-  const query = new Parse.Query(Articles);
-  query.get(id).then((article) => {
-      return article
-  }
-<<<<<<< HEAD
 
   export async function getArticlesFromIdea(ideaObject) {
     const Articles = Parse.Object.extend("Articles");
@@ -82,8 +74,3 @@ export async function getArticleById(id) {
     query.ascending("publishDate");
     return await query.find();
   }
-=======
-  )
-}
->>>>>>> 5c1af00eaf8e9d806d906f28cd1046249aaeb5d5
->>>>>>> b87bd165c9463fc406ead13240e6fb78efaac098
