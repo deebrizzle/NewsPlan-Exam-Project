@@ -10,7 +10,6 @@ export default function CalendarPopup({ handleCallbackDate, label }) {
   //You are unlikely to run into any problems doing it like this, but as an exercise to understand React components and general clean code,
   //you might consider putting it all inside the initial value. No shame in that.
 
-  const dateObj = new Date();
   const currDate = new Date(2021, 10, 26, 0, 0, 0, 0);
 
   const [date, setDate] = useState(currDate);

@@ -61,22 +61,22 @@ export async function uploadIdeaToDatabase(
   }
 }
 
-export async function deleteHTTP(idea){
-  try {
-  await fetch(
-    "https://parseapi.back4app.com/classes/Ideas/" + idea.objectId,
-    {
-      method: "DELETE",
-      headers: {
-        "X-Parse-Application-Id": process.env.REACT_APP_APPLICATION_KEY,
-        "X-Parse-REST-API-Key": process.env.REACT_APP_REST_API_KEY,
-      },
-    }
-  );
-  alert("success! deleted");
-} catch (error) {
-  console.log("Error: " + error);
-}
+  export async function deleteHTTP(idea){
+    try {
+    await fetch(
+      "https://parseapi.back4app.com/classes/Ideas/" + idea.objectId,
+      {
+        method: "DELETE",
+        headers: {
+          "X-Parse-Application-Id": process.env.REACT_APP_APPLICATION_KEY,
+          "X-Parse-REST-API-Key": process.env.REACT_APP_REST_API_KEY,
+        },
+      }
+    );
+    alert("success! deleted");
+  } catch (error) {
+    console.log("Error: " + error);
+  }
 }
 
 export async function deleteIdeaFromDatabaseREST(ideaId) {
