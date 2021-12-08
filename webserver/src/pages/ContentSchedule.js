@@ -8,7 +8,7 @@ function ContentSchedule() {
     <>
       <NavBar />
       <PageWrapper>
-        <Headline> CONTENT SCHEDULE </Headline>
+        <Headline> Content Schedule </Headline>
         <TabBar />
       </PageWrapper>
     </>

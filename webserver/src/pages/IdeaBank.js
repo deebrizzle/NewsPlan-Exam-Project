@@ -21,7 +21,7 @@ function IdeaBank() {
     <>
       <NavBar />
       <PageWrapper>
-        <Headline> IDEA BANK </Headline>
+        <Headline> Idea Bank </Headline>
         <Grid container spacing={3}>
           {/* FIRST ROW - CALENDAR, SECTION*/}
           <Grid item xs={3}>

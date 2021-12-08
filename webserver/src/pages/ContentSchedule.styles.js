@@ -8,5 +8,5 @@ export const Headline = styled.h1`
   font-size: 32px;
   color: ${colors.P1DarkPetroleum};
   text-align: center;
-  padding: 
+  margin-top: 20;
 `;
