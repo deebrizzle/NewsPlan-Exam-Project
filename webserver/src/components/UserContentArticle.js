@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { Item } from "./UserContentArticle.styles";
 
@@ -6,16 +6,13 @@ import { Item } from "./UserContentArticle.styles";
 
 function ArticleBox({ articles }) {
   return (
-    <Fragment>
+    <>
       {articles.map((article) => {
-        return (
-          <Grid item xs={24}>
-            <Item> {article.headline}</Item>
-            <br></br>
-          </Grid>
+         return (
+          <Item>{article.headline}</Item>
         );
-      })}
-    </Fragment>
+        })}
+    </>
   );
 }
 

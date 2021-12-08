@@ -8,6 +8,7 @@ import SearchInput from "../components/InputFields";
 import { SelectSection } from "../components/SelectFields";
 import CalendarPopup from "../components/CalendarPopup";
 import { StandardButton } from "../components/Button.styles";
+import { Headline } from "./ContentSchedule.styles";
 
 function IdeaBank() {
   const [modalShow, setModalShow] = useState(false);
@@ -20,7 +21,7 @@ function IdeaBank() {
     <>
       <NavBar />
       <PageWrapper>
-        <h1>Idea Bank</h1>
+        <Headline> IDEA BANK </Headline>
         <Grid container spacing={3}>
           {/* FIRST ROW - CALENDAR, SECTION*/}
           <Grid item xs={3}>
