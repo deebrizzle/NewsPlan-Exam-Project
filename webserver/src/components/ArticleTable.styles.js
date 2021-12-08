@@ -20,8 +20,6 @@ export const StyledAlertIcon = styled(ErrorIcon)`
     width: 40%; 
     float: right;
     color: ${colors.P1DarkPetroleum};
-    
-
 `
 
 export const StyledTableCell = styled(TableCell)`

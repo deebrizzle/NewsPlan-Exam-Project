@@ -11,7 +11,7 @@ import {
   StyledTableLink,
   StyledTableCell,
   StyledAlertIcon,
-} from "./Table.styles";
+} from "./ArticleTable.styles";
 
 function Notification({ status }) {
   if (status === "D") {
@@ -21,8 +21,10 @@ function Notification({ status }) {
 }
 
 const ArticleTable = ({ articles }) => {
+  
   return (
     <TableContainer>
+      {console.log(articles)}
       <StyledTableContainer>
         <Table
           stickyHeader={true}

@@ -6,17 +6,13 @@ export async function getFinishedArticles(date) {
   const query = new Parse.Query(Articles);
   query.equalTo("status", "F");
   query.include("responsible");
-  
   query.include(["idea.section"]);
-  //query.equalTo(section);
-  //console.log(bob)
- 
   const dateStart = new Date(date.setHours(0, 0, 0, 0))
   const dateEnd = new Date(date.setHours(23, 59, 59, 59))
   query.greaterThanOrEqualTo("publishDate", dateStart);
   query.lessThanOrEqualTo("publishDate", dateEnd);
-  const pro = await query.find();
-  return pro;
+  return await query.find();
+  
 
 }
 
@@ -25,12 +21,13 @@ export async function getUnfinishedArticles(date) {
   const query = new Parse.Query(Articles);
   query.include("responsible");
   query.notEqualTo("status", "F");
-  //query.include("idea");
+  query.include(["idea.section"])
   const dateStart = new Date(date.setHours(0, 0, 0, 0))
   const dateEnd = new Date(date.setHours(23, 59, 59, 59))
   query.greaterThanOrEqualTo("publishDate", dateStart);
   query.lessThanOrEqualTo("publishDate", dateEnd);
-  return await query.find();
+  return query.find();
+  
 }
 
 //TODO Sort all articles by user (ascending)
