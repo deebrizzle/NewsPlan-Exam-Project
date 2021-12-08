@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { Item } from "./UserContentArticle.styles";
 
