@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Stack, Box, Typography, Modal, Grid,} from '@mui/material';
-import {SaveButton, CancelButton } from "./Button.styles";
+import {SaveButton, CancelButton, DeleteButton } from "./Button.styles";
 import { IdeaBoxStyle } from './Idea.styles';
 import CalendarPopup from "./CalendarPopup";
 import { SelectArticles, SelectSection, SelectVisibilities, SelectSource } from "./SelectFields";
@@ -51,9 +51,13 @@ export default function IdeaModal() {
                     <Grid item xs={6}><SelectArticles handleCallBackSelection={handleCallBack}/></Grid>
                     <Grid item xs={12}><DescriptionInput/></Grid>
                     {/* BUTTONS */}
-                    <Grid item xs={4}><CancelButton onClick={handleClose}>Cancel</CancelButton></Grid>
-                    <Grid item xs={4}><CancelButton onClick={handleDelete}>Delete</CancelButton></Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={1}>
+                    <Stack spacing={3} direction ="row" justifyContent ="flex-start">
+                      <CancelButton onClick={handleClose}>Cancel</CancelButton>
+                      <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+                    </Stack>
+                    </Grid>
+                    <Grid item xs={11}>
                         <Stack spacing={3} direction ="row" justifyContent ="flex-end">
                             <CancelButton disabled>Convert to article</CancelButton>
                             <SaveButton onClick={handleSave}>Save</SaveButton>
