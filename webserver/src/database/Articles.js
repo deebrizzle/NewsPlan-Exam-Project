@@ -24,3 +24,12 @@ export async function getUnfinishedArticles(date) {
     query.ascending("publishDate");
     return await query.find();
   }
+
+  export async function getArticlesFromIdea(ideaObject) {
+    const Articles = Parse.Object.extend("Articles");
+    const query = new Parse.Query(Articles);
+    query.include("Idea")
+    query.equalTo("idea", ideaObject);
+    query.ascending("publishDate");
+    return await query.find();
+  }

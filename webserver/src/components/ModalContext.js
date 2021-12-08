@@ -27,6 +27,7 @@ export const ModalProvider = ({ children }) => {
   const [ideaSource, setIdeaSource] = useState("");
   const [ideaId, setIdeaId] = useState("");
   const [date, setDate] = useState(currDate);
+  const [articles, setArticles] = useState("")
   const [ideaSourceObject, setIdeaSourceObject] = useState([]);
   const [sectionObject, setSectionObject] = useState([]);
   const [listOfIdeas, setListOfIdeas] = useState([]);
@@ -59,6 +60,8 @@ export const ModalProvider = ({ children }) => {
         setDescription,
         date,
         setDate,
+        articles,
+        setArticles,
         sectionObject,
         setSectionObject,
         ideaSourceObject,

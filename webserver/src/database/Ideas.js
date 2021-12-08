@@ -1,6 +1,13 @@
 import Parse from "parse";
 import { ConvertIfString, ConvertDateWithYear  } from "../components/ConvertDate";
 
+export async function getIdea(ideaId) {
+  const Ideas = Parse.Object.extend("Ideas");
+  const query = new Parse.Query(Ideas);
+  query.equalTo('objectId', ideaId);
+  return await query.find();
+}  
+
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
   const query = new Parse.Query(Ideas);

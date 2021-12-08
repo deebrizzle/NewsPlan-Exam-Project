@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { getSections, getSection} from "../database/Sections";
 import { getUsers, getUser } from "../database/Users";
 import { ModalContext } from "./ModalContext";
+import {getArticlesFromIdea} from "../database/Articles"
+import { getIdeas, getIdea } from "../database/Ideas";
 
 export function SelectSection({ handleCallBackSelection }) {
   const {setSectionObject, setSection, section} =
@@ -30,15 +32,6 @@ export function SelectSection({ handleCallBackSelection }) {
     .catch((error) => {
       console.log(error);
     });
-    //getSection(event.target.value)
-    //  .then((results) => {
-    //    results.forEach((sectionObject) => {
-    //      setSectionObject(sectionObject);
-    //    });
-    //  })
-    //  .catch((error) => {
-    //    console.log(error);
-    //  });
   };
 
   const sectionObjects = sections.map((section) => {
@@ -106,7 +99,23 @@ export function SelectSource({ handleCallBackSelection }) {
 }
 
 export function SelectArticles({ handleCallBackSelection }) {
-  const articles = [];
+  const { articles, setArticles, ideaId } = React.useContext(ModalContext);
+  const [ideaObject, setIdeaObject] = useState();
+
+  useEffect(() => {
+    getIdea(ideaId).then((users) => {
+      console.log(users)
+      setIdeaObject(users.username)
+      console.log(ideaObject)
+    });
+  }, []);
+
+ //  getArticlesFromIdea(ideaObject).then((articles) => {
+ //  setArticles(articles);
+ //});
+
+
+  //const articles = [];
   return (
     <BasicSelect
       label="Articles"

@@ -5,7 +5,11 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function BasicSelect(props) {
-  const options = props.arrayOfOptions.map((option) => (
+  let array = props.arrayOfOptions
+if (!Array.isArray(array)){
+  array = [array]
+}
+  const options = array.map((option) => (
     <MenuItem key ={option.objectId} name ={option.name} value={option.name}>{option.name}</MenuItem>
   ))
   
