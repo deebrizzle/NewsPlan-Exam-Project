@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import { Grid } from "@mui/material"
-import { SelectSection, SelectSource } from "./SelectFields"
-import ArticleTable from "./ArticleTable"
-import CalendarPopup from "./CalendarPopup"
-import React, {useEffect} from "react";
-import {getFinishedArticles, getUnfinishedArticles} from "../database/Articles"
-import {getIdeas} from "../database/Ideas"
-import { StandardButton } from "./Button.styles";
-=======
 import { Grid } from "@mui/material";
 import { SelectSection, SelectSource } from "./SelectFields";
 import ArticleTable from "./ArticleTable";
@@ -18,7 +8,6 @@ import { getIdeas } from "../database/Ideas";
 import {StandardButton} from "./Button.styles";
 import { getSections } from "../database/Sections";
 
->>>>>>> 5c1af00eaf8e9d806d906f28cd1046249aaeb5d5
 
 export default function ContentScheduleListView() {
   const [finishedArticles, setFinishedArticles] = React.useState();
@@ -67,11 +56,7 @@ export default function ContentScheduleListView() {
     return (
       <>
         <Grid container spacing={2}>
-<<<<<<< HEAD
-        {/* First Line */}
-=======
             {/* First Line: selectors/date */}
->>>>>>> 5c1af00eaf8e9d806d906f28cd1046249aaeb5d5
             <Grid item xs={2}> <SelectSource handleCallBackSelection={handleCallBackSelection}/> </Grid>
             <Grid item xs={2}> <SelectSection handleCallBackSelection={handleCallBackSelection}/> </Grid>
             <Grid item xs={6}> <StandardButton>Filter</StandardButton></Grid>
