@@ -28,6 +28,20 @@ export const CancelButton = styled(Button)`
   }
 `;
 
+export const DeleteButton = styled(Button)`
+  && {
+    color: #DB4646;
+    background-color: #00000;
+    border: 1px solid #752626;
+    text-transform: none;
+    height: 45px;
+  }
+  &&:hover {
+    background-color: #f6d5d5;
+  }
+`;
+
+
 export const SaveButton = styled(Button)`
   && {
     color: ${colors.white};

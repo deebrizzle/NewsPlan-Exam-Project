@@ -4,13 +4,16 @@ import Parse from "parse";
 export async function getFinishedArticles(date) {
   const Articles = Parse.Object.extend("Articles");
   const query = new Parse.Query(Articles);
-  query.include("responsible");
   query.equalTo("status", "F");
-  query.include("Idea");
-  query.include("Section");
-  query.lessThanOrEqualTo("publishDate", date);
-  query.ascending("publishDate");
+  query.include("responsible");
+  query.include(["idea.section"]);
+  const dateStart = new Date(date.setHours(0, 0, 0, 0))
+  const dateEnd = new Date(date.setHours(23, 59, 59, 59))
+  query.greaterThanOrEqualTo("publishDate", dateStart);
+  query.lessThanOrEqualTo("publishDate", dateEnd);
   return await query.find();
+  
+
 }
 
 export async function getUnfinishedArticles(date) {
@@ -18,11 +21,13 @@ export async function getUnfinishedArticles(date) {
   const query = new Parse.Query(Articles);
   query.include("responsible");
   query.notEqualTo("status", "F");
-  query.include("Idea");
-  query.include("Section");
-  query.lessThanOrEqualTo("publishDate", date);
-  query.ascending("publishDate");
-  return await query.find();
+  query.include(["idea.section"])
+  const dateStart = new Date(date.setHours(0, 0, 0, 0))
+  const dateEnd = new Date(date.setHours(23, 59, 59, 59))
+  query.greaterThanOrEqualTo("publishDate", dateStart);
+  query.lessThanOrEqualTo("publishDate", dateEnd);
+  return query.find();
+  
 }
 
 //TODO Sort all articles by user (ascending)
@@ -53,6 +58,7 @@ export function mapArticles(articles) {
 }
 
 export async function getArticleById(id) {
+<<<<<<< HEAD
     const Articles = Parse.Object.extend("Articles");
     const query = new Parse.Query(Articles);
     query.get(id).then((article) => {
@@ -60,3 +66,12 @@ export async function getArticleById(id) {
     }
     )
   }
+=======
+  const Articles = Parse.Object.extend("Articles");
+  const query = new Parse.Query(Articles);
+  query.get(id).then((article) => {
+      return article
+  }
+  )
+}
+>>>>>>> 5c1af00eaf8e9d806d906f28cd1046249aaeb5d5
