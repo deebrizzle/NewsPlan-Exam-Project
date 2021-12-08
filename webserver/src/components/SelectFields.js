@@ -18,7 +18,7 @@ export function SelectSection({ handleCallBackSelection }) {
 
   const handleChange = (event) => {
     setSection(event.target.value);
-    handleCallBackSelection(section);
+    handleCallBackSelection(event.target.value);
     getSection(event.target.value)
       .then((results) => {
         results.forEach((sectionObject) => {

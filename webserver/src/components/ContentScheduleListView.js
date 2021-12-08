@@ -3,14 +3,10 @@ import { SelectSection, SelectSource } from "./SelectFields";
 import ArticleTable from "./ArticleTable";
 import CalendarPopup from "./CalendarPopup";
 import React, { useEffect } from "react";
-import {
-  getFinishedArticles,
-  getUnfinishedArticles,
-} from "../database/Articles";
+import { getFinishedArticles, getUnfinishedArticles } from "../database/Articles";
 import { getIdeas } from "../database/Ideas";
 import {StandardButton} from "./Button.styles";
 import { getSections } from "../database/Sections";
-
 
 
 export default function ContentScheduleListView() {
@@ -38,21 +34,19 @@ export default function ContentScheduleListView() {
       return filtered;
     }
   }
-
-    //TODO: add error handling
     useEffect(() => {
       getIdeas()
       getSections()
 
       getFinishedArticles(date).then((finishedArticle) => {
         setFinishedArticles(finishedArticle);
+        
       });
       getUnfinishedArticles(date).then((unfinishedArticle) => {
         setUnfinishedArticles(unfinishedArticle)
 
       });
 
-      setSection(section)
       console.log(section)
     }, [date, section]);
 
@@ -66,7 +60,7 @@ export default function ContentScheduleListView() {
             <Grid item xs={2}> <SelectSource handleCallBackSelection={handleCallBackSelection}/> </Grid>
             <Grid item xs={2}> <SelectSection handleCallBackSelection={handleCallBackSelection}/> </Grid>
             <Grid item xs={6}> <StandardButton>Filter</StandardButton></Grid>
-            <Grid item xs={2} > <CalendarPopup handleCallbackDate={handleCallbackDate} label="Date"/> </Grid>
+            <Grid item xs={2}> <CalendarPopup handleCallbackDate={handleCallbackDate} label="Date"/> </Grid>
             {/* Second line: headers */}
             <Grid item xs={6}><h6>Finished Articles</h6></Grid>
             <Grid item xs={6}> <h6>Unfinished Articles</h6></Grid>
