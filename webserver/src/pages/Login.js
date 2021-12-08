@@ -8,12 +8,12 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import {
-  MyTextField,
-  MyFormControlLabel,
-  MyLink,
+  StyledFormControlLabel,
+  StyledLink,
   LoginWrapper,
 } from "./Login.styles";
 import Parse from "parse";
+import LabelledInput from "../components/LabelledInput";
 
 //TODO This function should be refactored to remove fecthing from the database from this function
 export default function Login() {
@@ -42,30 +42,21 @@ export default function Login() {
         <CssBaseline />
         <img className="logo" src={logo} alt="Newsplan logo" />
         <Box component="form" sx={{ mt: 1 }}>
-          <MyTextField
-            margin="normal"
-            fullWidth
-            id="username"
+          <LabelledInput
             label="Username"
-            variant="outlined"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
+            onChange={setUsername}
             error={loginError}
           />
-          <MyTextField
-            id="password"
-            fullWidth
+          <LabelledInput
             type="password"
             label="Password"
-            variant="outlined"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            onChange={setPassword}
             error={loginError}
             helperText={loginError ? `Wrong username or password` : ""}
           />
-          <MyFormControlLabel
+          <StyledFormControlLabel
             control={<Checkbox value="remember" />}
             label="Remember me"
           />
@@ -79,9 +70,9 @@ export default function Login() {
           </LoginButton>
           <Grid container>
             <Grid item xs>
-              <MyLink href="#" variant="body2" underline="none">
+              <StyledLink href="#" variant="body2" underline="none">
                 Forgot password?
-              </MyLink>
+              </StyledLink>
             </Grid>
           </Grid>
         </Box>

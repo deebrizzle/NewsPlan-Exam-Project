@@ -1,29 +1,30 @@
 import styled from "styled-components";
 import Button from "@mui/material/Button";
+import colors from "./colors";
 
 export const LoginButton = styled(Button)`
   && {
-    color: white;
-    background-color: #415b68;
+    color: ${colors.white};
+    background-color: ${colors.P1DarkPetroleum};
     text-transform: none;
 
     height: 45px;
   }
   &&:hover {
-    background-color: #5a7e90;
+    background-color: ${colors.P1DarkPetroleumHover};
   }
 `;
 
 export const CancelButton = styled(Button)`
   && {
-    color: #415b68;
-    background-color: #00000;
-    border: 1px solid #6F93A5;
+    color: ${colors.P1DarkPetroleum};
+    background-color: ${colors.white};
+    border: 1px solid ${colors.P1DarkPetroleum};
     text-transform: none;
     height: 45px;
   }
   &&:hover {
-    background-color: #DCE5E9;
+    background-color: ${colors.P1GreyLightBlue};
   }
 `;
 
@@ -41,36 +42,30 @@ export const DeleteButton = styled(Button)`
 `;
 
 
-
 export const SaveButton = styled(Button)`
   && {
-    color: white;
-    background-color: #415b68;
+    color: ${colors.white};
+    background-color: ${colors.P1DarkPetroleum};
     text-transform: none;
     height: 45px;
   }
   &&:hover {
-    background-color: #5a7e90;
+    background-color: ${colors.P1DarkPetroleumHover};
   }
 `;
 
 export const StandardButton = styled(Button)`
   && {
-    color: white;
-    background-color: #415b68;
+    color: ${colors.white};
+    background-color: ${colors.P1DarkPetroleum};
     text-transform: none;
     font-weight: bold;
     display: inline;
-   
+
     height: 55px;
     width: 100px;
-    
   }
   &&:hover {
-    background-color: #5a7e90;
+    background-color: ${colors.P1DarkPetroleumHover};
   }
-
 `;
-
-
-

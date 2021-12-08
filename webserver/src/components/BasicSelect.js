@@ -28,4 +28,3 @@ if (!Array.isArray(array)){
       </FormControl>
   );
 }
-

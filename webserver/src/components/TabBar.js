@@ -11,7 +11,7 @@ function TabPanel(props) {
     <div>
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component="h2">{children}</Typography>
         </Box>
       )}
     </div>
@@ -27,17 +27,31 @@ function TabBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Box sx={{p:0.8, width:250, border:"1px solid #94AFBC", borderRadius: 2, marginLeft: "40%",}} centered>
-        <MyTabs value={value} onChange={handleChange} centered textColor="primary">
+      <Box
+        sx={{
+          p: 0.8,
+          width: 250,
+          border: "1px solid #94AFBC",
+          borderRadius: 2,
+          marginLeft: "40%",
+        }}
+        centered
+      >
+        <MyTabs
+          value={value}
+          onChange={handleChange}
+          centered
+          textColor="primary"
+        >
           <MyTab label="Calendar View" />
           <MyTab label="List View" />
         </MyTabs>
       </Box>
       <TabPanel value={value} index={0}>
-          <ContentScheduleCalendarView />
+        <ContentScheduleCalendarView />
       </TabPanel>
       <TabPanel value={value} index={1}>
-          <ContentScheduleListView />
+        <ContentScheduleListView />
       </TabPanel>
     </Box>
   );

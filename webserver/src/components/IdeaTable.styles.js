@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { DataGrid } from "@mui/x-data-grid";
+import colors from "./colors";
 
 export const MyDataGrid = styled(DataGrid)`
 .MuiDataGrid-row:nth-child(even){
-    background-color: #DCE5E9;;
+    background-color: ${colors.P1GreyLightBlue};
   }
 
   .MuiDataGrid-row:nth-child(odd){

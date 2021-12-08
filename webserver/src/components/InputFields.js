@@ -6,14 +6,15 @@ export default function SearchInput() {
   const [search, setSearch] = React.useState('');
 
   return (
-    <TextField 
-      id="outlined-basic" 
-      label="Search" 
-      variant="outlined" 
-      fullWidth 
-      value={search} 
-      onChange={e => setSearch(e.target.value)}/>
-      );
+    <TextField
+      id="outlined-basic"
+      label="Search"
+      variant="outlined"
+      fullWidth
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+    />
+  );
 }
 
 export function IdeaInput() {

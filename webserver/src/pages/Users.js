@@ -1,7 +1,6 @@
 const users = {
-  username: 'John',
-  password: '12345'
-  
-}
+  username: "John",
+  password: "12345",
+};
 
-export default users
+export default users;
