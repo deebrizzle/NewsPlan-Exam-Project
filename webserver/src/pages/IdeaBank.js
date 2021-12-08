@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
-import { Grid, Stack } from "@mui/material";
-import IdeaModal from "../components/Idea";
+import {Grid, Stack } from '@mui/material';
+import IdeaModal from "../components/IdeaModal";
 import React from "react";
 import Table from "../components/IdeaTable"
 import { PageWrapper } from "./PageMargin.styles";
@@ -13,9 +13,6 @@ import {ModalContext} from "../components/ModalContext"
 
 function IdeaBank() {
   const {handleOpen, handleCallBack, modalShow, setModalShow } = React.useContext(ModalContext);
- 
-  
-  const handleSearch = () => console.log("Save the idea into the database. Reset all states to empty")
 
 
   return (

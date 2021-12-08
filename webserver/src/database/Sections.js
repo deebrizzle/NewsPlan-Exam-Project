@@ -11,4 +11,4 @@ export async function getSection(section) {
     const query = new Parse.Query(Sections);
     query.equalTo('name', section);
     return await query.find();
-}   
+}  

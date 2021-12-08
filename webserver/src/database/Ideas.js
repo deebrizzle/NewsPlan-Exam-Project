@@ -1,41 +1,56 @@
 import Parse from "parse";
+import { ConvertIfString, ConvertDateWithYear  } from "../components/ConvertDate";
 
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
   const query = new Parse.Query(Ideas);
-  return await query.find();
+  query.include("Section")
+  query.include("User")
+  const results = await query.find();
+  let ideas = results.map((row, index) => {
+  return {
+    id: index,
+    expirationDate: ConvertDateWithYear(String(row.attributes.expirationDate)),
+    source: row.get("ideaSource").get("username"),
+    ideaName: row.attributes.ideaName,
+    description: row.attributes.description,
+    ideaId: row.id,
+    section: row.get("section").get("name"),
+    visibility: row.attributes.visibility,
+  };
+});
+  return ideas
 }
 
-export async function uploadIdea(
+export async function uploadIdeaToDatabase(
   ideaName,
   description,
   visibility,
   date,
   ideaSourceObject,
-  sectionObject
+  sectionObject,
+  ideaId
 ) {
-  function ConvertIfCurrentDay(date) {
-    if (typeof date === "string" || date instanceof String) {
-      date.split(",");
-      const dateArray = date.split(/[ ,]+/);
-      let dateString = dateArray[1] + " " + dateArray[0] + " " + dateArray[2];
-      const formattedDay = new Date(dateString);
-      return formattedDay;
-    }
-    return date;
-  }
-
-  let formattedDate = ConvertIfCurrentDay(date);
+  let formattedDate = ConvertIfString(date);
   var Idea = Parse.Object.extend("Ideas");
   var newIdea = new Idea();
 
-  newIdea.set("ideaName", ideaName);
-  newIdea.set("description", description);
-  newIdea.set("visibility", visibility);
-  newIdea.set("expirationDate", formattedDate);
-  newIdea.set("ideaSource", ideaSourceObject);
-  newIdea.set("section", sectionObject);
-
+  if (ideaId === "") {
+    newIdea.set("ideaName", ideaName);
+    newIdea.set("description", description);
+    newIdea.set("visibility", visibility);
+    newIdea.set("expirationDate", formattedDate);
+    newIdea.set("ideaSource", ideaSourceObject);
+    newIdea.set("section", sectionObject);
+  } else {
+    newIdea.set("objectId", ideaId);
+    newIdea.set("ideaName", ideaName);
+    newIdea.set("description", description);
+    newIdea.set("visibility", visibility);
+    newIdea.set("expirationDate", formattedDate);
+    newIdea.set("ideaSource", ideaSourceObject);
+    newIdea.set("section", sectionObject);
+  }
   try {
     await newIdea.save();
     alert("success");
@@ -46,30 +61,27 @@ export async function uploadIdea(
   }
 }
 
-export async function updateIdea(
-  objectId,
-  ideaName,
-  section,
-  ideaSource,
-  visibility,
-  expirationDate,
-  description,
-  keywords
-) {
-  const Ideas = Parse.Object.extend("Ideas");
-  const query = new Parse.Query(Ideas);
-  query
-    .get(objectId)
-    .then((object) => {
-      object.set("ideaName", ideaName);
-      object.set("ideaSource", ideaSource);
-      object.set("section", section);
-      object.set("visibility", visibility);
-      object.set("description", description);
-      object.set("expirationDate", expirationDate);
-      object.set("keywords", keywords);
-    })
-    .catch((error) => {
-      alert(error);
-    });
+export async function deleteHTTP(idea){
+  try {
+  await fetch(
+    "https://parseapi.back4app.com/classes/Ideas/" + idea.objectId,
+    {
+      method: "DELETE",
+      headers: {
+        "X-Parse-Application-Id": process.env.REACT_APP_APPLICATION_KEY,
+        "X-Parse-REST-API-Key": process.env.REACT_APP_REST_API_KEY,
+      },
+    }
+  );
+  alert("success! deleted");
+} catch (error) {
+  console.log("Error: " + error);
+}
+}
+
+export async function deleteIdeaFromDatabaseREST(ideaId) {
+  let idea = {
+    objectId: [ideaId],
+  };
+  return await deleteHTTP(idea);
 }
