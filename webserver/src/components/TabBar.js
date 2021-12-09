@@ -33,7 +33,7 @@ function TabBar() {
           width: 250,
           border: "1px solid #94AFBC",
           borderRadius: 2,
-          marginLeft: "40%",
+          marginLeft: "40.1%",
         }}
         centered
       >
@@ -41,7 +41,6 @@ function TabBar() {
           value={value}
           onChange={handleChange}
           centered
-          textColor="primary"
         >
           <MyTab label="Calendar View" />
           <MyTab label="List View" />

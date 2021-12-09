@@ -8,15 +8,15 @@ export const MyDataGrid = styled(DataGrid)`
   }
 
   .MuiDataGrid-row:nth-child(odd){
-    background-color: #FFFFFF;
+    background-color: ${colors.white};
   }
 
   .css-99lfi7-MuiDataGrid-columnsContainer{
-  background-color: #DCE5E9;
+  background-color: ${colors.P1GreyLightBlue};
   }
 
   .MuiDataGrid-footerContainer {
-    background-color: #FFFFFF;
+    background-color: ${colors.white};
   }
 
   .css-1jbbcbn-MuiDataGrid-columnHeaderTitle{

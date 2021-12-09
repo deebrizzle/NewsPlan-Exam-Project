@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Typography, Grid } from "@mui/material";
-import { Item } from "./UserContentArticle.styles";
+import { Box, Typography } from "@mui/material";
+import { GridContainer, Item, GridItem } from "./UserContentArticle.styles";
 
 //TODO Use map somewhere to create each box for every article. Currently only grabbing the first article of each user's articles.
 
@@ -24,11 +24,11 @@ function UserContentArticle({ userNameAndArticles }) {
         {" "}
         {userNameAndArticles[0]}{" "}
       </Typography>
-      <Grid container spacing={1}>
-        <Grid item xs={4}>
+      <GridContainer container spacing={2}>
+        <GridItem item xs={2} sm={4} md={4}>
           <ArticleBox articles={userNameAndArticles[1]} />
-        </Grid>
-      </Grid>
+        </GridItem>
+      </GridContainer>
     </Box>
   );
 }

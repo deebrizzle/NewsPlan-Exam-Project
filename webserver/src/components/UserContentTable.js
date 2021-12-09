@@ -1,6 +1,7 @@
-import { Grid, Box, Pagination } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import UserContentArticle from "./UserContentArticle";
 import React, { useEffect, useState } from "react";
+import { PaginationContainer, StyledPagination } from "./UserContentTable.styles";
 
 export function PaginatedArticles ({ articles }) {
 
@@ -48,16 +49,13 @@ export function UserContentTable ({ articles, itemsPerPage }) {
 
   else {
     return (
-
-        <Box>
-          <Pagination 
+        <PaginationContainer>            
+          <PaginatedArticles articles = {currentArticles} /> 
+          <StyledPagination 
             count={pageCount} 
-            variant="outlined"  
-            onChange={handlePageClick}/> 
-            
-            <PaginatedArticles articles = {currentArticles} /> 
-
-        </Box>
+            variant="outlined"
+            onChange={handlePageClick} /> 
+        </PaginationContainer>
       );
     };
 }
