@@ -12,7 +12,7 @@ export function PaginatedArticles ({ articles }) {
     > 
       {articles.map((userNameAndArticles) => {
         return (
-          <Grid flexDirection="row" item xs={4} sm={4} md={4}>
+          <Grid flexDirection="row" item xs={4} sm={4} md={4} justifyContent="center">
               <UserContentArticle userNameAndArticles={userNameAndArticles} />
           </Grid>
         );

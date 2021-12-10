@@ -33,7 +33,7 @@ function TabBar() {
           width: 250,
           border: "1px solid #94AFBC",
           borderRadius: 2,
-          marginLeft: "40.1%",
+          marginLeft: "40.4%",
         }}
         centered
       >

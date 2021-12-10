@@ -9,7 +9,9 @@ function ArticleBox({ articles }) {
     <>
       {articles.map((article) => {
          return (
-          <Item>{article.headline}</Item>
+          <Item sx={{ p: 1, margin: 'auto', flexGrow: 1}}
+          variant="outlined"
+          >{article.headline}</Item>
         );
         })}
     </>
@@ -24,8 +26,8 @@ function UserContentArticle({ userNameAndArticles }) {
         {" "}
         {userNameAndArticles[0]}{" "}
       </Typography>
-      <GridContainer container spacing={2}>
-        <GridItem item xs={2} sm={4} md={4}>
+      <GridContainer rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <GridItem item xs={8} sm={4} md={4}>
           <ArticleBox articles={userNameAndArticles[1]} />
         </GridItem>
       </GridContainer>
