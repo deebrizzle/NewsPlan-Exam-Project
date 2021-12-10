@@ -32,9 +32,15 @@ function IdeaBank() {
           </Grid>
           <Grid item xs={6} />
               {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
-              <Grid item xs={6}> <SearchInput /> </Grid>
-              <Grid item xs={4}> <StandardButton >Search</StandardButton> </Grid>
-              <StandardButton onClick={handleOpen}>Add Idea</StandardButton>
+              <Grid item xs={6}> 
+                <SearchInput /> 
+                </Grid>
+              <Grid item xs={4}> 
+                <StandardButton> Search </StandardButton> 
+              </Grid>
+              <Grid xs={2} display="flex" justifyContent="flex-end" alignSelf="flex-end"> 
+                <StandardButton onClick={handleOpen}>Add Idea</StandardButton>
+              </Grid>
               <Grid item xs={2} justifyContent="flex-end"> 
                 <Stack direction ="row" justifyContent ="flex-end">
                   <IdeaModal show ={modalShow} onHide={() => setModalShow(false)}/> 
