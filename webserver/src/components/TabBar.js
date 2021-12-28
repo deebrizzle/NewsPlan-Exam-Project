@@ -30,7 +30,7 @@ function TabBar() {
       <Box
         sx={{
           p: 0.8,
-          width: 250,
+          width: 220,
           border: "1px solid #94AFBC",
           borderRadius: 2,
           marginLeft: "40.4%",
@@ -42,8 +42,8 @@ function TabBar() {
           onChange={handleChange}
           centered
         >
-          <MyTab label="Calendar View" />
-          <MyTab label="List View" />
+          <MyTab label="Employees" />
+          <MyTab label="Articles" />
         </MyTabs>
       </Box>
       <TabPanel value={value} index={0}>

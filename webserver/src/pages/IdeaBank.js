@@ -19,7 +19,6 @@ function IdeaBank() {
     <>
       <NavBar />
       <PageWrapper>
-        <Headline> Idea Bank </Headline>
         <Grid container spacing={3}>
           {/* FIRST ROW - CALENDAR, SECTION*/}
           <Grid item xs={3}>

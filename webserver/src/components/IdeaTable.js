@@ -67,7 +67,7 @@ export default function Table() {
   //See https://mui.com/components/data-grid/filtering/ for above TODO
   
   return(
-        <div style={{ height: 500, width: "100%", flexGrow: 2, display: "flex" }}>
+        <div style={{ height: 420, width: "100%", flexGrow: 2, display: "flex" }}>
           <MyDataGrid getRowId={(row) => row.id} rows={listOfIdeas} columns={columns} pageSize={20}  onRowClick={(e) => HandleRowClick(e)}/>
         </div>
   );

@@ -7,7 +7,6 @@ function Calendar() {
     <>
       <NavBar />
       <PageWrapper>
-        <Headline>Calendar</Headline>
       </PageWrapper>
     </>
   );

@@ -8,7 +8,7 @@ export const MyTabs = styled(Tabs)`
     border: 1px solid ${colors.P1LightPetroleum};
     box-sizing: border-box;
     border-radius: 8px;
-    margin-bottom: 50px;
+    margin-bottom: 5%;
   }
 
   & .MuiTabs-indicator {
