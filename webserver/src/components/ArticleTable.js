@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useContext} from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,10 +8,11 @@ import TableRow from "@mui/material/TableRow";
 import { ConvertDate } from "./ConvertDate";
 import {
   StyledTableContainer,
-  StyledTableLink,
   StyledTableCell,
   StyledAlertIcon,
 } from "./ArticleTable.styles";
+import { ContentContext } from "./ContentScheduleContext";
+import { articleFilterSection, articleFilterSource } from "../database/Articles";
 
 function Notification({ status }) {
   if (status === "D") {
@@ -21,7 +22,11 @@ function Notification({ status }) {
 }
 
 const ArticleTable = ({ articles }) => {
-  
+  const {sectionContent, sourceContent} = useContext(ContentContext);
+
+  const filteredSection = articleFilterSection(articles, sectionContent);
+  const filteredSectionSource = articleFilterSource(filteredSection, sourceContent);
+
   return (
     <TableContainer>
       {console.log(articles)}
@@ -40,16 +45,13 @@ const ArticleTable = ({ articles }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {articles?.map((row) => (
+            {filteredSectionSource?.map((row) => (
               <TableRow key={row.objectId}>
                 <TableCell>
                   {ConvertDate(String(row.get("publishDate")))}
                 </TableCell>
                 <TableCell>
-                  <StyledTableLink to={`/contentschedule/${row.id}`}>
                     {row.get("headline")}
-                    {console.log(row.id)}
-                  </StyledTableLink>
                 </TableCell>
                 <TableCell>{row.get("responsible").get("username")}</TableCell>
                 <TableCell>
