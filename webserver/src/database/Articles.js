@@ -1,7 +1,7 @@
 import Parse from "parse";
 
 //TODO: Figure out function to fetch articles within next 24 hours? 7 days?
-export async function getFinishedArticles(date) {
+export async function getFinishedArticles(date, setFinishedArticles) {
   const Articles = Parse.Object.extend("Articles");
   const query = new Parse.Query(Articles);
   query.equalTo("status", "F");
@@ -11,12 +11,14 @@ export async function getFinishedArticles(date) {
   const dateEnd = new Date(date.setHours(23, 59, 59, 59))
   query.greaterThanOrEqualTo("publishDate", dateStart);
   query.lessThanOrEqualTo("publishDate", dateEnd);
-  return await query.find();
+  query.find().then((finishedArticles) => {
+    setFinishedArticles(finishedArticles)
+  })
   
 
 }
 
-export async function getUnfinishedArticles(date) {
+export async function getUnfinishedArticles(date, setUnfinishedArticles) {
   const Articles = Parse.Object.extend("Articles");
   const query = new Parse.Query(Articles);
   query.include("responsible");
@@ -26,7 +28,9 @@ export async function getUnfinishedArticles(date) {
   const dateEnd = new Date(date.setHours(23, 59, 59, 59))
   query.greaterThanOrEqualTo("publishDate", dateStart);
   query.lessThanOrEqualTo("publishDate", dateEnd);
-  return query.find();
+  query.find().then((unfinishedArticles) => {
+    setUnfinishedArticles(unfinishedArticles)
+  })
   
 }
 
@@ -64,4 +68,26 @@ export async function getArticleById(id) {
       return article
   }
   )
+}
+
+export function articleFilterSection(articles, section) {
+  if (section === undefined) {
+    return articles;
+  } else {
+    const filtered = articles.filter(
+      (article) => article.get("idea").get("section").get("name") === section
+    );
+    return filtered;
+  }
+}
+
+export function articleFilterSource(articles, source) {
+  if (source === undefined) {
+    return articles;
+  } else {
+    const filtered = articles.filter(
+      (article) => article.get("responsible").get("username") === source
+    );
+    return filtered;
+  }
 }

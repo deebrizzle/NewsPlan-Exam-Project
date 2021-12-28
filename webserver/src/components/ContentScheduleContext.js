@@ -7,9 +7,10 @@ export const ContentProvider = ({ children }) => {
 
   const [finishedArticles, setFinishedArticles] = React.useState();
   const [unfinishedArticles, setUnfinishedArticles] = React.useState();
+  //TODO: another solution to set the date before exam. We just need to make sure that some articles are displayed
   const [contentDate, setContentDate] = useState(new Date(2021, 10, 26, 0, 0, 0, 0));
   const [sectionContent, setSectionContent] = useState();
-  const [source, setSource] = useState();
+  const [sourceContent, setSourceContent] = useState();
 
   const handleCallBack = () => {};
 
@@ -24,8 +25,8 @@ export const ContentProvider = ({ children }) => {
         setContentDate,
         sectionContent,
         setSectionContent,
-        source,
-        setSource,
+        sourceContent,
+        setSourceContent,
         handleCallBack
       }}
     >

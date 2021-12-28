@@ -12,38 +12,17 @@ import { useContext } from "react";
 
 
 export default function ContentScheduleListView() {
-  //const [finishedArticles, setFinishedArticles] = React.useState();
-  //const [unfinishedArticles, setUnfinishedArticles] = React.useState();
-  //const [date, setDate] = React.useState(new Date(2021, 10, 26, 0, 0, 0, 0));
-  //const [section, setSection] = React.useState();
-  //TODO: make context
-  const {finishedArticles, setFinishedArticles, unfinishedArticles, setUnfinishedArticles, contentDate, setContentDate, sectionContent, setSectionContent, source, setSource} = useContext(ContentContext);
 
-  //const handleCallbackDate = (Date) => {
-  //  setDate(Date);
-  //};
-
-    //TODO handle callback is causing the input field not to update. If set to handleCallBack = () => {} then it works. 
-  //function handleCallBackSelection(selectedSection) {
-  //  setSection(selectedSection)
-  //}
-
+  const {finishedArticles, setFinishedArticles, unfinishedArticles, setUnfinishedArticles, contentDate, setContentDate, sectionContent, setSectionContent, sourceContent, setSourceContent} = useContext(ContentContext);
 
     useEffect(() => {
       getIdeas()
       getSections()
-
-      getFinishedArticles(contentDate).then((finishedArticle) => {
-        setFinishedArticles(finishedArticle);
-        
-      });
-      getUnfinishedArticles(contentDate).then((unfinishedArticle) => {
-        setUnfinishedArticles(unfinishedArticle)
-
-      });
+      getFinishedArticles(contentDate, setFinishedArticles)
+      getUnfinishedArticles(contentDate, setUnfinishedArticles)
 
       console.log(sectionContent)
-    }, [contentDate, sectionContent]);
+    }, [contentDate, sectionContent, sourceContent]);
 
   if (finishedArticles === undefined && unfinishedArticles === undefined) {
     return <p>Loading...</p>

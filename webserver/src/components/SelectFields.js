@@ -9,7 +9,7 @@ export function SelectSection({ handleCallBackSelection }) {
   const {setSectionObject, setSection, section} =
     React.useContext(ModalContext);
   //TODO Query sections from the database for scaleability?
-  const {sectionContent, setSectionContent} = useContext(ContentContext);
+  const {setSectionContent} = useContext(ContentContext);
   const [sections, setSections] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,6 @@ export function SelectSection({ handleCallBackSelection }) {
   const handleChange = async (event) => {
     setSectionContent(event.target.value)
     setSection(event.target.value);
-    //handleCallBackSelection(event.target.value);
     getSection(event.target.value)
     .then((results) => {
       results.forEach((sectionObject) => {
@@ -57,6 +56,8 @@ export function SelectSection({ handleCallBackSelection }) {
 export function SelectSource({ handleCallBackSelection }) {
   const { setIdeaSource, ideaSource, setIdeaSourceObject } =
     React.useContext(ModalContext);
+
+  const {sourceContent, setSourceContent} = useContext(ContentContext);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -65,9 +66,10 @@ export function SelectSource({ handleCallBackSelection }) {
     });
   }, []);
 
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     setIdeaSource(event.target.value);
-    handleCallBackSelection(ideaSource);
+    setSourceContent(event.target.value);
+    //handleCallBackSelection(ideaSource);
     getUser(event.target.value)
       .then((results) => {
         results.forEach((userObject) => {

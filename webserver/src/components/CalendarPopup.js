@@ -13,6 +13,7 @@ export default function CalendarPopup({ handleCallbackDate, label }) {
   //you might consider putting it all inside the initial value. No shame in that.
   const { date, setDate } = useContext(ModalContext);
   const { contentDate, setContentDate} = useContext(ContentContext);
+
   //calendar is only set to the modal context - cannto use in ContentContext
   function formatDate(day) {
     const formattedDay = new Date(day.setHours(0,0,0,0));
@@ -26,10 +27,11 @@ export default function CalendarPopup({ handleCallbackDate, label }) {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
+      
       <DesktopDatePicker
         label={label}
         inputFormat="MM/dd/yyyy"
-        value={date}
+        value={contentDate}
         onChange={handleChange}
         renderInput={(params) => <TextField {...params} fullWidth />}
       />

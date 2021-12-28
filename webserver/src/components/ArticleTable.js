@@ -8,11 +8,11 @@ import TableRow from "@mui/material/TableRow";
 import { ConvertDate } from "./ConvertDate";
 import {
   StyledTableContainer,
-  StyledTableLink,
   StyledTableCell,
   StyledAlertIcon,
 } from "./ArticleTable.styles";
 import { ContentContext } from "./ContentScheduleContext";
+import { articleFilterSection, articleFilterSource } from "../database/Articles";
 
 function Notification({ status }) {
   if (status === "D") {
@@ -20,20 +20,13 @@ function Notification({ status }) {
   }
   return <></>;
 }
-function articleFilter(parseObjectArray, section) {
-  if (section === undefined) {
-    return parseObjectArray;
-  } else {
-    const filtered = parseObjectArray.filter(
-      (article) => article.get("idea").get("section").get("name") === section
-    );
-    return filtered;
-  }
-}
+
 const ArticleTable = ({ articles }) => {
-  const {sectionContent} = useContext(ContentContext);
-  const filtered = articleFilter(articles, sectionContent)
-  
+  const {sectionContent, sourceContent} = useContext(ContentContext);
+
+  const filteredSection = articleFilterSection(articles, sectionContent);
+  const filteredSectionSource = articleFilterSource(filteredSection, sourceContent);
+
   return (
     <TableContainer>
       {console.log(articles)}
@@ -52,16 +45,13 @@ const ArticleTable = ({ articles }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filtered?.map((row) => (
+            {filteredSectionSource?.map((row) => (
               <TableRow key={row.objectId}>
                 <TableCell>
                   {ConvertDate(String(row.get("publishDate")))}
                 </TableCell>
                 <TableCell>
-                  <StyledTableLink to={`/contentschedule/${row.id}`}>
                     {row.get("headline")}
-                    {console.log(row.id)}
-                  </StyledTableLink>
                 </TableCell>
                 <TableCell>{row.get("responsible").get("username")}</TableCell>
                 <TableCell>

@@ -11,11 +11,6 @@ export const StyledTableContainer = styled(TableContainer)`
     overflow: initial;
 `
 
-export const StyledTableLink = styled(Link)`
-    text-decoration: none;
-    color: inherit;
-`
-
 export const StyledAlertIcon = styled(ErrorIcon)`
     width: 40%; 
     float: right;
