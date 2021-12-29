@@ -1,5 +1,5 @@
 import Parse from "parse";
-import { ConvertIfString, ConvertDateWithYear  } from "../components/ConvertDate";
+import { ConvertIfString, ConvertDateWithYear  } from "../components/convertDate";
 
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
