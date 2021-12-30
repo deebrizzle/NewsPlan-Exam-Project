@@ -1,7 +1,7 @@
 import { Grid, Box } from "@mui/material";
-import UserContentArticle from "./UserContentArticle";
+import EmployeeArticles from "./EmployeeArticles";
 import React, { useEffect, useState } from "react";
-import { PaginationContainer, StyledPagination } from "./UserContentTable.styles";
+import { PaginationContainer, StyledPagination } from "./ScheduledArticles.styles";
 
 export function PaginatedArticles ({ articles }) {
 
@@ -13,15 +13,15 @@ export function PaginatedArticles ({ articles }) {
       {articles.map((userNameAndArticles) => {
         return (
           <Grid flexDirection="row" item xs={4} sm={4} md={4} justifyContent="center">
-              <UserContentArticle userNameAndArticles={userNameAndArticles} />
+              <EmployeeArticles userNameAndArticles={userNameAndArticles} />
           </Grid>
         );
       })}
-    </Grid>   
+    </Grid>
   );
 };
 
-export function UserContentTable ({ articles, itemsPerPage }) {
+export function ScheduledArticles ({ articles, itemsPerPage }) {
 
   const [currentArticles, setCurrentArticles] = useState(null);
   const [pageCount, setPageCount] = useState(0);

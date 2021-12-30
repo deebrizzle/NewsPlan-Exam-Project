@@ -1,6 +1,6 @@
 import React from "react";
-import ContentScheduleCalendarView from "./ContentScheduleCalendarView";
-import ContentScheduleListView from "./ContentScheduleListView";
+import ContentScheduleEmployees from "./ContentScheduleEmployees";
+import ContentScheduleArticles from "./ContentScheduleArticles";
 import Box from "@mui/material/Box";
 import { MyTabs, MyTab } from "./TabBar.styles";
 import Typography from "@mui/material/Typography";
@@ -47,10 +47,10 @@ function TabBar() {
         </MyTabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ContentScheduleCalendarView />
+        <ContentScheduleEmployees />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ContentScheduleListView />
+        <ContentScheduleArticles />
       </TabPanel>
     </Box>
   );

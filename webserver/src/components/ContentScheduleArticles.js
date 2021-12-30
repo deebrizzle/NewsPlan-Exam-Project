@@ -11,7 +11,7 @@ import { ContentContext } from "./ContentScheduleContext";
 import { useContext } from "react";
 
 
-export default function ContentScheduleListView() {
+export default function ContentScheduleArticles() {
 
   const {finishedArticles, setFinishedArticles, unfinishedArticles, setUnfinishedArticles, contentDate, setContentDate, sectionContent, setSectionContent, sourceContent, setSourceContent} = useContext(ContentContext);
 

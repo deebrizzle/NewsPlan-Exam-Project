@@ -14,8 +14,6 @@ export async function getFinishedArticles(date, setFinishedArticles) {
   query.find().then((finishedArticles) => {
     setFinishedArticles(finishedArticles)
   })
-  
-
 }
 
 export async function getUnfinishedArticles(date, setUnfinishedArticles) {
@@ -31,7 +29,6 @@ export async function getUnfinishedArticles(date, setUnfinishedArticles) {
   query.find().then((unfinishedArticles) => {
     setUnfinishedArticles(unfinishedArticles)
   })
-  
 }
 
 //TODO Sort all articles by user (ascending)
@@ -57,7 +54,6 @@ export function mapArticles(articles) {
       username: article.get("responsible").get("username"),
     };
   });
-
   return articlesInfo;
 }
 

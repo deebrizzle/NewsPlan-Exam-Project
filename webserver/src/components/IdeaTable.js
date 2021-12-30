@@ -3,14 +3,13 @@ import {ModalContext} from "./ModalContext"
 import { ConvertDateModal } from "./ConvertDate";
 import { getSection } from "../database/Sections";
 import { getUser } from "../database/Users";
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useContext} from "react";
 import { getIdeas } from "../database/Ideas.js";
 import { getUsers} from "../database/Users.js";
 import { getSections } from "../database/Sections.js";
 
-export default function Table() {
-  const { setSectionObject, setIdeaSourceObject, setIdeaId, open, setOpen, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection} = React.useContext(ModalContext)
-  const {listOfIdeas, setListOfIdeas} = React.useContext(ModalContext);
+export default function IdeaTable() {
+  const { setSectionObject, setIdeaSourceObject, setIdeaId, open, setOpen, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
 
   useEffect(() => {
     getUsers()
@@ -27,7 +26,7 @@ export default function Table() {
     { field: "description", headerName: "Description", minWidth: 350, flex: 3 },
   ]
   
-  function HandleRowClick(params) {
+  function handleRowClick(params) {
     let date = ConvertDateModal(params.row.expirationDate)
     setIdea(params.row.ideaName)
     setDescription(params.row.description)
@@ -37,7 +36,7 @@ export default function Table() {
     setIdeaSource(params.row.source)
     setIdeaId(params.row.ideaId)
 
-    
+  //TODO do we care about consolog catching errors?  
     getSection(params.row.section)
     .then((results) => {
       results.forEach((sectionObject) => {
@@ -68,7 +67,7 @@ export default function Table() {
   
   return(
         <div style={{ height: 420, width: "100%", flexGrow: 2, display: "flex" }}>
-          <MyDataGrid getRowId={(row) => row.id} rows={listOfIdeas} columns={columns} pageSize={20}  onRowClick={(e) => HandleRowClick(e)}/>
+          <MyDataGrid getRowId={(row) => row.id} rows={listOfIdeas} columns={columns} pageSize={20}  onRowClick={(e) => handleRowClick(e)}/>
         </div>
   );
 }
