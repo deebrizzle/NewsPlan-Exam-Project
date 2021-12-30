@@ -1,5 +1,5 @@
 import Parse from "parse";
-import { ConvertIfString, ConvertDateWithYear  } from "../components/convertDate";
+import { convertStringDateToDateObject, convertToMonthDayYearString  } from "../components/convertDate";
 
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
@@ -10,7 +10,7 @@ export async function getIdeas() {
   let ideas = results.map((row, index) => {
   return {
     id: index,
-    expirationDate: ConvertDateWithYear(String(row.attributes.expirationDate)),
+    expirationDate: convertToMonthDayYearString(String(row.attributes.expirationDate)),
     source: row.get("ideaSource").get("username"),
     ideaName: row.attributes.ideaName,
     description: row.attributes.description,
@@ -31,7 +31,7 @@ export async function uploadIdeaToDatabase(
   sectionObject,
   ideaId
 ) {
-  let formattedDate = ConvertIfString(date);
+  let formattedDate = convertStringDateToDateObject(date);
   var Idea = Parse.Object.extend("Ideas");
   var newIdea = new Idea();
 

@@ -14,7 +14,6 @@ import { Headline } from "./ContentSchedule.styles";
 function IdeaBank() {
   const {handleOpen, handleCallBack, modalShow, setModalShow } = React.useContext(ModalContext);
 
-
   return (
     <>
       <NavBar />

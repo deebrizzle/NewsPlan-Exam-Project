@@ -5,7 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { ConvertDate } from "./ConvertDate";
+import { convertToDayMonthString } from "./convertDate";
 import {
   StyledTableContainer,
   StyledTableCell,
@@ -48,7 +48,7 @@ const ArticleTable = ({ articles }) => {
             {filteredSectionSource?.map((row) => (
               <TableRow key={row.objectId}>
                 <TableCell>
-                  {ConvertDate(String(row.get("publishDate")))}
+                  {convertToDayMonthString(String(row.get("publishDate")))}
                 </TableCell>
                 <TableCell>
                     {row.get("headline")}

@@ -5,7 +5,7 @@ import CalendarPopup from "./CalendarPopup";
 import { useEffect, useState } from "react";
 import { getAllArticles, mapArticles } from "../database/Articles";
 import { getIdeas } from "../database/Ideas";
-import { groupBy } from "../database/groupBy";
+import { groupBy } from "../utils/groupBy";
 
 export default function ContentScheduleCalendarView() {
   const [articles, setArticles] = useState([]);
