@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 
-export const ContentContext = React.createContext();
+export const ContentContext = createContext();
 
 export const ContentProvider = ({ children }) => {
   const dateObj = new Date();

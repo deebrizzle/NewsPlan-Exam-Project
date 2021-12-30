@@ -1,6 +1,6 @@
 import Parse from "parse";
 
-export async function LogOut() {
+export async function logOut() {
   try {
     await Parse.User.logOut();
     return true;

@@ -2,11 +2,11 @@ import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
-import { useState, useContext } from "react";
-import { ModalContext } from "./ModalContext";
-import { ContentContext } from "./ContentScheduleContext";
+import { useContext } from "react";
+import { ModalContext } from "../ModalContext";
+import { ContentContext } from "../ContentSchedule/ContentScheduleContext";
 
-export default function CalendarPopup({ handleCallbackDate, label }) {
+export function SelectDate({ handleCallbackDate, label }) {
   //TODO Ask Bjørn what he means by comment:
   //Line 8 and 9 will run every time state updates, even if the resulting const date is not used.
   //You are unlikely to run into any problems doing it like this, but as an exercise to understand React components and general clean code,

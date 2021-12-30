@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
-import colors from "./colors";
+import colors from "../../colors";
 
 export const MyToolbar = styled(Toolbar)`
   && {

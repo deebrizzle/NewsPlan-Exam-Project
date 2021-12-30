@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Pagination, PaginationItem } from "@mui/material";
-import colors from "./colors";
+import colors from "../../colors";
 
 export const PaginationContainer = styled.div`
   display: "flex";

@@ -23,8 +23,7 @@ function EmployeeArticles ({ userNameAndArticles }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Typography variant="h6" component="h2" align="center">
-        {console.log(userNameAndArticles)}
-        {userNameAndArticles[0]}{" "}
+        {userNameAndArticles[0]}
       </Typography>
       <GridContainer rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <GridItem item xs={8} sm={4} md={4}>

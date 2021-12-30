@@ -1,11 +1,11 @@
-import React, { useState} from "react";
+import React, { useState, createContext} from "react";
 
-export const ModalContext = React.createContext();
+export const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
   const dateObj = new Date();
   const currDate = `${dateObj.getMonth()+1}, ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
   const handleClose = () => setOpen(false);

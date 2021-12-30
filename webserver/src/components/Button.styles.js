@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "@mui/material/Button";
-import colors from "./colors";
+import colors from "../colors";
 
 export const LoginButton = styled(Button)`
   && {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Tab, Tabs } from "@mui/material";
-import colors from "./colors";
+import colors from "../../colors";
 
 export const MyTabs = styled(Tabs)`
   &. MuiTabs-root {

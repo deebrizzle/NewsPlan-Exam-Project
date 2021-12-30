@@ -1,7 +1,7 @@
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navigation/NavBar";
 import { PageWrapper } from "./PageMargin.styles";
-import TabBar from "../components/TabBar";
-import { ContentProvider } from "../components/ContentScheduleContext";
+import TabBar from "../components/Navigation/TabBar";
+import { ContentProvider } from "../components/ContentSchedule/ContentScheduleContext"
 
 function ContentSchedule() {
   return (

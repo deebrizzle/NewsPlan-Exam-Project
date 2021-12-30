@@ -1,6 +1,6 @@
-import React from "react";
-import ContentScheduleEmployees from "./ContentScheduleEmployees";
-import ContentScheduleArticles from "./ContentScheduleArticles";
+import React, {useState} from "react";
+import ContentScheduleEmployees from "../ContentSchedule/ContentScheduleEmployees";
+import ContentScheduleArticles from "../ContentSchedule/ContentScheduleArticles";
 import Box from "@mui/material/Box";
 import { MyTabs, MyTab } from "./TabBar.styles";
 import Typography from "@mui/material/Typography";
@@ -19,7 +19,7 @@ function TabPanel(props) {
 }
 
 function TabBar() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

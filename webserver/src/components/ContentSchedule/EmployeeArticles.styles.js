@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Grid, Paper } from "@mui/material";
-import colors from "./colors"
+import colors from "../../colors"
 
 export const Item = styled(Paper)`
     color: ${colors.P1DarkPetroleum};

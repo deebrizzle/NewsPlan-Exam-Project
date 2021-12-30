@@ -61,6 +61,8 @@ export async function uploadIdeaToDatabase(
   }
 }
 
+
+//TODO Console log delete from Sara's review? Or show it to the user?
   export async function deleteHTTP(idea){
     try {
     await fetch(

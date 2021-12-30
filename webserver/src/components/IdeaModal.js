@@ -1,17 +1,21 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import {Stack, Box, Typography, Modal, Grid} from '@mui/material';
 import {SaveButton, CancelButton, DeleteButton } from "./Button.styles";
 import { IdeaBoxStyle } from './Idea.styles';
-import CalendarPopup from "./CalendarPopup";
-import { SelectArticles, SelectSection, SelectVisibilities, SelectSource } from "./SelectFields";
+import { SelectArticles } from './SelectFields/SelectArticles';
+import { SelectDate } from './SelectFields/SelectDate';
+import { SelectVisibilities } from './SelectFields/SelectVisibilities';
+import { SelectSource } from './SelectFields/SelectSource';
+import { SelectSection } from './SelectFields/SelectSection';
+
 import { DescriptionInput, IdeaInput } from './InputFields';
 import {ModalContext} from "./ModalContext"
 import { uploadIdeaToDatabase, deleteIdeaFromDatabaseREST } from "../database/Ideas";
 import { v4 as uuidv4 } from 'uuid';
-import {uploadIdeaToState, deleteIdeaFromState} from "./UpdateStates"
+import {uploadIdeaToState, deleteIdeaFromState} from "./updateStates"
 
 export default function IdeaModal() {
-  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, open, handleClose, handleCallBack, idea, description, visibility, date, section, ideaSource } = React.useContext(ModalContext);
+  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, open, handleClose, handleCallBack, idea, description, visibility, date, section, ideaSource } = useContext(ModalContext);
 
   async function handleDelete(){
     await deleteIdeaFromDatabaseREST(ideaId)
@@ -44,7 +48,7 @@ export default function IdeaModal() {
                 <Grid container spacing={3}>
                     {/* INPUT FIELDS */}
                     <Grid item xs={6}><IdeaInput /></Grid>
-                    <Grid item xs={6}><CalendarPopup handleCallbackDate={handleCallBack} /></Grid>
+                    <Grid item xs={6}><SelectDate handleCallbackDate={handleCallBack} /></Grid>
                     <Grid item xs={6}><SelectSection handleCallBackSelection={handleCallBack}/></Grid>
                     <Grid item xs={6}><SelectVisibilities handleCallBackSelection={handleCallBack}/></Grid>
                     <Grid item xs={6}><SelectSource handleCallBackSelection={handleCallBack}/></Grid>

@@ -1,12 +1,13 @@
 import { Box, Grid } from "@mui/material";
 import { ScheduledArticles } from "./ScheduledArticles";
-import { SelectSection, SelectSource } from "./SelectFields";
-import CalendarPopup from "./CalendarPopup";
+import { SelectSection } from "../SelectFields/SelectSection";
+import { SelectSource } from "../SelectFields/SelectSource";
+import { SelectDate } from "../SelectFields/SelectDate";
 import { useContext, useEffect } from "react";
-import { getAllArticles, mapArticles } from "../database/Articles";
-import { groupBy } from "../database/groupBy";
+import { getAllArticles, mapArticles } from "../../database/Articles";
+import { groupBy } from "../../utils/groupBy";
 import { ContentContext } from "./ContentScheduleContext";
-import GridSpacer from "./Gridspacer";
+import GridSpacer from "../Gridspacer";
 
 export default function ContentScheduleEmployees() {
 
@@ -28,7 +29,7 @@ export default function ContentScheduleEmployees() {
             <SelectSource xs={2} />
             <SelectSection xs={2} />
           <GridSpacer spacing={6} />
-            <CalendarPopup xs={2}/>
+            <SelectDate xs={2}/>
         </Grid>
         <ScheduledArticles articles={allArticles} itemsPerPage={6}/>
       </Box>

@@ -7,13 +7,9 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
-import {
-  StyledFormControlLabel,
-  StyledLink,
-  LoginWrapper,
-} from "./Login.styles";
+import { StyledFormControlLabel, StyledLink, LoginWrapper } from "./Login.styles";
 import Parse from "parse";
-import LabelledInput from "../components/LabelledInput";
+import LoginInputField from "../components/LoginInputField";
 
 //TODO This function should be refactored to remove fecthing from the database from this function
 export default function Login() {
@@ -42,13 +38,13 @@ export default function Login() {
         <CssBaseline />
         <img className="logo" src={logo} alt="Newsplan logo" />
         <Box component="form" sx={{ mt: 1 }}>
-          <LabelledInput
+          <LoginInputField
             label="Username"
             value={username}
             onChange={setUsername}
             error={loginError}
           />
-          <LabelledInput
+          <LoginInputField
             type="password"
             label="Password"
             value={password}

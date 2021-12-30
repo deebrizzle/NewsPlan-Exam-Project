@@ -5,14 +5,10 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { convertToDayMonthString } from "./convertDate";
-import {
-  StyledTableContainer,
-  StyledTableCell,
-  StyledAlertIcon,
-} from "./ArticleTable.styles";
-import { ContentContext } from "./ContentScheduleContext";
-import { articleFilterSection, articleFilterSource } from "../database/Articles";
+import { convertToDayMonthString } from "../convertDate";
+import { StyledTableContainer, StyledTableCell, StyledAlertIcon } from "./ArticleTable.styles";
+import { ContentContext } from "./ContentScheduleContext"
+import { articleFilterSection, articleFilterSource } from "../../database/Articles";
 
 function Notification({ status }) {
   if (status === "D") {
@@ -29,7 +25,6 @@ const ArticleTable = ({ articles }) => {
 
   return (
     <TableContainer>
-      {console.log(articles)}
       <StyledTableContainer>
         <Table
           stickyHeader={true}

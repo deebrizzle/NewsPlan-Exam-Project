@@ -3,11 +3,11 @@ import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import { MyToolbar, NavButton } from "./NavBar.styles";
 import Box from "@mui/material/Box";
-import logo from "../assets/Logo.png";
-import rahul from "../assets/rahul.png";
+import logo from "../../assets/Logo.png"
+import rahul from "../../assets/rahul.png";
 import { NavLink, Link } from "react-router-dom";
 import Parse from "parse";
-import { LogOut } from "./LogOut";
+import { logOut } from "../logOut";
 
 export default function NavBar() {
   const currentUser = Parse.User.current();
@@ -32,7 +32,7 @@ export default function NavBar() {
           <NavButton
             disableRipple
             component={NavLink}
-            onClick={() => LogOut()}
+            onClick={() => logOut()}
             to="/"
           >
             {currentUser.get("username")}

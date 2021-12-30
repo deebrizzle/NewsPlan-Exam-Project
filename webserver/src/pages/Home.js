@@ -1,6 +1,6 @@
 import logo from "../assets/Logo.png";
 import { HomeWrapper } from "./Home.styles";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navigation/NavBar";
 import Parse from "parse";
 
 export default function Home() {

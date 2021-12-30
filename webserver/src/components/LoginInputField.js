@@ -1,7 +1,8 @@
 import { StyledLabelledInput } from "../pages/Login.styles";
 import React from "react";
 
-export default function LabelledInput(props) {
+//TODO Rename to LoginInputField?
+export default function LoginInputField(props) {
   return (
     <StyledLabelledInput
       margin="normal"

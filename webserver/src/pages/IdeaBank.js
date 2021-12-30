@@ -1,15 +1,14 @@
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navigation/NavBar";
 import {Grid, Stack } from '@mui/material';
 import IdeaModal from "../components/IdeaModal";
 import React from "react";
 import Table from "../components/IdeaTable"
 import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
-import {SelectSection} from "../components/SelectFields";
-import CalendarPopup from "../components/CalendarPopup"
+import {SelectSection} from "../components/SelectFields/SelectSection";
+import {SelectDate} from "../components/SelectFields/SelectDate"
 import {StandardButton} from "../components/Button.styles"
 import {ModalContext} from "../components/ModalContext"
-import { Headline } from "./ContentSchedule.styles";
 
 function IdeaBank() {
   const {handleOpen, handleCallBack, modalShow, setModalShow } = React.useContext(ModalContext);
@@ -22,7 +21,7 @@ function IdeaBank() {
           {/* FIRST ROW - CALENDAR, SECTION*/}
           <Grid item xs={3}>
             {" "}
-            <CalendarPopup handleCallbackDate={handleCallBack} />{" "}
+            <SelectDate handleCallbackDate={handleCallBack} />{" "}
           </Grid>
           <Grid item xs={3}>
             {" "}

@@ -1,4 +1,4 @@
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navigation/NavBar";
 import { PageWrapper } from "./PageMargin.styles";
 
 function Calendar() {
