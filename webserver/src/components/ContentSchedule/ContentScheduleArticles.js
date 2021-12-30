@@ -13,7 +13,7 @@ import { useContext } from "react";
 
 export default function ContentScheduleArticles() {
 
-  const {finishedArticles, setFinishedArticles, unfinishedArticles, setUnfinishedArticles, contentDate, setContentDate, sectionContent, setSectionContent, sourceContent, setSourceContent} = useContext(ContentContext);
+  const {finishedArticles, setFinishedArticles, unfinishedArticles, setUnfinishedArticles, contentDate, sectionContent, sourceContent} = useContext(ContentContext);
 
     useEffect(() => {
       getIdeas()

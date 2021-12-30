@@ -3,8 +3,6 @@ import React, { useState, createContext } from "react";
 export const ContentContext = createContext();
 
 export const ContentProvider = ({ children }) => {
-  const dateObj = new Date();
-
   const [finishedArticles, setFinishedArticles] = useState();
   const [unfinishedArticles, setUnfinishedArticles] = useState();
   const [allArticles, setAllArticles] = useState();

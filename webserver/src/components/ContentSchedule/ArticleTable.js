@@ -40,18 +40,18 @@ const ArticleTable = ({ articles }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredSectionSource?.map((row) => (
-              <TableRow key={row.objectId}>
+            {filteredSectionSource?.map((articleRow) => (
+              <TableRow key={articleRow.id}>
                 <TableCell>
-                  {convertToDayMonthString(String(row.get("publishDate")))}
+                  {convertToDayMonthString(String(articleRow.get("publishDate")))}
                 </TableCell>
                 <TableCell>
-                    {row.get("headline")}
+                    {articleRow.get("headline")}
                 </TableCell>
-                <TableCell>{row.get("responsible").get("username")}</TableCell>
+                <TableCell>{articleRow.get("responsible").get("username")}</TableCell>
                 <TableCell>
-                  {row.get("status")}
-                  <Notification status={row.get("status")}></Notification>
+                  {articleRow.get("status")}
+                  <Notification status={articleRow.get("status")}></Notification>
                 </TableCell>
               </TableRow>
             ))}

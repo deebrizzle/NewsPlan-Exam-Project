@@ -7,10 +7,8 @@ import { ModalContext } from "../ModalContext";
 import { ContentContext } from "../ContentSchedule/ContentScheduleContext";
 
 export function SelectDate({ handleCallbackDate, label }) {
-  //TODO Ask Bjørn what he means by comment:
-  //Line 8 and 9 will run every time state updates, even if the resulting const date is not used.
-  //You are unlikely to run into any problems doing it like this, but as an exercise to understand React components and general clean code,
-  //you might consider putting it all inside the initial value. No shame in that.
+
+  // TODO Frida and Emma, your contexts are doing the same things and overriding eachother here!
   const { date, setDate } = useContext(ModalContext);
   const { contentDate, setContentDate} = useContext(ContentContext);
 

@@ -46,7 +46,7 @@ export async function getAllArticles(date) {
 export function mapArticles(articles) {
   const articlesInfo = articles.map((article) => {
     return {
-      articleId: article.get("objectId"),
+      objectId: article.id,
       ideaId: article.get("idea"),
       headline: article.get("headline"),
       status: article.get("status"),
