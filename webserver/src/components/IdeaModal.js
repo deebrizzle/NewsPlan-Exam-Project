@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Stack, Box, Typography, Modal, Grid,} from '@mui/material';
+import {Stack, Box, Typography, Modal, Grid} from '@mui/material';
 import {SaveButton, CancelButton, DeleteButton } from "./Button.styles";
 import { IdeaBoxStyle } from './Idea.styles';
 import CalendarPopup from "./CalendarPopup";
@@ -20,11 +20,11 @@ export default function IdeaModal() {
   }
 
   async function handleSave() {
-    var IdeaInputFields = [{idea, description, visibility, date, section, ideaSource, ideaId}];
+    const IdeaInputFields = [{idea, description, visibility, date, section, ideaSource, ideaId}];
     if (IdeaInputFields.every((ideaInput) => ideaInput === null || ideaInput === "")) {
       alert("Please fill out every field to save your idea.");
     } else {
-      let id = uuidv4();
+      const id = uuidv4();
       await uploadIdeaToDatabase(idea, description, visibility, date, ideaSourceObject, sectionObject, ideaId);
       uploadIdeaToState(listOfIdeas, IdeaInputFields, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas)
       handleClose();

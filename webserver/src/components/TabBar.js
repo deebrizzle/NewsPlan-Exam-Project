@@ -1,6 +1,6 @@
 import React from "react";
-import ContentScheduleCalendarView from "./ContentScheduleCalendarView";
-import ContentScheduleListView from "./ContentScheduleListView";
+import ContentScheduleEmployees from "./ContentScheduleEmployees";
+import ContentScheduleArticles from "./ContentScheduleArticles";
 import Box from "@mui/material/Box";
 import { MyTabs, MyTab } from "./TabBar.styles";
 import Typography from "@mui/material/Typography";
@@ -30,10 +30,10 @@ function TabBar() {
       <Box
         sx={{
           p: 0.8,
-          width: 250,
+          width: 220,
           border: "1px solid #94AFBC",
           borderRadius: 2,
-          marginLeft: "40%",
+          marginLeft: "40.4%",
         }}
         centered
       >
@@ -41,17 +41,16 @@ function TabBar() {
           value={value}
           onChange={handleChange}
           centered
-          textColor="primary"
         >
-          <MyTab label="Calendar View" />
-          <MyTab label="List View" />
+          <MyTab label="Employees" />
+          <MyTab label="Articles" />
         </MyTabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ContentScheduleCalendarView />
+        <ContentScheduleEmployees />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ContentScheduleListView />
+        <ContentScheduleArticles />
       </TabPanel>
     </Box>
   );

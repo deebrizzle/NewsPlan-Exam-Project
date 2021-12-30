@@ -1,6 +1,7 @@
-import { Grid, Box, Pagination } from "@mui/material";
-import UserContentArticle from "./UserContentArticle";
+import { Grid, Box } from "@mui/material";
+import EmployeeArticles from "./EmployeeArticles";
 import React, { useEffect, useState } from "react";
+import { PaginationContainer, StyledPagination } from "./ScheduledArticles.styles";
 
 export function PaginatedArticles ({ articles }) {
 
@@ -11,16 +12,16 @@ export function PaginatedArticles ({ articles }) {
     > 
       {articles.map((userNameAndArticles) => {
         return (
-          <Grid flexDirection="row" item xs={4} sm={4} md={4}>
-              <UserContentArticle userNameAndArticles={userNameAndArticles} />
+          <Grid flexDirection="row" item xs={4} sm={4} md={4} justifyContent="center">
+              <EmployeeArticles userNameAndArticles={userNameAndArticles} />
           </Grid>
         );
       })}
-    </Grid>   
+    </Grid>
   );
 };
 
-export function UserContentTable ({ articles, itemsPerPage }) {
+export function ScheduledArticles ({ articles, itemsPerPage }) {
 
   const [currentArticles, setCurrentArticles] = useState(null);
   const [pageCount, setPageCount] = useState(0);
@@ -48,16 +49,13 @@ export function UserContentTable ({ articles, itemsPerPage }) {
 
   else {
     return (
-
-        <Box>
-          <Pagination 
+        <PaginationContainer>            
+          <PaginatedArticles articles = {currentArticles} /> 
+          <StyledPagination 
             count={pageCount} 
-            variant="outlined"  
-            onChange={handlePageClick}/> 
-            
-            <PaginatedArticles articles = {currentArticles} /> 
-
-        </Box>
+            variant="outlined"
+            onChange={handlePageClick} /> 
+        </PaginationContainer>
       );
     };
 }
