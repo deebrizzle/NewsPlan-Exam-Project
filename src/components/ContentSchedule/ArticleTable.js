@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,6 +9,7 @@ import { convertToDayMonthString } from "../convertDate";
 import { StyledTableContainer, StyledTableCell, StyledAlertIcon } from "./ArticleTable.styles";
 import { ContentContext } from "./ContentScheduleContext"
 import { articleFilterSection, articleFilterSource } from "../../database/Articles";
+import { sortByString } from "../../utils/sortBy";
 
 function Notification({ status }) {
   if (status === "D") {
@@ -20,8 +21,20 @@ function Notification({ status }) {
 const ArticleTable = ({ articles }) => {
   const {sectionContent, sourceContent} = useContext(ContentContext);
 
-  const filteredSection = articleFilterSection(articles, sectionContent);
-  const filteredSectionSource = articleFilterSource(filteredSection, sourceContent);
+  const [filteredSection, setFilteredSection] = useState(articleFilterSection(articles, sectionContent));
+  const [filteredSectionSource, setFilteredSectionSource] = useState(articleFilterSource(filteredSection, sourceContent))
+
+  //TODO onClick does not re-render the table, thus articles remains unsorted. 
+  //TODO Add sorting graphic on Writer/Status TableCell OR add status filtering box for individual status sorts
+  const handleWriterCellClick = (e) => {
+    setFilteredSectionSource(sortByString(filteredSectionSource, "username"));
+    console.log(filteredSectionSource)
+  }
+
+  const handleStatusCellClick = (e) => {
+    setFilteredSectionSource(sortByString(filteredSectionSource, "status"));
+    console.log(filteredSectionSource)
+  }
 
   return (
     <TableContainer>
@@ -35,23 +48,23 @@ const ArticleTable = ({ articles }) => {
             <TableRow>
               <StyledTableCell>Date</StyledTableCell>
               <StyledTableCell>Headline</StyledTableCell>
-              <StyledTableCell>Writer</StyledTableCell>
-              <StyledTableCell>Status</StyledTableCell>
+              <StyledTableCell onClick={handleWriterCellClick}>Writer</StyledTableCell>
+              <StyledTableCell onClick={handleStatusCellClick}>Status</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {filteredSectionSource?.map((articleRow) => (
-              <TableRow key={articleRow.id}>
+              <TableRow key={articleRow.objectId}>
                 <TableCell>
-                  {convertToDayMonthString(String(articleRow.get("publishDate")))}
+                  {convertToDayMonthString(String(articleRow.publishDate))}
                 </TableCell>
                 <TableCell>
-                    {articleRow.get("headline")}
+                    {articleRow.headline}
                 </TableCell>
-                <TableCell>{articleRow.get("responsible").get("username")}</TableCell>
+                <TableCell>{articleRow.username}</TableCell>
                 <TableCell>
-                  {articleRow.get("status")}
-                  <Notification status={articleRow.get("status")}></Notification>
+                  {articleRow.status}
+                  <Notification status={articleRow.status}></Notification>
                 </TableCell>
               </TableRow>
             ))}

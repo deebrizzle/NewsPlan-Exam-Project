@@ -1,4 +1,5 @@
 import Parse from "parse";
+import { sortByString } from "../utils/sortBy";
 
 //TODO: Figure out function to fetch articles within next 24 hours? 7 days?
 export async function getFinishedArticles(date, setFinishedArticles) {
@@ -12,7 +13,7 @@ export async function getFinishedArticles(date, setFinishedArticles) {
   query.greaterThanOrEqualTo("publishDate", dateStart);
   query.lessThanOrEqualTo("publishDate", dateEnd);
   query.find().then((finishedArticles) => {
-    setFinishedArticles(finishedArticles)
+    setFinishedArticles(mapArticles(finishedArticles))
   })
 }
 
@@ -21,17 +22,15 @@ export async function getUnfinishedArticles(date, setUnfinishedArticles) {
   const query = new Parse.Query(Articles);
   query.include("responsible");
   query.notEqualTo("status", "F");
-  query.include(["idea.section"])
-  const dateStart = new Date(date.setHours(0, 0, 0, 0))
-  const dateEnd = new Date(date.setHours(23, 59, 59, 59))
+  query.include(["idea.section"]);
+  const dateStart = new Date(date.setHours(0, 0, 0, 0));
+  const dateEnd = new Date(date.setHours(23, 59, 59, 59));
   query.greaterThanOrEqualTo("publishDate", dateStart);
   query.lessThanOrEqualTo("publishDate", dateEnd);
   query.find().then((unfinishedArticles) => {
-    setUnfinishedArticles(unfinishedArticles)
+    setUnfinishedArticles(mapArticles(unfinishedArticles))
   })
 }
-
-//TODO Sort all articles by user (ascending)
 
 export async function getAllArticles(date) {
   const Articles = Parse.Object.extend("Articles");
@@ -54,7 +53,8 @@ export function mapArticles(articles) {
       username: article.get("responsible").get("username"),
     };
   });
-  return articlesInfo;
+
+  return sortByString(articlesInfo, "username");
 }
 
 export async function getArticleById(id) {
