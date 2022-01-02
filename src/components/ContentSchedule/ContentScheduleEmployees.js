@@ -13,7 +13,6 @@ export default function ContentScheduleEmployees() {
 
   const {allArticles, setAllArticles, contentDate, sourceContent, sectionContent} = useContext(ContentContext);
 
-  //Get all articles and they are grouped by username
   useEffect(() => {
     getAllArticles(contentDate).then((articles) => {
       setAllArticles(groupBy(mapArticles(articles), "username"));
@@ -26,12 +25,12 @@ export default function ContentScheduleEmployees() {
     return (
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-            <SelectSource xs={2} />
-            <SelectSection xs={2} />
-          <GridSpacer spacing={6} />
-            <SelectDate xs={2}/>
+          <Grid item xs={2}> <SelectSource /> </Grid>
+            <Grid item xs={2}> <SelectSection /> </Grid>
+            <GridSpacer spacing={6} />
+            <Grid item xs={2}> <SelectDate/> </Grid>
+            <ScheduledArticles articles={allArticles} itemsPerPage={6}/>
         </Grid>
-        <ScheduledArticles articles={allArticles} itemsPerPage={6}/>
       </Box>
     );
 }

@@ -26,6 +26,7 @@ const ArticleTable = ({ articles }) => {
 
   //TODO onClick does not re-render the table, thus articles remains unsorted. 
   //TODO Add sorting graphic on Writer/Status TableCell OR add status filtering box for individual status sorts
+  //TODO Remove console.log here
   const handleWriterCellClick = (e) => {
     setFilteredSectionSource(sortByString(filteredSectionSource, "username"));
     console.log(filteredSectionSource)
