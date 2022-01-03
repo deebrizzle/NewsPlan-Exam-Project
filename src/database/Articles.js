@@ -96,3 +96,11 @@ export function articleFilterSource(articles, source) {
     return filtered;
   }
 }
+
+//Cloud function
+export async function sectionsFromCloud(sectionString) {
+  const params =  { section: sectionString };
+  const count = await Parse.Cloud.run("numberOfSections", params);
+  console.log(params)
+  return count;
+}
