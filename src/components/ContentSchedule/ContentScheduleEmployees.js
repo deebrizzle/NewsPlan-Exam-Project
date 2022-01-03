@@ -7,7 +7,7 @@ import { useContext, useEffect } from "react";
 import { getAllArticles, mapArticles } from "../../database/Articles";
 import { groupBy } from "../../utils/groupBy";
 import { ContentContext } from "./ContentScheduleContext";
-import GridSpacer from "../GridSpacer";
+import GridSpacer from "../Gridspacer";
 
 export default function ContentScheduleEmployees() {
 
