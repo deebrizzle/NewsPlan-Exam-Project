@@ -7,7 +7,7 @@ import { SelectDate } from './SelectFields/SelectDate';
 import { SelectVisibilities } from './SelectFields/SelectVisibilities';
 import { SelectSource } from './SelectFields/SelectSource';
 import { SelectSection } from './SelectFields/SelectSection';
-
+import GridSpacer from "./Gridspacer"
 import { DescriptionInput, IdeaInput } from './InputFields';
 import {ModalContext} from "./ModalContext"
 import { uploadIdeaToDatabase, deleteIdeaFromDatabaseREST } from "../database/Ideas";
@@ -50,25 +50,25 @@ export default function IdeaModal({setOpen, open}) {
                 <Grid container spacing={3}>
                     {/* INPUT FIELDS */}
                     <Grid item xs={6}><IdeaInput /></Grid>
-                    <Grid item xs={6}><SelectDate handleCallbackDate={handleCallBack} /></Grid>
-                    <Grid item xs={6}><SelectSection handleCallBackSelection={handleCallBack}/></Grid>
-                    <Grid item xs={6}><SelectVisibilities handleCallBackSelection={handleCallBack}/></Grid>
-                    <Grid item xs={6}><SelectSource handleCallBackSelection={handleCallBack}/></Grid>
-                    <Grid item xs={6}><SelectArticles handleCallBackSelection={handleCallBack}/></Grid>
+                    <Grid item xs={6}><SelectDate/></Grid>
+                    <Grid item xs={6}><SelectSection/></Grid>
+                    <Grid item xs={6}><SelectVisibilities/></Grid>
+                    <Grid item xs={6}><SelectSource/></Grid>
+                    <Grid item xs={6}><SelectArticles/></Grid>
                     <Grid item xs={12}><DescriptionInput/></Grid>
                     {/* BUTTONS */}
-                    <Grid item xs={1}>
-                    <Stack spacing={3} direction ="row" justifyContent ="flex-start">
-                      <CancelButton onClick={handleClose}>Cancel</CancelButton>
-                      <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
-                    </Stack>
-                    </Grid>
-                    <Grid item xs={11}>
+                    <GridSpacer spacing={1}>
+                      <Stack spacing={3} direction ="row" justifyContent ="flex-start">
+                        <CancelButton onClick={handleClose}>Cancel</CancelButton>
+                        <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+                      </Stack>
+                    </GridSpacer>
+                    <GridSpacer spacing={11} >
                         <Stack spacing={3} direction ="row" justifyContent ="flex-end">
                             <CancelButton disabled>Convert to article</CancelButton>
                             <SaveButton onClick={handleSave}>Save</SaveButton>
                         </Stack>
-                    </Grid>
+                    </GridSpacer>
                 </Grid>
           </Box>
         </Modal>
