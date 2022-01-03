@@ -28,3 +28,4 @@ yarn-error.log*
 
 #macOS
 .DS_Store
+node_modules
