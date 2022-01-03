@@ -25,15 +25,21 @@ export default function IdeaModal({setOpen, open}) {
   }
 
   async function handleSave() {
-    const IdeaInputFields = [{idea, description, visibility, date, section, ideaSource, ideaId}];
-    if (IdeaInputFields.every((ideaInput) => ideaInput === null || ideaInput === "")) {
-      alert("Please fill out every field to save your idea.");
-    } else {
+    const ideaInputFields = [idea, description, visibility, section, ideaSource];
+    for (const element of ideaInputFields) {
+        if (element === null || element === ""){
+          alert("Please fill out every field to save your idea.");
+          console.log(element)
+          setOpen(true)
+          return false;
+        }
+      }
       const id = uuidv4();
       await uploadIdeaToDatabase(idea, description, visibility, date, ideaSourceObject, sectionObject, ideaId);
-      uploadIdeaToState(listOfIdeas, IdeaInputFields, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas)
+      uploadIdeaToState(listOfIdeas, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas)
       handleClose()
-    }
+    
+  
   }
   
     return (

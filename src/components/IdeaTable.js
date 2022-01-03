@@ -59,7 +59,6 @@ export default function IdeaTable({open, setOpen}) {
     });
 
     setOpen(true)
-    return open
   };
 
   //TODO Filtering already added in table automatically - remove search panel and add from MaterialUI Quick Filtering demo?
