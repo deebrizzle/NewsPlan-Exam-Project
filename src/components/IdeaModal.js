@@ -11,7 +11,6 @@ import { SelectSection } from './SelectFields/SelectSection';
 import { DescriptionInput, IdeaInput } from './InputFields';
 import {ModalContext} from "./ModalContext"
 import { uploadIdeaToDatabase, deleteIdeaFromDatabaseREST } from "../database/Ideas";
-import { v4 as uuidv4 } from 'uuid';
 import {uploadIdeaToState, deleteIdeaFromState} from "./updateStates"
 
 export default function IdeaModal({setOpen, open}) {
@@ -29,17 +28,13 @@ export default function IdeaModal({setOpen, open}) {
     for (const element of ideaInputFields) {
         if (element === null || element === ""){
           alert("Please fill out every field to save your idea.");
-          console.log(element)
           setOpen(true)
           return false;
         }
       }
-      const id = uuidv4();
       await uploadIdeaToDatabase(idea, description, visibility, date, ideaSourceObject, sectionObject, ideaId);
-      uploadIdeaToState(listOfIdeas, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas)
+      uploadIdeaToState(idea, description, visibility, section, ideaSource, ideaId, date, listOfIdeas, setListOfIdeas)
       handleClose()
-    
-  
   }
   
     return (
