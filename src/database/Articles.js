@@ -58,13 +58,22 @@ export function mapArticles(articles) {
 }
 
 export async function getArticleById(id) {
-  const Articles = Parse.Object.extend("Articles");
-  const query = new Parse.Query(Articles);
-  query.get(id).then((article) => {
-      return article
+    const Articles = Parse.Object.extend("Articles");
+    const query = new Parse.Query(Articles);
+    query.get(id).then((article) => {
+        return article
+    }
+    )
   }
-  )
-}
+
+  export async function getArticlesFromIdea(ideaObject) {
+    const Articles = Parse.Object.extend("Articles");
+    const query = new Parse.Query(Articles);
+    query.include("Idea")
+    query.equalTo("idea", ideaObject);
+    query.ascending("publishDate");
+    return await query.find();
+  }
 
 export function articleFilterSection(articles, section) {
   if (section === undefined) {

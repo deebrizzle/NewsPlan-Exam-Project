@@ -5,20 +5,6 @@ export const ModalContext = createContext();
 export const ModalProvider = ({ children }) => {
   const dateObj = new Date();
   const currDate = `${dateObj.getMonth()+1}, ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
-  const [open, setOpen] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
-
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => {
-    setIdea('')
-    setDescription('')
-    setVisibility('')
-    setDate(currDate)
-    setSection('')
-    setIdeaSource('')
-    setIdeaId('')
-    setOpen(true)
-  };
 
   const [idea, setIdea] = useState("");
   const [description, setDescription] = useState("");
@@ -27,6 +13,7 @@ export const ModalProvider = ({ children }) => {
   const [ideaSource, setIdeaSource] = useState("");
   const [ideaId, setIdeaId] = useState("");
   const [date, setDate] = useState(currDate);
+  const [articles, setArticles] = useState("")
   const [ideaSourceObject, setIdeaSourceObject] = useState([]);
   const [sectionObject, setSectionObject] = useState([]);
   const [listOfIdeas, setListOfIdeas] = useState([]);
@@ -38,12 +25,6 @@ export const ModalProvider = ({ children }) => {
       value={{
         listOfIdeas,
         setListOfIdeas,
-        open,
-        setOpen,
-        modalShow,
-        setModalShow,
-        handleOpen,
-        handleClose,
         handleCallBack,
         ideaId,
         setIdeaId,
@@ -59,6 +40,8 @@ export const ModalProvider = ({ children }) => {
         setDescription,
         date,
         setDate,
+        articles,
+        setArticles,
         sectionObject,
         setSectionObject,
         ideaSourceObject,
