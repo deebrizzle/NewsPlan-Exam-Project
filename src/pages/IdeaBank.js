@@ -53,13 +53,13 @@ function IdeaBank() {
               </Grid>
               <Grid item xs={2} justifyContent="flex-end"> 
                 <Stack direction ="row" justifyContent ="flex-end">
-                  <IdeaModal setOpen={setOpen} show={open} onHide={() => setOpen(false)}/> 
+                  <IdeaModal setOpen={setOpen} open={open} onHide={() => setOpen(false)}/> 
                 </Stack>
               </Grid>
 
           <Grid item xs={2} justifyContent="flex-end">
             <Stack direction="row" justifyContent="flex-end">
-              <IdeaModal setOpen={setOpen} open={open} show={open} onHide={() => setOpen(false)} />
+              <IdeaModal setOpen={setOpen} open={open} onHide={() => setOpen(false)} />
             </Stack>
           </Grid>
 
