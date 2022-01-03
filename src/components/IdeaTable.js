@@ -12,8 +12,6 @@ export default function IdeaTable({setOpen}) {
   const { setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
 
   useEffect(() => {
-    getUsers()
-    getSections();
     getIdeas().then((ideas) => {
       setListOfIdeas(ideas);
     });
@@ -35,7 +33,7 @@ export default function IdeaTable({setOpen}) {
     setSection(params.row.section)
     setIdeaSource(params.row.source)
     setIdeaId(params.row.ideaId)
-
+    
   //TODO do we care about consolog catching errors?  
     getSection(params.row.section)
     .then((results) => {
@@ -46,7 +44,6 @@ export default function IdeaTable({setOpen}) {
     .catch((error) => {
       console.log(error);
     });
-
 
     getUser(params.row.source)
     .then((results) => {
@@ -59,7 +56,7 @@ export default function IdeaTable({setOpen}) {
     });
 
     setOpen(true)
-  };
+  }
 
   //TODO Filtering already added in table automatically - remove search panel and add from MaterialUI Quick Filtering demo?
   //See https://mui.com/components/data-grid/filtering/ for above TODO

@@ -14,7 +14,7 @@ import { uploadIdeaToDatabase, deleteIdeaFromDatabaseREST } from "../database/Id
 import {uploadIdeaToState, deleteIdeaFromState} from "./updateStates"
 
 export default function IdeaModal({setOpen, open}) {
-  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, handleCallBack, idea, description, visibility, date, section, ideaSource } = useContext(ModalContext);
+  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource } = useContext(ModalContext);
   const handleClose = () => setOpen(false);
 
   async function handleDelete(){
