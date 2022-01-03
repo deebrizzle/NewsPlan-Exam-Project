@@ -29,13 +29,13 @@ export function ScheduledArticles ({ articles, itemsPerPage }) {
 
   useEffect(() => {
     const endOffset = articleOffset + itemsPerPage;
-    const arrayOfArticles = Object.entries(articles)
+    const arrayOfArticles = Object.entries(articles).sort();
     setCurrentArticles(arrayOfArticles.slice(articleOffset, endOffset));
     setPageCount(Math.ceil(arrayOfArticles.length / itemsPerPage));
   }, [articleOffset, articles, itemsPerPage]);
 
   const handlePageClick = (event, value) => {
-    const newIndex = (value * itemsPerPage) % Object.entries(articles).length;
+    const newIndex = ((value-1) * itemsPerPage) % Object.entries(articles).length;
     setArticleOffset(newIndex);
   };
 

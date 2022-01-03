@@ -14,25 +14,32 @@ import { uploadIdeaToDatabase, deleteIdeaFromDatabaseREST } from "../database/Id
 import { v4 as uuidv4 } from 'uuid';
 import {uploadIdeaToState, deleteIdeaFromState} from "./updateStates"
 
-export default function IdeaModal() {
-  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, open, handleClose, handleCallBack, idea, description, visibility, date, section, ideaSource } = useContext(ModalContext);
+export default function IdeaModal({setOpen, open}) {
+  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, handleCallBack, idea, description, visibility, date, section, ideaSource } = useContext(ModalContext);
+  const handleClose = () => setOpen(false);
 
   async function handleDelete(){
     await deleteIdeaFromDatabaseREST(ideaId)
     deleteIdeaFromState(ideaId, listOfIdeas, setListOfIdeas)
-    handleClose();
+    handleClose()
   }
 
   async function handleSave() {
-    const IdeaInputFields = [{idea, description, visibility, date, section, ideaSource, ideaId}];
-    if (IdeaInputFields.every((ideaInput) => ideaInput === null || ideaInput === "")) {
-      alert("Please fill out every field to save your idea.");
-    } else {
+    const ideaInputFields = [idea, description, visibility, section, ideaSource];
+    for (const element of ideaInputFields) {
+        if (element === null || element === ""){
+          alert("Please fill out every field to save your idea.");
+          console.log(element)
+          setOpen(true)
+          return false;
+        }
+      }
       const id = uuidv4();
       await uploadIdeaToDatabase(idea, description, visibility, date, ideaSourceObject, sectionObject, ideaId);
-      uploadIdeaToState(listOfIdeas, IdeaInputFields, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas)
-      handleClose();
-    }
+      uploadIdeaToState(listOfIdeas, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas)
+      handleClose()
+    
+  
   }
   
     return (

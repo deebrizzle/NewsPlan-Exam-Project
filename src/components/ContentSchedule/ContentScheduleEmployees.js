@@ -7,7 +7,7 @@ import { useContext, useEffect } from "react";
 import { getAllArticles, mapArticles } from "../../database/Articles";
 import { groupBy } from "../../utils/groupBy";
 import { ContentContext } from "./ContentScheduleContext";
-import GridSpacer from "../GridSpacer";
+import GridSpacer from "../Gridspacer";
 
 export default function ContentScheduleEmployees() {
 
@@ -27,11 +27,11 @@ export default function ContentScheduleEmployees() {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={2}> <SelectSource /> </Grid>
-          <Grid item xs={2}> <SelectSection /> </Grid>
-          <GridSpacer spacing={6} />
-          <Grid item xs={2}> <SelectDate /> </Grid>
+            <Grid item xs={2}> <SelectSection /> </Grid>
+            <GridSpacer spacing={6} />
+            <Grid item xs={2}> <SelectDate/> </Grid>
+            <ScheduledArticles articles={allArticles} itemsPerPage={6}/>
         </Grid>
-        <ScheduledArticles articles={allArticles} itemsPerPage={6}/>
       </Box>
     );
 }

@@ -1,6 +1,13 @@
 import Parse from "parse";
 import { convertStringDateToDateObject, convertToMonthDayYearString  } from "../components/convertDate";
 
+export async function getIdea(ideaId) {
+  const Ideas = Parse.Object.extend("Ideas");
+  const query = new Parse.Query(Ideas);
+  query.equalTo('objectId', ideaId);
+  return await query.find();
+}  
+
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
   const query = new Parse.Query(Ideas);
@@ -32,8 +39,8 @@ export async function uploadIdeaToDatabase(
   ideaId
 ) {
   let formattedDate = convertStringDateToDateObject(date);
-  var Idea = Parse.Object.extend("Ideas");
-  var newIdea = new Idea();
+  let Idea = Parse.Object.extend("Ideas");
+  let newIdea = new Idea();
 
   if (ideaId === "") {
     newIdea.set("ideaName", ideaName);

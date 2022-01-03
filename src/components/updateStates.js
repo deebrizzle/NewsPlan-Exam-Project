@@ -1,6 +1,6 @@
 import { convertToMonthDayYearString, convertStringDateToDateObject } from "./convertDate"
 
-export function uploadIdeaToState(listOfIdeas, IdeaInputFields, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas){
+export function uploadIdeaToState(listOfIdeas, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas){
 if(ideaId === ""){
   let dates = convertStringDateToDateObject(date)
   let IdeaInputFields = [{id, expirationDate: convertToMonthDayYearString(String(dates)), ideaName: idea, description, visibility, section, source: ideaSource, ideaId}];
