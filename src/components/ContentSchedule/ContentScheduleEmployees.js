@@ -7,13 +7,13 @@ import { useContext, useEffect } from "react";
 import { getAllArticles, mapArticles } from "../../database/Articles";
 import { groupBy } from "../../utils/groupBy";
 import { ContentContext } from "./ContentScheduleContext";
-import GridSpacer from "../Gridspacer";
+import GridSpacer from "../GridSpacer";
 
 export default function ContentScheduleEmployees() {
 
   const {allArticles, setAllArticles, contentDate, sourceContent, sectionContent} = useContext(ContentContext);
 
-  //Get all articles and they are grouped by username
+  //Get all articles from the database and then groups them by usernamse of journalists
   useEffect(() => {
     getAllArticles(contentDate).then((articles) => {
       setAllArticles(groupBy(mapArticles(articles), "username"));
@@ -26,10 +26,10 @@ export default function ContentScheduleEmployees() {
     return (
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-            <SelectSource xs={2} />
-            <SelectSection xs={2} />
+          <Grid item xs={2}> <SelectSource /> </Grid>
+          <Grid item xs={2}> <SelectSection /> </Grid>
           <GridSpacer spacing={6} />
-            <SelectDate xs={2}/>
+          <Grid item xs={2}> <SelectDate /> </Grid>
         </Grid>
         <ScheduledArticles articles={allArticles} itemsPerPage={6}/>
       </Box>
