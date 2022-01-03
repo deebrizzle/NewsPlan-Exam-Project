@@ -5,8 +5,8 @@
       {
         method: "GET",
         headers: {
-          "X-Parse-Application-Id": "sKHk8zPeX3rnU3xQ59fW7xfGlXSBKqZ5ji63zoNe",
-          "X-Parse-REST-API-Key": "nSfK55ozaXq4lDupY88SQJ42lki7xdFqe60ppdJB",
+          "X-Parse-Application-Id": process.env.REACT_APP_APPLICATION_KEY,
+          "X-Parse-REST-API-Key": process.env.REACT_APP_REST_API_KEY,
         },
       }
     );
