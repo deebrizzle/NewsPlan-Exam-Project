@@ -8,8 +8,8 @@ import { getIdeas } from "../database/Ideas.js";
 import { getUsers} from "../database/Users.js";
 import { getSections } from "../database/Sections.js";
 
-export default function IdeaTable() {
-  const { setSectionObject, setIdeaSourceObject, setIdeaId, open, setOpen, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
+export default function IdeaTable({open, setOpen}) {
+  const { setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
 
   useEffect(() => {
     getUsers()

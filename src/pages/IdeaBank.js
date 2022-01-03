@@ -1,7 +1,7 @@
 import NavBar from "../components/Navigation/NavBar";
 import {Grid, Stack } from '@mui/material';
 import IdeaModal from "../components/IdeaModal";
-import React from "react";
+import React, { useState} from "react";
 import Table from "../components/IdeaTable"
 import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
@@ -11,7 +11,20 @@ import {StandardButton} from "../components/Button.styles"
 import {ModalContext} from "../components/ModalContext"
 
 function IdeaBank() {
-  const {handleOpen, handleCallBack, modalShow, setModalShow } = React.useContext(ModalContext);
+  const {handleCallBack, setIdea, setDescription, setVisibility, setDate, setSection, setIdeaSource, setIdeaId} = React.useContext(ModalContext);
+  const [open, setOpen] = useState(false);
+  const dateObj = new Date();
+  const currDate = `${dateObj.getMonth()+1}, ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
+  const handleOpen = () => {
+    setIdea('')
+    setDescription('')
+    setVisibility('')
+    setDate(currDate)
+    setSection('')
+    setIdeaSource('')
+    setIdeaId('')
+    setOpen(true)
+  };
 
   return (
     <>
@@ -40,20 +53,20 @@ function IdeaBank() {
               </Grid>
               <Grid item xs={2} justifyContent="flex-end"> 
                 <Stack direction ="row" justifyContent ="flex-end">
-                  <IdeaModal show ={modalShow} onHide={() => setModalShow(false)}/> 
+                  <IdeaModal setOpen={setOpen} show={open} onHide={() => setOpen(false)}/> 
                 </Stack>
               </Grid>
 
           <Grid item xs={2} justifyContent="flex-end">
             <Stack direction="row" justifyContent="flex-end">
-              <IdeaModal show={modalShow} onHide={() => setModalShow(false)} />
+              <IdeaModal setOpen={setOpen} open={open} show={open} onHide={() => setOpen(false)} />
             </Stack>
           </Grid>
 
           {/* THIRD ROW - TABLE */}
           <Grid item xs={12}>
             {" "}
-            <Table />{" "}
+            <Table open={open} setOpen={setOpen}/>{" "}
           </Grid>
         </Grid>
       </PageWrapper>
