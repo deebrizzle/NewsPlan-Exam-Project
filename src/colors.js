@@ -24,7 +24,7 @@ const colors = {
     //Status colors
     Cancelled: '#db4646',
     Delayed: '#eeaaaa',
-    Finised: '#c1d9d2',
+    Finished: '#c1d9d2',
     Accepted: '#f9ed9f',
     Planned: '#f7f7f7',
 

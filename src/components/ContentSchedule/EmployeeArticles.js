@@ -9,7 +9,7 @@ function ArticleBox({ articles }) {
     <>
       {articles.map((article) => {
          return (
-          <Item key={article.objectId} sx={{ p: 1, margin: 'auto', flexGrow: 1, backgroundColor: {}}}>
+          <Item value={article.status} key={article.objectId} sx={{ p: 1, m: 'auto', flexGrow: 1 }}>
             {article.headline}
           </Item>
         );
