@@ -7,12 +7,13 @@ import { useContext, useEffect } from "react";
 import { getAllArticles, mapArticles } from "../../database/Articles";
 import { groupBy } from "../../utils/groupBy";
 import { ContentContext } from "./ContentScheduleContext";
-import GridSpacer from "../Gridspacer";
+import GridSpacer from "../GridSpacer";
 
 export default function ContentScheduleEmployees() {
 
   const {allArticles, setAllArticles, contentDate, sourceContent, sectionContent} = useContext(ContentContext);
 
+  //Get all articles from the database and then groups them by usernamse of journalists
   useEffect(() => {
     getAllArticles(contentDate).then((articles) => {
       setAllArticles(groupBy(mapArticles(articles), "username"));

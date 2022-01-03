@@ -30,6 +30,7 @@ const colors = {
 
     //General colors
     white: '#fff',
+    black: '#000',
 }
 
 export default colors;

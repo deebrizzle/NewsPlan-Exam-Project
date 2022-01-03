@@ -3,20 +3,15 @@ import { Grid, Paper } from "@mui/material";
 import colors from "../../colors"
 
 export const Item = styled(Paper)`
-    color: ${colors.P1DarkPetroleum};
-    background-color:  ${colors.G1GreyLight};
-    border: 1px solid ${colors.P1LightPetroleum};
-    box-sizing: border-box;
-    borderRadius: 8px;
+    color: ${colors.black};
     text-align: center;
     align-self: center;
+    margin: 5.5%;
 
   &. MuiPaper-root.MuiPaper-outlined {
-    border: 1px solid ${colors.P1GreyLightBlue};
     text-align: center;
     align-self: center;
   }
-
 `;
 
 export const GridContainer = styled(Grid)`

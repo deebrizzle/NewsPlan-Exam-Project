@@ -40,7 +40,6 @@ export default function ContentScheduleArticles() {
             {/* Third line: tables */}
             <Grid item xs={6}> <ArticleTable articles={finishedArticles}/> </Grid>
             <Grid item xs={6}> <ArticleTable articles={unfinishedArticles}/> </Grid>
-            <Grid></Grid>
         </Grid>
       </>
     );
