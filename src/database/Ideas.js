@@ -39,8 +39,8 @@ export async function uploadIdeaToDatabase(
   ideaId
 ) {
   let formattedDate = convertStringDateToDateObject(date);
-  var Idea = Parse.Object.extend("Ideas");
-  var newIdea = new Idea();
+  let Idea = Parse.Object.extend("Ideas");
+  let newIdea = new Idea();
 
   if (ideaId === "") {
     newIdea.set("ideaName", ideaName);

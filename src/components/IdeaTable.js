@@ -8,7 +8,7 @@ import { getIdeas } from "../database/Ideas.js";
 import { getUsers} from "../database/Users.js";
 import { getSections } from "../database/Sections.js";
 
-export default function IdeaTable({open, setOpen}) {
+export default function IdeaTable({setOpen}) {
   const { setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function IdeaTable({open, setOpen}) {
   
   return(
         <div style={{ height: 420, width: "100%", flexGrow: 2, display: "flex" }}>
-          <MyDataGrid getRowId={(row) => row.id} rows={listOfIdeas} columns={columns} pageSize={20}  onRowClick={(e) => handleRowClick(e)}/>
+          <MyDataGrid getRowId={(row) => row.id} rows={listOfIdeas} columns={columns} rowsPerPageOptions={[20]} pageSize={20} onRowClick={(e) => handleRowClick(e)}/>
         </div>
   );
 }
