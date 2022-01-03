@@ -34,6 +34,7 @@ function TabBar() {
           border: "1px solid #94AFBC",
           borderRadius: 2,
           marginLeft: "40.4%",
+          marginBottom: "1.7%"
         }}
         centered
       >

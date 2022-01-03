@@ -13,6 +13,7 @@ export default function ContentScheduleEmployees() {
 
   const {allArticles, setAllArticles, contentDate, sourceContent, sectionContent} = useContext(ContentContext);
 
+  //Get all articles from the database and then groups them by usernamse of journalists
   useEffect(() => {
     getAllArticles(contentDate).then((articles) => {
       setAllArticles(groupBy(mapArticles(articles), "username"));
