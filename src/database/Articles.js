@@ -1,4 +1,5 @@
 import Parse from "parse";
+import {getCommentsFromArticle} from "./Comments"
 
 //TODO: Figure out function to fetch articles within next 24 hours? 7 days?
 export async function getFinishedArticles(date, setFinishedArticles) {
@@ -95,4 +96,36 @@ export function articleFilterSource(articles, source) {
     );
     return filtered;
   }
+}
+
+export async function getAllArticlesByResponsible(userId) {
+  const Articles = Parse.Object.extend("Articles");
+  const query = new Parse.Query(Articles);
+  const results = await query.find();
+  let articles = results.map((row, index) => {
+    return {
+      id: index,
+      createdAt: row.createdAt,
+      objectId: row.id,
+      responsible: row.attributes.responsible.id,
+      headline: row.attributes.headline,
+    };
+  });
+  const filtered = articles.filter(e => e.responsible === userId);
+  return filtered
+}
+
+export async function allCommentsToArticleResponsible(userId){
+const allArticles = await getAllArticlesByResponsible(userId);
+let commentsForResponsible = [];
+for (let index = 0; index < allArticles.length; index++) {
+  const articleId = allArticles[index].objectId;
+  const headline = allArticles[index].headline
+  const commentsOnArticle = await getCommentsFromArticle(articleId)
+  commentsOnArticle.forEach(element => {
+    element.headline = headline
+  });
+  commentsForResponsible.push(commentsOnArticle);
+}
+return commentsForResponsible
 }

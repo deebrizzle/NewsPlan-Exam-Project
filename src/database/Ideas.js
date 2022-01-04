@@ -14,17 +14,17 @@ export async function getIdeas() {
   query.includeAll();
   const results = await query.find();
   let ideas = results.map((row, index) => {
-  return {
-    id: index,
-    expirationDate: convertToMonthDayYearString(String(row.attributes.expirationDate)),
-    source: row.get("ideaSource").get("username"),
-    ideaName: row.attributes.ideaName,
-    description: row.attributes.description,
-    ideaId: row.id,
-    section: row.get("section").get("name"),
-    visibility: row.attributes.visibility,
-  };
-});
+    return {
+      id: index,
+      expirationDate: convertToMonthDayYearString(String(row.attributes.expirationDate)),
+      source: row.get("ideaSource").get("username"),
+      ideaName: row.attributes.ideaName,
+      description: row.attributes.description,
+      ideaId: row.id,
+      section: row.get("section").get("name"),
+      visibility: row.attributes.visibility,
+    };
+  });
   return ideas
 }
 

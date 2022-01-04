@@ -1,6 +1,6 @@
   export async function getCommentsHTTP(query){
     let filterString = "?where=" + encodeURIComponent(JSON.stringify(query));
-    const users = await fetch(
+    const comments = await fetch(
       "https://parseapi.back4app.com/classes/Comments/" + filterString,
       {
         method: "GET",
@@ -10,7 +10,17 @@
         },
       }
     );
-    return await users.json();
+    const results = await comments.json();
+    const allComments = results.results
+    let comment = allComments.map((row, index) => {
+      return {
+        id: index,
+        createdAt: row.createdAt,
+        article: row.article.objectId,
+        message: row.message,
+      };
+    });
+    return comment
   }
 
   export async function getCommentsFromArticle(articleId) {
