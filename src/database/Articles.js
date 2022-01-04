@@ -101,7 +101,5 @@ export function articleFilterSource(articles, source) {
 export async function visibilityFromCloud(visibilityString) {
   const params =  { visibility: visibilityString };
   const count = await Parse.Cloud.run("visibility", params);
-  console.log(params)
-  console.log(count)
   return count;
 }

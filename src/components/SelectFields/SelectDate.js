@@ -10,7 +10,7 @@ export function SelectDate({ handleCallbackDate, label }) {
 
   // TODO Frida and Emma, your contexts are doing the same things and overriding eachother here!
   const { date, setDate } = useContext(ModalContext);
-  const { contentDate, setContentDate} = useContext(ContentContext);
+  const { setContentDate} = useContext(ContentContext);
 
   //calendar is only set to the modal context - cannto use in ContentContext
   function formatDate(day) {
@@ -20,7 +20,7 @@ export function SelectDate({ handleCallbackDate, label }) {
   const handleChange = (newDate) => {
     setDate(formatDate(newDate));
     //handleCallbackDate(formatDate(newDate))
-    setContentDate(newDate)
+    setContentDate(formatDate(newDate))
   }
 
   return (
@@ -29,7 +29,7 @@ export function SelectDate({ handleCallbackDate, label }) {
       <DesktopDatePicker
         label={label}
         inputFormat="MM/dd/yyyy"
-        value={contentDate}
+        value={date}
         onChange={handleChange}
         renderInput={(params) => <TextField {...params} fullWidth />}
       />
