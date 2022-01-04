@@ -1,5 +1,6 @@
 import Parse from "parse";
 import { sortByString } from "../utils/sortBy";
+import {convertToDayMonthString} from "../components/convertDate"
 
 //TODO: Figure out function to fetch articles within next 24 hours? 7 days?
 export async function getFinishedArticles(date, setFinishedArticles) {
@@ -50,6 +51,7 @@ export function mapArticles(articles) {
       headline: article.get("headline"),
       status: article.get("status"),
       publishDate: article.get("publishDate"),
+      dayMonthDate: convertToDayMonthString(article.get("publishDate").toString()),
       username: article.get("responsible").get("username"),
     };
   });
