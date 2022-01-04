@@ -3,13 +3,14 @@ import {ModalContext} from "./ModalContext"
 import { convertDateModal } from "./convertDate";
 import { getSection } from "../database/Sections";
 import { getUser } from "../database/Users";
-import React, { useEffect, useContext} from "react";
+import React, { useEffect, useContext, useState} from "react";
 import { getIdeas } from "../database/Ideas.js";
 import { getUsers} from "../database/Users.js";
 import { getSections } from "../database/Sections.js";
 
 export default function IdeaTable({setOpen}) {
   const { setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
+  const [cloudData, setCloudData] = useState();
 
   useEffect(() => {
     getUsers()
@@ -17,6 +18,7 @@ export default function IdeaTable({setOpen}) {
     getIdeas().then((ideas) => {
       setListOfIdeas(ideas);
     });
+
   }, [])
 
   const columns = [

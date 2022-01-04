@@ -13,6 +13,7 @@ export async function getIdeas() {
   const query = new Parse.Query(Ideas);
   query.include("Section")
   query.include("User")
+  query.limit(1000);
   const results = await query.find();
   let ideas = results.map((row, index) => {
   return {
@@ -93,4 +94,12 @@ export async function deleteIdeaFromDatabaseREST(ideaId) {
     objectId: [ideaId],
   };
   return await deleteHTTP(idea);
+}
+
+
+//Cloud function
+export async function visibilityFromCloud(visibilityString) {
+  const params =  { visibility: visibilityString };
+  const count = await Parse.Cloud.run("visibility", params);
+  return count;
 }

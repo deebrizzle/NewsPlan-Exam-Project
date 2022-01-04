@@ -97,9 +97,11 @@ export function articleFilterSource(articles, source) {
   }
 }
 
-//Cloud function
-export async function visibilityFromCloud(visibilityString) {
-  const params =  { visibility: visibilityString };
-  const count = await Parse.Cloud.run("visibility", params);
-  return count;
+//cloud
+export async function workLoadSummarizer(usernameString, dateObj) {
+  const params =  { initials: usernameString, date: dateObj };
+  console.log(params);
+  const sum = await Parse.Cloud.run("workloadForOne", params);
+  console.log(sum)
+  return sum;
 }
