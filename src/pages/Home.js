@@ -3,8 +3,6 @@ import { HomeWrapper } from "./Home.styles";
 import NavBar from "../components/Navigation/NavBar";
 import Parse from "parse";
 import React from "react";
-import DialogComments from "../components/DialogComments";
-
 export default function Home() {
 const currentUser = Parse.User.current();
   return (
@@ -19,7 +17,6 @@ const currentUser = Parse.User.current();
           The premium publication management software for newspapers, magazines
           and prints.
         </p>
-        <DialogComments/>
       </HomeWrapper>
     </>
   );

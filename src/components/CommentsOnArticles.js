@@ -30,7 +30,6 @@ let listOfComments = allComments.map((row, index) => {
         headline: row.headline,
     };
   });
-
 return listOfComments;
 }
 
