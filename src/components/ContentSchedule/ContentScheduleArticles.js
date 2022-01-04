@@ -23,7 +23,7 @@ export default function ContentScheduleArticles() {
 
     }, [contentDate, sectionContent, sourceContent]);
 
-  if (finishedArticles === undefined && unfinishedArticles === undefined) {
+  if (finishedArticles === undefined || unfinishedArticles === undefined ) {
     return <p>Loading...</p>
   } else 
     return (
