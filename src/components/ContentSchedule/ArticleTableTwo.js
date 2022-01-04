@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { MyDataGrid } from "../IdeaTable.styles";
 import { ContentContext } from "./ContentScheduleContext";
-import { convertDateModal, convertToDayMonthString } from "../convertDate";
+import { convertDateModal, convertToDayMonthString, convertToMonthDayYearString } from "../convertDate";
 import { articleFilterSection, articleFilterSource } from "../../database/Articles";
+import { StyledAlertIcon } from "./ArticleTable.styles";
 
 export default function ArticleTableTwo({articles}) {
   const {sectionContent, sourceContent} = useContext(ContentContext);
@@ -11,19 +12,30 @@ export default function ArticleTableTwo({articles}) {
   const filteredSectionSource = articleFilterSource(filteredSection, sourceContent)
 
   const columns = [
-    { field: "publishDate", headerName: "Deadline", minWidth: 150, flex: 1 },
-    { field: "username", headerName: "Source", minWidth: 150, flex: 1 },
-    { field: "headline", headerName: "Headline", minWidth: 250, flex: 2 },
-    { field: "status", headerName: "Status", minWidth: 350, flex: 3 },
-  ]
-
-  console.log(filteredSectionSource)
+    { field: "dayMonthDate", headerName: "Deadline", minWidth: 100 },
+    { field: "username", headerName: "Source", minWidth: 100  },
+    { field: "headline", headerName: "Headline", width: 250, flex: 3 },
+    { field: "status", headerName: "Status", minWidth: 150, },
+    {
+      field: 'notification',
+      headerName: '',
+      description: 'This column has a value getter and is not sortable.',
+      sortable: false,
+      width: 75,
+      renderCell: (params) => {
+        console.log(params)
+        if (params.row.status === "D") {
+          return <StyledAlertIcon/>
+        }
+      }
+    }
+   ]
 
   function handleRowClick (e) {}
   
   return(
         <div style={{ height: 420, width: "100%", flexGrow: 2, display: "flex" }}>
-          <MyDataGrid getRowId={(row) => row.id} rows={[]} columns={columns} rowsPerPageOptions={[20]} pageSize={20} onRowClick={(e) => handleRowClick(e)}/>
+          <MyDataGrid getRowId={(row) => row.objectId} rows={filteredSectionSource} columns={columns} rowsPerPageOptions={[20]} pageSize={20} onRowClick={(e) => handleRowClick(e)}/>
         </div>
   );
 }

@@ -10,6 +10,7 @@ import {StandardButton} from "../Button.styles";
 import { getSections } from "../../database/Sections";
 import { ContentContext } from "./ContentScheduleContext";
 import { useContext } from "react";
+import ArticleTableTwo from "./ArticleTableTwo";
 
 export default function ContentScheduleArticles() {
 
@@ -38,8 +39,8 @@ export default function ContentScheduleArticles() {
             <Grid item xs={6}><h6>Finished Articles</h6></Grid>
             <Grid item xs={6}> <h6>Unfinished Articles</h6></Grid>
             {/* Third line: tables */}
-            <Grid item xs={6}> <ArticleTable articles={finishedArticles}/> </Grid>
-            <Grid item xs={6}> <ArticleTable articles={unfinishedArticles}/> </Grid>
+            <Grid item xs={6}> <ArticleTableTwo articles={finishedArticles}/> </Grid>
+            <Grid item xs={6}> <ArticleTableTwo articles={unfinishedArticles}/> </Grid>
         </Grid>
       </>
     );
