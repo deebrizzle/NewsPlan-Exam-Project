@@ -57,18 +57,18 @@ export default function IdeaModal({setOpen, open}) {
                     <Grid item xs={6}><SelectArticles/></Grid>
                     <Grid item xs={12}><DescriptionInput/></Grid>
                     {/* BUTTONS */}
-                    <GridSpacer spacing={1}>
+                    <Grid item xs={1}>
                       <Stack spacing={3} direction ="row" justifyContent ="flex-start">
                         <CancelButton onClick={handleClose}>Cancel</CancelButton>
                         <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
                       </Stack>
-                    </GridSpacer>
-                    <GridSpacer spacing={11} >
+                    </Grid>
+                    <Grid item xs={11} >
                         <Stack spacing={3} direction ="row" justifyContent ="flex-end">
                             <CancelButton disabled>Convert to article</CancelButton>
                             <SaveButton onClick={handleSave}>Save</SaveButton>
                         </Stack>
-                    </GridSpacer>
+                    </Grid>
                 </Grid>
           </Box>
         </Modal>
