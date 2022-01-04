@@ -2,7 +2,7 @@ import NavBar from "../components/Navigation/NavBar";
 import {Grid, Stack } from '@mui/material';
 import IdeaModal from "../components/IdeaModal";
 import React, { useState} from "react";
-import Table from "../components/IdeaTable"
+import IdeaTable from "../components/IdeaTable"
 import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
 import {SelectSection} from "../components/SelectFields/SelectSection";
@@ -33,12 +33,10 @@ function IdeaBank() {
         <Grid container spacing={3}>
           {/* FIRST ROW - CALENDAR, SECTION*/}
           <Grid item xs={3}>
-            {" "}
-            <SelectDate handleCallbackDate={handleCallBack} />{" "}
+            <SelectDate handleCallbackDate={handleCallBack} />
           </Grid>
           <Grid item xs={3}>
-            {" "}
-            <SelectSection handleCallBackSelection={handleCallBack} />{" "}
+            <SelectSection handleCallBackSelection={handleCallBack} />
           </Grid>
           <Grid item xs={6} />
               {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
@@ -57,6 +55,7 @@ function IdeaBank() {
                 </Stack>
               </Grid>
 
+          {/* TODO redudant code? */}
           <Grid item xs={2} justifyContent="flex-end">
             <Stack direction="row" justifyContent="flex-end">
               <IdeaModal setOpen={setOpen} open={open} onHide={() => setOpen(false)} />
@@ -65,8 +64,7 @@ function IdeaBank() {
 
           {/* THIRD ROW - TABLE */}
           <Grid item xs={12}>
-            {" "}
-            <Table open={open} setOpen={setOpen}/>{" "}
+            <IdeaTable open={open} setOpen={setOpen}/>
           </Grid>
         </Grid>
       </PageWrapper>
