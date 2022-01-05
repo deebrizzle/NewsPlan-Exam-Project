@@ -11,7 +11,7 @@ import {StandardButton} from "../components/Button.styles"
 import {ModalContext} from "../components/ModalContext"
 
 function IdeaBank() {
-  const {handleCallBack, setIdea, setDescription, setVisibility, setDate, setSection, setIdeaSource, setIdeaId} = useContext(ModalContext);
+  const {setIdea, setDescription, setVisibility, setDate, setSection, setIdeaSource, setIdeaId} = useContext(ModalContext);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const todaysDate = new Date();
@@ -39,10 +39,10 @@ function IdeaBank() {
         <Grid container spacing={3}>
           {/* FIRST ROW - CALENDAR, SECTION*/}
           <Grid item xs={3}>
-            <SelectDate handleCallbackDate={handleCallBack} />
+            <SelectDate/>
           </Grid>
           <Grid item xs={3}>
-            <SelectSection handleCallBackSelection={handleCallBack} />
+            <SelectSection/>
           </Grid>
           <Grid item xs={6} />
               {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
@@ -60,14 +60,6 @@ function IdeaBank() {
                   <IdeaModal setOpen={setOpen} open={open} onHide={() => setOpen(false)}/> 
                 </Stack>
               </Grid>
-
-          {/* TODO redudant code? */}
-          <Grid item xs={2} justifyContent="flex-end">
-            <Stack direction="row" justifyContent="flex-end">
-              <IdeaModal setOpen={setOpen} open={open} onHide={() => setOpen(false)} />
-            </Stack>
-          </Grid>
-
           {/* THIRD ROW - TABLE */}
           <Grid item xs={12}>
             <IdeaTable open={open} setOpen={setOpen} search={search}/>

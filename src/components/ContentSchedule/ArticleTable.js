@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { MyDataGrid } from "../IdeaTable.styles";
 import { ContentContext } from "./ContentScheduleContext";
-import { convertDateModal, convertToDayMonthString, convertToMonthDayYearString } from "../convertDate";
 import { articleFilterSection, articleFilterSource } from "../../database/Articles";
 import { StyledAlertIcon } from "./ArticleTable.styles";
 

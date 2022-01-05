@@ -10,8 +10,6 @@ export const ContentProvider = ({ children }) => {
   const [sectionContent, setSectionContent] = useState();
   const [sourceContent, setSourceContent] = useState();
 
-  const handleCallBack = () => {};
-
   return (
     <ContentContext.Provider
       value={{
@@ -27,7 +25,6 @@ export const ContentProvider = ({ children }) => {
         setSectionContent,
         sourceContent,
         setSourceContent,
-        handleCallBack
       }}
     >
       {children}

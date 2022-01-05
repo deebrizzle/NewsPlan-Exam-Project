@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import { MyToolbar, NavButton } from "./NavBar.styles";
@@ -8,8 +8,6 @@ import rahul from "../../assets/rahul.png";
 import { NavLink, Link } from "react-router-dom";
 import Parse from "parse";
 import UserDrawer from "../UserDrawer";
-import { logOut } from "../logOut";
-import {useContext} from "react";
 import {ModalContext} from "../../components/ModalContext";
 
 export default function NavBar() {

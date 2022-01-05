@@ -15,14 +15,11 @@ export const ModalProvider = ({ children }) => {
   const [sectionObject, setSectionObject] = useState([]);
   const [listOfIdeas, setListOfIdeas] = useState([]);
 
-  const handleCallBack = () => {};
-
   return (
     <ModalContext.Provider
       value={{
         listOfIdeas,
         setListOfIdeas,
-        handleCallBack,
         ideaId,
         setIdeaId,
         ideaSource,

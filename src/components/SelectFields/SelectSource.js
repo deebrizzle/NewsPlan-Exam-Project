@@ -4,7 +4,7 @@ import { getUsers, getUser } from "../../database/Users";
 import { ModalContext } from "../ModalContext";
 import { ContentContext } from "../ContentSchedule/ContentScheduleContext";
 
-export function SelectSource({ handleCallBackSelection }) {
+export function SelectSource() {
     const { setIdeaSource, ideaSource, setIdeaSourceObject } =
       useContext(ModalContext);
   
@@ -17,12 +17,9 @@ export function SelectSource({ handleCallBackSelection }) {
       });
     }, []);
   
-    //TODO Error handling console.logs? Delete?
-  
     const handleChange = async (event) => {
       setIdeaSource(event.target.value);
       setSourceContent(event.target.value);
-      //handleCallBackSelection(ideaSource);
       getUser(event.target.value)
         .then((results) => {
           results.forEach((userObject) => {
@@ -48,7 +45,6 @@ export function SelectSource({ handleCallBackSelection }) {
         value={ideaSource}
         arrayOfOptions={sources}
         label="Source"
-        handleCallBackSelection={handleCallBackSelection}
       />
     );
   }

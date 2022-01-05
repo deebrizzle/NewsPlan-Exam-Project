@@ -1,13 +1,12 @@
 import BasicSelect from "./BasicSelect";
 
-export function SelectArticles({ handleCallBackSelection }) {
+export function SelectArticles() {
     const articles = [];
     return (
       <BasicSelect
         label="Articles"
         value={articles}
         arrayOfOptions={articles}
-        handleCallBackSelection={handleCallBackSelection}
       />
     );
   }
