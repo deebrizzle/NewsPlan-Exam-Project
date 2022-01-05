@@ -5,7 +5,7 @@ import React, {useEffect, useState} from 'react'
 import { getIdea } from "../database/Ideas";
 import Loading from "../components/Loading";
 import {Stack, Grid} from '@mui/material';
-import {StandardButton, ReturnButton, PlanButton } from '../components/Button.styles'
+import {StandardButton, ReturnButton } from '../components/Button.styles'
 import { DescriptionInput, HeadlineInput } from '../components/InputFields';
 import { SelectDate } from '../components/SelectFields/SelectDate'
 import { SelectSection } from '../components/SelectFields/SelectSection'
