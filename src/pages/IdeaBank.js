@@ -26,6 +26,12 @@ function IdeaBank() {
     setOpen(true)
   };
 
+  const handleReset = () => {
+    setDate(todaysDate)
+    setSection('')
+    setSearch('')
+  };
+
   return (
     <>
       <NavBar />
@@ -44,7 +50,7 @@ function IdeaBank() {
                 <SearchInput search={search} setSearch={setSearch}/> 
                 </Grid>
               <Grid item xs={4}> 
-                <StandardButton> Search </StandardButton> 
+                <StandardButton onClick={handleReset}> Reset </StandardButton> 
               </Grid>
               <Grid item xs={2} display="flex" justifyContent="flex-end" alignSelf="flex-end"> 
                 <StandardButton onClick={handleOpen}>Add Idea</StandardButton>
