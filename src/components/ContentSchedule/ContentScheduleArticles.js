@@ -14,7 +14,7 @@ import { ModalContext } from "../ModalContext";
 export default function ContentScheduleArticles() {
   const [finishedArticles, setFinishedArticles] = useState();
   const [unfinishedArticles, setUnfinishedArticles] = useState();
-  const {setSection, section, setIdeaSource, date, setDate, ideaSource, resetContext} = useContext(ModalContext);
+  const {section, date, ideaSource, resetContext} = useContext(ModalContext);
 
     useEffect(() => {
       getIdeas()

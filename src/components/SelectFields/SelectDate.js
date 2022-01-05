@@ -8,10 +8,6 @@ import { ModalContext } from "../ModalContext";
 export function SelectDate({label }) {
   const { date, setDate } = useContext(ModalContext);
 
-  function formatDate(day) {
-    const formattedDay = new Date(day.setHours(0,0,0,0));
-    return formattedDay
-  }
   const handleChange = (newDate) => {
     setDate(newDate);
   }

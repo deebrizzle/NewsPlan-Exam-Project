@@ -12,7 +12,7 @@ import { ModalContext } from "../ModalContext";
 import {StandardButton} from "../Button.styles";
 
 export default function ContentScheduleEmployees() {
-  const {setSection, section, setIdeaSource, date, setDate, ideaSource, resetContext} = useContext(ModalContext);
+  const {section, date, ideaSource, resetContext} = useContext(ModalContext);
   const [allArticles, setAllArticles] = useState();
   const [filteredArticles, setFilteredArticles] = useState();
 

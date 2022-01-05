@@ -15,6 +15,7 @@ export default function IdeaTable({setOpen, search}) {
     });
   }, [])
 
+  
   const filteredSection = ideaFilterSection(listOfIdeas, section);
   const filteredSectionSearch = ideaFilterSearch(filteredSection, search);
 
