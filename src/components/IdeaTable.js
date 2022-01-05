@@ -3,12 +3,11 @@ import {ModalContext} from "./ModalContext"
 import { convertDateModal } from "./convertDate";
 import { getSection } from "../database/Sections";
 import { getUser } from "../database/Users";
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useContext} from "react";
 import { getIdeas, ideaFilterSection, ideaFilterSearch } from "../database/Ideas.js";
 
 export default function IdeaTable({setOpen, search}) {
   const {setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, section, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
-  const [cloudData, setCloudData] = useState();
 
   useEffect(() => {
     getIdeas().then((ideas) => {

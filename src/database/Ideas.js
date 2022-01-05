@@ -121,9 +121,3 @@ export function ideaFilterSearch(ideas, search) {
     return matches;
   }
 }
-
-export async function visibilityFromCloud(visibilityString) {
-  const params =  { visibility: visibilityString };
-  const count = await Parse.Cloud.run("visibility", params);
-  return count;
-}
