@@ -7,7 +7,7 @@ export function SelectVisibilities({ handleCallBackSelection }) {
   
     const handleChange = (event) => {
       setVisibility(event.target.value);
-      handleCallBackSelection(visibility);
+      //handleCallBackSelection(visibility);
     };
   
     const visibilities = [

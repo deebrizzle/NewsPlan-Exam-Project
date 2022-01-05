@@ -1,5 +1,10 @@
 import Parse from "parse";
 
+export async function getCurrentUser(){
+const currentUser = Parse.User.current();
+return currentUser
+}
+
 export async function getUsers() {
   const Users = Parse.Object.extend("User");
   const query = new Parse.Query(Users);

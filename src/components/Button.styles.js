@@ -7,8 +7,8 @@ export const LoginButton = styled(Button)`
     color: ${colors.white};
     background-color: ${colors.P1DarkPetroleum};
     text-transform: none;
-
-    height: 45px;
+    height: 55px;
+    font-weight: bold;
   }
   &&:hover {
     background-color: ${colors.P1DarkPetroleumHover};
