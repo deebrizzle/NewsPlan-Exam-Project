@@ -39,7 +39,6 @@ export default function ContentScheduleArticles() {
             <Grid item xs={6}><h6>Finished Articles</h6></Grid>
             <Grid item xs={6}> <h6>Unfinished Articles</h6></Grid>
             {/* Third line: tables */}
-            {/* TODO Change to ArticleTable, delete old */}
             <Grid item xs={6}> <ArticleTable articles={finishedArticles}/> </Grid>
             <Grid item xs={6}> <ArticleTable articles={unfinishedArticles}/> </Grid>
         </Grid>

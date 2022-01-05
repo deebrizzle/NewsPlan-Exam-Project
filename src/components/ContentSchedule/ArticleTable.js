@@ -23,7 +23,6 @@ export default function ArticleTableTwo({articles}) {
       sortable: false,
       width: 75,
       renderCell: (params) => {
-        console.log(params)
         if (params.row.status === "D") {
           return <StyledAlertIcon/>
         }

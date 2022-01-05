@@ -14,13 +14,12 @@ function IdeaBank() {
   const {handleCallBack, setIdea, setDescription, setVisibility, setDate, setSection, setIdeaSource, setIdeaId} = useContext(ModalContext);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
-  const dateObj = new Date();
-  const currDate = `${dateObj.getMonth()+1}, ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
+  const todaysDate = new Date();
   const handleOpen = () => {
     setIdea('')
     setDescription('')
     setVisibility('')
-    setDate(currDate)
+    setDate(todaysDate)
     setSection('')
     setIdeaSource('')
     setIdeaId('')
