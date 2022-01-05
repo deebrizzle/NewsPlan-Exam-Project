@@ -13,6 +13,7 @@ import {ModalContext} from "../components/ModalContext"
 function IdeaBank() {
   const {handleCallBack, setIdea, setDescription, setVisibility, setDate, setSection, setIdeaSource, setIdeaId} = React.useContext(ModalContext);
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
   const dateObj = new Date();
   const currDate = `${dateObj.getMonth()+1}, ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
   const handleOpen = () => {
@@ -43,7 +44,7 @@ function IdeaBank() {
           <Grid item xs={6} />
               {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
               <Grid item xs={6}> 
-                <SearchInput /> 
+                <SearchInput search={search} setSearch={setSearch}/> 
                 </Grid>
               <Grid item xs={4}> 
                 <StandardButton> Search </StandardButton> 
@@ -65,7 +66,7 @@ function IdeaBank() {
           {/* THIRD ROW - TABLE */}
           <Grid item xs={12}>
             {" "}
-            <Table open={open} setOpen={setOpen}/>{" "}
+            <Table open={open} setOpen={setOpen} search={search}/>{" "}
           </Grid>
         </Grid>
       </PageWrapper>

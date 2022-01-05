@@ -1,12 +1,15 @@
 import Parse from "parse";
-import { convertStringDateToDateObject, convertToMonthDayYearString  } from "../components/convertDate";
+import {
+  convertStringDateToDateObject,
+  convertToMonthDayYearString,
+} from "../components/convertDate";
 
 export async function getIdea(ideaId) {
   const Ideas = Parse.Object.extend("Ideas");
   const query = new Parse.Query(Ideas);
-  query.equalTo('objectId', ideaId);
+  query.equalTo("objectId", ideaId);
   return await query.find();
-}  
+}
 
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
@@ -16,7 +19,9 @@ export async function getIdeas() {
   let ideas = results.map((row, index) => {
     return {
       id: index,
-      expirationDate: convertToMonthDayYearString(String(row.attributes.expirationDate)),
+      expirationDate: convertToMonthDayYearString(
+        String(row.attributes.expirationDate)
+      ),
       source: row.get("ideaSource").get("username"),
       ideaName: row.attributes.ideaName,
       description: row.attributes.description,
@@ -25,7 +30,7 @@ export async function getIdeas() {
       visibility: row.attributes.visibility,
     };
   });
-  return ideas
+  return ideas;
 }
 
 export async function uploadIdeaToDatabase(
@@ -67,10 +72,9 @@ export async function uploadIdeaToDatabase(
   }
 }
 
-
 //TODO Console log delete from Sara's review? Or show it to the user?
-  export async function deleteHTTP(idea){
-    try {
+export async function deleteHTTP(idea) {
+  try {
     await fetch(
       "https://parseapi.back4app.com/classes/Ideas/" + idea.objectId,
       {
@@ -92,4 +96,27 @@ export async function deleteIdeaFromDatabaseREST(ideaId) {
     objectId: [ideaId],
   };
   return await deleteHTTP(idea);
+}
+
+export function ideaFilterSection(ideas, section) {
+  if (Object.keys(section).length === 0 || section === undefined) {
+    return ideas;
+  } else {
+    const filtered = ideas.filter((ideas) => ideas.section === section);
+    return filtered;
+  }
+}
+
+export function ideaFilterSearch(ideas, search) {
+  if (search === undefined || search === "") {
+    return ideas;
+  } else {
+    const matches = ideas.filter((idea) => {
+      if (idea.ideaName.toLowerCase().includes(search) === true || idea.description.toLowerCase().includes(search) === true) {
+        return true;
+      }
+      return false;
+    });
+    return matches;
+  }
 }

@@ -1,9 +1,9 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import TextField from '@mui/material/TextField';
 import {ModalContext} from "./ModalContext"
 
-export default function SearchInput() {
-  const [search, setSearch] = useState('');
+export default function SearchInput(props) {
+  const {search, setSearch} = props;
 
   return (
     <TextField

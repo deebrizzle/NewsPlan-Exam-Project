@@ -4,16 +4,19 @@ import { convertDateModal } from "./convertDate";
 import { getSection } from "../database/Sections";
 import { getUser } from "../database/Users";
 import React, { useEffect, useContext} from "react";
-import { getIdeas } from "../database/Ideas.js";
+import { getIdeas, ideaFilterSection, ideaFilterSearch } from "../database/Ideas.js";
 
-export default function IdeaTable({setOpen}) {
-  const { setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
+export default function IdeaTable({setOpen, search}) {
+  const {setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, section, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
 
   useEffect(() => {
     getIdeas().then((ideas) => {
       setListOfIdeas(ideas);
     });
   }, [])
+
+  const filteredSection = ideaFilterSection(listOfIdeas, section);
+  const filteredSectionSearch = ideaFilterSearch(filteredSection, search);
 
   const columns = [
     { field: "expirationDate", headerName: "Expiry Date", minWidth: 150, flex: 1 },
@@ -60,7 +63,7 @@ export default function IdeaTable({setOpen}) {
   
   return(
         <div style={{ height: 420, width: "100%", flexGrow: 2, display: "flex" }}>
-          <MyDataGrid getRowId={(row) => row.id} rows={listOfIdeas} columns={columns} rowsPerPageOptions={[20]} pageSize={20} onRowClick={(e) => handleRowClick(e)}/>
+          <MyDataGrid getRowId={(row) => row.id} rows={filteredSectionSearch} columns={columns} rowsPerPageOptions={[20]} pageSize={20} onRowClick={(e) => handleRowClick(e)}/>
         </div>
   );
 }
