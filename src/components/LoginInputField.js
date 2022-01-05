@@ -1,7 +1,6 @@
 import { StyledLabelledInput } from "../pages/Login.styles";
 import React from "react";
 
-//TODO Rename to LoginInputField?
 export default function LoginInputField(props) {
   return (
     <StyledLabelledInput

@@ -15,7 +15,7 @@ import AlertDialog from "./AlertDialog"
 import { NavLink } from "react-router-dom";
 
 export default function IdeaModal({setOpen, open}) {
-  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource, handleCallBack } = useContext(ModalContext);
+  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource} = useContext(ModalContext);
   const [alertOpen, setAlertOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
 
@@ -53,7 +53,7 @@ export default function IdeaModal({setOpen, open}) {
                     <Grid item xs={6}><SelectDate/></Grid>
                     <Grid item xs={6}><SelectSection/></Grid>
                     <Grid item xs={6}><SelectVisibilities/></Grid>
-                    <Grid item xs={6}><SelectSource handleCallBackSelection={handleCallBack} label="Source"/></Grid>
+                    <Grid item xs={6}><SelectSource label="Source"/></Grid>
                     <Grid item xs={6}><SelectArticles/></Grid>
                     <Grid item xs={12}><DescriptionInput/></Grid>
                     {/* BUTTONS */}

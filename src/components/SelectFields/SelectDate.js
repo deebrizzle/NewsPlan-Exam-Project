@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ModalContext } from "../ModalContext";
 import { ContentContext } from "../ContentSchedule/ContentScheduleContext";
 
-export function SelectDate({ handleCallbackDate, label }) {
+export function SelectDate({label }) {
 
   // TODO Frida and Emma, your contexts are doing the same things and overriding eachother here!
   const { date, setDate } = useContext(ModalContext);
@@ -19,7 +19,6 @@ export function SelectDate({ handleCallbackDate, label }) {
   }
   const handleChange = (newDate) => {
     setDate(formatDate(newDate));
-    //handleCallbackDate(formatDate(newDate))
     setContentDate(formatDate(newDate))
   }
 

@@ -4,7 +4,7 @@ import { getSections, getSection} from "../../database/Sections";
 import { ModalContext } from "../ModalContext";
 import { ContentContext } from "../ContentSchedule/ContentScheduleContext";
 
-export function SelectSection({ handleCallBackSelection }) {
+export function SelectSection() {
   const {setSectionObject, setSection, section} =
     useContext(ModalContext);
   //TODO Query sections from the database for scaleability?
@@ -47,7 +47,6 @@ export function SelectSection({ handleCallBackSelection }) {
       value={section}
       arrayOfOptions={sectionObjects}
       label="Section"
-      handleCallBackSelection={handleCallBackSelection}
     />
   );
 }
