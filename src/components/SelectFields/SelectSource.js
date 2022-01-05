@@ -4,7 +4,7 @@ import { getUsers, getUser } from "../../database/Users";
 import { ModalContext } from "../ModalContext";
 import { ContentContext } from "../ContentSchedule/ContentScheduleContext";
 
-export function SelectSource({ handleCallBackSelection }) {
+export function SelectSource({ handleCallBackSelection, label}) {
     const { setIdeaSource, ideaSource, setIdeaSourceObject } =
       useContext(ModalContext);
   
@@ -47,7 +47,7 @@ export function SelectSource({ handleCallBackSelection }) {
         handleChange={handleChange}
         value={ideaSource}
         arrayOfOptions={sources}
-        label="Source"
+        label={label}
         handleCallBackSelection={handleCallBackSelection}
       />
     );
