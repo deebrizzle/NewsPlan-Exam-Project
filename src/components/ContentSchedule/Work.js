@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { workLoadSummarizer } from "../../database/Articles";
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
 //for displaying cloud function data
 
 const Work = ({ date, user }) => {
@@ -10,9 +12,10 @@ const Work = ({ date, user }) => {
   }, []);
 
   return (
-    <li>
-      {user}: {workloadCloud}
-    </li>
+      <TableRow>
+        <TableCell>{user}</TableCell>
+        <TableCell>{workloadCloud}</TableCell>
+      </TableRow>
   );
 };
 export default Work;
