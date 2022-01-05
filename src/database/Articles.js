@@ -65,7 +65,7 @@ export async function getArticleById(id) {
     const query = new Parse.Query(Articles);
     query.get(id).then((article) => {
         return article
-    }
+      }
     )
   }
 

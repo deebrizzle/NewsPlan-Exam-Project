@@ -1,8 +1,5 @@
 import Parse from "parse";
-import {
-  convertStringDateToDateObject,
-  convertToMonthDayYearString,
-} from "../components/convertDate";
+import { convertStringDateToDateObject, convertToMonthDayYearString } from "../components/convertDate";
 
 export async function getIdea(ideaId) {
   const Ideas = Parse.Object.extend("Ideas");
