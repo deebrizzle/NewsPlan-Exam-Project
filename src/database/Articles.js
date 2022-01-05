@@ -3,6 +3,17 @@ import { sortByString } from "../utils/sortBy";
 import {convertToDayMonthString} from "../components/convertDate"
 import {getCommentsFromArticle} from "./Comments"
 
+export async function getAllArticles(date) {
+  const Articles = Parse.Object.extend("Articles");
+  const query = new Parse.Query(Articles);
+  query.include("responsible");
+  query.include("Idea");
+  query.include("Section");
+  query.lessThanOrEqualTo("publishDate", date);
+  return await query.find();
+}
+
+
 //TODO: Figure out function to fetch articles within next 24 hours? 7 days?
 export async function getFinishedArticles(date, setFinishedArticles) {
   const Articles = Parse.Object.extend("Articles");
@@ -34,16 +45,6 @@ export async function getUnfinishedArticles(date, setUnfinishedArticles) {
   })
 }
 
-export async function getAllArticles(date) {
-  const Articles = Parse.Object.extend("Articles");
-  const query = new Parse.Query(Articles);
-  query.include("responsible");
-  query.include("Idea");
-  query.include("Section");
-  query.lessThanOrEqualTo("publishDate", date);
-  return await query.find();
-}
-
 export function mapArticles(articles) {
   const articlesInfo = articles.map((article) => {
     return {
@@ -63,10 +64,11 @@ export function mapArticles(articles) {
 export async function getArticleById(id) {
     const Articles = Parse.Object.extend("Articles");
     const query = new Parse.Query(Articles);
-    query.get(id).then((article) => {
-        return article
-      }
-    )
+    query.include("responsible");
+    query.include("Idea");
+    query.include("Section");
+    query.equalTo("objectId", id);
+    return await query.find();
   }
 
   export async function getArticlesFromIdea(ideaObject) {

@@ -14,6 +14,7 @@ import { SelectStatus } from '../components/SelectFields/SelectStatus'
 import { SelectPhotographer } from '../components/SelectFields/SelectPhotographer'
 import CommentTable from "../components/CommentTable";
 import GridSpacer from "../components/Gridspacer";
+import { getArticleById } from "../database/Articles";
 
 function Article() {
 
@@ -25,10 +26,14 @@ function Article() {
     function handleSave() {}
 
     useEffect(() => {
-        getIdea(id).then((idea) => setIdea(idea[0]))
-      }, [id]);
+        getIdea(id).then((idea) => setIdea(idea))
+        getArticleById(id).then((article) => setArticle(article))
+    }, [id]);
 
-    if (idea === undefined ) {
+    console.log(idea)
+    console.log(article)
+
+    if (idea === undefined || article === undefined) {
         return (
             <>
             <NavBar/>
@@ -37,7 +42,7 @@ function Article() {
             </PageWrapper>
         </>
         )
-    } else 
+    }  
     
     return (
         <>

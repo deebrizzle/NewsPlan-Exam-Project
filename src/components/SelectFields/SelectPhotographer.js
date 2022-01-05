@@ -24,9 +24,6 @@ export function SelectPhotographer({label}) {
       };
     });
 
-    console.log(photographer)
-    console.log(photographers)
-
     return (
       <BasicSelect
         handleChange={handleChange}
