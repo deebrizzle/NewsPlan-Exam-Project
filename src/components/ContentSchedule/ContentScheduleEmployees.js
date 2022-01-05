@@ -8,6 +8,7 @@ import { getAllArticles, mapArticles } from "../../database/Articles";
 import { groupBy } from "../../utils/groupBy";
 import { ContentContext } from "./ContentScheduleContext";
 import GridSpacer from "../Gridspacer";
+import Loading from "../Loading"
 
 export default function ContentScheduleEmployees() {
 
@@ -21,7 +22,7 @@ export default function ContentScheduleEmployees() {
   }, [contentDate, sourceContent, sectionContent]);
 
   if (allArticles === undefined) {
-    return <p>Loading...</p>;
+    return <Loading/>
   } else
     return (
       <Box sx={{ flexGrow: 1 }}>

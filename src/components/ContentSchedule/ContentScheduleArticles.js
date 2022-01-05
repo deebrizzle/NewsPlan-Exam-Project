@@ -10,6 +10,7 @@ import {StandardButton} from "../Button.styles";
 import { getSections } from "../../database/Sections";
 import { ContentContext } from "./ContentScheduleContext";
 import { useContext } from "react";
+import Loading from "../Loading";
 
 export default function ContentScheduleArticles() {
   const {finishedArticles, setFinishedArticles, unfinishedArticles, setUnfinishedArticles, contentDate, sectionContent, sourceContent} = useContext(ContentContext);
@@ -25,7 +26,7 @@ export default function ContentScheduleArticles() {
     }, [contentDate, sectionContent, sourceContent]);
 
   if (finishedArticles === undefined || unfinishedArticles === undefined ) {
-    return <p>Loading...</p>
+    return <Loading/>
   } else 
     return (
       <>
