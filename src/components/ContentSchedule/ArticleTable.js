@@ -1,78 +1,42 @@
-import React, {useContext, useEffect, useState} from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import { convertToDayMonthString } from "../convertDate";
-import { StyledTableContainer, StyledTableCell, StyledAlertIcon } from "./ArticleTable.styles";
-import { ContentContext } from "./ContentScheduleContext"
+import React, { useContext } from "react";
+import { MyDataGrid } from "../IdeaTable.styles";
+import { ContentContext } from "./ContentScheduleContext";
+import { convertDateModal, convertToDayMonthString, convertToMonthDayYearString } from "../convertDate";
 import { articleFilterSection, articleFilterSource } from "../../database/Articles";
-import { sortByString } from "../../utils/sortBy";
+import { StyledAlertIcon } from "./ArticleTable.styles";
 
-function Notification({ status }) {
-  if (status === "D") {
-    return <StyledAlertIcon />;
-  }
-  return <></>;
-}
-
-const ArticleTable = ({ articles }) => {
+export default function ArticleTableTwo({articles}) {
   const {sectionContent, sourceContent} = useContext(ContentContext);
 
-  const [filteredSection, setFilteredSection] = useState(articleFilterSection(articles, sectionContent));
-  const [filteredSectionSource, setFilteredSectionSource] = useState(articleFilterSource(filteredSection, sourceContent))
+  const filteredSection = articleFilterSection(articles, sectionContent);
+  const filteredSectionSource = articleFilterSource(filteredSection, sourceContent)
 
-  //TODO onClick does not re-render the table, thus articles remains unsorted. 
-  //TODO Add sorting graphic on Writer/Status TableCell OR add status filtering box for individual status sorts
-  //TODO Remove console.log here
-  const handleWriterCellClick = (e) => {
-    setFilteredSectionSource(sortByString(filteredSectionSource, "username"));
-    console.log(filteredSectionSource)
-  }
+  const columns = [
+    { field: "dayMonthDate", headerName: "Deadline", minWidth: 100 },
+    { field: "username", headerName: "Source", minWidth: 100  },
+    { field: "headline", headerName: "Headline", width: 250, flex: 3 },
+    { field: "status", headerName: "Status", minWidth: 150, },
+    {
+      field: 'notification',
+      headerName: '',
+      description: 'This column has a value getter and is not sortable.',
+      sortable: false,
+      width: 75,
+      renderCell: (params) => {
+        console.log(params)
+        if (params.row.status === "D") {
+          return <StyledAlertIcon/>
+        }
+      }
+    }
+   ]
 
-  const handleStatusCellClick = (e) => {
-    setFilteredSectionSource(sortByString(filteredSectionSource, "status"));
-    console.log(filteredSectionSource)
-  }
-
-  return (
-    <TableContainer>
-      <StyledTableContainer>
-        <Table
-          stickyHeader={true}
-          sx={{ minWidth: 200 }}
-          aria-label="article table"
-        >
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Date</StyledTableCell>
-              <StyledTableCell>Headline</StyledTableCell>
-              <StyledTableCell onClick={handleWriterCellClick}>Writer</StyledTableCell>
-              <StyledTableCell onClick={handleStatusCellClick}>Status</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredSectionSource?.map((articleRow) => (
-              <TableRow key={articleRow.objectId}>
-                <TableCell>
-                  {convertToDayMonthString(String(articleRow.publishDate))}
-                </TableCell>
-                <TableCell>
-                    {articleRow.headline}
-                </TableCell>
-                <TableCell>{articleRow.username}</TableCell>
-                <TableCell>
-                  {articleRow.status}
-                  <Notification status={articleRow.status}></Notification>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </StyledTableContainer>
-    </TableContainer>
+  function handleRowClick (e) {}
+  
+  return(
+        <div style={{ height: 420, width: "100%", flexGrow: 2, display: "flex" }}>
+          <MyDataGrid getRowId={(row) => row.objectId} rows={filteredSectionSource} columns={columns} rowsPerPageOptions={[20]} pageSize={20} onRowClick={(e) => handleRowClick(e)}/>
+        </div>
   );
-};
-export default ArticleTable;
+}
+ 

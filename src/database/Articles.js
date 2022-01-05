@@ -131,3 +131,11 @@ for (let index = 0; index < allArticles.length; index++) {
 }
 return commentsForResponsible
 }
+//cloud
+export async function workLoadSummarizer(usernameString, dateObj) {
+  const params =  { initials: usernameString, date: dateObj };
+  console.log(params);
+  const sum = await Parse.Cloud.run("workloadForOne", params);
+  console.log(sum)
+  return sum;
+}

@@ -1,7 +1,7 @@
 import NavBar from "../components/Navigation/NavBar";
 import {Grid, Stack } from '@mui/material';
 import IdeaModal from "../components/IdeaModal";
-import React, { useState} from "react";
+import React, { useState, useContext} from "react";
 import IdeaTable from "../components/IdeaTable"
 import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
@@ -11,7 +11,7 @@ import {StandardButton} from "../components/Button.styles"
 import {ModalContext} from "../components/ModalContext"
 
 function IdeaBank() {
-  const {handleCallBack, setIdea, setDescription, setVisibility, setDate, setSection, setIdeaSource, setIdeaId} = React.useContext(ModalContext);
+  const {handleCallBack, setIdea, setDescription, setVisibility, setDate, setSection, setIdeaSource, setIdeaId} = useContext(ModalContext);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const dateObj = new Date();

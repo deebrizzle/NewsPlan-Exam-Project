@@ -3,16 +3,18 @@ import {ModalContext} from "./ModalContext"
 import { convertDateModal } from "./convertDate";
 import { getSection } from "../database/Sections";
 import { getUser } from "../database/Users";
-import React, { useEffect, useContext} from "react";
+import React, { useEffect, useState, useContext} from "react";
 import { getIdeas, ideaFilterSection, ideaFilterSearch } from "../database/Ideas.js";
 
 export default function IdeaTable({setOpen, search}) {
   const {setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, section, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
+  const [cloudData, setCloudData] = useState();
 
   useEffect(() => {
     getIdeas().then((ideas) => {
       setListOfIdeas(ideas);
     });
+
   }, [])
 
   const filteredSection = ideaFilterSection(listOfIdeas, section);
@@ -35,7 +37,6 @@ export default function IdeaTable({setOpen, search}) {
     setIdeaSource(params.row.source)
     setIdeaId(params.row.ideaId)
     
-  //TODO do we care about consolog catching errors?  
     getSection(params.row.section)
     .then((results) => {
       results.forEach((sectionObject) => {
@@ -57,9 +58,6 @@ export default function IdeaTable({setOpen, search}) {
     });
     setOpen(true)
   }
-
-  //TODO Filtering already added in table automatically - remove search panel and add from MaterialUI Quick Filtering demo?
-  //See https://mui.com/components/data-grid/filtering/ for above TODO
   
   return(
         <div style={{ height: 420, width: "100%", flexGrow: 2, display: "flex" }}>

@@ -15,6 +15,7 @@ export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
   const query = new Parse.Query(Ideas);
   query.includeAll();
+  query.limit(1000);
   const results = await query.find();
   let ideas = results.map((row, index) => {
     return {
@@ -119,4 +120,10 @@ export function ideaFilterSearch(ideas, search) {
     });
     return matches;
   }
+}
+
+export async function visibilityFromCloud(visibilityString) {
+  const params =  { visibility: visibilityString };
+  const count = await Parse.Cloud.run("visibility", params);
+  return count;
 }
