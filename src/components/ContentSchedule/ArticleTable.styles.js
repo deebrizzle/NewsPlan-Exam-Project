@@ -17,6 +17,6 @@ export const StyledAlertIcon = styled(ErrorIcon)`
 `
 
 export const StyledTableCell = styled(TableCell)`
-    background-color: ${colors.P1GreyLightBlue};
+    background-color: ${colors.P1GreyLightBlue} !important;
 
 `

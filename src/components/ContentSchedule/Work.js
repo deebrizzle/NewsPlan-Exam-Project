@@ -11,7 +11,7 @@ const Work = ({ date, user }) => {
 
   return (
     <li>
-      {user} {workloadCloud}
+      {user}: {workloadCloud}
     </li>
   );
 };

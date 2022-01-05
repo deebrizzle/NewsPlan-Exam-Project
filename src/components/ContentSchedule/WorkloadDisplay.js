@@ -14,10 +14,13 @@ function WorkloadDisplay() {
   return (
     <>
       <ul>
-        <h6>Here should be a calendar like in the Figma(Insert link)</h6>
+        <h6>This page should display a calendar like in Figma.</h6>{" "}
+        <a href="https://www.figma.com/file/zXgh3dP8smOBHPw03p1cFP/Hi-Fi-Prototype?node-id=473%3A22344">
+          Click here for Figma
+        </a>
         <p>
           Instead, here is the total workload for each journalist on the 27th of
-          January 2022, generated in Back4app Cloud Code
+          January 2022, generated in Back4app Cloud Code.
         </p>
         {users?.map((user) => (
           <Work

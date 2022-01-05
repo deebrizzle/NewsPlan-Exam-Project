@@ -8,9 +8,17 @@ import rahul from "../../assets/rahul.png";
 import { NavLink, Link } from "react-router-dom";
 import Parse from "parse";
 import { logOut } from "../logOut";
+import {useContext} from "react";
+import {ModalContext} from "../../components/ModalContext";
 
 export default function NavBar() {
   const currentUser = Parse.User.current();
+  const {setDate} = useContext(ModalContext);
+  const dateObj = new Date();
+  const currDate = `${dateObj.getMonth()+1}, ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
+  const resetDate = () => {
+    setDate(currDate)
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -20,10 +28,10 @@ export default function NavBar() {
             <img className="logo" src={logo} alt="NewsPlan logo" />
           </Link>
           <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
-          <NavButton disableRipple component={NavLink} to="/ideabank">
+          <NavButton disableRipple component={NavLink} to="/ideabank" onClick={resetDate}>
             IDEA BANK
           </NavButton>
-          <NavButton disableRipple component={NavLink} to="/contentschedule">
+          <NavButton disableRipple component={NavLink} to="/contentschedule" onClick={resetDate}>
             CONTENT SCHEDULE
           </NavButton>
           <NavButton disableRipple component={NavLink} to="/calendar">
