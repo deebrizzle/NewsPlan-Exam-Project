@@ -14,7 +14,7 @@ import {uploadIdeaToState} from "./updateStates"
 import AlertDialog from "./AlertDialog"
 
 export default function IdeaModal({setOpen, open}) {
-  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource } = useContext(ModalContext);
+  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource, handleCallBack } = useContext(ModalContext);
   const [alertOpen, setAlertOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
 
@@ -52,7 +52,7 @@ export default function IdeaModal({setOpen, open}) {
                     <Grid item xs={6}><SelectDate/></Grid>
                     <Grid item xs={6}><SelectSection/></Grid>
                     <Grid item xs={6}><SelectVisibilities/></Grid>
-                    <Grid item xs={6}><SelectSource/></Grid>
+                    <Grid item xs={6}><SelectSource handleCallBackSelection={handleCallBack}/></Grid>
                     <Grid item xs={6}><SelectArticles/></Grid>
                     <Grid item xs={12}><DescriptionInput/></Grid>
                     {/* BUTTONS */}
