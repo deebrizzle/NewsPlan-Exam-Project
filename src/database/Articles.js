@@ -1,6 +1,6 @@
 import Parse from "parse";
 import { sortByString } from "../utils/sortBy";
-import {convertToDayMonthString} from "../components/convertDate"
+import {convertToDayMonthString, convertStringDateToDateObject} from "../components/convertDate"
 import {getCommentsFromArticle} from "./Comments"
 
 export async function getAllArticles(date) {
@@ -21,6 +21,7 @@ export async function getFinishedArticles(date, setFinishedArticles) {
   query.equalTo("status", "F");
   query.include("responsible");
   query.include(["idea.section"]);
+  date = convertStringDateToDateObject(date)
   const dateStart = new Date(date.setHours(0, 0, 0, 0))
   const dateEnd = new Date(date.setHours(23, 59, 59, 59))
   query.greaterThanOrEqualTo("publishDate", dateStart);
@@ -36,6 +37,7 @@ export async function getUnfinishedArticles(date, setUnfinishedArticles) {
   query.include("responsible");
   query.notEqualTo("status", "F");
   query.include(["idea.section"]);
+  date = convertStringDateToDateObject(date)
   const dateStart = new Date(date.setHours(0, 0, 0, 0));
   const dateEnd = new Date(date.setHours(23, 59, 59, 59));
   query.greaterThanOrEqualTo("publishDate", dateStart);
@@ -80,8 +82,10 @@ export async function getArticleById(id) {
     return await query.find();
   }
 
+
+  //TODO these two and the next two are really similiar - but the input is somewhat different. Don't know if they can be refactored.
 export function articleFilterSection(articles, section) {
-  if (section === undefined) {
+  if (Object.keys(section).length === 0 || section === undefined) {
     return articles;
   } else {
     const filtered = articles.filter(
@@ -92,7 +96,7 @@ export function articleFilterSection(articles, section) {
 }
 
 export function articleFilterSource(articles, source) {
-  if (source === undefined) {
+  if (Object.keys(source).length === 0 || source === undefined) {
     return articles;
   } else {
     const filtered = articles.filter(
@@ -101,6 +105,31 @@ export function articleFilterSource(articles, source) {
     return filtered;
   }
 }
+
+
+export function articleFilterEmployees(articles, source) {
+  if (Object.keys(source).length === 0 || source === undefined) {
+    return articles;
+  } else {
+    const filtered = articles.filter(
+      (article) => article.attributes.responsible.attributes.username === source
+    );
+    return filtered;
+  }
+}
+
+export function articleFilterSectionEmployees(articles, section) {
+  if (Object.keys(section).length === 0 || section === undefined) {
+    return articles;
+  } else {
+    const filtered = articles.filter(
+         (article) => article.attributes.responsible.attributes.section === section
+    );
+    return filtered;
+  }
+}
+
+
 
 export async function getAllArticlesByResponsible(userId) {
   const Articles = Parse.Object.extend("Articles");
@@ -139,3 +168,17 @@ export async function workLoadSummarizer(usernameString, dateObj) {
   const sum = await Parse.Cloud.run("workloadForOne", params);
   return sum;
 }
+
+export function articleFilterSectionBySource(articles, source) {
+  if (source === undefined || articles === undefined) {
+    return articles;
+  } else {
+    const filtered = articles.filter(
+      (article) => article.attributes.responsible.attributes.username === source
+    );
+    console.log(filtered)
+    return filtered;
+  }
+}
+
+

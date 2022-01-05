@@ -2,13 +2,10 @@ import BasicSelect from "./BasicSelect";
 import React, { useContext, useEffect, useState } from "react";
 import { getUsers, getUser } from "../../database/Users";
 import { ModalContext } from "../ModalContext";
-import { ContentContext } from "../ContentSchedule/ContentScheduleContext";
 
 export function SelectSource({label}) {
     const { setIdeaSource, ideaSource, setIdeaSourceObject } =
       useContext(ModalContext);
-  
-    const {setSourceContent} = useContext(ContentContext);
     const [users, setUsers] = useState([]);
   
     useEffect(() => {
@@ -19,7 +16,6 @@ export function SelectSource({label}) {
   
     const handleChange = async (event) => {
       setIdeaSource(event.target.value);
-      setSourceContent(event.target.value);
       getUser(event.target.value)
         .then((results) => {
           results.forEach((userObject) => {

@@ -1,5 +1,6 @@
 import Parse from "parse";
 import { convertStringDateToDateObject, convertToMonthDayYearString } from "../components/convertDate";
+import { IdeaBoxStyle } from "../components/Idea.styles";
 
 export async function getIdea(ideaId) {
   const Ideas = Parse.Object.extend("Ideas");
@@ -104,7 +105,9 @@ export function ideaFilterSection(ideas, section) {
   }
 }
 
-export function ideaFilterSearch(ideas, search) {
+export function ideaFilterSearch(ideas, query) {
+  const search = query.toLowerCase();
+
   if (search === undefined || search === "") {
     return ideas;
   } else {
@@ -112,7 +115,6 @@ export function ideaFilterSearch(ideas, search) {
       if (idea.ideaName.toLowerCase().includes(search) === true || idea.description.toLowerCase().includes(search) === true) {
         return true;
       }
-      return false;
     });
     return matches;
   }

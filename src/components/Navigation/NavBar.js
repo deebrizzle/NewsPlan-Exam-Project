@@ -13,12 +13,13 @@ import {ModalContext} from "../../components/ModalContext";
 export default function NavBar() {
   const currentUser = Parse.User.current();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const {setDate} = useContext(ModalContext);
-  const dateObj = new Date();
-  const currDate = `${dateObj.getMonth()+1}, ${dateObj.getDate()}, ${dateObj.getFullYear()} 00:00:00`;
-  const resetDate = () => {
-    setDate(currDate)
+  const {setDate, setSection, setIdeaSource,} = useContext(ModalContext);
+  const resetContext = () => {
+    setDate(new Date())
+    setSection("")
+    setIdeaSource("")
   };
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -28,10 +29,10 @@ export default function NavBar() {
             <img className="logo" src={logo} alt="NewsPlan logo" />
           </Link>
           <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
-          <NavButton disableRipple component={NavLink} to="/ideabank" onClick={resetDate}>
+          <NavButton disableRipple component={NavLink} to="/ideabank" onClick={resetContext}>
             IDEA BANK
           </NavButton>
-          <NavButton disableRipple component={NavLink} to="/contentschedule" onClick={resetDate}>
+          <NavButton disableRipple component={NavLink} to="/contentschedule" onClick={resetContext}>
             CONTENT SCHEDULE
           </NavButton>
           <NavButton disableRipple component={NavLink} to="/calendar">

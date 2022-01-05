@@ -1,10 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import ContentScheduleEmployees from "../ContentSchedule/ContentScheduleEmployees";
 import ContentScheduleArticles from "../ContentSchedule/ContentScheduleArticles";
 import Box from "@mui/material/Box";
 import { MyTabs, MyTab } from "./TabBar.styles";
 import Typography from "@mui/material/Typography";
+import {ModalContext} from "../ModalContext"
 
+
+//TODO why two components in one file?
 function TabPanel(props) {
   const { children, value, index } = props;
   return (
@@ -19,10 +22,17 @@ function TabPanel(props) {
 }
 
 function TabBar() {
+  const {setSection, setIdeaSource} = useContext(ModalContext);
   const [value, setValue] = useState(0);
+
+  const handleReset = () => {
+    setSection('')
+    setIdeaSource('')
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    handleReset()
   };
 
   return (

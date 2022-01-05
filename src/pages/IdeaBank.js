@@ -30,6 +30,7 @@ function IdeaBank() {
     setDate(todaysDate)
     setSection('')
     setSearch('')
+    setIdeaSource('')
   };
 
   return (

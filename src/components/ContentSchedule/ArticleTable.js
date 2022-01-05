@@ -1,15 +1,13 @@
 import React, { useContext } from "react";
 import { MyDataGrid } from "../IdeaTable.styles";
-import { ContentContext } from "./ContentScheduleContext";
 import { articleFilterSection, articleFilterSource } from "../../database/Articles";
 import { StyledAlertIcon } from "./ArticleTable.styles";
+import {ModalContext} from "../ModalContext"
 
 export default function ArticleTable({articles}) {
-  const {sectionContent, sourceContent} = useContext(ContentContext);
-
-  const filteredSection = articleFilterSection(articles, sectionContent);
-  const filteredSectionSource = articleFilterSource(filteredSection, sourceContent)
-
+  const {section, ideaSource} = useContext(ModalContext);
+  const filteredSection = articleFilterSection(articles, section);
+  const filteredSectionSource = articleFilterSource(filteredSection, ideaSource)
   const columns = [
     { field: "dayMonthDate", headerName: "Deadline", minWidth: 100 },
     { field: "username", headerName: "Source", minWidth: 100  },
