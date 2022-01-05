@@ -7,20 +7,19 @@ import { SelectDate } from './SelectFields/SelectDate';
 import { SelectVisibilities } from './SelectFields/SelectVisibilities';
 import { SelectSource } from './SelectFields/SelectSource';
 import { SelectSection } from './SelectFields/SelectSection';
-import GridSpacer from "./Gridspacer"
 import { DescriptionInput, IdeaInput } from './InputFields';
 import {ModalContext} from "./ModalContext"
-import { uploadIdeaToDatabase, deleteIdeaFromDatabaseREST } from "../database/Ideas";
-import {uploadIdeaToState, deleteIdeaFromState} from "./updateStates"
+import { uploadIdeaToDatabase} from "../database/Ideas";
+import {uploadIdeaToState} from "./updateStates"
+import AlertDialog from "./AlertDialog"
 
 export default function IdeaModal({setOpen, open}) {
   const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource } = useContext(ModalContext);
+  const [alertOpen, setAlertOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
 
   async function handleDelete(){
-    await deleteIdeaFromDatabaseREST(ideaId)
-    deleteIdeaFromState(ideaId, listOfIdeas, setListOfIdeas)
-    handleClose()
+    setAlertOpen(true);
   }
 
   async function handleSave() {
@@ -61,6 +60,7 @@ export default function IdeaModal({setOpen, open}) {
                       <Stack spacing={3} direction ="row" justifyContent ="flex-start">
                         <CancelButton onClick={handleClose}>Cancel</CancelButton>
                         <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+                        <AlertDialog alertOpen={alertOpen} setAlertOpen={setAlertOpen} setOpen={setOpen}></AlertDialog>
                       </Stack>
                     </Grid>
                     <Grid item xs={11} >

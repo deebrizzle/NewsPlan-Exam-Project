@@ -52,7 +52,6 @@ export default function IdeaTable({setOpen}) {
     .catch((error) => {
       console.log(error);
     });
-
     setOpen(true)
   }
 
