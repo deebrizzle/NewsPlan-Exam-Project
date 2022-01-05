@@ -12,7 +12,7 @@ import { ModalContext } from "../ModalContext";
 import {StandardButton} from "../Button.styles";
 
 export default function ContentScheduleEmployees() {
-  const {setSection, section, setIdeaSource, date, ideaSource} = useContext(ModalContext);
+  const {setSection, section, setIdeaSource, date, setDate, ideaSource, resetContext} = useContext(ModalContext);
   const [allArticles, setAllArticles] = useState();
   const [filteredArticles, setFilteredArticles] = useState();
 
@@ -37,12 +37,6 @@ export default function ContentScheduleEmployees() {
     articles = groupBy(mapArticles(filteredSectionSource), "username");
   }
 
-  //TODO duplicated from ContentScheduleArticles. Move up to parent.
-  const handleReset = () => {
-    setSection("")
-    setIdeaSource("")
-  };
-
   if (articles === undefined) {
     return <Loading/>  
   } else
@@ -55,7 +49,7 @@ export default function ContentScheduleEmployees() {
           <Grid item xs={2}>
             <SelectSection />
           </Grid>
-          <Grid item xs={2}> <StandardButton onClick={handleReset}>Reset</StandardButton></Grid>
+          <Grid item xs={2}> <StandardButton onClick={resetContext}>Reset</StandardButton></Grid>
           <GridSpacer spacing={4} />
           <Grid item xs={2}>
             <SelectDate />

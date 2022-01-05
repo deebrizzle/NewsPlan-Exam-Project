@@ -14,7 +14,7 @@ import { ModalContext } from "../ModalContext";
 export default function ContentScheduleArticles() {
   const [finishedArticles, setFinishedArticles] = useState();
   const [unfinishedArticles, setUnfinishedArticles] = useState();
-  const {setSection, section, setIdeaSource, date, ideaSource} = useContext(ModalContext);
+  const {setSection, section, setIdeaSource, date, setDate, ideaSource, resetContext} = useContext(ModalContext);
 
     useEffect(() => {
       getIdeas()
@@ -23,11 +23,6 @@ export default function ContentScheduleArticles() {
       getUnfinishedArticles(date, setUnfinishedArticles)
       //for cloud function:
     }, [date, section, ideaSource]);
-
-    const handleReset = () => {
-      setSection("")
-      setIdeaSource("")
-    };
 
   if (finishedArticles === undefined || unfinishedArticles === undefined ) {
     return <Loading/>
@@ -38,7 +33,7 @@ export default function ContentScheduleArticles() {
             {/* First Line: selectors/date */}
             <Grid item xs={2}> <SelectSource label="Source" /> </Grid>
             <Grid item xs={2}> <SelectSection /> </Grid>
-            <Grid item xs={6}> <StandardButton onClick={handleReset}>Reset</StandardButton></Grid>
+            <Grid item xs={6}> <StandardButton onClick={resetContext}>Reset</StandardButton></Grid>
             <Grid item xs={2}> <SelectDate/> </Grid>
             {/* Second line: headers */}
             <Grid item xs={6}><h6>Finished Articles</h6></Grid>
