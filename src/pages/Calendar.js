@@ -1,6 +1,6 @@
 import NavBar from "../components/Navigation/NavBar";
 import { PageWrapper } from "./PageMargin.styles";
-import WorkloadDisplay from "../components/ContentSchedule/WorkloadDisplay";
+import WorkloadDisplay from "../components/Calendar/WorkloadDisplay";
 
 function Calendar() {
 
