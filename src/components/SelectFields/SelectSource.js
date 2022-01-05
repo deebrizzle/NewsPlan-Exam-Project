@@ -4,11 +4,7 @@ import { getUsers, getUser } from "../../database/Users";
 import { ModalContext } from "../ModalContext";
 import { ContentContext } from "../ContentSchedule/ContentScheduleContext";
 
-<<<<<<< HEAD
-export function SelectSource({ handleCallBackSelection, label}) {
-=======
-export function SelectSource() {
->>>>>>> 16e1f4feb11a61a80d5dbbaa29e3a6a4259766ea
+export function SelectSource({label}) {
     const { setIdeaSource, ideaSource, setIdeaSourceObject } =
       useContext(ModalContext);
   
