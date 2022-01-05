@@ -3,34 +3,64 @@ import { ScheduledArticles } from "./ScheduledArticles";
 import { SelectSection } from "../SelectFields/SelectSection";
 import { SelectSource } from "../SelectFields/SelectSource";
 import { SelectDate } from "../SelectFields/SelectDate";
-import { useContext, useEffect } from "react";
-import { getAllArticles, mapArticles } from "../../database/Articles";
+import { useContext, useEffect, useState } from "react";
+import { getAllArticles, mapArticles, articleFilterEmployees, articleFilterSectionEmployees,} from "../../database/Articles";
 import { groupBy } from "../../utils/groupBy";
-import { ContentContext } from "./ContentScheduleContext";
 import GridSpacer from "../Gridspacer";
+import Loading from "../Loading"
+import { ModalContext } from "../ModalContext";
+import {StandardButton} from "../Button.styles";
 
 export default function ContentScheduleEmployees() {
-
-  const {allArticles, setAllArticles, contentDate, sourceContent, sectionContent} = useContext(ContentContext);
+  const {setSection, section, setIdeaSource, date, ideaSource} = useContext(ModalContext);
+  const [allArticles, setAllArticles] = useState();
+  const [filteredArticles, setFilteredArticles] = useState();
 
   //Get all articles from the database and then groups them by usernamse of journalists
   useEffect(() => {
-    getAllArticles(contentDate).then((articles) => {
+    getAllArticles(date).then((articles) => {
       setAllArticles(groupBy(mapArticles(articles), "username"));
+      setFilteredArticles(articles);
     });
-  }, [contentDate, sourceContent, sectionContent]);
+  }, [date, ideaSource, section]);
 
-  if (allArticles === undefined) {
-    return <p>Loading...</p>;
+
+  //TODO this is not pretty code.. really had trouble with all the different kinds of data - and stuff
+  //being undefined. if the data is grouped and mapped it does not work with the filters. I tried..
+  const filteredSection = articleFilterSectionEmployees(filteredArticles, section);
+  const filteredSectionSource = articleFilterEmployees(filteredSection,ideaSource);
+
+  let articles;
+  if (filteredSectionSource === undefined || filteredSectionSource === []) {
+    articles = allArticles;
+  } else {
+    articles = groupBy(mapArticles(filteredSectionSource), "username");
+  }
+
+  //TODO duplicated from ContentScheduleArticles. Move up to parent.
+  const handleReset = () => {
+    setSection("")
+    setIdeaSource("")
+  };
+
+  if (articles === undefined) {
+    return <Loading/>  
   } else
     return (
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid item xs={2}> <SelectSource /> </Grid>
-            <Grid item xs={2}> <SelectSection /> </Grid>
-            <GridSpacer spacing={6} />
-            <Grid item xs={2}> <SelectDate/> </Grid>
-            <ScheduledArticles articles={allArticles} itemsPerPage={6}/>
+          <Grid item xs={2}>
+            <SelectSource label="Source" />
+          </Grid>
+          <Grid item xs={2}>
+            <SelectSection />
+          </Grid>
+          <Grid item xs={2}> <StandardButton onClick={handleReset}>Reset</StandardButton></Grid>
+          <GridSpacer spacing={4} />
+          <Grid item xs={2}>
+            <SelectDate />
+          </Grid>
+          <ScheduledArticles articles={articles} itemsPerPage={6} />
         </Grid>
       </Box>
     );

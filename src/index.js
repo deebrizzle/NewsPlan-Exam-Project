@@ -4,15 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ModalProvider} from "./components/ModalContext"
-import {ContentProvider} from "./components/ContentSchedule/ContentScheduleContext"
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContentProvider>
     <ModalProvider>
     <App />
     </ModalProvider>
-    </ContentProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

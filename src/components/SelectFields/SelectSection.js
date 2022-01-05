@@ -2,13 +2,11 @@ import BasicSelect from "./BasicSelect";
 import React, { useContext, useEffect, useState } from "react";
 import { getSections, getSection} from "../../database/Sections";
 import { ModalContext } from "../ModalContext";
-import { ContentContext } from "../ContentSchedule/ContentScheduleContext";
 
-export function SelectSection({ handleCallBackSelection }) {
+export function SelectSection() {
   const {setSectionObject, setSection, section} =
     useContext(ModalContext);
   //TODO Query sections from the database for scaleability?
-  const {setSectionContent} = useContext(ContentContext);
   const [sections, setSections] = useState([]);
 
   useEffect(() => {
@@ -18,7 +16,6 @@ export function SelectSection({ handleCallBackSelection }) {
   }, []);
 
   const handleChange = async (event) => {
-    setSectionContent(event.target.value)
     setSection(event.target.value);
     getSection(event.target.value)
     .then((results) => {
@@ -47,7 +44,6 @@ export function SelectSection({ handleCallBackSelection }) {
       value={section}
       arrayOfOptions={sectionObjects}
       label="Section"
-      handleCallBackSelection={handleCallBackSelection}
     />
   );
 }

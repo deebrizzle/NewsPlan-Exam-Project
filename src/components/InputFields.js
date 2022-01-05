@@ -45,3 +45,20 @@ export function DescriptionInput() {
     onChange={e => setDescription(e.target.value)}/>
   )
 }
+
+export function HeadlineInput() {
+  const {idea, setIdea} = useContext(ModalContext)
+
+  return (
+    <TextField
+      id="outlined-basic"
+      label="Headline"
+      variant="outlined"
+      fullWidth
+      value={idea}
+      onChange={(e) => setIdea(e.target.value)}
+    />
+  );
+}
+
+

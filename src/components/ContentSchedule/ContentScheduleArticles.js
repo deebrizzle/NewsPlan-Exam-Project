@@ -3,37 +3,42 @@ import { SelectSection } from "../SelectFields/SelectSection";
 import { SelectSource } from "../SelectFields/SelectSource"
 import { SelectDate } from "../SelectFields/SelectDate";
 import ArticleTable from "./ArticleTable";
-import React, { useEffect} from "react";
+import React, { useEffect, useContext, useState} from "react";
 import { getFinishedArticles, getUnfinishedArticles } from "../../database/Articles";
 import { getIdeas } from "../../database/Ideas";
 import {StandardButton} from "../Button.styles";
 import { getSections } from "../../database/Sections";
-import { ContentContext } from "./ContentScheduleContext";
-import { useContext } from "react";
+import Loading from "../Loading";
+import { ModalContext } from "../ModalContext";
 
 export default function ContentScheduleArticles() {
-  const {finishedArticles, setFinishedArticles, unfinishedArticles, setUnfinishedArticles, contentDate, sectionContent, sourceContent} = useContext(ContentContext);
+  const [finishedArticles, setFinishedArticles] = useState();
+  const [unfinishedArticles, setUnfinishedArticles] = useState();
+  const {setSection, section, setIdeaSource, date, ideaSource} = useContext(ModalContext);
 
     useEffect(() => {
       getIdeas()
       getSections()
-      getFinishedArticles(contentDate, setFinishedArticles)
-      getUnfinishedArticles(contentDate, setUnfinishedArticles)
+      getFinishedArticles(date, setFinishedArticles)
+      getUnfinishedArticles(date, setUnfinishedArticles)
       //for cloud function:
-      
+    }, [date, section, ideaSource]);
 
-    }, [contentDate, sectionContent, sourceContent]);
+    const handleReset = () => {
+      setSection("")
+      setIdeaSource("")
+    };
 
   if (finishedArticles === undefined || unfinishedArticles === undefined ) {
-    return <p>Loading...</p>
+    return <Loading/>
   } else 
     return (
       <>
         <Grid container spacing={2}>
             {/* First Line: selectors/date */}
-            <Grid item xs={2}> <SelectSource /> </Grid>
+            <Grid item xs={2}> <SelectSource label="Source" /> </Grid>
             <Grid item xs={2}> <SelectSection /> </Grid>
-            <Grid item xs={6}> <StandardButton>Filter</StandardButton></Grid>
+            <Grid item xs={6}> <StandardButton onClick={handleReset}>Reset</StandardButton></Grid>
             <Grid item xs={2}> <SelectDate/> </Grid>
             {/* Second line: headers */}
             <Grid item xs={6}><h6>Finished Articles</h6></Grid>

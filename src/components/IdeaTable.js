@@ -13,7 +13,6 @@ export default function IdeaTable({setOpen, search}) {
     getIdeas().then((ideas) => {
       setListOfIdeas(ideas);
     });
-
   }, [])
 
   const filteredSection = ideaFilterSection(listOfIdeas, section);
