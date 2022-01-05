@@ -83,7 +83,7 @@ export function articleFilterSection(articles, section) {
     return articles;
   } else {
     const filtered = articles.filter(
-      (article) => article.get("idea").get("section").get("name") === section
+         (article) => article.ideaId.attributes.section.attributes.name === section
     );
     return filtered;
   }
@@ -94,7 +94,7 @@ export function articleFilterSource(articles, source) {
     return articles;
   } else {
     const filtered = articles.filter(
-      (article) => article.get("responsible").get("username") === source
+      (article) => article.username === source
     );
     return filtered;
   }
