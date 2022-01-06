@@ -38,7 +38,7 @@ export default function ArticleTable({articles}) {
             rows={filteredSectionSource} 
             columns={columns} 
             rowsPerPageOptions={[10]} 
-            pageSize={10} 
+            pageSize={5} 
             onRowClick={(e) => handleRowClick(e)}/>
         </Grid>
   );
