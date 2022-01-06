@@ -11,7 +11,7 @@ import {StandardButton} from "../components/Button.styles"
 import {ModalContext} from "../components/ModalContext"
 
 function IdeaBank() {
-  const {setDate, setSection, setIdeaSource} = useContext(ModalContext);
+  const {setDate, setSection, setIdeaSource, setIdea, setDescription, setVisibility, setIdeaId} = useContext(ModalContext);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
 
@@ -20,6 +20,10 @@ function IdeaBank() {
     setDate(new Date())
     setSection('')
     setIdeaSource('')
+    setIdea('')
+    setDescription('')
+    setVisibility('')
+    setIdeaId('')
   };
 
   const handleOpen = () => {
