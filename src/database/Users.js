@@ -37,7 +37,6 @@ export async function getPhotographers() {
 }
 
 export async function getUsersFromSection(section) {
-  //TODO Convert sections column in database into pointer Sections objectId?
   const Users = Parse.Object.extend("User");
   const query = new Parse.Query(Users);
   query.descending("username");

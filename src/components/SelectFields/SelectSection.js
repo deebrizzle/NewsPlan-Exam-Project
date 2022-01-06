@@ -4,9 +4,7 @@ import { getSections, getSection} from "../../database/sections";
 import {FieldContext} from "../FieldContext"
 
 export function SelectSection() {
-  const {setSectionObject, setSection, section} =
-    useContext(FieldContext);
-  //TODO Query sections from the database for scaleability?
+  const {setSectionObject, setSection, section} =useContext(FieldContext);
   const [sections, setSections] = useState([]);
 
   useEffect(() => {

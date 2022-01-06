@@ -25,9 +25,6 @@ export default function ContentScheduleEmployees() {
     });
   }, [date, ideaSource, section]);
 
-
-  //TODO this is not pretty code.. really had trouble with all the different kinds of data - and stuff
-  //being undefined. if the data is grouped and mapped it does not work with the filters. I tried..
   const filteredSection = articleFilterSectionEmployees(filteredArticles, section);
   const filteredSectionSource = articleFilterEmployees(filteredSection,ideaSource);
 
