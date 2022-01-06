@@ -15,9 +15,13 @@ import AlertDialog from "./AlertDialog"
 import { NavLink } from "react-router-dom";
 
 export default function IdeaModal({setOpen, open}) {
-  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource} = useContext(ModalContext);
+  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource, resetContext} = useContext(ModalContext);
   const [alertOpen, setAlertOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
+  
+  const handleClose = () => {
+    setOpen(false);
+    resetContext();
+  }
 
   async function handleDelete(){
     setAlertOpen(true);

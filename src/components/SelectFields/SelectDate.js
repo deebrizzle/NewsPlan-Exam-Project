@@ -14,7 +14,6 @@ export function SelectDate({label }) {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      
       <DesktopDatePicker
         label={label}
         inputFormat="MM/dd/yyyy"
