@@ -3,8 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { getUsers, getUser } from "../../database/Users";
 import { ModalContext } from "../ModalContext";
 
-export function SelectSource({label}) {
-    const { setIdeaSource, ideaSource, setIdeaSourceObject } =
+export function SelectSource({label, ideaSource}) {
+    const { setIdeaSource, setIdeaSourceObject } =
       useContext(ModalContext);
     const [users, setUsers] = useState([]);
   
