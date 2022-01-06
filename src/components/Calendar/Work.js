@@ -9,7 +9,7 @@ const Work = ({ date, user }) => {
 
   useEffect(() => {
     workLoadSummarizer(user, date).then((sum) => setWorkloadCloud(sum))
-  });
+  }, []);
 
   return (
       <TableRow>
