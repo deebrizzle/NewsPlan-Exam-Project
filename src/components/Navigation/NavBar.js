@@ -26,11 +26,14 @@ export default function NavBar() {
           <NavButton disableRipple component={NavLink} to="/ideabank" onClick={resetContext}>
             IDEA BANK
           </NavButton>
-          <NavButton disableRipple component={NavLink} to="/contentschedule" onClick={resetContext}>
-            CONTENT SCHEDULE
+          <NavButton disableRipple component={NavLink} to="/employees" onClick={resetContext}>
+            EMPLOYEES
           </NavButton>
-          <NavButton disableRipple component={NavLink} to="/calendar">
-            CALENDAR
+          <NavButton disableRipple component={NavLink} to="/articles" onClick={resetContext}>
+            ARTICLES
+          </NavButton>
+          <NavButton disableRipple component={NavLink} to="/workload">
+            WORKLOAD
           </NavButton>
           <NavButton disableRipple onClick={() => setDrawerOpen(true)}>
             {currentUser.get("username")}

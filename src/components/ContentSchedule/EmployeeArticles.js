@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Grid} from "@mui/material";
-import { GridContainer, Item, GridItem } from "./EmployeeArticles.styles";
+import { Item } from "./EmployeeArticles.styles";
 
 //TODO Use map somewhere to create each box for every article. Currently only grabbing the first article of each user's articles.
 

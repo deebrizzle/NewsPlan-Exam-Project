@@ -1,7 +1,7 @@
 import { allCommentsToArticleResponsible} from "../database/Articles";
 import { useEffect, useState} from "react";
 import { getCurrentUser } from "../database/Users";
-import { sortByDate } from "../utils/sortBy";
+import { sortByDate } from "./sortBy";
 
 export default function CommentsOnArticles() {
   const [comments, setComments] = useState([]);

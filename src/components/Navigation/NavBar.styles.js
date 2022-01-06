@@ -22,8 +22,8 @@ export const MyToolbar = styled(Toolbar)`
     font-family: Arial;
     font-style: normal;
     font-weight: bold;
-    font-size: 20px;
-    margin: 0 3em 0 0;
+    font-size: 15px;
+    margin: 0 2em 0 0;
 
     @media screen and (max-width: 800px) {
       margin: 0 0 0 0;
