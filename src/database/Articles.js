@@ -198,4 +198,25 @@ export function articleFilterSectionBySource(articles, source) {
   }
 }
 
+export async function uploadArticleToDatabase(idea, headline, responsibleObject, photographer, assistant, workload, status, date ) {
+  let formattedDate = convertStringDateToDateObject(date);
+  let Article = Parse.Object.extend("Articles");
+  let newArticle = new Article();
+  newArticle.set("idea", idea);
+  newArticle.set("headline", headline);
+  newArticle.set("responsible", responsibleObject);
+  if (photographer === "") newArticle.set("photographer", null); else { newArticle.set("photographer", photographer); }
+  if (assistant === "") newArticle.set("assistant", null); else { newArticle.set("assistant", assistant); }
+  newArticle.set("workload", workload)
+  newArticle.set("status", status)
+  newArticle.set("publishDate", formattedDate);
+  try {
+    await newArticle.save();
+    alert("success");
+    return true;
+  } catch (error) {
+    alert(error);
+    return false;
+  }
+}
 

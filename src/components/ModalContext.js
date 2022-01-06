@@ -4,6 +4,7 @@ export const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
   const [idea, setIdea] = useState("");
+  const [headline, setHeadline] = useState("")
   const [description, setDescription] = useState("");
   const [visibility, setVisibility] = useState("");
   const [section, setSection] = useState("");
@@ -14,6 +15,11 @@ export const ModalProvider = ({ children }) => {
   const [ideaSourceObject, setIdeaSourceObject] = useState([]);
   const [sectionObject, setSectionObject] = useState([]);
   const [listOfIdeas, setListOfIdeas] = useState([]);
+  const [assistant, setAssistant] = useState("");
+  const [assistantObject, setAssistantObject] = useState("")
+  const [photographer, setPhotographer] = useState("")
+  const [status, setStatus] = useState("");
+  const [workload, setWorkload] = useState();
 
   const resetContext = () => {
     setDate(new Date())
@@ -23,6 +29,11 @@ export const ModalProvider = ({ children }) => {
     setDescription('')
     setVisibility('')
     setIdeaId('')
+    setHeadline('');
+    setAssistant('')
+    setPhotographer('')
+    setStatus('')
+    setWorkload();
   };
 
   return (
@@ -41,16 +52,28 @@ export const ModalProvider = ({ children }) => {
         setSection,
         idea,
         setIdea,
+        headline,
+        setHeadline,
+        assistant,
+        setAssistant,
+        photographer,
+        setPhotographer,
+        status,
+        setStatus,
         description,
         setDescription,
         date,
         setDate,
         articles,
         setArticles,
+        workload,
+        setWorkload,
         sectionObject,
         setSectionObject,
         ideaSourceObject,
         setIdeaSourceObject,
+        assistantObject,
+        setAssistantObject
       }}
     >
       {children}

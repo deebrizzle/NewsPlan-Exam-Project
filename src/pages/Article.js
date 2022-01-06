@@ -1,10 +1,10 @@
+import { useParams, useNavigate, NavLink} from "react-router-dom";
+import React, {useEffect, useState, useContext} from 'react'
+import {Stack, Grid} from '@mui/material';
 import NavBar from "../components/Navigation/NavBar"
 import { PageWrapper } from "./PageMargin.styles"
-import { useParams, useNavigate, NavLink} from "react-router-dom";
-import React, {useEffect, useState} from 'react'
-import { getIdea } from "../database/Ideas";
 import Loading from "../components/Loading";
-import {Stack, Grid} from '@mui/material';
+import {ModalContext} from "../components/ModalContext"
 import {StandardButton, ReturnButton } from '../components/Button.styles'
 import { DescriptionInput, HeadlineInput } from '../components/InputFields';
 import { SelectDate } from '../components/SelectFields/SelectDate'
@@ -12,26 +12,41 @@ import { SelectSection } from '../components/SelectFields/SelectSection'
 import { SelectSource } from '../components/SelectFields/SelectSource'
 import { SelectStatus } from '../components/SelectFields/SelectStatus'
 import { SelectPhotographer } from '../components/SelectFields/SelectPhotographer'
+import { SelectAssistant } from '../components/SelectFields/SelectAssistant'
+import { SelectWorkload } from '../components/SelectFields/SelectWorkload'
 import CommentTable from "../components/Tables/CommentTable";
 import GridSpacer from "../components/Gridspacer";
 import { getArticleById } from "../database/Articles";
+import { getIdea } from "../database/Ideas";
+import { uploadArticleToDatabase } from "../database/Articles";
 
 export default function Article() {
+
+    const { headline, assistant, photographer, ideaSource, ideaSourceObject, workload, description, status, date, section, resetContext} = useContext(ModalContext);
 
     const { id } = useParams();
     const [idea, setIdea] = useState();
     const [article, setArticle] = useState();
     const navigate = useNavigate()
 
-    function handleSave() {}
+    async function handlePlan() {
+        const articleInputFields = [idea, ideaSource, headline, workload, ideaSourceObject, status, date];
+        console.log(articleInputFields)
+        for (const element of articleInputFields) {
+            if (element === null || element === ""){
+              alert("Please fill out every field to save your idea.");
+              return false;
+            }
+          }
+        console.log(idea[0])
+        await uploadArticleToDatabase(idea[0], headline, ideaSourceObject, photographer, assistant, workload, status, date);
+    }
+
 
     useEffect(() => {
         getIdea(id).then((idea) => setIdea(idea))
         getArticleById(id).then((article) => setArticle(article))
     }, [id]);
-
-    console.log(idea)
-    console.log(article)
 
     if (idea === undefined || article === undefined) {
         return (
@@ -48,14 +63,13 @@ export default function Article() {
         <>
          <NavBar/>
          <PageWrapper>
-            <h1> Article Overview </h1>
             <Grid container spacing={3}>
                 {/* INPUT FIELDS */}
                 <Grid item xs={6}> <HeadlineInput/></Grid>
                 <Grid item xs={6}> <SelectSource label="Responsible"/></Grid>
                 <Grid item xs={6}> <SelectSection/></Grid>
-                <Grid item xs={6}> <SelectSource label="Assistant"/></Grid>
-                <GridSpacer spacing={6}/>
+                <Grid item xs={6}> <SelectAssistant label="Assistant"/></Grid>
+                <Grid item xs={6}> <SelectWorkload /></Grid>
                 <Grid item xs={6}> <SelectPhotographer label="Photographer"/></Grid>
                 <Grid item xs={12}><DescriptionInput/></Grid>
                 <Grid item xs={12}><CommentTable articleId={id}/></Grid>
@@ -70,8 +84,8 @@ export default function Article() {
                 </Grid>
                 <Grid item xs={6} >
                     <Stack spacing={3} direction ="row" justifyContent ="flex-end">
-                        <ReturnButton onClick={handleSave}>Plan</ReturnButton>
-                        <StandardButton onClick={handleSave}>Save</StandardButton>
+                        <ReturnButton onClick={handlePlan}>Plan</ReturnButton>
+                        <StandardButton disabled>Save</StandardButton>
                     </Stack>
                 </Grid>
             </Grid>

@@ -47,7 +47,9 @@ export function DescriptionInput() {
 }
 
 export function HeadlineInput() {
-  const {idea, setIdea} = useContext(ModalContext)
+  const {idea} = useContext(ModalContext)
+  const {headline, setHeadline} = useContext(ModalContext)
+  setHeadline(idea);
 
   return (
     <TextField
@@ -55,8 +57,8 @@ export function HeadlineInput() {
       label="Headline"
       variant="outlined"
       fullWidth
-      value={idea}
-      onChange={(e) => setIdea(e.target.value)}
+      value={headline}
+      onChange={(e) => setHeadline(e.target.value)}
     />
   );
 }

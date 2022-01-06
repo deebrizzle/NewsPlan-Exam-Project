@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { PaginationContainer, StyledPagination } from "./ScheduledArticles.styles";
 import Loading from "../Loading";
 
-export function PaginatedArticles ({ articles }) {
+function PaginatedArticles ({ articles }) {
 
   return (
     <Grid container spacing={4}> 

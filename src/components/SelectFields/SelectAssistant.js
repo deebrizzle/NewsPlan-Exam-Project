@@ -3,8 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { getUsers, getUser } from "../../database/Users";
 import { ModalContext } from "../ModalContext";
 
-export function SelectSource({label}) {
-    const { setIdeaSource, ideaSource, setIdeaSourceObject } = useContext(ModalContext);
+export function SelectAssistant({label}) {
+    const { setAssistant, assistant, setAssistantObject } = useContext(ModalContext);
     const [users, setUsers] = useState([]);
   
     useEffect(() => {
@@ -14,11 +14,11 @@ export function SelectSource({label}) {
     }, []);
   
     const handleChange = async (event) => {
-      setIdeaSource(event.target.value);
+      setAssistant(event.target.value);
       getUser(event.target.value)
         .then((results) => {
           results.forEach((userObject) => {
-            setIdeaSourceObject(userObject);
+            setAssistantObject(userObject);
           });
         })
         .catch((error) => {
@@ -37,7 +37,7 @@ export function SelectSource({label}) {
     return (
       <BasicSelect
         handleChange={handleChange}
-        value={ideaSource}
+        value={assistant}
         arrayOfOptions={sources}
         label={label}
       />
