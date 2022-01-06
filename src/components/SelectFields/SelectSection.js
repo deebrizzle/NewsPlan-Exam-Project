@@ -3,8 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { getSections, getSection} from "../../database/Sections";
 import { ModalContext } from "../ModalContext";
 
-export function SelectSection({section}) {
-  const {setSectionObject, setSection} =
+export function SelectSection() {
+  const {setSectionObject, setSection, section} =
     useContext(ModalContext);
   //TODO Query sections from the database for scaleability?
   const [sections, setSections] = useState([]);

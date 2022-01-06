@@ -5,8 +5,8 @@ import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import { useContext } from "react";
 import { ModalContext } from "../ModalContext";
 
-export function SelectDate({label, date }) {
-  const {setDate } = useContext(ModalContext);
+export function SelectDate({label }) {
+  const { date, setDate } = useContext(ModalContext);
 
   const handleChange = (newDate) => {
     setDate(newDate);

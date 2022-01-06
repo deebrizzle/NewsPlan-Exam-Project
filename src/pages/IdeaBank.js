@@ -24,6 +24,7 @@ function IdeaBank() {
     setDescription('')
     setVisibility('')
     setIdeaId('')
+    
   };
 
   const handleOpen = () => {
