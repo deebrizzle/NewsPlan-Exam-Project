@@ -1,5 +1,5 @@
 import BasicSelect from "./BasicSelect";
-import {getArticlesFromIdea} from "../../database/Articles"
+import {getArticlesFromIdea} from "../../database/articles"
 import React, { useContext, useEffect, useState } from "react";
 import {FieldContext} from "../FieldContext"
 

@@ -1,10 +1,10 @@
 import {StyledDataGrid} from "./IdeaTable.styles"
 import {FieldContext} from "../FieldContext"
 import { convertDateModal } from "../../utils/convertDate";
-import { getSection } from "../../database/Sections";
-import { getUser } from "../../database/Users";
+import { getSection } from "../../database/sections";
+import { getUser } from "../../database/users";
 import React, { useEffect, useContext} from "react";
-import {getIdeas} from "../../database/Ideas.js";
+import {getIdeas} from "../../database/ideas.js";
 import {ideaFilterSection, ideaFilterSearch } from "../../database/ideasHelpers.js";
 import { Grid } from "@mui/material";
 

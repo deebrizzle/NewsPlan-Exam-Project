@@ -1,6 +1,6 @@
 import BasicSelect from "./BasicSelect";
 import React, { useEffect, useState } from "react";
-import { getPhotographers } from "../../database/Users";
+import { getPhotographers } from "../../database/users";
 
 export function SelectPhotographer({label}) {
     const [photographer, setPhotographer] = useState();

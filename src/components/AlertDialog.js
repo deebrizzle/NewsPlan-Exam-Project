@@ -5,7 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {FieldContext} from "./FieldContext"
-import {deleteIdeaFromDatabaseREST } from "../database/Ideas";
+import {deleteIdeaFromDatabaseREST } from "../database/ideas";
 import {deleteIdeaFromState} from "./updateStates"
 import {CancelButton, DeleteButton } from "./Button.styles";
 

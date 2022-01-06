@@ -16,9 +16,9 @@ import { SelectAssistant } from '../components/SelectFields/SelectAssistant'
 import { SelectWorkload } from '../components/SelectFields/SelectWorkload'
 import CommentTable from "../components/Tables/CommentTable";
 import GridSpacer from "../components/Gridspacer";
-import { getArticleById } from "../database/Articles";
-import { getIdea } from "../database/Ideas";
-import { uploadArticleToDatabase } from "../database/Articles";
+import { getArticleById } from "../database/articles";
+import { getIdea } from "../database/ideas";
+import { uploadArticleToDatabase } from "../database/articles";
 
 export default function Article() {
 

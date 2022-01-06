@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledDataGrid } from "./IdeaTable.styles";
-import { getCommentsFromArticle } from '../../database/Comments'
+import { getCommentsFromArticle } from '../../database/comments'
 import { Grid } from "@mui/material";
 
 

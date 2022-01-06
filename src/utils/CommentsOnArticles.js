@@ -1,6 +1,6 @@
-import { allCommentsToArticleResponsible} from "../database/ArticlesHelpers";
+import { allCommentsToArticleResponsible} from "../database/articlesHelpers";
 import { useEffect, useState} from "react";
-import { getCurrentUser } from "../database/Users";
+import { getCurrentUser } from "../database/users";
 import { sortByDate } from "./sortBy";
 
 export default function CommentsOnArticles() {

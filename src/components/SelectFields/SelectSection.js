@@ -1,6 +1,6 @@
 import BasicSelect from "./BasicSelect";
 import React, { useContext, useEffect, useState } from "react";
-import { getSections, getSection} from "../../database/Sections";
+import { getSections, getSection} from "../../database/sections";
 import {FieldContext} from "../FieldContext"
 
 export function SelectSection() {

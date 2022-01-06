@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { getUsers } from "../../database/Users";
+import { getUsers } from "../../database/users";
 import { Grid } from "@mui/material";
 import WorkloadTable from "../Tables/WorkloadTable";
 import Loading from "../Loading";

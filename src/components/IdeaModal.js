@@ -9,7 +9,7 @@ import { SelectSource } from './SelectFields/SelectSource';
 import { SelectSection } from './SelectFields/SelectSection';
 import { DescriptionInput, IdeaInput } from './InputFields';
 import {FieldContext} from "./FieldContext"
-import { uploadIdeaToDatabase} from "../database/Ideas";
+import { uploadIdeaToDatabase} from "../database/ideas";
 import {uploadIdeaToState} from "./updateStates"
 import AlertDialog from "./AlertDialog"
 import { NavLink } from "react-router-dom";

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { StyledDataGrid } from "./IdeaTable.styles";
-import { articleFilterSection, articleFilterSource } from "../../database/ArticlesHelpers";
+import { articleFilterSection, articleFilterSource } from "../../database/articlesHelpers";
 import { StyledAlertIcon } from "./ArticleTable.styles"
 import {FieldContext} from "../FieldContext"
 import { Grid } from "@mui/material";

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { StyledDataGrid } from "./IdeaTable.styles";
-import { createUserWorkloadArray } from "../../database/Articles";
+import { createUserWorkloadArray } from "../../database/articles";
 import Loading from "../Loading";
 import { StyledAlertIcon } from "./ArticleTable.styles"
 import clsx from 'clsx';

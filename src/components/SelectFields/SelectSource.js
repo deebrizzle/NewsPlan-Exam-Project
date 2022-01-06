@@ -1,6 +1,6 @@
 import BasicSelect from "./BasicSelect";
 import React, { useContext, useEffect, useState } from "react";
-import { getUsers, getUser } from "../../database/Users";
+import { getUsers, getUser } from "../../database/users";
 import {FieldContext} from "../FieldContext"
 
 export function SelectSource({label}) {

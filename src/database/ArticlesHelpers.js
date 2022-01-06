@@ -1,5 +1,5 @@
-import { getAllArticlesByResponsible } from "./Articles";
-import { getCommentsFromArticle } from "./Comments";
+import { getAllArticlesByResponsible } from "./articles";
+import { getCommentsFromArticle } from "./comments";
 
 export function articleFilterSection(articles, section) {
   if (Object.keys(section).length === 0 || section === undefined) {

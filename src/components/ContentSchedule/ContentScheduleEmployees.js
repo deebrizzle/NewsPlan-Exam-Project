@@ -4,8 +4,8 @@ import { SelectSection } from "../SelectFields/SelectSection";
 import { SelectSource } from "../SelectFields/SelectSource";
 import { SelectDate } from "../SelectFields/SelectDate";
 import { useContext, useEffect, useState } from "react";
-import { getAllArticles, mapArticles} from "../../database/Articles";
-import {articleFilterEmployees, articleFilterSectionEmployees,} from "../../database/ArticlesHelpers";
+import { getAllArticles, mapArticles} from "../../database/articles";
+import {articleFilterEmployees, articleFilterSectionEmployees,} from "../../database/articlesHelpers";
 import { groupBy } from "../../utils/groupBy";
 import GridSpacer from "../Gridspacer";
 import Loading from "../Loading"

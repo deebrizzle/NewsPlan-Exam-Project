@@ -4,10 +4,10 @@ import { SelectSource } from "../SelectFields/SelectSource"
 import { SelectDate } from "../SelectFields/SelectDate";
 import ArticleTable from "../Tables/ArticleTable";
 import React, { useEffect, useContext, useState} from "react";
-import { getFinishedArticles, getUnfinishedArticles } from "../../database/Articles";
-import { getIdeas } from "../../database/Ideas";
+import { getFinishedArticles, getUnfinishedArticles } from "../../database/articles";
+import { getIdeas } from "../../database/ideas";
 import {StandardButton} from "../Button.styles";
-import { getSections } from "../../database/Sections";
+import { getSections } from "../../database/sections";
 import Loading from "../Loading";
 import {FieldContext} from "../FieldContext"
 import GridSpacer from "../Gridspacer";
