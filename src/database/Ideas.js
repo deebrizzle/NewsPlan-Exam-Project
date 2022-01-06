@@ -1,6 +1,6 @@
 import Parse from "parse";
 import { convertStringDateToDateObject, convertToMonthDayYearString } from "../utils/convertDate";
-import { IdeaBoxStyle } from "../components/Idea.styles";
+import { IdeaBoxStyle } from "../components/IdeaModal.styles";
 
 export async function getIdea(ideaId) {
   const Ideas = Parse.Object.extend("Ideas");

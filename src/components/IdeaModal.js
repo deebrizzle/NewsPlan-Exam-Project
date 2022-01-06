@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Stack, Box, Typography, Modal, Grid} from '@mui/material';
 import {SaveButton, CancelButton, DeleteButton } from "./Button.styles";
-import { IdeaBoxStyle } from './Idea.styles';
+import { IdeaBoxStyle } from './IdeaModal.styles';
 import { SelectArticles } from './SelectFields/SelectArticles';
 import { SelectDate } from './SelectFields/SelectDate';
 import { SelectVisibilities } from './SelectFields/SelectVisibilities';
