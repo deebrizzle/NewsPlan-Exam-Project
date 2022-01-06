@@ -32,13 +32,13 @@ export default function ArticleTable({articles}) {
   
   // TODO Click to next X articles doesn't work
   return(
-        <Grid style={{ height: 400 }}>
+        <Grid style={{ height: 425 }}>
           <StyledDataGrid 
             getRowId={(row) => row.objectId} 
             rows={filteredSectionSource} 
             columns={columns} 
             rowsPerPageOptions={[10]} 
-            pageSize={5} 
+            pageSize={6} 
             onRowClick={(e) => handleRowClick(e)}/>
         </Grid>
   );
