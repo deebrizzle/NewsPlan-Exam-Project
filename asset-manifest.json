@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/NewsPlan-Exam-Project/static/css/main.9fc79356.chunk.css",
-    "main.js": "/NewsPlan-Exam-Project/static/js/main.8994ef7b.chunk.js",
-    "main.js.map": "/NewsPlan-Exam-Project/static/js/main.8994ef7b.chunk.js.map",
+    "main.js": "/NewsPlan-Exam-Project/static/js/main.7ac03d57.chunk.js",
+    "main.js.map": "/NewsPlan-Exam-Project/static/js/main.7ac03d57.chunk.js.map",
     "runtime-main.js": "/NewsPlan-Exam-Project/static/js/runtime-main.dfea48d7.js",
     "runtime-main.js.map": "/NewsPlan-Exam-Project/static/js/runtime-main.dfea48d7.js.map",
     "static/js/2.c88554a8.chunk.js": "/NewsPlan-Exam-Project/static/js/2.c88554a8.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.dfea48d7.js",
     "static/js/2.c88554a8.chunk.js",
     "static/css/main.9fc79356.chunk.css",
-    "static/js/main.8994ef7b.chunk.js"
+    "static/js/main.7ac03d57.chunk.js"
   ]
 }
