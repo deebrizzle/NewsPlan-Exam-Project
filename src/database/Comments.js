@@ -1,3 +1,5 @@
+import {sortByDate} from "../utils/sortBy"
+
   export async function getCommentsHTTP(query){
     let filterString = "?where=" + encodeURIComponent(JSON.stringify(query));
     const comments = await fetch(
@@ -15,7 +17,7 @@
     let comment = allComments.map((row, index) => {
       return {
         id: index,
-        createdAt: row.createdAt,
+        updatedAt: row.updatedAt,
         article: row.article.objectId,
         message: row.message,
       };

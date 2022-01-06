@@ -13,13 +13,7 @@ import {ModalContext} from "../../components/ModalContext";
 export default function NavBar() {
   const currentUser = Parse.User.current();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const {setDate, setSection, setIdeaSource,} = useContext(ModalContext);
-  const resetContext = () => {
-    setDate(new Date())
-    setSection("")
-    setIdeaSource("")
-  };
-
+  const {resetContext} = useContext(ModalContext);
 
   return (
     <Box sx={{ flexGrow: 1 }}>

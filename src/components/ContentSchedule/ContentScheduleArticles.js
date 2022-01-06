@@ -15,7 +15,7 @@ import GridSpacer from "../Gridspacer";
 export default function ContentScheduleArticles() {
   const [finishedArticles, setFinishedArticles] = useState();
   const [unfinishedArticles, setUnfinishedArticles] = useState();
-  const {setSection, section, setIdeaSource, date, ideaSource} = useContext(ModalContext);
+  const {section, date, ideaSource, resetContext} = useContext(ModalContext);
 
     useEffect(() => {
       getIdeas()
@@ -24,11 +24,6 @@ export default function ContentScheduleArticles() {
       getUnfinishedArticles(date, setUnfinishedArticles)
       //for cloud function:
     }, [date, section, ideaSource]);
-
-    const handleReset = () => {
-      setSection("")
-      setIdeaSource("")
-    };
 
   if (finishedArticles === undefined || unfinishedArticles === undefined ) {
     return <Loading/>
@@ -40,10 +35,8 @@ export default function ContentScheduleArticles() {
             <Grid item xs={2}> <SelectDate/> </Grid>
             <Grid item xs={2}> <SelectSection /> </Grid>
             <GridSpacer spacing={8} />
-            <Grid item xs={4}> <SelectSource label="Source" /> </Grid>
-
-            <Grid item xs={4}> <StandardButton onClick={handleReset}>Reset</StandardButton></Grid>
-
+            <Grid item xs={2}> <SelectSource label="Source" /> </Grid>
+            <Grid item xs={6}> <StandardButton onClick={resetContext}>Reset</StandardButton></Grid>
             {/* Second line: headers */}
             <Grid item xs={6}><h6>Finished Articles</h6></Grid>
             <Grid item xs={6}> <h6>Unfinished Articles</h6></Grid>

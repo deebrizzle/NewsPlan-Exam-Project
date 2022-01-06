@@ -41,7 +41,7 @@ export default function UserDrawer(props) {
                     <Typography variant="h6" component="h2">
                       {comment.headline}
                     </Typography>
-                    {comment.createdAt}: {comment.message}
+                    {comment.updatedAt}: {comment.message}
                   </Fragment>
                 </Box>
               ))}

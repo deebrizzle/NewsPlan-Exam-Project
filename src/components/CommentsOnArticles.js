@@ -1,6 +1,7 @@
 import { allCommentsToArticleResponsible} from "../database/Articles";
 import { useEffect, useState} from "react";
 import { getCurrentUser } from "../database/Users";
+import { sortByDate } from "../utils/sortBy";
 
 export default function CommentsOnArticles() {
   const [comments, setComments] = useState([]);
@@ -24,13 +25,14 @@ for (let i = 0; i < comments.length; i++) {
 let listOfComments = allComments.map((row, index) => {
     return {
         id: index,
-        createdAt: row.createdAt.substring(0, 10),
+        updatedAt: row.updatedAt.substring(0, 10),
         message: row.message,
         article: row.article,
         headline: row.headline,
     };
   });
-return listOfComments;
+  
+return sortByDate(listOfComments);
 }
 
 

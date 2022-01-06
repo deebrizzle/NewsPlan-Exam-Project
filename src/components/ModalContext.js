@@ -15,9 +15,20 @@ export const ModalProvider = ({ children }) => {
   const [sectionObject, setSectionObject] = useState([]);
   const [listOfIdeas, setListOfIdeas] = useState([]);
 
+  const resetContext = () => {
+    setDate(new Date())
+    setSection('')
+    setIdeaSource('')
+    setIdea('')
+    setDescription('')
+    setVisibility('')
+    setIdeaId('')
+  };
+
   return (
     <ModalContext.Provider
       value={{
+        resetContext,
         listOfIdeas,
         setListOfIdeas,
         ideaId,

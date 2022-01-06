@@ -22,17 +22,12 @@ function TabPanel(props) {
 }
 
 function TabBar() {
-  const {setSection, setIdeaSource} = useContext(ModalContext);
+  const {resetContext} = useContext(ModalContext);
   const [value, setValue] = useState(0);
-
-  const handleReset = () => {
-    setSection('')
-    setIdeaSource('')
-  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    handleReset()
+    resetContext()
   };
 
   return (
