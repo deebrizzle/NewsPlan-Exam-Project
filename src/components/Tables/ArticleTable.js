@@ -21,7 +21,7 @@ export default function ArticleTable({articles}) {
       sortable: false,
       width: 75,
       renderCell: (params) => {
-        if (params.row.status === "D") {
+        if (params.row.status === "D" || params.row.status === "C") {
           return <StyledAlertIcon/>
         }
       }
