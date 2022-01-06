@@ -1,32 +1,35 @@
 import Parse from "parse";
-import { convertStringDateToDateObject, convertToMonthDayYearString  } from "../components/convertDate";
+import {
+  convertStringDateToDateObject,
+  convertToMonthDayYearString,
+} from "../utils/convertDate";
 
 export async function getIdea(ideaId) {
   const Ideas = Parse.Object.extend("Ideas");
   const query = new Parse.Query(Ideas);
-  query.equalTo('objectId', ideaId);
+  query.equalTo("objectId", ideaId);
   return await query.find();
-}  
+}
 
 export async function getIdeas() {
   const Ideas = Parse.Object.extend("Ideas");
   const query = new Parse.Query(Ideas);
-  query.include("Section")
-  query.include("User")
+  query.includeAll();
+  query.limit(1000);
   const results = await query.find();
   let ideas = results.map((row, index) => {
-  return {
-    id: index,
-    expirationDate: convertToMonthDayYearString(String(row.attributes.expirationDate)),
-    source: row.get("ideaSource").get("username"),
-    ideaName: row.attributes.ideaName,
-    description: row.attributes.description,
-    ideaId: row.id,
-    section: row.get("section").get("name"),
-    visibility: row.attributes.visibility,
-  };
-});
-  return ideas
+    return {
+      id: index,
+      expirationDate: convertToMonthDayYearString(String(row.attributes.expirationDate)),
+      source: row.get("ideaSource").get("username"),
+      ideaName: row.attributes.ideaName,
+      description: row.attributes.description,
+      ideaId: row.id,
+      section: row.get("section").get("name"),
+      visibility: row.attributes.visibility,
+    };
+  });
+  return ideas;
 }
 
 export async function uploadIdeaToDatabase(
@@ -68,10 +71,8 @@ export async function uploadIdeaToDatabase(
   }
 }
 
-
-//TODO Console log delete from Sara's review? Or show it to the user?
-  export async function deleteHTTP(idea){
-    try {
+export async function deleteHTTP(idea) {
+  try {
     await fetch(
       "https://parseapi.back4app.com/classes/Ideas/" + idea.objectId,
       {

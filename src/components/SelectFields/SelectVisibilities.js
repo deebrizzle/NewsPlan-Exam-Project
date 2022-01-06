@@ -1,13 +1,12 @@
 import BasicSelect from "./BasicSelect";
 import React, { useContext } from "react";
-import { ModalContext } from "../ModalContext";
+import {FieldContext} from "../FieldContext"
 
-export function SelectVisibilities({ handleCallBackSelection }) {
-    const { visibility, setVisibility } = useContext(ModalContext);
+export function SelectVisibilities() {
+    const { visibility, setVisibility } = useContext(FieldContext);
   
     const handleChange = (event) => {
       setVisibility(event.target.value);
-      handleCallBackSelection(visibility);
     };
   
     const visibilities = [
@@ -23,7 +22,6 @@ export function SelectVisibilities({ handleCallBackSelection }) {
         handleChange={handleChange}
         value={visibility}
         arrayOfOptions={visibilities}
-        handleCallBackSelection={handleCallBackSelection}
       />
     );
   }

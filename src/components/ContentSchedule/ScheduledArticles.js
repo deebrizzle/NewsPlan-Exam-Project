@@ -1,18 +1,16 @@
-import { Grid, Box } from "@mui/material";
+import { Grid} from "@mui/material";
 import EmployeeArticles from "./EmployeeArticles";
 import React, { useEffect, useState } from "react";
-import { PaginationContainer, StyledPagination } from "./ScheduledArticles.styles";
+import {StyledPagination } from "./ScheduledArticles.styles";
+import Loading from "../Loading";
 
-export function PaginatedArticles ({ articles }) {
+function PaginatedArticles ({ articles }) {
 
   return (
-    <Grid
-      container
-      spacing={{ xs: 2, md: 3 }}
-    > 
+    <Grid container spacing={4}> 
       {articles.map((userNameAndArticles) => {
         return (
-          <Grid key={userNameAndArticles[0]} flexDirection="row" item xs={4} sm={4} md={4} justifyContent="center">
+          <Grid item xs={4} key={userNameAndArticles[0]} >
               <EmployeeArticles userNameAndArticles={userNameAndArticles} />
           </Grid>
         );
@@ -23,7 +21,7 @@ export function PaginatedArticles ({ articles }) {
 
 export function ScheduledArticles ({ articles, itemsPerPage }) {
 
-  const [currentArticles, setCurrentArticles] = useState(null);
+  const [currentArticles, setCurrentArticles] = useState();
   const [pageCount, setPageCount] = useState(0);
   const [articleOffset, setArticleOffset] = useState(0);
 
@@ -39,23 +37,18 @@ export function ScheduledArticles ({ articles, itemsPerPage }) {
     setArticleOffset(newIndex);
   };
 
-  if (currentArticles === null) {
+  if (currentArticles === undefined) {
     return (
-      <Box>
-        Loading...
-      </Box>
+      <Loading/>
     )
   }
 
   else {
     return (
-        <PaginationContainer>            
-          <PaginatedArticles articles = {currentArticles} /> 
-          <StyledPagination 
-            count={pageCount} 
-            variant="outlined"
-            onChange={handlePageClick} /> 
-        </PaginationContainer>
+        <Grid item xs={12}>
+          <PaginatedArticles articles = {currentArticles} />
+          <StyledPagination count={pageCount} variant="outlined" onChange={handlePageClick} /> 
+        </Grid>
       );
     };
 }

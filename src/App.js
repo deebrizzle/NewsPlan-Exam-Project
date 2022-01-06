@@ -3,9 +3,12 @@ import "./App.css";
 import Login from "./pages/Login.js";
 import Home from "./pages/Home.js";
 import IdeaBank from "./pages/IdeaBank.js";
-import ContentSchedule from "./pages/ContentSchedule.js";
-import Calendar from "./pages/Calendar.js";
+import Workload from "./pages/Workload.js";
+import Article from "./pages/Article.js"
 import Parse from "parse";
+import Employees from "./pages/Employees";
+import Articles from "./pages/Articles";
+import Calendar from "./pages/Calendar";
 
 Parse.initialize(
   process.env.REACT_APP_APPLICATION_KEY,
@@ -40,18 +43,42 @@ function App() {
           }
         />
         <Route
-          path="/contentschedule"
+          path="/employees"
           element={
             <LoginRequired>
-              <ContentSchedule />
+              <Employees />
+            </LoginRequired>
+          }
+        />
+                <Route
+          path="/articles"
+          element={
+            <LoginRequired>
+              <Articles />
             </LoginRequired>
           }
         />
         <Route
+          path="/workload"
+          element={
+            <LoginRequired>
+              <Workload />
+            </LoginRequired>
+          }
+        />
+                <Route
           path="/calendar"
           element={
             <LoginRequired>
               <Calendar />
+            </LoginRequired>
+          }
+        />
+        <Route
+          path="/article/:id"
+          element={
+            <LoginRequired>
+              <Article />
             </LoginRequired>
           }
         />

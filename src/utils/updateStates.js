@@ -1,9 +1,11 @@
 import { convertToMonthDayYearString, convertStringDateToDateObject } from "./convertDate"
+import { v4 as uuidv4 } from 'uuid';
 
-export function uploadIdeaToState(listOfIdeas, id, idea, description, visibility, section, ideaSource, ideaId, date, setListOfIdeas){
+export function uploadIdeaToState(idea, description, visibility, section, ideaSource, ideaId, date, listOfIdeas, setListOfIdeas){
+const id = uuidv4();
 if(ideaId === ""){
   let dates = convertStringDateToDateObject(date)
-  let IdeaInputFields = [{id, expirationDate: convertToMonthDayYearString(String(dates)), ideaName: idea, description, visibility, section, source: ideaSource, ideaId}];
+  let IdeaInputFields = [{id, expirationDate: convertToMonthDayYearString(String(dates)), ideaName: idea, description, visibility, section, source: ideaSource, ideaId:id}];
   const newListOfIdeas = listOfIdeas.concat(IdeaInputFields)
   setListOfIdeas(newListOfIdeas)
 }

@@ -9,9 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import { StyledFormControlLabel, StyledLink, LoginWrapper } from "./Login.styles";
 import Parse from "parse";
-import LoginInputField from "../components/LoginInputField";
+import LoginInput from "../components/InputFields/LoginInput";
 
-//TODO This function should be refactored to remove fecthing from the database from this function
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +19,7 @@ export default function Login() {
 
   async function validateUser() {
     try {
-      const userAuth = await Parse.User.logIn(username, password);
+      await Parse.User.logIn(username, password);
       setUsername("");
       setPassword("");
       setLoginError(false);
@@ -38,13 +37,13 @@ export default function Login() {
         <CssBaseline />
         <img className="logo" src={logo} alt="Newsplan logo" />
         <Box component="form" sx={{ mt: 1 }}>
-          <LoginInputField
+          <LoginInput
             label="Username"
             value={username}
             onChange={setUsername}
             error={loginError}
           />
-          <LoginInputField
+          <LoginInput
             type="password"
             label="Password"
             value={password}

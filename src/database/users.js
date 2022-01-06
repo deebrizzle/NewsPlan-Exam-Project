@@ -1,5 +1,10 @@
 import Parse from "parse";
 
+export async function getCurrentUser(){
+const currentUser = Parse.User.current();
+return currentUser
+}
+
 export async function getUsers() {
   const Users = Parse.Object.extend("User");
   const query = new Parse.Query(Users);
@@ -16,24 +21,23 @@ export async function getUser(username){
 }
 
 export async function getEditors() {
-  const Users = Parse.Object.extend("Users");
+  const Users = Parse.Object.extend("User");
   const query = new Parse.Query(Users);
-  query.equalTo("isEditor", "True");
+  query.equalTo('isEditor', true);
 
   return await query.find();
 }
 
 export async function getPhotographers() {
-  const Users = Parse.Object.extend("Users");
+  const Users = Parse.Object.extend("User");
   const query = new Parse.Query(Users);
-  query.equalTo("isPhotographer", "True");
+  query.equalTo('isPhotographer', true);
 
   return await query.find();
 }
 
 export async function getUsersFromSection(section) {
-  //TODO Convert sections column in database into pointer Sections objectId?
-  const Users = Parse.Object.extend("Users");
+  const Users = Parse.Object.extend("User");
   const query = new Parse.Query(Users);
   query.descending("username");
   query.exclude("section", section);

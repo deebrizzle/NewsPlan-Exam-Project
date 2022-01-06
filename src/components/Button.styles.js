@@ -7,8 +7,8 @@ export const LoginButton = styled(Button)`
     color: ${colors.white};
     background-color: ${colors.P1DarkPetroleum};
     text-transform: none;
-
-    height: 45px;
+    height: 55px;
+    font-weight: bold;
   }
   &&:hover {
     background-color: ${colors.P1DarkPetroleumHover};
@@ -67,5 +67,23 @@ export const StandardButton = styled(Button)`
   }
   &&:hover {
     background-color: ${colors.P1DarkPetroleumHover};
+  }
+`;
+
+
+export const ReturnButton = styled(Button)`
+  && {
+    color: ${colors.P1DarkPetroleum};
+    background-color: ${colors.white};
+    border: 1px solid ${colors.P1DarkPetroleum};
+    text-transform: none;
+    font-weight: bold;
+
+
+    height: 55px;
+    width: 100px;
+  }
+  &&:hover {
+    background-color: ${colors.P1GreyLightBlue};
   }
 `;

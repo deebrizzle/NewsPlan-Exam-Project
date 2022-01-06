@@ -2,8 +2,40 @@ import styled from "styled-components";
 import { Grid, Paper } from "@mui/material";
 import colors from "../../colors"
 
+const handleStatusColor = value => {
+  switch (value) {
+    case "P": 
+      return `
+      background-color: ${colors.Planned} !important;
+      color: ${colors.black};
+    `
+    case "F":
+      return `
+      background-color: ${colors.Finished} !important;
+      color: ${colors.black};
+    `
+    case "A":
+      return `
+      background-color: ${colors.Accepted} !important;
+      color: ${colors.black};
+    `
+    case "D":
+      return `
+      background.color: ${colors.Delayed} !important;
+      color: ${colors.black};
+    `
+    case "C":
+      return `
+      background-color: ${colors.Cancelled} !important;
+      color: ${colors.black};
+    `;
+    default:
+      return colors.white;
+  }
+};
+
 export const Item = styled(Paper)`
-    color: ${colors.black};
+    ${({ value }) => handleStatusColor(value)};
     text-align: center;
     align-self: center;
     margin: 5.5%;
