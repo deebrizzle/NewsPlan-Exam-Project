@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { MyDataGrid } from "../IdeaTable.styles";
+import { StyledDataGrid } from "./IdeaTable.styles";
 import { articleFilterSection, articleFilterSource } from "../../database/Articles";
-import { StyledAlertIcon } from "./ArticleTable.styles";
+import { StyledAlertIcon } from "./ArticleTable.styles"
 import {ModalContext} from "../ModalContext"
+import { Grid } from "@mui/material";
 
 export default function ArticleTable({articles}) {
   const {section, ideaSource} = useContext(ModalContext);
@@ -29,10 +30,17 @@ export default function ArticleTable({articles}) {
 
   function handleRowClick (e) {}
   
+  
   return(
-        <div style={{ height: 420, width: "100%", flexGrow: 2, display: "flex" }}>
-          <MyDataGrid getRowId={(row) => row.objectId} rows={filteredSectionSource} columns={columns} rowsPerPageOptions={[20]} pageSize={20} onRowClick={(e) => handleRowClick(e)}/>
-        </div>
+        <Grid style={{ height: 400 }}>
+          <StyledDataGrid 
+            getRowId={(row) => row.objectId} 
+            rows={filteredSectionSource} 
+            columns={columns} 
+            rowsPerPageOptions={[10]} 
+            pageSize={10} 
+            onRowClick={(e) => handleRowClick(e)}/>
+        </Grid>
   );
 }
  

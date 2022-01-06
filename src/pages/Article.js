@@ -12,7 +12,7 @@ import { SelectSection } from '../components/SelectFields/SelectSection'
 import { SelectSource } from '../components/SelectFields/SelectSource'
 import { SelectStatus } from '../components/SelectFields/SelectStatus'
 import { SelectPhotographer } from '../components/SelectFields/SelectPhotographer'
-import CommentTable from "../components/CommentTable";
+import CommentTable from "../components/Tables/CommentTable";
 import GridSpacer from "../components/Gridspacer";
 import { getArticleById } from "../database/Articles";
 
@@ -48,7 +48,7 @@ function Article() {
         <>
          <NavBar/>
          <PageWrapper>
-             <h1> Article Overview </h1>
+            <h1> Article Overview </h1>
             <Grid container spacing={3}>
                 {/* INPUT FIELDS */}
                 <Grid item xs={6}> <HeadlineInput/></Grid>
@@ -65,7 +65,7 @@ function Article() {
                         {/* TODO use navigate.goBack() instead of NavLink */}
                         <ReturnButton component={NavLink} to="/ideabank">Return</ReturnButton>
                         <SelectStatus/> 
-                        <SelectDate/>
+                        <SelectDate label="Deadline"/>
                     </Stack>
                 </Grid>
                 <Grid item xs={6} >

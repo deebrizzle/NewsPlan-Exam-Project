@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { SelectSection } from "../SelectFields/SelectSection";
 import { SelectSource } from "../SelectFields/SelectSource"
 import { SelectDate } from "../SelectFields/SelectDate";
-import ArticleTable from "./ArticleTable";
+import ArticleTable from "../Tables/ArticleTable";
 import React, { useEffect, useContext, useState} from "react";
 import { getFinishedArticles, getUnfinishedArticles } from "../../database/Articles";
 import { getIdeas } from "../../database/Ideas";

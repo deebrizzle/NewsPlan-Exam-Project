@@ -1,5 +1,5 @@
 import Parse from "parse";
-import { convertStringDateToDateObject, convertToMonthDayYearString } from "../components/convertDate";
+import { convertStringDateToDateObject, convertToMonthDayYearString } from "../utils/convertDate";
 import { IdeaBoxStyle } from "../components/Idea.styles";
 
 export async function getIdea(ideaId) {

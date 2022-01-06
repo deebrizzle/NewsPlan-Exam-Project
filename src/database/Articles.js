@@ -1,6 +1,6 @@
 import Parse from "parse";
 import { sortByString } from "../utils/sortBy";
-import {convertToDayMonthString, convertStringDateToDateObject} from "../components/convertDate"
+import {convertToDayMonthString, convertStringDateToDateObject} from "../utils/convertDate"
 import {getCommentsFromArticle} from "./Comments"
 
 export async function getAllArticles(date) {
@@ -167,6 +167,23 @@ export async function workLoadSummarizer(usernameString, dateObj) {
   const params =  { initials: usernameString, date: dateObj };
   const sum = await Parse.Cloud.run("workloadForOne", params);
   return sum;
+}
+
+// cloud
+export function createUserWorkloadArray(users, date) {
+  var userWorkloadArray = []
+  users.forEach((user) => userWorkloadArray.push({   
+      objectId: user.get("userID"),
+      name: user.get("username"), 
+      section: user.get("section"),
+      photographer: user.get("isPhotographer"),
+      workload: 0
+  }))
+  userWorkloadArray.forEach((row) => 
+      workLoadSummarizer(row.name, date).then((sum) => {
+          row.workload = sum;
+      }))
+  return userWorkloadArray
 }
 
 export function articleFilterSectionBySource(articles, source) {

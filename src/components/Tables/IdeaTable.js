@@ -1,10 +1,11 @@
-import {MyDataGrid} from "./IdeaTable.styles"
-import {ModalContext} from "./ModalContext"
-import { convertDateModal } from "./convertDate";
-import { getSection } from "../database/Sections";
-import { getUser } from "../database/Users";
+import {StyledDataGrid} from "./IdeaTable.styles"
+import {ModalContext} from "../ModalContext"
+import { convertDateModal } from "../../utils/convertDate";
+import { getSection } from "../../database/Sections";
+import { getUser } from "../../database/Users";
 import React, { useEffect, useContext} from "react";
-import { getIdeas, ideaFilterSection, ideaFilterSearch } from "../database/Ideas.js";
+import { getIdeas, ideaFilterSection, ideaFilterSearch } from "../../database/Ideas.js";
+import { Grid } from "@mui/material";
 
 export default function IdeaTable({setOpen, search}) {
   const {setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, section, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
@@ -58,8 +59,15 @@ export default function IdeaTable({setOpen, search}) {
   }
   
   return(
-        <div style={{ height: 420, width: "100%", flexGrow: 2, display: "flex" }}>
-          <MyDataGrid getRowId={(row) => row.id} rows={filteredSectionSearch} columns={columns} rowsPerPageOptions={[20]} pageSize={20} onRowClick={(e) => handleRowClick(e)}/>
-        </div>
+    <Grid style={{height:"500px"}}>
+      <StyledDataGrid 
+        getRowId={(row) => row.id}
+        rows={filteredSectionSearch} 
+        columns={columns} 
+        rowsPerPageOptions={[10]} 
+        pageSize={20} 
+        onRowClick={(e) => handleRowClick(e)}
+        />
+    </Grid>
   );
 }

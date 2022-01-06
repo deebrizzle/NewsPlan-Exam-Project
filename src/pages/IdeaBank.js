@@ -2,7 +2,7 @@ import NavBar from "../components/Navigation/NavBar";
 import {Grid, Stack } from '@mui/material';
 import IdeaModal from "../components/IdeaModal";
 import React, { useState, useContext} from "react";
-import IdeaTable from "../components/IdeaTable"
+import IdeaTable from "../components/Tables/IdeaTable"
 import { PageWrapper } from "./PageMargin.styles";
 import SearchInput from "../components/InputFields";
 import {SelectSection} from "../components/SelectFields/SelectSection";

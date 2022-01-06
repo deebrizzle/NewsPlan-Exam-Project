@@ -1,4 +1,4 @@
-import { convertToMonthDayYearString, convertStringDateToDateObject } from "./convertDate"
+import { convertToMonthDayYearString, convertStringDateToDateObject } from "../utils/convertDate"
 import { v4 as uuidv4 } from 'uuid';
 
 export function uploadIdeaToState(idea, description, visibility, section, ideaSource, ideaId, date, listOfIdeas, setListOfIdeas){
