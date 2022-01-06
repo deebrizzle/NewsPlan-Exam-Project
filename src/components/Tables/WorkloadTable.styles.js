@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import colors from "../../colors";
 
 export const ColoredWorkloadsBox = styled(Box)`
-    height: 500px;
+    height: 535px;
 
     .workload.green: {
         backgroundColor: ${colors.Finished}
