@@ -19,7 +19,6 @@ export function SelectSection() {
     .then((results) => {
       results.forEach((sectionObject) => {
         setSectionObject(sectionObject);
-        console.log(sectionObject)
       });
     })
     .catch((error) => {

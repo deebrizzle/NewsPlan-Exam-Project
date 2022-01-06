@@ -3,22 +3,22 @@ import React, { useState, createContext} from "react";
 export const FieldContext = createContext();
 
 export const FieldProvider = ({ children }) => {
-  const [idea, setIdea] = useState("");
-  const [headline, setHeadline] = useState("")
-  const [description, setDescription] = useState("");
-  const [visibility, setVisibility] = useState("");
-  const [section, setSection] = useState("");
-  const [ideaSource, setIdeaSource] = useState("");
-  const [ideaId, setIdeaId] = useState("");
+  const [idea, setIdea] = useState('');
+  const [headline, setHeadline] = useState('')
+  const [description, setDescription] = useState('');
+  const [visibility, setVisibility] = useState('');
+  const [section, setSection] = useState('');
+  const [ideaSource, setIdeaSource] = useState('');
+  const [ideaId, setIdeaId] = useState('');
   const [date, setDate] = useState(new Date());
-  const [articles, setArticles] = useState("")
+  const [articles, setArticles] = useState('')
   const [ideaSourceObject, setIdeaSourceObject] = useState([]);
   const [sectionObject, setSectionObject] = useState([]);
   const [listOfIdeas, setListOfIdeas] = useState([]);
-  const [assistant, setAssistant] = useState("");
-  const [assistantObject, setAssistantObject] = useState("")
-  const [photographer, setPhotographer] = useState("")
-  const [status, setStatus] = useState("");
+  const [assistant, setAssistant] = useState('');
+  const [assistantObject, setAssistantObject] = useState('')
+  const [photographer, setPhotographer] = useState('')
+  const [status, setStatus] = useState('');
   const [workload, setWorkload] = useState();
 
   const resetContext = () => {
@@ -33,7 +33,7 @@ export const FieldProvider = ({ children }) => {
     setAssistant('')
     setPhotographer('')
     setStatus('')
-    setWorkload();
+    setWorkload('');
   };
 
   return (

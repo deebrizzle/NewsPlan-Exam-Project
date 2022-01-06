@@ -66,7 +66,7 @@ export default function IdeaTable({setOpen, search}) {
         getRowId={(row) => row.id}
         rows={filteredSectionSearch} 
         columns={columns} 
-        rowsPerPageOptions={[10]} 
+        rowsPerPageOptions={[8]} 
         pageSize={8} 
         onRowClick={(e) => handleRowClick(e)}
         />

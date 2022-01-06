@@ -20,7 +20,7 @@ export default function CommentTable({articleId}) {
             <StyledDataGrid 
             getRowId={(row) => row.objectId} 
             rows={comments} columns={columns} 
-            rowsPerPageOptions={[20]} 
+            rowsPerPageOptions={[3]} 
             pageSize={3} 
             onRowClick={(e) => handleRowClick(e)}/>
         </Grid>

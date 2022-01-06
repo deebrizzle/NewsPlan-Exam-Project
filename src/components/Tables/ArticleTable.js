@@ -10,10 +10,10 @@ export default function ArticleTable({articles}) {
   const filteredSection = articleFilterSection(articles, section);
   const filteredSectionSource = articleFilterSource(filteredSection, ideaSource)
   const columns = [
-    { field: "dayMonthDate", headerName: "Deadline", minWidth: 100 },
-    { field: "username", headerName: "Source", minWidth: 100  },
-    { field: "headline", headerName: "Headline", width: 250, flex: 3 },
-    { field: "status", headerName: "Status", minWidth: 150, },
+    { field: "dayMonthDate", headerName: "Deadline", minWidth: 75 },
+    { field: "username", headerName: "Source", minWidth: 75  },
+    { field: "headline", headerName: "Headline", minWidth: 400},
+    { field: "status", headerName: "Status", minWidth: 75 },
     {
       field: 'notification',
       headerName: '',
@@ -37,7 +37,7 @@ export default function ArticleTable({articles}) {
             getRowId={(row) => row.objectId} 
             rows={filteredSectionSource} 
             columns={columns} 
-            rowsPerPageOptions={[10]} 
+            rowsPerPageOptions={[6]} 
             pageSize={6} 
             onRowClick={(e) => handleRowClick(e)}/>
         </Grid>
