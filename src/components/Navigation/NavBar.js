@@ -30,7 +30,7 @@ export default function NavBar() {
             EMPLOYEES
           </NavButton>
           <NavButton disableRipple component={NavLink} to="/articles" onClick={resetContext}>
-            ARTICLES
+            EDITION
           </NavButton>
           <NavButton disableRipple component={NavLink} to="/calendar">
             CALENDAR
