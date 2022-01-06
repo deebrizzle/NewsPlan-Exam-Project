@@ -1,4 +1,4 @@
-import { allCommentsToArticleResponsible} from "../database/Articles";
+import { allCommentsToArticleResponsible} from "../database/ArticlesHelpers";
 import { useEffect, useState} from "react";
 import { getCurrentUser } from "../database/Users";
 import { sortByDate } from "./sortBy";

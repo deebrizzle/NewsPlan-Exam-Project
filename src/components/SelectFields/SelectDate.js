@@ -3,10 +3,10 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import { useContext } from "react";
-import { ModalContext } from "../ModalContext";
+import {FieldContext} from "../FieldContext"
 
 export function SelectDate({label}) {
-  const { date, setDate } = useContext(ModalContext);
+  const { date, setDate } = useContext(FieldContext);
 
   const handleChange = (newDate) => {
     setDate(newDate);

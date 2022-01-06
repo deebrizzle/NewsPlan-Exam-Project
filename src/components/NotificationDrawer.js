@@ -9,7 +9,7 @@ import { LoginButton } from "./Button.styles";
 import { logOut } from "./logOut";
 import { NavLink } from "react-router-dom";
 
-export default function UserDrawer(props) {
+export default function NotificationDrawer(props) {
   const { drawerOpen, setDrawerOpen } = props;
   const comments = CommentsOnArticles();
   let newComments = comments.length === 0 ? "No new comments on articles" : "New comments on articles:";

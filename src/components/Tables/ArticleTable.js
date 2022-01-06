@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { StyledDataGrid } from "./IdeaTable.styles";
-import { articleFilterSection, articleFilterSource } from "../../database/Articles";
+import { articleFilterSection, articleFilterSource } from "../../database/ArticlesHelpers";
 import { StyledAlertIcon } from "./ArticleTable.styles"
-import {ModalContext} from "../ModalContext"
+import {FieldContext} from "../FieldContext"
 import { Grid } from "@mui/material";
 
 export default function ArticleTable({articles}) {
-  const {section, ideaSource} = useContext(ModalContext);
+  const {section, ideaSource} = useContext(FieldContext);
   const filteredSection = articleFilterSection(articles, section);
   const filteredSectionSource = articleFilterSource(filteredSection, ideaSource)
   const columns = [

@@ -8,11 +8,11 @@ import SearchInput from "../components/InputFields";
 import {SelectSection} from "../components/SelectFields/SelectSection";
 import {SelectDate} from "../components/SelectFields/SelectDate"
 import {StandardButton} from "../components/Button.styles"
-import {ModalContext} from "../components/ModalContext"
+import {FieldContext} from "../components/FieldContext"
 import GridSpacer from "../components/Gridspacer";
 
 export default function IdeaBank() {
-  const {setDate, setSection, setIdeaSource, setIdea, setDescription, setVisibility, setIdeaId} = useContext(ModalContext);
+  const {setDate, setSection, setIdeaSource, setIdea, setDescription, setVisibility, setIdeaId} = useContext(FieldContext);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
 

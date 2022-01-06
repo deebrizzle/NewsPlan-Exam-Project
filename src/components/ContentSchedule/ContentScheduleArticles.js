@@ -9,13 +9,13 @@ import { getIdeas } from "../../database/Ideas";
 import {StandardButton} from "../Button.styles";
 import { getSections } from "../../database/Sections";
 import Loading from "../Loading";
-import { ModalContext } from "../ModalContext";
+import {FieldContext} from "../FieldContext"
 import GridSpacer from "../Gridspacer";
 
 export default function ContentScheduleArticles() {
   const [finishedArticles, setFinishedArticles] = useState();
   const [unfinishedArticles, setUnfinishedArticles] = useState();
-  const {section, date, ideaSource, resetContext} = useContext(ModalContext);
+  const {section, date, ideaSource, resetContext} = useContext(FieldContext);
 
     useEffect(() => {
       getIdeas()

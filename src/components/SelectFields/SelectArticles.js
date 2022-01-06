@@ -1,11 +1,11 @@
 import BasicSelect from "./BasicSelect";
 import {getArticlesFromIdea} from "../../database/Articles"
 import React, { useContext, useEffect, useState } from "react";
-import { ModalContext } from "../ModalContext";
+import {FieldContext} from "../FieldContext"
 
 export function SelectArticles() {
   const [articlesFromIdea, setArticlesFromIdea] = useState([]);
-  const {ideaId} = useContext(ModalContext);
+  const {ideaId} = useContext(FieldContext);
 
   useEffect(() => {
       getArticlesFromIdea(ideaId).then((articles) => {

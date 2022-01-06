@@ -4,7 +4,7 @@ import {Stack, Grid} from '@mui/material';
 import NavBar from "../components/Navigation/NavBar"
 import { PageWrapper } from "./PageMargin.styles"
 import Loading from "../components/Loading";
-import {ModalContext} from "../components/ModalContext"
+import {FieldContext} from "../components/FieldContext"
 import {StandardButton, ReturnButton } from '../components/Button.styles'
 import { DescriptionInput, HeadlineInput } from '../components/InputFields';
 import { SelectDate } from '../components/SelectFields/SelectDate'
@@ -22,7 +22,7 @@ import { uploadArticleToDatabase } from "../database/Articles";
 
 export default function Article() {
 
-    const { headline, assistant, photographer, ideaSource, ideaSourceObject, workload, description, status, date, section, resetContext} = useContext(ModalContext);
+    const { headline, assistant, photographer, ideaSource, ideaSourceObject, workload, description, status, date, section, resetContext} = useContext(FieldContext);
 
     const { id } = useParams();
     const [idea, setIdea] = useState();

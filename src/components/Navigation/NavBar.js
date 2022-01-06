@@ -7,13 +7,13 @@ import logo from "../../assets/Logo.png";
 import rahul from "../../assets/rahul.png";
 import { NavLink, Link } from "react-router-dom";
 import Parse from "parse";
-import UserDrawer from "../UserDrawer";
-import {ModalContext} from "../../components/ModalContext";
+import NotificationDrawer from "../NotificationDrawer";
+import {FieldContext} from "../FieldContext"
 
 export default function NavBar() {
   const currentUser = Parse.User.current();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const {resetContext} = useContext(ModalContext);
+  const {resetContext} = useContext(FieldContext);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -39,7 +39,7 @@ export default function NavBar() {
             {currentUser.get("username")}
             <img className="picture" src={rahul} alt="" />
           </NavButton>
-          <UserDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
+          <NotificationDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
         </MyToolbar>
       </AppBar>
     </Box>

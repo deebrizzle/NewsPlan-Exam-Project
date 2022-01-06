@@ -1,14 +1,15 @@
 import {StyledDataGrid} from "./IdeaTable.styles"
-import {ModalContext} from "../ModalContext"
+import {FieldContext} from "../FieldContext"
 import { convertDateModal } from "../../utils/convertDate";
 import { getSection } from "../../database/Sections";
 import { getUser } from "../../database/Users";
 import React, { useEffect, useContext} from "react";
-import { getIdeas, ideaFilterSection, ideaFilterSearch } from "../../database/Ideas.js";
+import {getIdeas} from "../../database/Ideas.js";
+import {ideaFilterSection, ideaFilterSearch } from "../../database/ideasHelpers.js";
 import { Grid } from "@mui/material";
 
 export default function IdeaTable({setOpen, search}) {
-  const {setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, section, listOfIdeas, setListOfIdeas} = useContext(ModalContext)
+  const {setSectionObject, setIdeaSourceObject, setIdeaId, setDate, setIdea, setDescription, setVisibility, setIdeaSource, setSection, section, listOfIdeas, setListOfIdeas} = useContext(FieldContext)
 
   useEffect(() => {
     getIdeas().then((ideas) => {

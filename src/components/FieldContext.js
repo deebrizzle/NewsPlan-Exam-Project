@@ -1,8 +1,8 @@
 import React, { useState, createContext} from "react";
 
-export const ModalContext = createContext();
+export const FieldContext = createContext();
 
-export const ModalProvider = ({ children }) => {
+export const FieldProvider = ({ children }) => {
   const [idea, setIdea] = useState("");
   const [headline, setHeadline] = useState("")
   const [description, setDescription] = useState("");
@@ -37,7 +37,7 @@ export const ModalProvider = ({ children }) => {
   };
 
   return (
-    <ModalContext.Provider
+    <FieldContext.Provider
       value={{
         resetContext,
         listOfIdeas,
@@ -77,6 +77,6 @@ export const ModalProvider = ({ children }) => {
       }}
     >
       {children}
-    </ModalContext.Provider>
+    </FieldContext.Provider>
   );
 };

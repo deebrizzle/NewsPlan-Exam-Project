@@ -1,10 +1,10 @@
 import BasicSelect from "./BasicSelect";
 import React, { useContext, useEffect, useState } from "react";
 import { getUsers, getUser } from "../../database/Users";
-import { ModalContext } from "../ModalContext";
+import {FieldContext} from "../FieldContext"
 
 export function SelectAssistant({label}) {
-    const { setAssistant, assistant, setAssistantObject } = useContext(ModalContext);
+    const { setAssistant, assistant, setAssistantObject } = useContext(FieldContext);
     const [users, setUsers] = useState([]);
   
     useEffect(() => {

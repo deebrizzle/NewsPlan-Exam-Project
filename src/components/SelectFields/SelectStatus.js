@@ -1,9 +1,9 @@
 import BasicSelect from "./BasicSelect";
 import React, { useContext } from "react";
-import {ModalContext} from '../ModalContext'
+import {FieldContext} from "../FieldContext"
 
 export function SelectStatus() {
-    const {status, setStatus} = useContext(ModalContext);
+    const {status, setStatus} = useContext(FieldContext);
   
     const handleChange = (event) => {
         setStatus(event.target.value);

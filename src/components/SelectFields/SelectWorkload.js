@@ -1,10 +1,10 @@
 import BasicSelect from "./BasicSelect";
 import React, { useContext } from "react";
-import {ModalContext} from '../ModalContext'
+import {FieldContext} from "../FieldContext"
 import { fullDaySquare, halfDaySquare, quarterDaySquare } from "./SelectWorkload.styles";
 
 export function SelectWorkload() {
-    const {workload, setWorkload} = useContext(ModalContext);
+    const {workload, setWorkload} = useContext(FieldContext);
   
     const handleChange = (event) => {
         setWorkload(event.target.value);

@@ -8,14 +8,14 @@ import { SelectVisibilities } from './SelectFields/SelectVisibilities';
 import { SelectSource } from './SelectFields/SelectSource';
 import { SelectSection } from './SelectFields/SelectSection';
 import { DescriptionInput, IdeaInput } from './InputFields';
-import {ModalContext} from "./ModalContext"
+import {FieldContext} from "./FieldContext"
 import { uploadIdeaToDatabase} from "../database/Ideas";
 import {uploadIdeaToState} from "./updateStates"
 import AlertDialog from "./AlertDialog"
 import { NavLink } from "react-router-dom";
 
 export default function IdeaModal({setOpen, open}) {
-  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource, resetContext} = useContext(ModalContext);
+  const { listOfIdeas, setListOfIdeas, ideaSourceObject, sectionObject, ideaId, idea, description, visibility, date, section, ideaSource, resetContext} = useContext(FieldContext);
   const [alertOpen, setAlertOpen] = React.useState(false);
   
   const handleClose = () => {

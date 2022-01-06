@@ -1,11 +1,11 @@
 import BasicSelect from "./BasicSelect";
 import React, { useContext, useEffect, useState } from "react";
 import { getSections, getSection} from "../../database/Sections";
-import { ModalContext } from "../ModalContext";
+import {FieldContext} from "../FieldContext"
 
 export function SelectSection() {
   const {setSectionObject, setSection, section} =
-    useContext(ModalContext);
+    useContext(FieldContext);
   //TODO Query sections from the database for scaleability?
   const [sections, setSections] = useState([]);
 

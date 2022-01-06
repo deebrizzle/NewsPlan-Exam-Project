@@ -1,6 +1,8 @@
 import Parse from "parse";
-import { convertStringDateToDateObject, convertToMonthDayYearString } from "../utils/convertDate";
-import { IdeaBoxStyle } from "../components/IdeaModal.styles";
+import {
+  convertStringDateToDateObject,
+  convertToMonthDayYearString,
+} from "../utils/convertDate";
 
 export async function getIdea(ideaId) {
   const Ideas = Parse.Object.extend("Ideas");
@@ -18,9 +20,7 @@ export async function getIdeas() {
   let ideas = results.map((row, index) => {
     return {
       id: index,
-      expirationDate: convertToMonthDayYearString(
-        String(row.attributes.expirationDate)
-      ),
+      expirationDate: convertToMonthDayYearString(String(row.attributes.expirationDate)),
       source: row.get("ideaSource").get("username"),
       ideaName: row.attributes.ideaName,
       description: row.attributes.description,
@@ -94,28 +94,4 @@ export async function deleteIdeaFromDatabaseREST(ideaId) {
     objectId: [ideaId],
   };
   return await deleteHTTP(idea);
-}
-
-export function ideaFilterSection(ideas, section) {
-  if (Object.keys(section).length === 0 || section === undefined) {
-    return ideas;
-  } else {
-    const filtered = ideas.filter((ideas) => ideas.section === section);
-    return filtered;
-  }
-}
-
-export function ideaFilterSearch(ideas, query) {
-  const search = query.toLowerCase();
-
-  if (search === undefined || search === "") {
-    return ideas;
-  } else {
-    const matches = ideas.filter((idea) => {
-      if (idea.ideaName.toLowerCase().includes(search) === true || idea.description.toLowerCase().includes(search) === true) {
-        return true;
-      }
-    });
-    return matches;
-  }
 }

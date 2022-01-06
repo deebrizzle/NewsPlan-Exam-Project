@@ -1,9 +1,9 @@
 import BasicSelect from "./BasicSelect";
 import React, { useContext } from "react";
-import { ModalContext } from "../ModalContext";
+import {FieldContext} from "../FieldContext"
 
 export function SelectVisibilities() {
-    const { visibility, setVisibility } = useContext(ModalContext);
+    const { visibility, setVisibility } = useContext(FieldContext);
   
     const handleChange = (event) => {
       setVisibility(event.target.value);

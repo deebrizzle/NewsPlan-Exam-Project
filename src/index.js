@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {ModalProvider} from "./components/ModalContext"
+import {FieldProvider} from "./components/FieldContext"
 
 ReactDOM.render(
   <React.StrictMode>
-    <ModalProvider>
+    <FieldProvider>
     <App />
-    </ModalProvider>
+    </FieldProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

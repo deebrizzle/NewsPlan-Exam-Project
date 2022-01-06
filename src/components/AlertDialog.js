@@ -4,13 +4,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import {ModalContext} from "./ModalContext"
+import {FieldContext} from "./FieldContext"
 import {deleteIdeaFromDatabaseREST } from "../database/Ideas";
 import {deleteIdeaFromState} from "./updateStates"
 import {CancelButton, DeleteButton } from "./Button.styles";
 
 export default function AlertDialog(props) {
-  const { listOfIdeas, setListOfIdeas, ideaId} = useContext(ModalContext);
+  const { listOfIdeas, setListOfIdeas, ideaId} = useContext(FieldContext);
   const {alertOpen, setAlertOpen, setOpen} = props;
 
   async function handleClose(){
@@ -19,6 +19,7 @@ export default function AlertDialog(props) {
     setAlertOpen(false);
     setOpen(false);
   };
+
 
   async function handleCancel(){
     setAlertOpen(false);

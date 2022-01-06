@@ -4,16 +4,16 @@ import { SelectSection } from "../SelectFields/SelectSection";
 import { SelectSource } from "../SelectFields/SelectSource";
 import { SelectDate } from "../SelectFields/SelectDate";
 import { useContext, useEffect, useState } from "react";
-import { getAllArticles, mapArticles, articleFilterEmployees, articleFilterSectionEmployees,} from "../../database/Articles";
+import { getAllArticles, mapArticles} from "../../database/Articles";
+import {articleFilterEmployees, articleFilterSectionEmployees,} from "../../database/ArticlesHelpers";
 import { groupBy } from "../../utils/groupBy";
 import GridSpacer from "../Gridspacer";
 import Loading from "../Loading"
-import { ModalContext } from "../ModalContext";
+import { FieldContext } from "../FieldContext";
 import {StandardButton} from "../Button.styles";
 
-
 export default function ContentScheduleEmployees() {
-  const {section, date, ideaSource, resetContext} = useContext(ModalContext);
+  const {section, date, ideaSource, resetContext} = useContext(FieldContext);
   const [allArticles, setAllArticles] = useState();
   const [filteredArticles, setFilteredArticles] = useState();
 
