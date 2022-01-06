@@ -12,7 +12,7 @@ export default function ArticleTable({articles}) {
   const columns = [
     { field: "dayMonthDate", headerName: "Deadline", minWidth: 75 },
     { field: "username", headerName: "Source", minWidth: 75  },
-    { field: "headline", headerName: "Headline", minWidth: 350},
+    { field: "headline", headerName: "Headline", minWidth: 250},
     { field: "status", headerName: "Status", minWidth: 75 },
     {
       field: 'notification',
@@ -31,13 +31,13 @@ export default function ArticleTable({articles}) {
   function handleRowClick (e) {}
   
   return(
-        <Grid style={{ height: 435 }}>
+        <Grid style={{ height: 375 }}>
           <StyledDataGrid 
             getRowId={(row) => row.objectId} 
             rows={filteredSectionSource} 
             columns={columns} 
-            rowsPerPageOptions={[6]} 
-            pageSize={6} 
+            rowsPerPageOptions={[5]} 
+            pageSize={5} 
             onRowClick={(e) => handleRowClick(e)}/>
         </Grid>
   );

@@ -61,13 +61,13 @@ export default function IdeaTable({setOpen, search}) {
   }
   
   return(
-    <Grid style={{height:"535px"}}>
+    <Grid style={{height: 425}}>
       <StyledDataGrid 
         getRowId={(row) => row.id}
         rows={filteredSectionSearch} 
         columns={columns} 
-        rowsPerPageOptions={[8]} 
-        pageSize={8} 
+        rowsPerPageOptions={[6]} 
+        pageSize={6} 
         onRowClick={(e) => handleRowClick(e)}
         />
     </Grid>

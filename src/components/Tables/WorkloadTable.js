@@ -67,7 +67,7 @@ export default function WorkloadTable({allUsers, date}) {
     else return(
         <Box
             sx={{
-                height: 535,
+                height: 425,
                 '& .workload.green': {
                 backgroundColor: `${colors.Finished}`,
                 },
@@ -82,10 +82,10 @@ export default function WorkloadTable({allUsers, date}) {
             getRowId={(row) => row.objectId} 
             rows={workloads} 
             columns={columns} 
-            rowsPerPageOptions={[8]} 
+            rowsPerPageOptions={[6]} 
             sortModel = {sortModel}
             onSortModelChange={(model) => setSortModel(model)}
-            pageSize={8} 
+            pageSize={6} 
             onRowClick={(e) => handleRowClick(e)}/>
     </Box>
 
