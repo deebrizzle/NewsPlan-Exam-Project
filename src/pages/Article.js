@@ -29,17 +29,16 @@ export default function Article() {
     const [article, setArticle] = useState();
     const navigate = useNavigate()
 
+    //TODO Hardcoded workload, as we need to create differing value and name field in BasicSelect.js for displaying
     async function handlePlan() {
         const articleInputFields = [idea, ideaSource, headline, workload, ideaSourceObject, status, date];
-        console.log(articleInputFields)
         for (const element of articleInputFields) {
             if (element === null || element === ""){
               alert("Please fill out every field to save your idea.");
               return false;
             }
           }
-        console.log(idea[0])
-        await uploadArticleToDatabase(idea[0], headline, ideaSourceObject, photographer, assistant, workload, status, date);
+        await uploadArticleToDatabase(idea[0], headline, ideaSourceObject, photographer, assistant, 1, status, date);
     }
 
 
