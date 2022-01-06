@@ -12,6 +12,7 @@ export default function WorkloadTable({allUsers, date}) {
 
     const users = allUsers;
     
+    //TODO Fix predefined sort to show RED/YELLOW/GREEN cells.
     const [workloads, setWorkloads] = useState();    
     const [sortModel, setSortModel] = useState([
         {

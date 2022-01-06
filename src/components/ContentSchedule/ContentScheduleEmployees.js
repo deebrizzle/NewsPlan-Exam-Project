@@ -11,6 +11,7 @@ import Loading from "../Loading"
 import { ModalContext } from "../ModalContext";
 import {StandardButton} from "../Button.styles";
 
+
 export default function ContentScheduleEmployees() {
   const {setSection, section, setIdeaSource, date, ideaSource} = useContext(ModalContext);
   const [allArticles, setAllArticles] = useState();
@@ -49,18 +50,13 @@ export default function ContentScheduleEmployees() {
     return (
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid item xs={2}>
-            <SelectSource label="Source" />
-          </Grid>
-          <Grid item xs={2}>
-            <SelectSection />
-          </Grid>
-          <Grid item xs={2}> <StandardButton onClick={handleReset}>Reset</StandardButton></Grid>
+          <Grid item xs={2}> <SelectDate /> </Grid>
+          <Grid item xs={2}> <SelectSection /></Grid>
+          <GridSpacer spacing={8} />
+          <Grid item xs={4}> <SelectSource label="Source" /></Grid>
+          <Grid item xs={4}> <StandardButton onClick={handleReset}>Reset</StandardButton></Grid>
           <GridSpacer spacing={4} />
-          <Grid item xs={2}>
-            <SelectDate />
-          </Grid>
-          <ScheduledArticles articles={articles} itemsPerPage={6} />
+          <ScheduledArticles articles={articles} itemsPerPage={3} />
         </Grid>
       </Box>
     );

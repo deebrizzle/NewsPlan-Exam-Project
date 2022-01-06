@@ -10,6 +10,7 @@ import {StandardButton} from "../Button.styles";
 import { getSections } from "../../database/Sections";
 import Loading from "../Loading";
 import { ModalContext } from "../ModalContext";
+import GridSpacer from "../Gridspacer";
 
 export default function ContentScheduleArticles() {
   const [finishedArticles, setFinishedArticles] = useState();
@@ -36,10 +37,13 @@ export default function ContentScheduleArticles() {
       <>
         <Grid container spacing={2}>
             {/* First Line: selectors/date */}
-            <Grid item xs={2}> <SelectSource label="Source" /> </Grid>
-            <Grid item xs={2}> <SelectSection /> </Grid>
-            <Grid item xs={6}> <StandardButton onClick={handleReset}>Reset</StandardButton></Grid>
             <Grid item xs={2}> <SelectDate/> </Grid>
+            <Grid item xs={2}> <SelectSection /> </Grid>
+            <GridSpacer spacing={8} />
+            <Grid item xs={4}> <SelectSource label="Source" /> </Grid>
+
+            <Grid item xs={4}> <StandardButton onClick={handleReset}>Reset</StandardButton></Grid>
+
             {/* Second line: headers */}
             <Grid item xs={6}><h6>Finished Articles</h6></Grid>
             <Grid item xs={6}> <h6>Unfinished Articles</h6></Grid>

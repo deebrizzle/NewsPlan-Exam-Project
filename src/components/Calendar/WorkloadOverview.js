@@ -35,11 +35,10 @@ export default function WorkloadOverview() {
           </a>
         </Grid>
 
-          <Grid item xs={3}><SelectDate label="Date" /></Grid>
-          <Grid item xs={3}><SelectSection /></Grid>
-          <Gridspacer spacing={6}/>
+          <Grid item xs={2}><SelectDate label="Date" /></Grid>
+          <Grid item xs={2}><SelectSection /></Grid>
+          <Gridspacer spacing={8}/>
           <Grid item xs={6}><WorkloadTable allUsers={users} date={date}/></Grid>
-          <Gridspacer spacing={6}/>
       </Grid>
     );
 }

@@ -9,6 +9,7 @@ import {SelectSection} from "../components/SelectFields/SelectSection";
 import {SelectDate} from "../components/SelectFields/SelectDate"
 import {StandardButton} from "../components/Button.styles"
 import {ModalContext} from "../components/ModalContext"
+import GridSpacer from "../components/Gridspacer";
 
 function IdeaBank() {
   const {setIdea, setDescription, setVisibility, setDate, setSection, setIdeaSource, setIdeaId} = useContext(ModalContext);
@@ -37,20 +38,20 @@ function IdeaBank() {
     <>
       <NavBar />
       <PageWrapper>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {/* FIRST ROW - CALENDAR, SECTION*/}
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <SelectDate/>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <SelectSection/>
           </Grid>
-          <Grid item xs={6} />
+          <GridSpacer spacing={8} />
               {/* SECOND ROW - SEARCH, SAVE, ADD IDEA */}
-              <Grid item xs={6}> 
+              <Grid item xs={4}> 
                 <SearchInput search={search} setSearch={setSearch}/> 
                 </Grid>
-              <Grid item xs={4}> 
+              <Grid item xs={6}> 
                 <StandardButton onClick={handleReset}> Reset </StandardButton> 
               </Grid>
               <Grid item xs={2} display="flex" justifyContent="flex-end" alignSelf="flex-end"> 
