@@ -11,7 +11,7 @@ import {StandardButton} from "../components/Button.styles"
 import {ModalContext} from "../components/ModalContext"
 import GridSpacer from "../components/Gridspacer";
 
-function IdeaBank() {
+export default function IdeaBank() {
   const {setDate, setSection, setIdeaSource, setIdea, setDescription, setVisibility, setIdeaId} = useContext(ModalContext);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
@@ -40,7 +40,7 @@ function IdeaBank() {
         <Grid container spacing={2}>
           {/* FIRST ROW - CALENDAR, SECTION*/}
           <Grid item xs={2}>
-            <SelectDate/>
+            <SelectDate />
           </Grid>
           <Grid item xs={2}>
             <SelectSection/>
@@ -70,5 +70,4 @@ function IdeaBank() {
     </>
   );
 }
-export default IdeaBank;
 

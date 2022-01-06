@@ -19,7 +19,7 @@ function ArticleBox({ articles }) {
 }
 
 // Index 0 in the array refers to user. Index 1 is the array containing all the articles related to the user.
-function EmployeeArticles ({ userNameAndArticles }) {
+export default function EmployeeArticles ({ userNameAndArticles }) {
   return (
     <Box>
       <Typography variant="h6" component="h2" align="center">
@@ -31,5 +31,3 @@ function EmployeeArticles ({ userNameAndArticles }) {
     </Box>
   );
 }
-
-export default EmployeeArticles;

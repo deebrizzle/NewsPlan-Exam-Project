@@ -21,7 +21,7 @@ function TabPanel(props) {
   );
 }
 
-function TabBar() {
+export default function TabBar() {
   const {resetContext} = useContext(ModalContext);
   const [value, setValue] = useState(0);
 
@@ -61,5 +61,3 @@ function TabBar() {
     </Box>
   );
 }
-
-export default TabBar;

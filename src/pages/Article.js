@@ -16,7 +16,7 @@ import CommentTable from "../components/Tables/CommentTable";
 import GridSpacer from "../components/Gridspacer";
 import { getArticleById } from "../database/Articles";
 
-function Article() {
+export default function Article() {
 
     const { id } = useParams();
     const [idea, setIdea] = useState();
@@ -79,5 +79,3 @@ function Article() {
         </>
     )
 }
-
-export default Article;

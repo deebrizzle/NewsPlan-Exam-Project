@@ -2,7 +2,7 @@ import NavBar from "../components/Navigation/NavBar";
 import { PageWrapper } from "./PageMargin.styles";
 import WorkloadOverview from "../components/Calendar/WorkloadOverview";
 
-function Calendar() {
+export default function Calendar() {
 
   return (
     <>
@@ -13,4 +13,3 @@ function Calendar() {
     </>
   );
 }
-export default Calendar;

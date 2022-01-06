@@ -2,7 +2,7 @@ import NavBar from "../components/Navigation/NavBar";
 import { PageWrapper } from "./PageMargin.styles";
 import TabBar from "../components/Navigation/TabBar";
 
-function ContentSchedule() {
+export default function ContentSchedule() {
   return (
     <>
       <NavBar />
@@ -14,5 +14,3 @@ function ContentSchedule() {
     </>
   );
 }
-
-export default ContentSchedule;

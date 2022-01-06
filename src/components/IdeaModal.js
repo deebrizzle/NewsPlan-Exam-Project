@@ -54,7 +54,7 @@ export default function IdeaModal({setOpen, open}) {
                 <Grid container spacing={3}>
                     {/* INPUT FIELDS */}
                     <Grid item xs={6}><IdeaInput /></Grid>
-                    <Grid item xs={6}><SelectDate/></Grid>
+                    <Grid item xs={6}><SelectDate label="Expiry Date"/></Grid>
                     <Grid item xs={6}><SelectSection/></Grid>
                     <Grid item xs={6}><SelectVisibilities/></Grid>
                     <Grid item xs={6}><SelectSource label="Source"/></Grid>

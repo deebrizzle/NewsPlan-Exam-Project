@@ -3,6 +3,7 @@ import { HomeWrapper } from "./Home.styles";
 import NavBar from "../components/Navigation/NavBar";
 import Parse from "parse";
 import React from "react";
+
 export default function Home() {
 const currentUser = Parse.User.current();
   return (

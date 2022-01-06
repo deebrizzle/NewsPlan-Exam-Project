@@ -35,7 +35,7 @@ export default function ContentScheduleArticles() {
             <Grid item xs={2}> <SelectDate/> </Grid>
             <Grid item xs={2}> <SelectSection /> </Grid>
             <GridSpacer spacing={8} />
-            <Grid item xs={2}> <SelectSource label="Source" /> </Grid>
+            <Grid item xs={4}> <SelectSource label="Source" /> </Grid>
             <Grid item xs={6}> <StandardButton onClick={resetContext}>Reset</StandardButton></Grid>
             {/* Second line: headers */}
             <Grid item xs={6}><h6>Finished Articles</h6></Grid>
