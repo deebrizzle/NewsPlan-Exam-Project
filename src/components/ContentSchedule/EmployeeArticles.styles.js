@@ -6,27 +6,27 @@ const handleStatusColor = value => {
   switch (value) {
     case "P": 
       return `
-      background-color: ${colors.Planned};
+      background-color: ${colors.Planned} !important;
       color: ${colors.black};
     `
     case "F":
       return `
-      background-color: ${colors.Finished};
+      background-color: ${colors.Finished} !important;
       color: ${colors.black};
     `
     case "A":
       return `
-      background-color: ${colors.Accepted};
+      background-color: ${colors.Accepted} !important;
       color: ${colors.black};
     `
     case "D":
       return `
-      background.color: ${colors.Delayed};
+      background.color: ${colors.Delayed} !important;
       color: ${colors.black};
     `
     case "C":
       return `
-      background-color: ${colors.Cancelled};
+      background-color: ${colors.Cancelled} !important;
       color: ${colors.black};
     `;
     default:

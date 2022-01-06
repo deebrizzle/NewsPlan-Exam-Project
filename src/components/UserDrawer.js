@@ -4,7 +4,7 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import { Typography } from "@mui/material";
-import CommentsOnArticles from "./CommentsOnArticles";
+import CommentsOnArticles from "../utils/CommentsOnArticles";
 import { LoginButton } from "./Button.styles";
 import { logOut } from "./logOut";
 import { NavLink } from "react-router-dom";

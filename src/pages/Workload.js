@@ -1,15 +1,14 @@
 import NavBar from "../components/Navigation/NavBar";
 import { PageWrapper } from "./PageMargin.styles";
-import TabBar from "../components/Navigation/TabBar";
+import WorkloadOverview from "../components/Workload/WorkloadOverview";
 
-export default function ContentSchedule() {
+export default function Workload() {
+
   return (
     <>
       <NavBar />
       <PageWrapper>
-     
-        <TabBar />
-       
+        <WorkloadOverview />
       </PageWrapper>
     </>
   );

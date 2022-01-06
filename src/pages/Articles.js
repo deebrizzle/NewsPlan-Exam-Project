@@ -1,14 +1,13 @@
 import NavBar from "../components/Navigation/NavBar";
 import { PageWrapper } from "./PageMargin.styles";
-import WorkloadOverview from "../components/Calendar/WorkloadOverview";
+import ContentScheduleArticles from "../components/ContentSchedule/ContentScheduleArticles";
 
-export default function Calendar() {
-
+export default function Articles() {
   return (
     <>
       <NavBar />
       <PageWrapper>
-        <WorkloadOverview />
+        <ContentScheduleArticles/>
       </PageWrapper>
     </>
   );
