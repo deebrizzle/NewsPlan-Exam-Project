@@ -35,7 +35,7 @@ export default function NavBar() {
           <NavButton disableRipple component={NavLink} to="/calendar">
             CALENDAR
           </NavButton>
-          <NavButton disableRipple component={NavLink} to="/workload">
+          <NavButton disableRipple component={NavLink} to="/workload" onClick={resetContext}>
             WORKLOAD
           </NavButton>
           <NavButton disableRipple onClick={() => setDrawerOpen(true)}>
