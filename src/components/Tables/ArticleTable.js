@@ -12,7 +12,7 @@ export default function ArticleTable({articles}) {
   const columns = [
     { field: "dayMonthDate", headerName: "Deadline", minWidth: 75 },
     { field: "username", headerName: "Source", minWidth: 75  },
-    { field: "headline", headerName: "Headline", minWidth: 400},
+    { field: "headline", headerName: "Headline", minWidth: 350},
     { field: "status", headerName: "Status", minWidth: 75 },
     {
       field: 'notification',
