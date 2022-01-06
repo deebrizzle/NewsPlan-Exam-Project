@@ -23,7 +23,7 @@ export default function Login() {
 
   async function validateUser() {
     try {
-      const userAuth = await Parse.User.logIn(username, password);
+      await Parse.User.logIn(username, password);
       setUsername("");
       setPassword("");
       setLoginError(false);

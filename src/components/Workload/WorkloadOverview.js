@@ -24,14 +24,6 @@ export default function WorkloadOverview() {
   } else
     return (
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-
-          <p>
-            Should we remove this text?
-          </p>
-
-        </Grid>
-
           <Grid item xs={2}><SelectDate label="Date" /></Grid>
           <Grid item xs={2}><SelectSection /></Grid>
           <Gridspacer spacing={8}/>

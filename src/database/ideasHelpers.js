@@ -13,11 +13,7 @@ export function ideaFilterSection(ideas, section) {
     if (search === undefined || search === "") {
       return ideas;
     } else {
-      const matches = ideas.filter((idea) => {
-        if (idea.ideaName.toLowerCase().includes(search) === true || idea.description.toLowerCase().includes(search) === true) {
-          return true;
-        }
-      });
+      const matches = ideas.filter((idea) => idea.ideaName.toLowerCase().includes(search) || idea.description.toLowerCase().includes(search))
       return matches;
     }
   }
