@@ -13,8 +13,6 @@ export async function getAllArticles(date) {
   return await query.find();
 }
 
-
-//TODO: Figure out function to fetch articles within next 24 hours? 7 days?
 export async function getFinishedArticles(date, setFinishedArticles) {
   const Articles = Parse.Object.extend("Articles");
   const query = new Parse.Query(Articles);

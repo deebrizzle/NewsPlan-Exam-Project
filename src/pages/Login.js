@@ -12,6 +12,9 @@ import Parse from "parse";
 import LoginInput from "../components/InputFields/LoginInput";
 
 //TODO This function should be refactored to remove fecthing from the database from this function
+
+//I tried doing this - creating a fetchUser and using parse her. But I encounter bugs when using a function
+//it seems to not work as well, when not doing it directly.
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
