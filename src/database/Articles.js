@@ -73,15 +73,15 @@ export async function getArticleById(id) {
     return await query.find();
   }
 
-  export async function getArticlesFromIdea(ideaObject) {
+  export async function getArticlesFromIdea(ideaId) {
     const Articles = Parse.Object.extend("Articles");
     const query = new Parse.Query(Articles);
-    query.include("Idea")
-    query.equalTo("idea", ideaObject);
+    query.include("Ideas")
     query.ascending("publishDate");
-    return await query.find();
+    query.equalTo('idea', { "__type": "Pointer", "className": "Ideas", "objectId": ideaId });
+    const results = await query.find();
+    return results;
   }
-
 
   //TODO these two and the next two are really similiar - but the input is somewhat different. Don't know if they can be refactored.
 export function articleFilterSection(articles, section) {
