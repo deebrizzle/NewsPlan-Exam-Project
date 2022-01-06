@@ -1,5 +1,3 @@
-import {sortByDate} from "../utils/sortBy"
-
   export async function getCommentsHTTP(query){
     let filterString = "?where=" + encodeURIComponent(JSON.stringify(query));
     const comments = await fetch(

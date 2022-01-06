@@ -1,7 +1,6 @@
 import Parse from "parse";
 import { sortByString } from "../utils/sortBy";
 import {convertToDayMonthString, convertStringDateToDateObject} from "../utils/convertDate"
-import {getCommentsFromArticle} from "./comments"
 
 export async function getAllArticles(date) {
   const Articles = Parse.Object.extend("Articles");

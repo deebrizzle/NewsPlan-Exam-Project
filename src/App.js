@@ -8,6 +8,7 @@ import Article from "./pages/Article.js"
 import Parse from "parse";
 import Employees from "./pages/Employees";
 import Articles from "./pages/Articles";
+import Calendar from "./pages/Calendar";
 
 Parse.initialize(
   process.env.REACT_APP_APPLICATION_KEY,
@@ -62,6 +63,14 @@ function App() {
           element={
             <LoginRequired>
               <Workload />
+            </LoginRequired>
+          }
+        />
+                <Route
+          path="/calendar"
+          element={
+            <LoginRequired>
+              <Calendar />
             </LoginRequired>
           }
         />

@@ -5,7 +5,6 @@ import Loading from "../Loading";
 import { StyledAlertIcon } from "./ArticleTable.styles"
 import clsx from 'clsx';
 import colors from '../../colors'
-import {ColoredWorkloadsBox} from './WorkloadTable.styles'
 import { Box } from "@mui/system";
 
 export default function WorkloadTable({allUsers, date}) {

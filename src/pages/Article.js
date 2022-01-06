@@ -1,4 +1,4 @@
-import { useParams, useNavigate, NavLink} from "react-router-dom";
+import { useParams, NavLink} from "react-router-dom";
 import React, {useEffect, useState, useContext} from 'react'
 import {Stack, Grid} from '@mui/material';
 import NavBar from "../components/Navigation/NavBar"
@@ -16,19 +16,17 @@ import { SelectPhotographer } from '../components/SelectFields/SelectPhotographe
 import { SelectAssistant } from '../components/SelectFields/SelectAssistant'
 import { SelectWorkload } from '../components/SelectFields/SelectWorkload'
 import CommentTable from "../components/Tables/CommentTable";
-import GridSpacer from "../components/Gridspacer";
 import { getArticleById } from "../database/articles";
 import { getIdea } from "../database/ideas";
 import { uploadArticleToDatabase } from "../database/articles";
 
 export default function Article() {
 
-    const { headline, assistant, photographer, ideaSource, ideaSourceObject, workload, description, status, date, section, resetContext} = useContext(FieldContext);
+    const { headline, assistant, photographer, ideaSource, ideaSourceObject, workload, status, date} = useContext(FieldContext);
 
     const { id } = useParams();
     const [idea, setIdea] = useState();
     const [article, setArticle] = useState();
-    const navigate = useNavigate()
 
     //TODO Hardcoded workload, as we need to create differing value and name field in BasicSelect.js for displaying
     async function handlePlan() {
@@ -41,7 +39,6 @@ export default function Article() {
           }
         await uploadArticleToDatabase(idea[0], headline, ideaSourceObject, photographer, assistant, 1, status, date);
     }
-
 
     useEffect(() => {
         getIdea(id).then((idea) => setIdea(idea))
@@ -58,7 +55,7 @@ export default function Article() {
         </>
         )
     }  
-    
+
     return (
         <>
          <NavBar/>

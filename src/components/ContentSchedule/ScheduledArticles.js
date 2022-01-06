@@ -1,7 +1,7 @@
-import { Grid, Box } from "@mui/material";
+import { Grid} from "@mui/material";
 import EmployeeArticles from "./EmployeeArticles";
 import React, { useEffect, useState } from "react";
-import { PaginationContainer, StyledPagination } from "./ScheduledArticles.styles";
+import {StyledPagination } from "./ScheduledArticles.styles";
 import Loading from "../Loading";
 
 function PaginatedArticles ({ articles }) {
