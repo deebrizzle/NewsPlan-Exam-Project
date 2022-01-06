@@ -28,7 +28,6 @@ To run this project, install it locally using npm:
 
 ```
 React Webserver
-$ cd ../webserver
 $ npm install
 $ npm start
 ```
