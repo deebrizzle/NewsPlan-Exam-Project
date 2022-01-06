@@ -2,8 +2,6 @@ import React from "react";
 import { Box, Typography, Grid} from "@mui/material";
 import { Item } from "./EmployeeArticles.styles";
 
-//TODO Use map somewhere to create each box for every article. Currently only grabbing the first article of each user's articles.
-
 function ArticleBox({ articles }) {
   return (
     <>
@@ -18,7 +16,6 @@ function ArticleBox({ articles }) {
   );
 }
 
-// Index 0 in the array refers to user. Index 1 is the array containing all the articles related to the user.
 export default function EmployeeArticles ({ userNameAndArticles }) {
   return (
     <Box>

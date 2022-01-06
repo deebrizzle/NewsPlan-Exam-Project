@@ -30,7 +30,6 @@ export default function ArticleTable({articles}) {
 
   function handleRowClick (e) {}
   
-  // TODO Click to next X articles doesn't work
   return(
         <Grid style={{ height: 425 }}>
           <StyledDataGrid 

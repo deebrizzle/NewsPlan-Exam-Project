@@ -28,7 +28,8 @@ export default function Article() {
     const [idea, setIdea] = useState();
     const [article, setArticle] = useState();
 
-    //TODO Hardcoded workload, as we need to create differing value and name field in BasicSelect.js for displaying
+    //TODO Missing implementation of fetching Photographer and Assistant objects correctly. When planning an article with these fields filled, it fails to upload to the database.
+    //TODO Status needs to be converted from a string into a number, why the uploadArticleToDatabase is currently hardcoded to '1' to prove that it works. 
     async function handlePlan() {
         const articleInputFields = [idea, ideaSource, headline, workload, ideaSourceObject, status, date];
         for (const element of articleInputFields) {
@@ -73,7 +74,6 @@ export default function Article() {
                 {/* BUTTONS */}
                 <Grid item xs={6}>
                     <Stack spacing={3} direction ="row" justifyContent ="flex-start">
-                        {/* TODO use navigate.goBack() instead of NavLink */}
                         <ReturnButton component={NavLink} to="/ideabank">Return</ReturnButton>
                         <SelectStatus/> 
                         <SelectDate label="Deadline"/>

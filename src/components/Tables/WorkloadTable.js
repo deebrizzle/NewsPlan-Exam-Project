@@ -11,7 +11,7 @@ export default function WorkloadTable({allUsers, date}) {
 
     const users = allUsers;
     
-    //TODO Fix predefined sort to show RED/YELLOW/GREEN cells.
+    //TODO Fix sortModel sort to show the workloaded in descending order, such that the RED overloaded employees are shown first when visting the page.
     const [workloads, setWorkloads] = useState();    
     const [sortModel, setSortModel] = useState([
         {
