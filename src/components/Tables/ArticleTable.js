@@ -31,7 +31,7 @@ export default function ArticleTable({articles}) {
   function handleRowClick (e) {}
   
   return(
-        <Grid style={{ height: 425 }}>
+        <Grid style={{ height: 435 }}>
           <StyledDataGrid 
             getRowId={(row) => row.objectId} 
             rows={filteredSectionSource} 
