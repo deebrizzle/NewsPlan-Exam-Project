@@ -7,10 +7,11 @@ import { SelectDate } from './SelectFields/SelectDate';
 import { SelectVisibilities } from './SelectFields/SelectVisibilities';
 import { SelectSource } from './SelectFields/SelectSource';
 import { SelectSection } from './SelectFields/SelectSection';
-import { DescriptionInput, IdeaInput } from './InputFields';
+import {DescriptionInput} from "./InputFields/DescriptionInput"
+import {IdeaInput} from "./InputFields/IdeaInput"
 import {FieldContext} from "./FieldContext"
 import { uploadIdeaToDatabase} from "../database/ideas";
-import {uploadIdeaToState} from "./updateStates"
+import {uploadIdeaToState} from "../utils/updateStates"
 import AlertDialog from "./AlertDialog"
 import { NavLink } from "react-router-dom";
 

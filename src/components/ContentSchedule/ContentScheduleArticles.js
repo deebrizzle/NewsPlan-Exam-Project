@@ -22,7 +22,6 @@ export default function ContentScheduleArticles() {
       getSections()
       getFinishedArticles(date, setFinishedArticles)
       getUnfinishedArticles(date, setUnfinishedArticles)
-      //for cloud function:
     }, [date, section, ideaSource]);
 
   if (finishedArticles === undefined || unfinishedArticles === undefined ) {

@@ -1,7 +1,7 @@
-import { StyledLabelledInput } from "../pages/Login.styles";
+import { StyledLabelledInput } from "../../pages/Login.styles";
 import React from "react";
 
-export default function LoginInputField(props) {
+export default function LoginInput(props) {
   return (
     <StyledLabelledInput
       margin="normal"

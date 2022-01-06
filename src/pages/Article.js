@@ -6,7 +6,8 @@ import { PageWrapper } from "./PageMargin.styles"
 import Loading from "../components/Loading";
 import {FieldContext} from "../components/FieldContext"
 import {StandardButton, ReturnButton } from '../components/Button.styles'
-import { DescriptionInput, HeadlineInput } from '../components/InputFields';
+import {DescriptionInput} from "../components/InputFields/DescriptionInput"
+import {HeadlineInput} from "../components/InputFields/HeadlineInput"
 import { SelectDate } from '../components/SelectFields/SelectDate'
 import { SelectSection } from '../components/SelectFields/SelectSection'
 import { SelectSource } from '../components/SelectFields/SelectSource'

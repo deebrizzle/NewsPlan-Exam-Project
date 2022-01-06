@@ -6,7 +6,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {FieldContext} from "./FieldContext"
 import {deleteIdeaFromDatabaseREST } from "../database/ideas";
-import {deleteIdeaFromState} from "./updateStates"
+import {deleteIdeaFromState} from "../utils/updateStates"
 import {CancelButton, DeleteButton } from "./Button.styles";
 
 export default function AlertDialog(props) {

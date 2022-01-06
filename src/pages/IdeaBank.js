@@ -4,7 +4,7 @@ import IdeaModal from "../components/IdeaModal";
 import React, { useState, useContext} from "react";
 import IdeaTable from "../components/Tables/IdeaTable"
 import { PageWrapper } from "./PageMargin.styles";
-import SearchInput from "../components/InputFields";
+import SearchInput from "../components/InputFields/SearchInput"
 import {SelectSection} from "../components/SelectFields/SelectSection";
 import {SelectDate} from "../components/SelectFields/SelectDate"
 import {StandardButton} from "../components/Button.styles"

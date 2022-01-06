@@ -6,7 +6,7 @@ import Divider from "@mui/material/Divider";
 import { Typography } from "@mui/material";
 import CommentsOnArticles from "../utils/CommentsOnArticles";
 import { LoginButton } from "./Button.styles";
-import { logOut } from "./logOut";
+import { logOut } from "../database/logOut";
 import { NavLink } from "react-router-dom";
 
 export default function NotificationDrawer(props) {
