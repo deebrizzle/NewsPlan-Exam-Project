@@ -21,7 +21,7 @@ const handleStatusColor = value => {
     `
     case "D":
       return `
-      background.color: ${colors.Delayed} !important;
+      background-color: ${colors.Delayed} !important;
       color: ${colors.black};
     `
     case "C":
